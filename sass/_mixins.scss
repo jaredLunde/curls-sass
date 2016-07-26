@@ -30,7 +30,7 @@
 }
 
 
-/** DEPRECATED! Use `@extend %hardware-accel` instead */
+// DEPRECATED! Use `@extend %hardware-accel` instead */
 @mixin hardware-optimize() {
   @include prefix((transform: translateZ(0),
                    backface-visibility: hidden,

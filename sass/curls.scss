@@ -1,46 +1,39 @@
-/** Base */
+@charset"utf-8";
+/******************************************************************************
+ ***                                                                          *
+ ***                                                                Curls.css *
+ ***                                    A flexible flebox-based CSS framework *
+ ***                                                     (c) 2016 Jared Lunde *
+ ***                                                                          *
+ ******************************************************************************/
+// Base
 @import 'variables';
 @import 'mixins';
 @import 'placeholders';
 
-/** Flexible containers */
-@import 'flexibility/variables';
-@import 'flexibility/mixins';
-@import 'flexibility/placeholders';
-@import 'flexibility/layout';
+/** Flexible containers (.flex) */
+@import 'flexibility/index';
 
-/** Grid layout */
-@import 'grid/variables';
-@import 'grid/mixins';
-@import 'grid/placeholders';
-@import 'grid/layout';
+/** Grid layout (.grid) */
+@import 'grid/index';
 
 /** Multi-column layout */
-@import 'columns/variables';
-@import 'columns/mixins';
-@import 'columns/layout';
+@import 'columns/index';
 
 /** General layout presets */
 @import 'layout';
 
 /** Form (default form styles) **/
-@import 'ui/form/variables';
-@import 'ui/form/layout';
+@import 'ui/form/index';
 
 /** Button (.button) **/
-@import 'ui/button/variables';
-@import 'ui/button/placeholders';
-@import 'ui/button/layout';
+@import 'ui/button/index';
 
 /** Modal (.modal) **/
-@import 'ui/modal/variables';
-@import 'ui/modal/layout';
+@import 'ui/modal/index';
 
 /** Navbar (.navbar) **/
-@import 'ui/nav/bar/variables';
-@import 'ui/nav/bar/layout';
+@import 'ui/nav/bar/index';
 
 /** Navbar (.navbar) **/
-@import 'ui/nav/dropdown/variables';
-@import 'ui/nav/dropdown/placeholders';
-@import 'ui/nav/dropdown/layout';
+@import 'ui/nav/dropdown/index';

@@ -1,4 +1,4 @@
-/** Resets */
+// Resets */
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -38,7 +38,7 @@ select {
 }
 
 
-/** Text inputs */
+// Text inputs */
 input[type=text],
 input[type=email],
 input[type=tel],
@@ -101,7 +101,7 @@ input[type=search] {
 }
 
 
-/** Submit Buttons */
+// Submit Buttons */
 button[type=submit], input[type=submit], button.submit {
   background: $submit-background;
   border: $submit-border;
@@ -129,7 +129,7 @@ button[type=submit], input[type=submit], button.submit {
 }
 
 
-/** Textareas */
+// Textareas */
 textarea {
   background: $textarea-background;
   padding: $textarea-padding-top $textarea-padding-right
@@ -144,7 +144,7 @@ textarea {
 }
 
 
-/** Placeholders */
+// Placeholders */
 .placeholder {
   @include opacity($placeholder-opacity);
   @include font-line($placeholder-font-size, $placeholder-line-height,
@@ -178,7 +178,7 @@ textarea {
 }
 
 
-/** Wrappers */
+// Wrappers */
 .table-form {
   display: table;
   padding: 15px;

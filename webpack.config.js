@@ -1,36 +1,48 @@
 var path = require('path')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 
 module.exports = {
   // The base directory for resolving the entry option
-  context: __dirname + "/lib",
+  context: __dirname,
 
   // The entry point for the bundle
-  entry: "curls",
+  entry: "lib/index",
 
   // Various output options, to give us a single bundle.js file with everything resolved and concatenated
   output: {
-    path: __dirname + '/webpack',
+    path: path.join(__dirname, '/webpack'),
+    publicPath: path.join(__dirname, '/webpack'),
     filename: "curls.js",
     pathinfo: true
   },
 
-  // Where to resolve our loaders
-  resolveLoader: {
-    modulesDirectories: ['node_modules']
-  },
-
+  // Where to resolve our loaders=
   resolve: {
     // Directories that contain our modules
-    root: [path.join(__dirname, "/lib")],
+    root: [__dirname],
 
     // Extensions used to resolve modules
-    extensions: ['', '.js', '.react.js'],
+    extensions: ['', '.js', '.react.js', '.scss', '.css'],
     alias: {
       'react': 'react-lite',
       'react-dom': 'react-lite'
     }
+  },
+
+  module: {
+    loaders: [
+      {
+        test: /\/lib\/.*\.js$/,
+        loader: 'babel-loader',
+        exclude: [/node_modules/]
+      },
+      {
+        test: /\/sass\/.*\.scss$/,
+        loader: ExtractTextPlugin.extract('style', 'css?minified!sass')
+      }
+    ],
   },
 
   plugins: [
@@ -47,18 +59,9 @@ module.exports = {
       output: {
         comments: false
       }
-    })
+    }),
+    new ExtractTextPlugin('curls.css')
   ],
-
-  module: {
-    loaders: [
-      {
-        test: /\/lib\/.*\.js$/,
-        loader: 'babel-loader',
-        exclude: [/node_modules/]
-      }
-    ],
-  },
 
   // Include mocks for when node.js specific modules may be required
   node: {

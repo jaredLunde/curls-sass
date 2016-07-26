@@ -1,4 +1,4 @@
-/** Body */
+// Body */
 $MAX-Z-INDEX: 2147483647;
 $MAX-PX: 134217727px;
 $body-alignment: center !default;
@@ -11,7 +11,7 @@ $body-line-height: 1.38 !default;
 $body-font-weight: 300 !default;
 
 
-/** Links */
+// Links */
 $link-color: #227fc4 !default;
 $link-hover-color: darken($link-color, 20%) !default;
 $link-active-color: darken($link-color, 20%) !default;
@@ -19,7 +19,7 @@ $link-decoration: none !default;
 $link-tap-highlight: rgba(0,0,0,0.10) !default;
 
 
-/** Headings */
+// Headings */
 $heading-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
 $heading-color: #000 !default;
 $heading-max-font-size: 48px !default;
@@ -28,7 +28,7 @@ $heading-text-align: left;
 $heading-line-height: 1.1;
 
 
-/** Paragraphs */
+// Paragraphs */
 $paragraph-padding: 0 !default;
 $paragraph-margin: 0 0 1.2em !default;
 
@@ -41,53 +41,30 @@ $paragraph-font-weight: 300 !default;
 $paragraph-text-align: left !default;
 
 
-/** Document text selection */
+// Document text selection */
 $selection-background: #343d3b !default;
 $selection-font-color: #fff !default;
 
 
-/** Responsive media queries */
+// Responsive media queries */
 $phone: "only screen and (max-width: 719px)" !default;
 $phone-max: $phone !default;
 $phone-s: "only screen and (max-width: 359px)" !default;
-$phone-m: "only screen and (min-width: 360px)\a
-                       and (max-width: 469px)" !default;
-$phone-l: "only screen and (min-width: 480px)\a
-                       and (max-width: 719px)" !default;
+$phone-m: "only screen and (min-width: 360px) aand (max-width: 469px)" !default;
+$phone-l: "only screen and (min-width: 480px) and (max-width: 719px)" !default;
 $tablet: "only screen and (min-width: 720px)" !default;
 $tablet-max: "only screen and (max-width: 1023px)" !default;
-$tablet-s: "only screen and (min-width: 600px)\a
-                        and (max-width: 719px)" !default;
-$tablet-m: "only screen and (min-width: 720px)\a
-                        and (max-width: 839px)" !default;
-$tablet-l: "only screen and (min-width: 840px)\a
-                        and (max-width: 1023px)" !default;
+$tablet-s: "only screen and (min-width: 600px) and (max-width: 719px)" !default;
+$tablet-m: "only screen and (min-width: 720px) and (max-width: 839px)" !default;
+$tablet-l: "only screen and (min-width: 840px) and (max-width: 1023px)" !default;
 $desktop: "only screen and (min-width: 960px)" !default;
 $desktop-max: "only screen" !default;
-$desktop-s: "only screen and (min-width: 960px)\a
-                         and (max-width: 1023px)" !default;
-$desktop-m: "only screen and (min-width: 1024px)\a
-                         and (max-width: 1279px)" !default;
+$desktop-s: "only screen and (min-width: 960px) and (max-width: 1023px)" !default;
+$desktop-m: "only screen and (min-width: 1024px) and (max-width: 1279px)" !default;
 $desktop-l: "only screen and (min-width: 1280px)" !default;
-$high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3),\a
-            only screen and (-o-min-device-pixel-ratio: 13/10),\a
-            only screen and (min-resolution: 120dpi)" !default;
+$high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi)" !default;
 
 
-/** Dividers */
+// Dividers */
 $divider-color: #dbdbdb;
 $divider-height: 1px;
-
-
-// Device types for media queries ! DEPRECATED !
-$device-lodef-phone: "only screen and (max-width: 349px)" !default;
-$device-hidef-phone: "only screen and (min-width: 349px)\a
-                      and (max-width: 639px)" !default;
-$device-phone: "only screen and (max-width: 639px)" !default;
-$device-tablet: "only screen and (min-width: 640px) and (max-width: 799px)"
-                !default;
-$device-phablet: "only screen and (max-width: 799px)" !default;
-$device-desktop: "only screen and (min-width: 800px)" !default;
-$device-high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3),\a
-                   only screen and (-o-min-device-pixel-ratio: 13/10),\a
-                   only screen and (min-resolution: 120dpi)" !default;
