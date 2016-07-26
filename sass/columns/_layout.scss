@@ -1,0 +1,101 @@
+#{$columns-class} {
+  display: block;
+}
+
+
+#{$columns-class} > * {
+  display: inline-block;
+  width: 100%;
+}
+
+
+#{$columns-class}--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+.no-csscolumns #{$columns-class} > * {
+  float: left;
+  width: $columns-width;
+  display: inline-block;
+  @include prefix((box-sizing: border-box), webkit moz);
+}
+
+.no-csscolumns #{$columns-class} {
+  @include prefix((box-sizing: border-box), webkit moz);
+  &:before, &:after {
+      content: " ";
+      display: table;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+
+@for $x from 1 through 12 {
+  #{$columns-class}--#{$x} {
+    @include columns($x, $columns-width);
+  }
+  %#{$columns-name}--#{$x} {
+    @include columns($x, $columns-width);
+  }
+}
+
+
+@for $x from 1 through 12 {
+  .no-csscolumns #{$columns-class}--#{$x} > * {
+    float: left;
+    $width: 1 / $x;
+    $width: percentage($width);
+    width: $width;
+    max-width: $width;
+  }
+}
+
+
+@media #{$phone} {
+  #{$columns-class} {
+    @include columns($gutter-size: $columns-phone-gutter);
+  }
+
+  .no-csscolumns #{$columns-class} {
+    padding-left: $columns-phone-gutter;
+  }
+
+  .no-csscolumns #{$columns-class} > * {
+    padding: 0 $columns-phone-gutter 0 0;
+  }
+}
+
+
+@media #{$tablet} {
+  #{$columns-class} {
+    @include columns($gutter-size: $columns-tablet-gutter);
+  }
+
+  .no-csscolumns #{$columns-class} {
+    padding-left: $columns-tablet-gutter;
+  }
+
+  .no-csscolumns #{$columns-class} > * {
+    padding: 0 $columns-tablet-gutter 0 0;
+  }
+}
+
+
+@media #{$desktop} {
+  #{$columns-class} {
+    @include columns($gutter-size: $columns-desktop-gutter);
+  }
+
+  .no-csscolumns #{$columns-class} {
+    padding-left: $columns-desktop-gutter;
+  }
+
+  .no-csscolumns #{$columns-class} > * {
+    padding: 0 $columns-desktop-gutter 0 0;
+  }
+}

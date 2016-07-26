@@ -1,0 +1,134 @@
+*, *:before, *:after {
+  /** border-box for all, as it should be */
+  @include prefix((box-sizing: border-box), webkit moz);
+}
+
+
+a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+  background: 0 0;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+  word-wrap: break-word;
+}
+
+
+@-ms-viewport {
+  width: device-width;
+}
+
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+
+li, ol, ul { list-style: none }
+
+
+body {
+  @media #{$high-dpi} {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+  text-rendering: optimizeLegibility;
+  min-height: 100%;
+  text-align: $body-alignment;
+  background: $body-background;
+  position: relative;
+  @include font-line($body-font-size, $body-line-height,
+                     $color: $body-font-color,
+                     $weight: $body-font-weight,
+                     $family: $body-font);
+}
+
+.xfaps__header {
+  border-top: 0;
+}
+
+pre {
+  -webkit-font-smoothing: auto;
+}
+
+
+a {
+  cursor: pointer;
+  text-decoration: $link-decoration;
+  color: $link-color;
+  -webkit-tap-highlight-color: $link-tap-highlight;
+}
+
+
+.no-touchevents a {
+  &:hover {
+    color: $link-hover-color;
+  }
+
+  &:active {
+    color: $link-active-color;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: $heading-text-align;
+  @include font-line($heading-max-font-size,
+                     $heading-line-height,
+                     $color: $heading-color,
+                     $weight: $heading-font-weight,
+                     $family: $heading-font);
+}
+
+
+$_size: $heading-max-font-size * 0.875 * 0.875;
+@each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
+  $_size: round($_size * 0.875);
+  #{$x} {
+    @include font-line($_size, $heading-line-height);
+  }
+}
+
+
+p {
+  padding: $paragraph-padding;
+  margin: $paragraph-margin;
+  text-align: $paragraph-text-align;
+  @include rem-property(letter-spacing, $paragraph-letter-spacing);
+  @include font-line($paragraph-font-size, $paragraph-line-height,
+                     $color: $paragraph-font-color,
+                     $weight: $paragraph-font-weight,
+                     $family: $paragraph-font);
+}
+
+
+-moz-selection, ::selection, textarea::selection {
+  background: $selection-background;
+  color: $selection-font-color;
+}
+
+
+.divider {
+  background: $divider-color;
+  height: $divider-height;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+
+.text--left {
+  text-align: left;
+}
+
+
+.text--right {
+  text-align: right;
+}
+
+
+.text--center {
+  text-align: center;
+}

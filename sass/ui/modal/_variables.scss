@@ -1,0 +1,29 @@
+// Modals
+$modal-name: 'modal' !default;
+$modal-class: unquote("#{unquote(".")}#{$modal-name}") !default;
+$modal-background-color: rgba(205, 205, 205, 0.50) !default;
+
+$modal-font-size: $body-font-size !default;
+$modal-line-height: $body-line-height !default;
+$modal-font-color: $body-font-color !default;
+$modal-font-weight: $body-font-weight !default;
+$modal-font: $body-font !default;
+
+$modal-title-font-size: $body-font-size !default;
+$modal-title-line-height: $body-line-height !default;
+$modal-title-font-color: #777 !default;
+$modal-title-font-weight: $body-font-weight !default;
+$modal-title-font: $body-font !default;
+$modal-title-align: center !default;
+
+$modal-width: 480px !default;
+$modal-color: white !default;
+$modal-border-radius: 2px !default;
+$modal-shadow: 1px 10px 33px rgba(0, 0, 0, 0.35) !default;
+$modal-height: auto !default;
+$modal-min-height: 25px !default;
+
+$modal-component-background: #f7f7f7 !default;
+
+$modal-handle-background: white !default;
+$modal-handle-border: 1px solid #ececec !default;

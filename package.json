@@ -1,0 +1,42 @@
+{
+  "name": "curls",
+  "version": "0.0.1-alpha",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "lodash": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-addons-shallow-compare": "*",
+    "react-lite": "*"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-polyfill": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-es2015-ie": "*",
+    "babel-preset-react": "*",
+    "babel-preset-react-optimize": "*",
+    "babel-preset-stage-0": "*",
+    "babel-register": "*",
+    "jsdom": "*",
+    "node-sass": "^3.8.0",
+    "react-addons-test-utils": "*",
+    "sass-loader": "^4.0.0",
+    "webpack": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaredlunde/curls"
+  },
+  "scripts": {
+    "build": "npm run build:babel && npm run build:modules",
+    "build:babel": "babel ./lib --out-dir src",
+    "build:modules": "node scripts/build.js",
+    "prepublish": "npm run build"
+  },
+  "analyze": true,
+  "license": "MIT"
+}

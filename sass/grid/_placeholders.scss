@@ -1,0 +1,10 @@
+%#{$grid-row-name} {
+  @extend %#{$flex-name};
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+}
+
+
+%#{$grid-col-name} {
+  @extend %#{$flex-name}--fluid;
+}

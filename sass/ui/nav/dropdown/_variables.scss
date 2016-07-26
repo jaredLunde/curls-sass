@@ -1,0 +1,75 @@
+$dropdown-name: 'dropdown' !default;
+$dropdown-class: unquote("#{unquote(".")}#{$dropdown-name}") !default;
+$dropdown-background: #fff !default;
+$dropdown-border-color: #dbdbdb !default;
+$dropdown-border-style: solid !default;
+$dropdown-border-width: 1px !default;
+$dropdown-border-radius: 2px;
+$dropdown-shadow: 0 2px 8px  rgba(0, 0, 0, 0.2);
+$dropdown-padding-top: 0 !default;
+$dropdown-padding-right: $dropdown-padding-top * 2 !default;
+$dropdown-padding-bottom: $dropdown-padding-top !default;
+$dropdown-padding-left: $dropdown-padding-right !default;
+$dropdown-text-align: left;
+$dropdown-width: auto !default;
+
+$dropdown-link-color: #222 !default;
+$dropdown-link-background: white !default;
+$dropdown-link-border-color: transparent !default;
+$dropdown-link-border-style: none !default;
+$dropdown-link-border-width: 0 !default;
+$dropdown-link-padding-top: 4px !default;
+$dropdown-link-padding-right: $dropdown-link-padding-top * 3 !default;
+$dropdown-link-padding-bottom: $dropdown-link-padding-top !default;
+$dropdown-link-padding-left: $dropdown-link-padding-right !default;
+
+$dropdown-link-hover-color: #666 !default;
+$dropdown-link-hover-background: #f7f7f7 !default;
+$dropdown-link-hover-border-color: transparent !default;
+$dropdown-link-hover-border-style: none !default;
+$dropdown-link-hover-border-width: 0 !default;
+$dropdown-link-hover-padding-top: 4px !default;
+$dropdown-link-hover-padding-right: $dropdown-link-hover-padding-top * 3 !default;
+$dropdown-link-hover-padding-bottom: $dropdown-link-hover-padding-top !default;
+$dropdown-link-hover-padding-left: $dropdown-link-hover-padding-right !default;
+
+$dropdown-link-active-color: #222 !default;
+$dropdown-link-active-background: darken($dropdown-link-hover-background, 10%) !default;
+$dropdown-link-active-border-color: transparent !default;
+$dropdown-link-active-border-style: none !default;
+$dropdown-link-active-border-width: 0 !default;
+$dropdown-link-active-padding-top: 4px !default;
+$dropdown-link-active-padding-right: $dropdown-link-active-padding-top * 3 !default;
+$dropdown-link-active-padding-bottom: $dropdown-link-active-padding-top !default;
+$dropdown-link-active-padding-left: $dropdown-link-active-padding-right !default;
+
+$dropdown-toggler-background: none !default;
+$dropdown-toggler-color: #666 !default;
+$dropdown-toggler-border-color: #dbdbdb !default;
+$dropdown-toggler-border-style: solid !default;
+$dropdown-toggler-border-width: 1px !default;
+$dropdown-toggler-border-radius: 3px;
+$dropdown-toggler-line-height: 1.1;
+
+$dropdown-toggler-hover-background: none !default;
+$dropdown-toggler-hover-color: lighten($button-color, 10%) !default;
+$dropdown-toggler-hover-border-color: $button-hover-color !default;
+$dropdown-toggler-hover-border-style: solid !default;
+$dropdown-toggler-hover-border-width: 1px !default;
+$dropdown-toggler-hover-border-radius: 3px;
+
+$dropdown-toggler-active-background: $button-color !default;
+$dropdown-toggler-active-color: white !default;
+$dropdown-toggler-active-border-color: $button-color !default;
+$dropdown-toggler-active-border-style: solid !default;
+$dropdown-toggler-active-border-width: 1px !default;
+$dropdown-toggler-active-border-radius: 3px !default;
+
+$dropdown-heading-font-size: 14px !default;
+$dropdown-heading-line-height: 1.1 !default;
+$dropdown-heading-color: $dropdown-toggler-color !default;
+$dropdown-heading-weight: 400 !default;
+$dropdown-heading-padding-top: 8px !default;
+$dropdown-heading-padding-right: 12px !default;
+$dropdown-heading-padding-bottom: $dropdown-heading-padding-top / 2 !default;
+$dropdown-heading-padding-left: $dropdown-heading-padding-right !default;

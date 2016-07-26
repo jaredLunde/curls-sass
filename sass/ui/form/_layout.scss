@@ -1,0 +1,217 @@
+/** Resets */
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=url],
+input[type=search],
+input[type=submit],
+input[type=date],
+input[type=password],
+textarea,
+button {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  margin: 0;
+}
+
+
+button::-moz-focus-inner {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+:focus { outline: 0 }
+
+input[type=date] {
+    min-height: $input-text-line-height;
+}
+
+
+select {
+  @include font-line($input-text-font-size, $input-text-line-height,
+                     $color: $input-text-font-color,
+                     $weight: $input-text-font-weight,
+                     $family: $input-text-font);
+}
+
+
+/** Text inputs */
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=number],
+input[type=url],
+input[type=password],
+input[type=date],
+input[type=search] {
+  @extend %pill;
+  background: $input-text-background;
+  padding: $input-text-padding-top $input-text-padding-right
+           $input-text-padding-bottom $input-text-padding-left;
+  margin: $input-text-margin;
+  border: $input-text-border;
+  width: $input-text-width;
+  @include font-line($input-text-font-size,
+                     $input-text-line-height,
+                     $color: $input-text-font-color,
+                     $weight: $input-text-font-weight,
+                     $family: $input-text-font);
+}
+
+
+.input-group {
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--nowrap;
+  @extend %#{$flex-name}--y-stretch;
+  @extend %#{$flex-name}--x-center;
+  position: relative;
+  width: 100%;
+  input {
+    @extend %#{$flex-name}--fluid;
+  }
+  & > * {
+    @extend %#{$flex-name}--fixed;
+  }
+  & > *:first-child {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  & > *:last-child {
+    border-left: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  & > *:not(:first-child):not(:last-child) {
+    border-left: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+
+.input-group--grow {
+  @extend %#{$flex-name}--grow;
+}
+
+
+.input-group--shrink {
+  @extend %#{$flex-name}--shrink;
+}
+
+
+/** Submit Buttons */
+button[type=submit], input[type=submit], button.submit {
+  background: $submit-background;
+  border: $submit-border;
+  padding: $submit-padding-top $submit-padding-right
+           $submit-padding-bottom $submit-padding-left;
+  margin: $submit-margin;
+  @include border-radius($submit-border-radius);
+  @include font-line($submit-font-size, $submit-line-height,
+                     $color: $submit-font-color,
+                     $weight: $submit-font-weight,
+                     $family: $submit-font);
+}
+
+
+.no-touchevents button[type=submit],
+.no-touchevents button.submit {
+  &:hover {
+    cursor: pointer;
+    background: $submit-background-hover;
+  }
+
+  &:active {
+    background: $submit-background-active;
+  }
+}
+
+
+/** Textareas */
+textarea {
+  background: $textarea-background;
+  padding: $textarea-padding-top $textarea-padding-right
+           $textarea-padding-bottom $textarea-padding-left;
+  margin: $textarea-margin;
+  border: $textarea-border;
+  @include border-radius($textarea-border-radius);
+  @include font-line($textarea-font-size, $textarea-line-height,
+                     $color: $textarea-font-color,
+                     $weight: $textarea-font-weight,
+                     $family: $textarea-font);
+}
+
+
+/** Placeholders */
+.placeholder {
+  @include opacity($placeholder-opacity);
+  @include font-line($placeholder-font-size, $placeholder-line-height,
+                     $color: $placeholder-font-color,
+                     $weight: $placeholder-font-weight,
+                     $family: $placeholder-font);
+}
+
+
+*::-webkit-input-placeholder {
+  /* Chrome + Safari */
+  @extend .placeholder;
+}
+
+
+*:-moz-placeholder {
+  /* FF 4-18 */
+  @extend .placeholder;
+}
+
+
+*::-moz-placeholder {
+  /* FF 19+ */
+  @extend .placeholder;
+}
+
+
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  @extend .placeholder;
+}
+
+
+/** Wrappers */
+.table-form {
+  display: table;
+  padding: 15px;
+  position: relative;
+}
+
+
+.table-form__row {
+  display: table-row;
+  position: relative;
+}
+
+
+.table-form__cell {
+  display: table-cell;
+  position: relative;
+}
+
+
+.table-form__wrapper {
+  position: relative;
+}
+
+
+.flex-form {
+  @extend %#{$flex-name};
+}
+
+
+fieldset.table-form__cell {
+  label:after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}

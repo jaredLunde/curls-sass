@@ -1,0 +1,59 @@
+#{$navbar-class} {
+  @extend %#{$flex-name};
+  position: relative;
+  background: $navbar-background;
+  border-style: $navbar-border-style;
+  border-width: $navbar-border-width;
+  border-color: $navbar-border-color;
+  padding: $navbar-padding;
+  width: $navbar-width;
+  @include flex-wrap(nowrap);
+}
+
+
+#{$navbar-class} > * {
+  @extend %#{$flex-name}--fixed;
+}
+
+
+#{$navbar-class} > *.navbar--fluid {
+  @extend %#{$flex-name}--fluid;
+}
+
+
+#{$navbar-class}--sticky {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+}
+
+
+#{$navbar-class}--fixed-top {
+  @extend %fixed-top-fw;
+  border-top: 0;
+}
+
+
+#{$navbar-class}--fixed-bottom {
+  @extend %fixed-bottom-fw;
+  border-bottom: 0;
+}
+
+
+#{$navbar-class}--first,
+#{$navbar-class}--left {
+  @extend %#{$flex-name}--first;
+}
+
+
+#{$navbar-class}--last,
+#{$navbar-class}--right {
+  @extend %#{$flex-name}--last;
+}
+
+
+@include extend-flex-align($navbar-name);
+@include extend-flex-justify($navbar-name);
+@include extend-flex-self($navbar-name, '');

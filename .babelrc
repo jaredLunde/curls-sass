@@ -1,0 +1,4 @@
+{
+    "presets": ["react-optimize", "react", "es2015-ie", "stage-0"],
+    "plugins": [],
+}

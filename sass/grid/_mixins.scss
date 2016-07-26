@@ -1,0 +1,86 @@
+@mixin grid($cols, $gutter-size: 0, $name-prefix: 'x', $multiple: 1) {
+  @for $x from 1 through $cols {
+    @include grid-column($x, $cols, $gutter-size, $name-prefix, $multiple);
+  }
+}
+
+
+@mixin grid-column($x, $cols, $gutter-size: 0, $name-prefix: 'x', $multiple: 1) {
+  $ext: "";
+  @if $cols != $grid-columns {
+    $ext: "--#{$cols}";
+  }
+  .#{$name-prefix}#{$x}#{$ext} {
+    @include make-grid-column($x, $cols, $gutter-size, $multiple);
+  }
+}
+
+
+@mixin make-grid-column($n, $columns, $gutter-size: 0, $multiple: 1) {
+  $width: ($n / $columns) * $multiple;
+  @if $width > 1 {
+    $width: 1;
+  }
+  $width: percentage($width);
+  width: $width;
+  max-width: $width;
+  padding: 0 $gutter-size / 2;
+  @include flex-basis($width);
+}
+
+@mixin _group($size, $pre, $prop) {
+  %#{$pre}--t#{strip-units($size)} {
+    #{$prop}-top: $size !important;
+  }
+  .#{$pre}--t#{strip-units($size)} {
+    @extend %#{$pre}--t#{strip-units($size)};
+  }
+  %#{$pre}--b#{strip-units($size)} {
+    #{$prop}-bottom: $size !important;
+  }
+  .#{$pre}--b#{strip-units($size)} {
+    @extend %#{$pre}--b#{strip-units($size)};
+  }
+  %#{$pre}--y#{strip-units($size)} {
+    @extend %#{$pre}--t#{strip-units($size)};
+    @extend %#{$pre}--b#{strip-units($size)};
+  }
+  .#{$pre}--y#{strip-units($size)} {
+    @extend %#{$pre}--y#{strip-units($size)};
+  }
+  %#{$pre}--r#{strip-units($size)} {
+    #{$prop}-right: $size !important;
+  }
+  .#{$pre}--r#{strip-units($size)} {
+    @extend %#{$pre}--r#{strip-units($size)};
+  }
+  %#{$pre}--l#{strip-units($size)} {
+    #{$prop}-left: $size !important;
+  }
+  .#{$pre}--l#{strip-units($size)} {
+    @extend %#{$pre}--l#{strip-units($size)};
+  }
+  %#{$pre}--x#{strip-units($size)} {
+    @extend %#{$pre}--r#{strip-units($size)};
+    @extend %#{$pre}--l#{strip-units($size)};
+  }
+  .#{$pre}--x#{strip-units($size)} {
+    @extend %#{$pre}--x#{strip-units($size)};
+  }
+  %#{$pre}--#{strip-units($size)} {
+    #{$prop}: $size !important;
+  }
+  .#{$pre}--#{strip-units($size)} {
+    @extend %#{$pre}--#{strip-units($size)};
+  }
+}
+
+
+@mixin margin-group($size, $prefix: 'm') {
+  @include _group($size, $prefix, 'margin')
+}
+
+
+@mixin padding-group($size, $prefix: 'p') {
+  @include _group($size, $prefix, 'padding')
+}

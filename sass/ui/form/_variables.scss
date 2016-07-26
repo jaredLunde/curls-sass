@@ -1,0 +1,55 @@
+// Forms
+$input-text-font-size: 16px !default;
+$input-text-line-height: 1.1 !default;
+$input-text-font-color: #666 !default;
+$input-text-font-weight: 300 !default;
+$input-text-font: $body-font !default;
+
+$input-text-margin: 0 !default;
+$input-text-padding-top: 8px!default;
+$input-text-padding-right: golden($input-text-padding-top) !default;
+$input-text-padding-bottom: $input-text-padding-top !default;
+$input-text-padding-left: $input-text-padding-right !default;
+$input-text-background: #ececec !default;
+$input-text-border: 1px solid #ccc !default;
+$input-text-width: auto;
+
+$textarea-font-size: 16px !default;
+$textarea-line-height: 1.38 !default;
+$textarea-font-color: #666 !default;
+$textarea-font-weight: 300 !default;
+$textarea-font: $body-font !default;
+
+$textarea-margin: 0 !default;
+$textarea-padding-top: 8px!default;
+$textarea-padding-right: golden($textarea-padding-top) !default;
+$textarea-padding-bottom: $textarea-padding-top !default;
+$textarea-padding-left: $textarea-padding-right !default;
+$textarea-background: #ececec !default;
+$textarea-border: 1px solid #ccc !default;
+$textarea-border-radius: 2px !default;
+
+$submit-font-color: #666 !default;
+$submit-font-size: 16px !default;
+$submit-line-height: 1.1 !default;
+$submit-font-weight: 700 !default;
+$submit-font: $body-font !default;
+
+$submit-border: 1px solid #999 !default;
+$submit-margin: 0 !default;
+$submit-padding-top: 8px!default;
+$submit-padding-right: golden($submit-padding-top) !default;
+$submit-padding-bottom: $submit-padding-top !default;
+$submit-padding-left: $submit-padding-right !default;
+$submit-background: #ececec !default;
+$submit-background-active: darken($submit-background, 13%) !default;
+$submit-background-hover: darken($submit-background, 5%) !default;
+$submit-border-radius: 16px !default;
+
+$placeholder-font-size: $input-text-font-size !default;
+$placeholder-line-height: 1.1 !default;
+$placeholder-font-color: $input-text-font-color !default;
+$placeholder-font-weight: $input-text-font-weight !default;
+$placeholder-font: $input-text-font !default;
+
+$placeholder-opacity: 0.75 !default;

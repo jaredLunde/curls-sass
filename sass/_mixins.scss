@@ -1,0 +1,186 @@
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
+
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+@function golden($px) {
+  @return round(1.61803398875 * $px);
+}
+
+
+@function rgolden($px) {
+  @return round(0.6180339887 * $px);
+}
+
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+
+/** DEPRECATED! Use `@extend %hardware-accel` instead */
+@mixin hardware-optimize() {
+  @include prefix((transform: translateZ(0),
+                   backface-visibility: hidden,
+                   perspective: 1000),
+                  webkit moz ms);
+  @include prefix((transform: translate3d(0, 0, 0)), webkit moz ms);
+}
+
+
+@mixin transform($style...) {
+  -ms-transform: $style; /* IE 9 */
+  -webkit-transform: $style; /* Chrome, Safari, Opera */
+  transform: $style;
+}
+
+
+@mixin transition($style...) {
+  -webkit-transition: $style;
+  -moz-transition: $style;
+  -ms-transition: $style;
+  -o-transition: $style;
+  transition: $style;
+}
+
+
+@mixin box-shadow($style) {
+  -webkit-box-shadow: $style;
+     -moz-box-shadow: $style;
+      box-shadow: $style;
+}
+
+
+@mixin default-box-shadow() {
+  @include box-shadow(0px 2px 5px 0px rgba(0,0,0,0.33))
+}
+
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+
+@mixin rem-property($property, $baseSize, $adjustedSize: 1.0) {
+  @if $baseSize {
+    $newSize: $baseSize * $adjustedSize;
+    #{$property}: $newSize;
+    #{$property}: calculateRem($newSize);
+  }
+}
+
+
+@mixin font-size($size, $adjustedSize: 1.0) {
+  @include rem-property('font-size', $size, $adjustedSize);
+}
+
+
+@mixin line-height($size) {
+  @if unitless($size) {
+    line-height: $size;
+  } @else {
+    @include rem-property('line-height', $size);
+  }
+}
+
+
+@mixin font($size, $weight:null, $color:null, $family:null) {
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $family {
+    font-family: $family;
+  }
+  @include font-size($size);
+}
+
+
+@mixin font-line($size, $line-size, $weight:null, $color:null, $family:null) {
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $color {
+    color: $color;
+  }
+  @if $family {
+    font-family: $family;
+  }
+  @include font-size($size);
+  @include line-height($line-size);
+}
+
+
+@mixin centered($width:null, $position:null) {
+  @if $width {
+    width: $width;
+  }
+  @if $position {
+    position: $position;
+  }
+  left: 0;
+  right: 0;
+  display: block;
+  margin: 0 auto;
+}
+
+
+$image-path: '/images' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+@mixin background-image($name, $size:false){
+  background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+  @media only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2), only screen and
+  (-webkit-min-device-pixel-ratio: 1.5), only screen and
+  (min-device-pixel-ratio: 1.5) {
+    background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+    background-image: url(#{$image-path}/#{$name}.svg);
+  }
+  background-image: url(#{$image-path}/#{$name}.svg);
+  @if($size){
+    background-size: $size;
+  }
+}
+
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+
+@mixin blur($size) {
+  filter: blur($size);
+  -webkit-filter: blur($size);
+  -moz-filter: blur($size);
+  -o-filter: blur($size);
+  -ms-filter: blur($size);
+  filter: url(blur.svg#blur);
+  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='20');
+}

@@ -1,0 +1,53 @@
+%#{$button-name}--hover {
+  cursor: pointer;
+  background: $button-hover-background;
+  color: $button-hover-color;
+  border-style: $button-hover-border-style;
+  border-width: $button-hover-border-width;
+  border-color: $button-hover-border-color;
+  border-radius: $button-hover-border-radius;
+}
+
+
+%#{$button-name}--active {
+  cursor: pointer;
+  background: $button-active-background;
+  color: $button-active-color;
+  border-style: $button-active-border-style;
+  border-width: $button-active-border-width;
+  border-color: $button-active-border-color;
+  border-radius: $button-active-border-radius;
+}
+
+
+%#{$button-name}--s {
+  padding: $button-s-padding-top
+           $button-s-padding-right
+           $button-s-padding-bottom
+           $button-s-padding-left;
+  @include font-line($button-s-font-size,
+                     $button-s-font-size,
+                     $weight: $button-s-font-weight);
+}
+
+
+%#{$button-name}--m {
+  padding: $button-m-padding-top
+           $button-m-padding-right
+           $button-m-padding-bottom
+           $button-m-padding-left;
+  @include font-line($button-m-font-size,
+                     $button-m-font-size,
+                     $weight: $button-m-font-weight);
+}
+
+
+%#{$button-name}--l  {
+  padding: $button-l-padding-top
+           $button-l-padding-right
+           $button-l-padding-bottom
+           $button-l-padding-left;
+  @include font-line($button-l-font-size,
+                     $button-l-font-size,
+                     $weight: $button-l-font-weight);
+}

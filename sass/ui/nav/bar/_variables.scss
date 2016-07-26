@@ -1,0 +1,8 @@
+$navbar-name: 'navbar' !default;
+$navbar-class: unquote("#{unquote(".")}#{$navbar-name}") !default;
+$navbar-background: #fff !default;
+$navbar-border-color: #dbdbdb !default;
+$navbar-border-style: solid !default;
+$navbar-border-width: 1px 0 !default;
+$navbar-padding: 8px !default;
+$navbar-width: 100% !default;

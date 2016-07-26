@@ -1,0 +1,6 @@
+#{$flex-class} {
+  @extend %#{$flex-name};
+}
+
+
+@include extend-flex($flex-name);

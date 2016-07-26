@@ -1,0 +1,87 @@
+#{$button-class}:not(.submit), button:not([type=submit]) {
+  background: $button-background;
+  color: $button-color;
+  border-style: $button-border-style;
+  border-width: $button-border-width;
+  border-color: $button-border-color;
+  border-radius: $button-border-radius;
+  line-height: $button-line-height;
+
+  &.hover {
+    @extend %#{$button-name}--hover
+  }
+
+  &.active {
+    @extend %#{$button-name}--active
+  }
+}
+
+
+.no-touchevents #{$button-class}:not(.submit),
+.no-touchevents button:not([type=submit]):not(.submit) {
+  &:hover {
+    @extend %#{$button-name}--hover
+  }
+
+  &:active {
+    @extend %#{$button-name}--active
+  }
+}
+
+
+#{$button-class}--s,
+#{$button-class}--s button,
+#{$button-class}--s .button {
+  @extend %#{$button-name}--s;
+}
+
+
+.button-group:not(button):not(.button)#{$button-class}--s {
+  padding: 0;
+}
+
+
+#{$button-class}--m,
+#{$button-class}--m button,
+#{$button-class}--m .button {
+  @extend %#{$button-name}--m;
+}
+
+
+.button-group:not(button):not(.button)#{$button-class}--m {
+  padding: 0;
+}
+
+
+#{$button-class}--l,
+#{$button-class}--l button,
+#{$button-class}--l .button {
+  @extend %#{$button-name}--l;
+}
+
+
+.button-group:not(button):not(.button)#{$button-class}--l {
+  padding: 0;
+}
+
+
+#{$button-class}-group {
+  @extend .input-group;
+}
+
+
+#{$button-class}-group--grow {
+  @extend %#{$flex-name}--grow;
+}
+
+
+#{$button-class}-group--shrink {
+  @extend %#{$flex-name}--shrink;
+}
+
+
+#{$button-class}-group {
+  button {
+    @extend %#{$flex-name}--fluid;
+  }
+}
