@@ -75,10 +75,13 @@
 
 
 @mixin rem-property($property, $baseSize, $adjustedSize: 1.0) {
-  @if $baseSize {
+  @if $baseSize and not (index('initial' 'inherit' 'auto' 'normal', $baseSize) \
+      or unit($baseSize) == 'px') {
     $newSize: $baseSize * $adjustedSize;
     #{$property}: $newSize;
     #{$property}: calculateRem($newSize);
+  } @else {
+    #{$property}: $baseSize;
   }
 }
 
@@ -89,11 +92,7 @@
 
 
 @mixin line-height($size) {
-  @if unitless($size) {
-    line-height: $size;
-  } @else {
-    @include rem-property('line-height', $size);
-  }
+  @include rem-property('line-height', $size);
 }
 
 

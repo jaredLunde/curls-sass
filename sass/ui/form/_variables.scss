@@ -1,6 +1,6 @@
 // Forms
 $input-text-font-size: 16px !default;
-$input-text-line-height: 1.1 !default;
+$input-text-line-height: normal !default;
 $input-text-font-color: #666 !default;
 $input-text-font-weight: 300 !default;
 $input-text-font: $body-font !default;
@@ -47,7 +47,7 @@ $submit-background-hover: darken($submit-background, 5%) !default;
 $submit-border-radius: 16px !default;
 
 $placeholder-font-size: $input-text-font-size !default;
-$placeholder-line-height: 1.1 !default;
+$placeholder-line-height: $input-text-line-height !default;
 $placeholder-font-color: $input-text-font-color !default;
 $placeholder-font-weight: $input-text-font-weight !default;
 $placeholder-font: $input-text-font !default;

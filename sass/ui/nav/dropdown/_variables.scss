@@ -5,13 +5,14 @@ $dropdown-border-color: #dbdbdb !default;
 $dropdown-border-style: solid !default;
 $dropdown-border-width: 1px !default;
 $dropdown-border-radius: 2px;
-$dropdown-shadow: 0 2px 8px  rgba(0, 0, 0, 0.2);
+$dropdown-shadow: 0 4px 6px 0px rgba(0, 0, 0, 0.2);
 $dropdown-padding-top: 0 !default;
 $dropdown-padding-right: $dropdown-padding-top * 2 !default;
 $dropdown-padding-bottom: $dropdown-padding-top !default;
 $dropdown-padding-left: $dropdown-padding-right !default;
 $dropdown-text-align: left;
 $dropdown-width: auto !default;
+$dropdown-min-width: 100%;
 
 $dropdown-link-color: #222 !default;
 $dropdown-link-background: white !default;
@@ -52,15 +53,15 @@ $dropdown-toggler-border-radius: 3px;
 $dropdown-toggler-line-height: 1.1;
 
 $dropdown-toggler-hover-background: none !default;
-$dropdown-toggler-hover-color: lighten($button-color, 10%) !default;
-$dropdown-toggler-hover-border-color: $button-hover-color !default;
+$dropdown-toggler-hover-color: lighten($dropdown-toggler-color, 10%) !default;
+$dropdown-toggler-hover-border-color: $dropdown-toggler-hover-color !default;
 $dropdown-toggler-hover-border-style: solid !default;
 $dropdown-toggler-hover-border-width: 1px !default;
 $dropdown-toggler-hover-border-radius: 3px;
 
-$dropdown-toggler-active-background: $button-color !default;
-$dropdown-toggler-active-color: white !default;
-$dropdown-toggler-active-border-color: $button-color !default;
+$dropdown-toggler-active-background: lighten($dropdown-toggler-color, 55%) !default;
+$dropdown-toggler-active-color: $dropdown-toggler-color !default;
+$dropdown-toggler-active-border-color: #ccc !default;
 $dropdown-toggler-active-border-style: solid !default;
 $dropdown-toggler-active-border-width: 1px !default;
 $dropdown-toggler-active-border-radius: 3px !default;

@@ -147,7 +147,8 @@ textarea {
 // Placeholders */
 .placeholder {
   @include opacity($placeholder-opacity);
-  @include font-line($placeholder-font-size, $placeholder-line-height,
+  @include font-line($placeholder-font-size,
+                     $placeholder-line-height,
                      $color: $placeholder-font-color,
                      $weight: $placeholder-font-weight,
                      $family: $placeholder-font);

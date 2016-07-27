@@ -1,5 +1,8 @@
 #{$dropdown-class} {
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
   position: relative;
+
   &.dropped {
     #{$dropdown-class}__menu {
       @extend %drop-out--fast;
@@ -11,8 +14,15 @@
 }
 
 
+#{$dropdown-class}.dropped #{$dropdown-class}__caret.fa-chevron-down,
+#{$dropdown-class}__caret.fa-caret-down {
+  top: 1px;
+}
+
+
 #{$dropdown-class}__caret.fa-chevron-down,
 #{$dropdown-class}__caret.fa-caret-down {
+  @extend %#{$flex-name}--self-y-center;
   @include font-size(10px);
 }
 
@@ -30,7 +40,7 @@
 
 #{$dropdown-class}__caret--left {
   @extend #{$dropdown-class}__caret;
-  @extend %flex--first;
+  @extend %#{$flex-name}--first;
   float: left;
   margin-right: 4px;
   left: auto;
@@ -39,7 +49,7 @@
 
 #{$dropdown-class}__caret--right {
   @extend #{$dropdown-class}__caret;
-  @extend %flex--last;
+  @extend %#{$flex-name}--last;
   float: right;
   margin-left: 4px;
 }
@@ -57,8 +67,8 @@
 #{$dropdown-class}__toggler,
 button#{$dropdown-class}__toggler,
 .button#{$dropdown-class}__toggler {
-  @include display-flex;
-  @extend %flex--y-center;
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
   background: $dropdown-toggler-background;
   color: $dropdown-toggler-color;
   border-style: $dropdown-toggler-border-style;
@@ -77,8 +87,14 @@ button#{$dropdown-class}__toggler,
 }
 
 
-.no-touchevents #{$button-class}:not(.submit),
-.no-touchevents button:not([type=submit]):not(.submit) {
+#{$dropdown-class}.dropped #{$dropdown-class}__toggler,
+.no-touchevents #{$dropdown-class}.dropped #{$dropdown-class}__toggler:hover {
+  @extend %#{$dropdown-name}__toggler--active;
+}
+
+
+.no-touchevents #{$dropdown-class}__toggler:not(.submit),
+.no-touchevents #{$dropdown-class}__toggler:not([type=submit]):not(.submit) {
   &:hover {
     @extend %#{$dropdown-name}__toggler--hover;
   }
@@ -102,6 +118,7 @@ button#{$dropdown-class}__toggler,
   padding: $dropdown-padding-top $dropdown-padding-right
            $dropdown-padding-bottom $dropdown-padding-left;
   width: $dropdown-width;
+  min-width: $dropdown-min-width;
   text-align: $dropdown-text-align;
   top: 200%;
   z-index: $MAX-Z-INDEX;

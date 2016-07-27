@@ -8,6 +8,112 @@
   padding: $navbar-padding;
   width: $navbar-width;
   @include flex-wrap(nowrap);
+
+  @media #{$phone} {
+    padding: 0 $grid-phone-gutter;
+  }
+
+  @media #{$tablet} {
+    padding: 0 $grid-tablet-gutter;
+  }
+
+  &#{$grid-class}--nopad {
+    padding: 0
+  }
+}
+
+
+#{$navbar-class}--overflow {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+#{$navbar-class} + #{$navbar-class} {
+  border-top: 0;
+}
+
+
+#{$navbar-class} #{$navbar-class} {
+  border: 0;
+  width: auto;
+}
+
+
+#{$navbar-class} {
+  & > * {
+    @extend %#{$flex-name}--self-y-center;
+  }
+
+  #{$dropdown-class} {
+    @extend %#{$flex-name}--self-y-stretch;
+  }
+
+  #{$dropdown-class}.dropped  #{$dropdown-class}__menu {
+    top: 100%;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  @media #{$phone} {
+    #{$button-class}, button:not([type=submit]), form {
+      margin: round($grid-phone-gutter / 2);
+    }
+
+    #{$dropdown-class}__toggler {
+      margin: round($grid-phone-gutter / 2) 0
+    }
+  }
+
+  @media #{$tablet} {
+    #{$button-class}, button:not([type=submit]), form {
+      margin: round($grid-tablet-gutter / 2);
+    }
+
+    #{$dropdown-class} #{$dropdown-class}__toggler {
+      margin: round($grid-tablet-gutter / 2) 0
+    }
+  }
+
+
+  @media #{$desktop} {
+    #{$button-class}, button:not([type=submit]), form {
+      margin: round($grid-desktop-gutter / 2);
+    }
+
+    #{$dropdown-class}__toggler {
+      margin: round($grid-desktop-gutter / 2) 0
+    }
+  }
+}
+
+
+#{$navbar-class}__link,
+ul#{$navbar-class} li a {
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--self-y-stretch;
+  @extend %#{$flex-name}--y-center;
+  padding: 16px;
+  font-weight: 400;
+}
+
+
+#{$navbar-class}__link {
+  background: $navbar-link-background;
+}
+
+
+.no-touchevents #{$navbar-class}__link:active,
+.no-touchevents #{$navbar-class}__link.active:hover,
+#{$navbar-class}__link.active {
+  background: $navbar-link-active-background;
+  color: $navbar-link-active-color;
+}
+
+.no-touchevents #{$navbar-class}__link:hover {
+  background: $navbar-link-hover-background;
+  color: $navbar-link-hover-color;
+
 }
 
 

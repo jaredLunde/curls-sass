@@ -2,6 +2,7 @@
   @extend %#{$flex-name};
   @include flex-wrap(wrap);
   @include flex-direction(row);
+  @include flex-basis(100%);
 }
 
 
