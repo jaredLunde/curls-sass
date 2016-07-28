@@ -29,49 +29,50 @@
 }
 
 @mixin _group($size, $pre, $prop) {
-  %#{$pre}--t#{strip-units($size)} {
+  $stripped-size: strip-units($size);
+  %#{$pre}--t#{$stripped-size} {
     #{$prop}-top: $size !important;
   }
-  .#{$pre}--t#{strip-units($size)} {
-    @extend %#{$pre}--t#{strip-units($size)};
+  .#{$pre}--t#{$stripped-size} {
+    @extend %#{$pre}--t#{$stripped-size};
   }
-  %#{$pre}--b#{strip-units($size)} {
+  %#{$pre}--b#{$stripped-size} {
     #{$prop}-bottom: $size !important;
   }
-  .#{$pre}--b#{strip-units($size)} {
-    @extend %#{$pre}--b#{strip-units($size)};
+  .#{$pre}--b#{$stripped-size} {
+    @extend %#{$pre}--b#{$stripped-size};
   }
-  %#{$pre}--y#{strip-units($size)} {
-    @extend %#{$pre}--t#{strip-units($size)};
-    @extend %#{$pre}--b#{strip-units($size)};
+  %#{$pre}--y#{$stripped-size} {
+    @extend %#{$pre}--t#{$stripped-size};
+    @extend %#{$pre}--b#{$stripped-size};
   }
-  .#{$pre}--y#{strip-units($size)} {
-    @extend %#{$pre}--y#{strip-units($size)};
+  .#{$pre}--y#{$stripped-size} {
+    @extend %#{$pre}--y#{$stripped-size};
   }
-  %#{$pre}--r#{strip-units($size)} {
+  %#{$pre}--r#{$stripped-size} {
     #{$prop}-right: $size !important;
   }
-  .#{$pre}--r#{strip-units($size)} {
-    @extend %#{$pre}--r#{strip-units($size)};
+  .#{$pre}--r#{$stripped-size} {
+    @extend %#{$pre}--r#{$stripped-size};
   }
-  %#{$pre}--l#{strip-units($size)} {
+  %#{$pre}--l#{$stripped-size} {
     #{$prop}-left: $size !important;
   }
-  .#{$pre}--l#{strip-units($size)} {
-    @extend %#{$pre}--l#{strip-units($size)};
+  .#{$pre}--l#{$stripped-size} {
+    @extend %#{$pre}--l#{$stripped-size};
   }
-  %#{$pre}--x#{strip-units($size)} {
-    @extend %#{$pre}--r#{strip-units($size)};
-    @extend %#{$pre}--l#{strip-units($size)};
+  %#{$pre}--x#{$stripped-size} {
+    @extend %#{$pre}--r#{$stripped-size};
+    @extend %#{$pre}--l#{$stripped-size};
   }
-  .#{$pre}--x#{strip-units($size)} {
-    @extend %#{$pre}--x#{strip-units($size)};
+  .#{$pre}--x#{$stripped-size} {
+    @extend %#{$pre}--x#{$stripped-size};
   }
-  %#{$pre}--#{strip-units($size)} {
+  %#{$pre}--#{$stripped-size} {
     #{$prop}: $size !important;
   }
-  .#{$pre}--#{strip-units($size)} {
-    @extend %#{$pre}--#{strip-units($size)};
+  .#{$pre}--#{$stripped-size} {
+    @extend %#{$pre}--#{$stripped-size};
   }
 }
 
