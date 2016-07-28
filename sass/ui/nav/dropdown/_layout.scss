@@ -14,8 +14,7 @@
 }
 
 
-#{$dropdown-class}.dropped #{$dropdown-class}__caret.fa-chevron-down,
-#{$dropdown-class}__caret.fa-caret-down {
+#{$dropdown-class}.dropped #{$dropdown-class}__caret.fa-chevron-down {
   top: 1px;
 }
 

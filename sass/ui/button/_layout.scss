@@ -36,7 +36,7 @@
 }
 
 
-.button-group:not(button):not(.button)#{$button-class}--s {
+#{$button-class}-group:not(button):not(.button)#{$button-class}--s {
   padding: 0;
 }
 
@@ -48,7 +48,7 @@
 }
 
 
-.button-group:not(button):not(.button)#{$button-class}--m {
+#{$button-class}-group:not(button):not(.button)#{$button-class}--m {
   padding: 0;
 }
 
@@ -60,7 +60,7 @@
 }
 
 
-.button-group:not(button):not(.button)#{$button-class}--l {
+#{$button-class}-group:not(button):not(.button)#{$button-class}--l {
   padding: 0;
 }
 

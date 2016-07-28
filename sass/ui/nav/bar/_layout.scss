@@ -37,6 +37,7 @@
 #{$navbar-class} #{$navbar-class} {
   border: 0;
   width: auto;
+  background: transparent;
 }
 
 
@@ -56,40 +57,64 @@
   }
 
   @media #{$phone} {
-    #{$button-class}, button:not([type=submit]), form {
+    #{$button-class},
+    button:not([type=submit]),
+    #{$button-class}-group,
+    .input-group {
       margin: round($grid-phone-gutter / 2);
     }
 
     #{$dropdown-class}__toggler {
       margin: round($grid-phone-gutter / 2) 0
     }
+    #{$button-class}-group button:not([type=submit]),
+    .input-group button:not([type=submit]) {
+      margin: 0
+    }
   }
 
   @media #{$tablet} {
-    #{$button-class}, button:not([type=submit]), form {
+    #{$button-class},
+    button:not([type=submit]),
+    #{$button-class}-group,
+    .input-group {
       margin: round($grid-tablet-gutter / 2);
     }
 
     #{$dropdown-class} #{$dropdown-class}__toggler {
       margin: round($grid-tablet-gutter / 2) 0
     }
+    #{$button-class}-group button:not([type=submit]),
+    .input-group button:not([type=submit]) {
+      margin: 0
+    }
   }
 
 
   @media #{$desktop} {
-    #{$button-class}, button:not([type=submit]), form {
+    #{$button-class},
+    button:not([type=submit]),
+    #{$button-class}-group,
+    .input-group {
       margin: round($grid-desktop-gutter / 2);
     }
 
     #{$dropdown-class}__toggler {
       margin: round($grid-desktop-gutter / 2) 0
     }
+    #{$button-class}-group button:not([type=submit]),
+    .input-group button:not([type=submit]) {
+      margin: 0
+    }
   }
 }
 
 
 #{$navbar-class}__link,
-ul#{$navbar-class} li a {
+ul#{$navbar-class} li a,
+#{$navbar-class} > a,
+h1, h2, h3, h4, h5, h6,
+.typo--h1, .typo--h2, .typo--h3, .typo--h4, .typo--h5, .typo--h6 {
   @extend %#{$flex-name};
   @extend %#{$flex-name}--self-y-stretch;
   @extend %#{$flex-name}--y-center;
@@ -105,7 +130,9 @@ ul#{$navbar-class} li a {
 
 .no-touchevents #{$navbar-class}__link:active,
 .no-touchevents #{$navbar-class}__link.active:hover,
-#{$navbar-class}__link.active {
+#{$navbar-class}__link.active,
+#{$navbar-class} > a.active,
+#{$navbar-class} > a:active {
   background: $navbar-link-active-background;
   color: $navbar-link-active-color;
 }

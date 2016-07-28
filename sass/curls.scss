@@ -23,17 +23,5 @@
 /** General layout presets */
 @import 'layout';
 
-/** Form (default form styles) **/
-@import 'ui/form/index';
-
-/** Button (.button) **/
-@import 'ui/button/index';
-
-/** Modal (.modal) **/
-@import 'ui/modal/index';
-
-/** Dropdown (.dropdown) **/
-@import 'ui/nav/dropdown/index';
-
-/** Navbar (.navbar) **/
-@import 'ui/nav/bar/index';
+/** UI Components */
+@import 'ui/index'

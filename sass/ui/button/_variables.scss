@@ -14,14 +14,12 @@ $button-hover-color: lighten($button-color, 10%) !default;
 $button-hover-border-color: $button-hover-color !default;
 $button-hover-border-style: solid !default;
 $button-hover-border-width: 1px !default;
-$button-hover-border-radius: 3px;
 
 $button-active-background: $button-color !default;
 $button-active-color: white !default;
 $button-active-border-color: $button-color !default;
 $button-active-border-style: solid !default;
 $button-active-border-width: 1px !default;
-$button-active-border-radius: 3px;
 
 $button-s-font-size: 14px !default;
 $button-m-font-size: 16px !default;

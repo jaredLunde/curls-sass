@@ -73,7 +73,7 @@ a {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .typo--h1 {
   text-align: $heading-text-align;
   @include font-line($heading-max-font-size,
                      $heading-line-height,
@@ -88,6 +88,9 @@ $_size: $heading-max-font-size * 0.875 * 0.875;
   $_size: round($_size * 0.875);
   #{$x} {
     @include font-line($_size, $heading-line-height);
+  }
+  .typo--#{$x} {
+    @extend #{$x};
   }
 }
 
@@ -116,6 +119,11 @@ p {
   width: 100%;
   display: block;
   position: relative;
+}
+
+
+.no-touchevents .disabled:hover {
+  cursor: not-allowed;
 }
 
 

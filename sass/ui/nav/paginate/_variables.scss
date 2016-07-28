@@ -1,0 +1,3 @@
+$paginate-name: 'paginate' !default;
+$paginate-class: unquote("#{unquote(".")}#{$paginate-name}") !default;
+$paginate-link-class: unquote("#{unquote(".")}#{$paginate-name}__link") !default;

@@ -10,7 +10,7 @@ $input-text-padding-top: 8px!default;
 $input-text-padding-right: golden($input-text-padding-top) !default;
 $input-text-padding-bottom: $input-text-padding-top !default;
 $input-text-padding-left: $input-text-padding-right !default;
-$input-text-background: #ececec !default;
+$input-text-background: $body-background !default;
 $input-text-border: 1px solid #ccc !default;
 $input-text-width: auto;
 
@@ -25,8 +25,8 @@ $textarea-padding-top: 8px!default;
 $textarea-padding-right: golden($textarea-padding-top) !default;
 $textarea-padding-bottom: $textarea-padding-top !default;
 $textarea-padding-left: $textarea-padding-right !default;
-$textarea-background: #ececec !default;
-$textarea-border: 1px solid #ccc !default;
+$textarea-background: $input-text-background !default;
+$textarea-border: $input-text-border !default;
 $textarea-border-radius: 2px !default;
 
 $submit-font-color: #666 !default;
@@ -35,16 +35,16 @@ $submit-line-height: 1.1 !default;
 $submit-font-weight: 700 !default;
 $submit-font: $body-font !default;
 
-$submit-border: 1px solid #999 !default;
+$submit-border: $input-text-border !default;
 $submit-margin: 0 !default;
 $submit-padding-top: 8px!default;
 $submit-padding-right: golden($submit-padding-top) !default;
 $submit-padding-bottom: $submit-padding-top !default;
 $submit-padding-left: $submit-padding-right !default;
-$submit-background: #ececec !default;
-$submit-background-active: darken($submit-background, 13%) !default;
+$submit-background: white !default;
+$submit-background-active: darken($submit-background, 7%) !default;
 $submit-background-hover: darken($submit-background, 5%) !default;
-$submit-border-radius: 16px !default;
+$submit-border-radius: $MAX-PX !default;
 
 $placeholder-font-size: $input-text-font-size !default;
 $placeholder-line-height: $input-text-line-height !default;
@@ -52,4 +52,4 @@ $placeholder-font-color: $input-text-font-color !default;
 $placeholder-font-weight: $input-text-font-weight !default;
 $placeholder-font: $input-text-font !default;
 
-$placeholder-opacity: 0.75 !default;
+$placeholder-opacity: 0.90 !default;
