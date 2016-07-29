@@ -4,11 +4,11 @@ $navbar-background: #fff !default;
 $navbar-border-color: #dbdbdb !default;
 $navbar-border-style: solid !default;
 $navbar-border-width: 1px 0 !default;
-$navbar-padding: 0 round($grid-desktop-gutter / 2) !default;
+$navbar-padding: 0 0 !default;
 $navbar-width: 100% !default;
 
 $navbar-link-background: transparent;
 $navbar-link-hover-background: transparent;
 $navbar-link-hover-color: $link-hover-color;
 $navbar-link-active-background: transparent;
-$navbar-link-active-color: #000;
+$navbar-link-active-color: $link-active-color;

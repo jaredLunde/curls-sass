@@ -1,0 +1,80 @@
+*, *:before, *:after {
+  /** the zoom makes zero sense to me */
+  -webkit-text-size-adjust: none;
+}
+
+
+body {
+  text-rendering: optimizeLegibility;
+  @include font-line($body-font-size,
+                     $body-line-height,
+                     $color: $body-font-color,
+                     $weight: $body-font-weight,
+                     $family: $body-font);
+
+  @media #{$high-dpi} {
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6, .type--h1 {
+  text-align: $heading-text-align;
+  @include font-line($heading-max-font-size,
+                     $heading-line-height,
+                     $color: $heading-color,
+                     $weight: $heading-font-weight,
+                     $family: $heading-font);
+}
+
+
+$_size: $heading-max-font-size * 0.875 * 0.875;
+@each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
+  $_size: round($_size * 0.875);
+  #{$x} {
+    @include font-line($_size, $heading-line-height);
+  }
+  .type--#{$x} {
+    @extend #{$x};
+  }
+}
+
+
+p {
+  padding: $paragraph-padding;
+  margin: $paragraph-margin;
+  text-align: $paragraph-text-align;
+  @include rem-property(letter-spacing, $paragraph-letter-spacing);
+  @include font-line($paragraph-font-size, $paragraph-line-height,
+                     $color: $paragraph-font-color,
+                     $weight: $paragraph-font-weight,
+                     $family: $paragraph-font);
+}
+
+
+.type--l {
+  @include font-line($type-l-font-size, $type-l-line-height);
+
+  @media #{$phone} {
+    @include font-line($type-l-phone-font-size, $type-l-line-height);
+  }
+}
+
+
+.type--m {
+  @include font-line($type-m-font-size, $type-m-line-height);
+
+  @media #{$phone} {
+    @include font-line($type-m-phone-font-size, $type-m-line-height);
+  }
+}
+
+
+.type--s {
+  @include font-line($type-s-font-size, $type-s-line-height);
+
+  @media #{$phone} {
+    @include font-line($type-s-phone-font-size, $type-s-line-height);
+  }
+}

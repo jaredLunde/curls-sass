@@ -9,3 +9,33 @@
 %#{$grid-col-name} {
   @extend %#{$flex-name}--fluid;
 }
+
+%media-padding-gutters,
+%media-gutters {
+  @media #{$phone} {
+    padding: $grid-phone-gutter;
+  }
+
+  @media #{$tablet} {
+    padding: $grid-tablet-gutter;
+  }
+
+  @media #{$desktop} {
+    padding: $grid-desktop-gutter;
+  }
+}
+
+
+%media-margin-gutters {
+  @media #{$phone} {
+    margin: $grid-phone-gutter;
+  }
+
+  @media #{$tablet} {
+    margin: $grid-tablet-gutter;
+  }
+
+  @media #{$desktop} {
+    margin: $grid-desktop-gutter;
+  }
+}

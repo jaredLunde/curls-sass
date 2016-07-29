@@ -1,44 +1,17 @@
 // Body */
 $MAX-Z-INDEX: 2147483647;
 $MAX-PX: 134217727px;
-$body-alignment: center !default;
+$body-alignment: left !default;
 $body-background: #f2f2f2 !default;
-
-$body-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
-$body-font-size: 16px !default;
-$body-font-color: #444 !default;
-$body-line-height: 1.38 !default;
-$body-font-weight: 300 !default;
 
 
 // Links */
 $link-color: #227fc4 !default;
-$link-hover-color: darken($link-color, 20%) !default;
-$link-active-color: darken($link-color, 20%) !default;
+$link-hover-color: #666 !default;
+$link-active-color: #666 !default;
 $link-decoration: none !default;
 $link-tap-highlight: rgba(0,0,0,0.10) !default;
-
-
-// Headings */
-$heading-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
-$heading-color: #000 !default;
-$heading-max-font-size: 48px !default;
-$heading-font-weight: 300 !default;
-$heading-text-align: left;
-$heading-line-height: 1.1;
-
-
-// Paragraphs */
-$paragraph-padding: 0 !default;
-$paragraph-margin: 0 0 1.2em !default;
-
-$paragraph-font: "Helvetica Neue", Arial, sans-serif !default;
-$paragraph-font-size: 16px !default;
-$paragraph-line-height: 1.38 !default;
-$paragraph-letter-spacing: 0.62px !default;
-$paragraph-font-color: inherit !default;
-$paragraph-font-weight: 300 !default;
-$paragraph-text-align: left !default;
+$disabled-link-color: #bbb !default;
 
 
 // Document text selection */

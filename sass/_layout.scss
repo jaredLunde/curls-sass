@@ -30,19 +30,10 @@ li, ol, ul { list-style: none }
 
 
 body {
-  @media #{$high-dpi} {
-    font-smoothing: antialiased;
-    -webkit-font-smoothing: antialiased;
-  }
-  text-rendering: optimizeLegibility;
   min-height: 100%;
   text-align: $body-alignment;
   background: $body-background;
   position: relative;
-  @include font-line($body-font-size, $body-line-height,
-                     $color: $body-font-color,
-                     $weight: $body-font-weight,
-                     $family: $body-font);
 }
 
 .xfaps__header {
@@ -73,40 +64,6 @@ a {
 }
 
 
-h1, h2, h3, h4, h5, h6, .typo--h1 {
-  text-align: $heading-text-align;
-  @include font-line($heading-max-font-size,
-                     $heading-line-height,
-                     $color: $heading-color,
-                     $weight: $heading-font-weight,
-                     $family: $heading-font);
-}
-
-
-$_size: $heading-max-font-size * 0.875 * 0.875;
-@each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
-  $_size: round($_size * 0.875);
-  #{$x} {
-    @include font-line($_size, $heading-line-height);
-  }
-  .typo--#{$x} {
-    @extend #{$x};
-  }
-}
-
-
-p {
-  padding: $paragraph-padding;
-  margin: $paragraph-margin;
-  text-align: $paragraph-text-align;
-  @include rem-property(letter-spacing, $paragraph-letter-spacing);
-  @include font-line($paragraph-font-size, $paragraph-line-height,
-                     $color: $paragraph-font-color,
-                     $weight: $paragraph-font-weight,
-                     $family: $paragraph-font);
-}
-
-
 -moz-selection, ::selection, textarea::selection {
   background: $selection-background;
   color: $selection-font-color;
@@ -122,21 +79,31 @@ p {
 }
 
 
+.disabled {
+  color: $disabled-link-color;
+}
+
+
+.noborder {
+  border: 0 !important;
+}
+
+
 .no-touchevents .disabled:hover {
   cursor: not-allowed;
 }
 
 
-.text--left {
+.type--left {
   text-align: left;
 }
 
 
-.text--right {
+.type--right {
   text-align: right;
 }
 
 
-.text--center {
+.type--center {
   text-align: center;
 }

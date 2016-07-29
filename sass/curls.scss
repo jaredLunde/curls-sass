@@ -11,6 +11,12 @@
 @import 'mixins';
 @import 'placeholders';
 
+/** General layout presets */
+@import 'layout';
+
+/** Typography */
+@import 'type/index';
+
 /** Flexible containers (.flex) */
 @import 'flexibility/index';
 
@@ -19,9 +25,6 @@
 
 /** Multi-column layout */
 @import 'columns/index';
-
-/** General layout presets */
-@import 'layout';
 
 /** UI Components */
 @import 'ui/index'

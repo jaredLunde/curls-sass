@@ -1,0 +1,8 @@
+%#{$card-name} {
+  @extend %#{$flex-name};
+  background: $card-background;
+  border-width: $card-border-width;
+  border-style: $card-border-style;
+  border-color: $card-border-color;
+  @include flex-direction(column);
+}

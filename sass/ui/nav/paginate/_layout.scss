@@ -1,9 +1,11 @@
+
 #{$paginate-class} {
   @extend .input-group;
-  background: transparent;
   width: auto;
   border: 0;
-  @include font-line(18px, 1.0em, $weight: 300);
+  @include font-line($paginate-font-size,
+                     $paginate-line-height,
+                     $weight: $paginate-font-weight);
 
   & > a:first-child:not(:last-child),
   #{$paginate-link-class}:first-child:not(:last-child),
@@ -34,24 +36,35 @@
 }
 
 
+
 #{$paginate-class} > a,
 #{$paginate-class} li a,
 #{$paginate-link-class} {
   @extend %#{$flex-name};
   @extend %#{$flex-name}--self-y-stretch;
   @extend %#{$flex-name}--y-center;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #ccc;
-  background: transparent;
-  border-radius: 5px;
-  padding: round($grid-desktop-gutter / 2) round($grid-desktop-gutter * 0.61);
-
-  &.active {
-    color: #000;
-  }
+  color: $paginate-link-color;
+  border-width: $paginate-link-border-width;
+  border-style: $paginate-link-border-style;
+  border-color: $paginate-link-border-color;
+  background: $paginate-link-background;
+  border-radius: $paginate-link-border-radius;
+  padding: $paginate-link-padding;
 
   &.disabled {
-    color: #aaa;
+    @extend .disabled;
+  }
+  
+  &.active {
+    color: $paginate-link-active-color;
+  }
+}
+
+
+.no-touchevents {
+  #{$paginate-class} > a:hover,
+  #{$paginate-class} li a:hover,
+  #{$paginate-link-class}:hover {
+    color: $paginate-link-hover-color;
   }
 }

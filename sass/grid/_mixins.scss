@@ -23,7 +23,7 @@
   }
   $width: percentage($width);
   width: $width;
-  max-width: $width;
+  // max-width: $width;
   padding: 0 $gutter-size / 2;
   @include flex-basis($width);
 }

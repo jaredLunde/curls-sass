@@ -1,0 +1,77 @@
+#{$card-class} {
+  @extend %#{$card-name};
+}
+
+
+#{$card-class} header {
+  @extend %#{$flex-name};
+  width: 100%;
+  background: $card-header-background;
+  border-width: $card-header-border-width;
+  border-color: $card-header-border-color;
+  border-style: $card-header-border-style;
+}
+
+
+#{$card-class} footer {
+  @extend %#{$flex-name};
+  width: 100%;
+  background: $card-footer-background;
+  border-width: $card-footer-border-width;
+  border-color: $card-footer-border-color;
+  border-style: $card-footer-border-style;
+}
+
+
+#{$card-class} footer > #{$navbar-class} {
+  border: 0
+}
+
+
+#{$card-class} header + #{$navbar-class} {
+  border-top: 0
+}
+
+
+#{$card-class} #{$button-class},
+#{$card-class} button:not([type=submit]):not(.submit) {
+  @extend %media-margin-gutters;
+}
+
+
+#{$card-class} p,
+#{$card-class} > a:not(#{$button-class}),
+#{$card-class}__link {
+  @extend %media-gutters;
+}
+
+
+#{$card-class} p {
+  width: 100%;
+  margin: 0;
+}
+
+
+#{$card-class} #{$navbar-class} {
+  background: transparent;
+}
+
+
+#{$card-class} > *:not(.button):not(button):first-child {
+  border-top: 0;
+}
+
+
+#{$card-class} > *:not(.button):not(button):last-child {
+  border-bottom: 0;
+}
+
+
+#{$card-class} > img,
+#{$card-class}__image,
+#{$card-class}__image img,
+#{$card-class} > video,
+#{$card-class}__video,
+#{$card-class}__video video {
+  width: 100%;
+}
