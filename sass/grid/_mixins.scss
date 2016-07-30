@@ -15,10 +15,37 @@
     $name-ext: '';
   }
 
-  $p-name: '#{$x}--#{$cols}';
-  @warn $p-name;
   .#{$name-prefix}#{$x}#{$name-ext} {
     @include make-grid-column($x, $cols, $gutter-size, $multiple);
+  }
+
+  @include make-gutter($x, $gutter-size, $breakpoint, $name-prefix: 'x',
+                       $name-ext: $name-ext)
+}
+
+
+
+$-pad-cache: ();
+
+
+@mixin make-gutter($x, $gutter-size, $breakpoint, $name-prefix: 'x',
+                   $name-ext: null) {
+  $padding-name: 'gridpad--#{$gutter-size}--#{$breakpoint}';
+  $pad-cached: true;
+
+  @if not index($-pad-cache, $padding-name) {
+    $-pad-cache: append($-pad-cache, $padding-name) !global;
+    $pad-cached: false;
+  }
+
+  @if $pad-cached == false {
+    %#{$padding-name} {
+      padding: 0 $gutter-size / 2;
+    }
+  }
+
+  .#{$name-prefix}#{$x}#{$name-ext} {
+    @extend %#{$padding-name};
   }
 }
 
@@ -31,6 +58,5 @@
   $width: percentage($width);
   width: $width;
   // max-width: $width;
-  padding: 0 $gutter-size / 2;
   @include flex-basis($width);
 }

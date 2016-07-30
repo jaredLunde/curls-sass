@@ -73,60 +73,65 @@
 @include grid(map-get($grid-columns, l), map-get($grid-gutter, l));
 
 
-@include grid(map-get($grid-columns, l),
-              map-get($grid-gutter, m),
-              $multiple: map-get($grid-columns, l) / map-get($grid-columns, m),
-              $breakpoint: m);
-
-
 @media #{map-get($grid-breakpoint, m)} {
   @include grid(map-get($grid-columns, l),
                 map-get($grid-gutter, m),
-                $multiple: map-get($grid-columns, l) / map-get($grid-columns, m));
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, m),
+                $breakpoint: 'm');
   @include grid(map-get($grid-columns, m),
                 map-get($grid-gutter, m),
-                $name-ext: 'm');
+                $name-ext: 'm',
+                $breakpoint: 'm');
 }
 
 
 @media #{map-get($grid-breakpoint, l)} {
-  @include grid(map-get($grid-columns, l), map-get($grid-gutter, l));
+  @include grid(map-get($grid-columns, l), map-get($grid-gutter, l),
+                $breakpoint: 'l');
   @include grid(map-get($grid-columns, l),
                 map-get($grid-gutter, l),
-                $name-ext: 'l');
+                $name-ext: 'l',
+                $breakpoint: 'l');
 }
 
 
 @media #{map-get($grid-breakpoint, xl)} {
   @for $x from 1 through map-get($grid-columns, xl) {
-    .x#{$x} {
-      padding: 0 map-get($grid-gutter, xl) / 2;
-    }
+    $gutter-size: map-get($grid-gutter, xl);
+    $breakpoint: 'xl';
+    @include make-gutter($x, $gutter-size, $breakpoint);
   }
+  
   @include grid(map-get($grid-columns, xl),
                 map-get($grid-gutter, xl),
-                $name-ext: 'xl');
+                $name-ext: 'xl',
+                $breakpoint: 'xl');
 }
 
 
 @media #{map-get($grid-breakpoint, s)} {
   @include grid(map-get($grid-columns, l),
                 map-get($grid-gutter, s),
-                $multiple: map-get($grid-columns, l) / map-get($grid-columns, s));
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, s),
+                $breakpoint: 's');
   @include grid(map-get($grid-columns, xs),
                 map-get($grid-gutter, s),
-                $name-ext: 's');
+                $name-ext: 's',
+                $breakpoint: 's');
 }
 
 
 @media #{map-get($grid-breakpoint, xs)} {
   @include grid(map-get($grid-columns, l),
                 map-get($grid-gutter, xs),
-                $multiple: map-get($grid-columns, l) / map-get($grid-columns, xs));
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, xs),
+                $breakpoint: 'xs');
   @include grid(map-get($grid-columns, l),
                 map-get($grid-gutter, xs),
-                $name-ext: 'xs');
+                $name-ext: 'xs',
+                $breakpoint: 'xs');
 }
+
 
 // Hider classes
 @each $size in map-keys($grid-breakpoint) {

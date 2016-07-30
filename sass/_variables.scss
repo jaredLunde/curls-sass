@@ -70,7 +70,7 @@ $divider-height: 1px !default;
 $phone: "only screen and (max-width: 719px)" !default;
 $phone-max: $phone !default;
 $phone-s: "only screen and (max-width: 359px)" !default;
-$phone-m: "only screen and (min-width: 360px) aand (max-width: 469px)" !default;
+$phone-m: "only screen and (min-width: 360px) and (max-width: 469px)" !default;
 $phone-l: "only screen and (min-width: 480px) and (max-width: 719px)" !default;
 
 $tablet: "only screen and (min-width: 720px)" !default;
