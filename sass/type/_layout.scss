@@ -78,3 +78,18 @@ p {
     @include font-line($type-s-phone-font-size, $type-s-line-height);
   }
 }
+
+
+.type--left {
+  text-align: left;
+}
+
+
+.type--right {
+  text-align: right;
+}
+
+
+.type--center {
+  text-align: center;
+}

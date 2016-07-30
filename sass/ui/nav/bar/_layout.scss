@@ -48,56 +48,20 @@
     border-top-left-radius: 0;
   }
 
-  @media #{$phone} {
-    #{$button-class},
-    button:not([type=submit]),
-    #{$button-class}-group,
-    .input-group {
-      margin: round($grid-phone-gutter / 2);
-    }
-
-    #{$dropdown-class}__toggler {
-      margin: round($grid-phone-gutter / 2) 0
-    }
-    #{$button-class}-group button:not([type=submit]),
-    .input-group button:not([type=submit]) {
-      margin: 0
-    }
+  #{$button-class},
+  button:not([type=submit]),
+  #{$button-class}-group,
+  .input-group {
+    @extend %media-margin-gutters-half;
   }
 
-  @media #{$tablet} {
-    #{$button-class},
-    button:not([type=submit]),
-    #{$button-class}-group,
-    .input-group {
-      margin: round($grid-tablet-gutter / 2);
-    }
-
-    #{$dropdown-class} #{$dropdown-class}__toggler {
-      margin: round($grid-tablet-gutter / 2) 0
-    }
-    #{$button-class}-group button:not([type=submit]),
-    .input-group button:not([type=submit]) {
-      margin: 0
-    }
+  #{$dropdown-class}__toggler {
+    @extend %media-margin-gutters-half-y;
   }
-
-
-  @media #{$desktop} {
-    #{$button-class},
-    button:not([type=submit]),
-    #{$button-class}-group,
-    .input-group {
-      margin: round($grid-desktop-gutter / 2);
-    }
-
-    #{$dropdown-class}__toggler {
-      margin: round($grid-desktop-gutter / 2) 0
-    }
-    #{$button-class}-group button:not([type=submit]),
-    .input-group button:not([type=submit]) {
-      margin: 0
-    }
+  
+  #{$button-class}-group button:not([type=submit]),
+  .input-group button:not([type=submit]) {
+    margin: 0
   }
 }
 

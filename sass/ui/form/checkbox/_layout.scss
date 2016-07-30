@@ -1,0 +1,91 @@
+#{$checkbox-class} {
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
+  padding: 0 8px;
+
+  input[type=checkbox] {
+    display: none;
+  }
+}
+
+$checkbox-checkmark-height: 24px;
+$checkbox-checkmark-width: 24px;
+
+#{$checkbox-class} label {
+  @extend %#{$flex-name};
+  padding: 0 0 0 8px;
+  @include font-line(16px, 100%);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+#{$checkbox-class}__box {
+  @extend %hardware-accel;
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
+  @extend %#{$flex-name}--x-center;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  background: #dbdbdb;
+  color: $link-color;
+  border-radius: $MAX-PX;
+  height: $checkbox-checkmark-height;
+  width: $checkbox-checkmark-width;
+  @include transition(background $FAST linear);
+
+  & > * {
+    @extend %#{$flex-name};
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+.no-touchevents {
+  #{$checkbox-class}__box:hover #{$checkbox-class}__checkmark {
+    visibility: visible;
+    opacity: 0.5;
+  }
+
+  #{$checkbox-class}.checked #{$checkbox-class}__box:hover
+  #{$checkbox-class}__checkmark {
+    opacity: 1.0;
+  }
+}
+
+
+#{$checkbox-class}__checkmark {
+  @extend %hardware-accel;
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
+  @extend %#{$flex-name}--x-center;
+  @extend %fade-in;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+
+  & > * {
+    @extend %#{$flex-name};
+  }
+}
+
+
+#{$checkbox-class}.checked {
+  #{$checkbox-class}__checkmark {
+    @extend %fade-out;
+    visibility: visible;
+    opacity: 1.0;
+    color: #fff;
+  }
+
+  #{$checkbox-class}__box {
+    border-color: $link-color;
+    background: $link-color;
+  }
+}

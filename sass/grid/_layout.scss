@@ -4,183 +4,40 @@
 }
 
 
-.no-flexbox.no-flexboxlegacy.no-flexboxtweener #{$grid-row-class} {
-  display: block;
-  width: 100%;
-}
-
-/** Fluid */
-#{$grid-class}--fluid #{$grid-col-class} {
-  @extend %#{$flex-name}--fluid;
-}
-
-
-/** Fixed */
-#{$grid-class}--fixed #{$grid-col-class} {
-  @extend %#{$flex-name}--fixed;
-}
-
-
-/** Offset */
-@for $x from 1 through ($grid-columns - 1) {
-  .o#{$x} {
-    margin-left: percentage($x / $grid-columns);
-  }
-}
-
-
-#{$grid-class}--reverse,
-#{$grid-class}--reverse #{$grid-row-class} {
-  @extend %#{$flex-name}--reverse;
-}
-
-
-#{$grid-class}--nowrap,
-#{$grid-class}--nowrap #{$grid-row-class} {
-  @extend %#{$flex-name}--nowrap;
-}
-
-
-#{$grid-class}--x-left,
-#{$grid-class}--x-left #{$grid-row-class} {
-  @extend %#{$flex-name}--x-left;
-}
-
-
-#{$grid-class}--x-right,
-#{$grid-class}--x-right #{$grid-row-class} {
-  @extend %#{$flex-name}--x-right;
-}
-
-
-#{$grid-class}--x-center,
-#{$grid-class}--x-center #{$grid-row-class} {
-  @extend %#{$flex-name}--x-center;
-}
-
-
-#{$grid-class}--x-around,
-#{$grid-class}--x-around #{$grid-row-class} {
-  @extend %#{$flex-name}--x-around;
-}
-
-
-#{$grid-class}--x-between,
-#{$grid-class}--x-between #{$grid-row-class} {
-  @extend %#{$flex-name}--x-between;
-}
-
-
-#{$grid-class}--y-top,
-#{$grid-class}--y-top #{$grid-row-class} {
-  @extend %#{$flex-name}--y-top;
-}
-
-
-#{$grid-class}--y-bottom,
-#{$grid-class}--y-bottom #{$grid-row-class} {
-@extend %#{$flex-name}--y-bottom;
-}
-
-
-#{$grid-class}--y-center,
-#{$grid-class}--y-center #{$grid-row-class} {
-  @extend %#{$flex-name}--y-center;
-}
-
-
-#{$grid-class}--y-stretch,
-#{$grid-class}--y-stretch #{$grid-row-class} {
-  @extend %#{$flex-name}--y-stretch;
-}
-
-
-#{$grid-class}--y-between,
-#{$grid-class}--y-between #{$grid-row-class} {
-  @extend %#{$flex-name}--y-between;
-}
-
-
-#{$grid-class}--y-around,
-#{$grid-class}--y-around #{$grid-row-class} {
-  @extend %#{$flex-name}--y-around;
-}
-
-
-#{$grid-class}--y-baseline,
-#{$grid-class}--y-baseline #{$grid-row-class} {
-  @extend %#{$flex-name}--y-baseline;
-}
-
-
-#{$grid-class}--c-top {
-  @extend %#{$flex-name}--content-top;
-}
-
-
-#{$grid-class}--c-bottom {
-  @extend %#{$flex-name}--content-bottom;
-}
-
-
-#{$grid-class}--c-center {
-  @extend %#{$flex-name}--content-center;
-}
-
-
-#{$grid-class}--c-stretch {
-  @extend %#{$flex-name}--content-stretch;
-}
-
-
-#{$grid-class}--c-between {
-  @extend %#{$flex-name}--content-between;
-}
-
-
-#{$grid-class}--c-around {
-  @extend %#{$flex-name}--content-around;
-}
-
-
 #{$grid-col-class} {
   @extend %#{$grid-col-name};
 }
 
 
-#{$grid-col-class}--first {
-  @extend %#{$flex-name}--first;
+.no-flexbox.no-flexboxlegacy.no-flexboxtweener #{$grid-row-class} {
+  display: block;
+  width: 100%;
 }
 
 
-#{$grid-col-class}--last {
-  @extend %#{$flex-name}--last;
-}
+@include extend-flex($grid-name)
 
 
-@include extend-flex-self($grid-col-name, 'y-');
-
-
-@media #{$phone} {
+@media #{$grid-breakpoint-s} {
   #{$grid-row-class},
   #{$float-grid-row-class} {
-    padding: 0 $grid-tablet-gutter / 2 0;
+    padding: 0 $grid-gutter-m / 2 0;
   }
 }
 
 
-@media #{$tablet} {
+@media #{$grid-breakpoint-m} {
   #{$grid-row-class},
   #{$float-grid-row-class} {
-    padding: 0 $grid-tablet-gutter / 2 0;
+    padding: 0 $grid-gutter-m / 2 0;
   }
 }
 
 
-@media #{$desktop} {
+@media #{$grid-breakpoint-l} {
   #{$grid-row-class},
   #{$float-grid-row-class} {
-    padding: 0 $grid-desktop-gutter / 2 0;
+    padding: 0 $grid-gutter-l / 2 0;
   }
 }
 
@@ -225,22 +82,73 @@
 }
 
 
-@media #{$phone} {
-  @include grid($grid-columns,
-                $grid-phone-gutter,
-                $multiple: $grid-columns / $grid-phone-columns);
+@include grid($grid-columns-l, $grid-gutter-l);
+
+
+@media #{$grid-breakpoint-m} {
+  @include grid($grid-columns-l,
+                $grid-gutter-m,
+                $multiple: $grid-columns-l / $grid-columns-m);
+  @include grid($grid-columns-m,
+                $grid-gutter-m,
+                $name-ext: 'm');
 }
 
 
-@media #{$tablet} {
-  @include grid($grid-columns,
-                $grid-tablet-gutter,
-                $multiple: $grid-columns / $grid-tablet-columns);
+@media #{$grid-breakpoint-l} {
+  @include grid($grid-columns-l, $grid-gutter-l);
+  @include grid($grid-columns-l, $grid-gutter-l, $name-ext: 'l');
 }
 
 
-@media #{$desktop} {
-  @include grid($grid-columns, $grid-desktop-gutter);
+@media #{$grid-breakpoint-xl} {
+  @for $x from 1 through 12 {
+    .x#{$x} {
+      padding: 0 $grid-gutter-xl / 2;
+    }
+  }
+  @include grid($grid-columns-xl, $grid-gutter-xl, $name-ext: 'xl');
+}
+
+
+@media #{$grid-breakpoint-s} {
+  @include grid($grid-columns-l,
+                $grid-gutter-s,
+                $multiple: $grid-columns-l / $grid-columns-s);
+  @include grid($grid-columns-xs, $grid-gutter-s, $name-ext: 's');
+}
+
+
+@media #{$grid-breakpoint-xs} {
+  @include grid($grid-columns-l,
+                $grid-gutter-xs,
+                $multiple: $grid-columns-l / $grid-columns-xs);
+  @include grid($grid-columns-l, $grid-gutter-xs, $name-ext: 'xs');
+}
+
+
+.hide--s, .x0--s {
+  @extend %hide--s;
+}
+
+
+.hide--xs, .x0--xs {
+  @extend %hide--xs;
+}
+
+
+.hide--m, .x0--m {
+  @extend %hide--m;
+}
+
+
+.hide--l, .x0--l {
+  @extend %hide--l;
+}
+
+
+.hide--xl, .x0--xl {
+  @extend %hide--xl;
 }
 
 
@@ -262,11 +170,4 @@
 #{$float-grid-row-class}--nopad,
 #{$float-grid-col-class}--nopad  {
   padding: 0;
-}
-
-
-@each $x in (4px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 36px, 40px, 44px,
-             48px) {
-  @include margin-group($x);
-  @include padding-group($x);
 }

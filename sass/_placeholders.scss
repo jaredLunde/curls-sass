@@ -12,6 +12,12 @@
 }
 
 
+/** Visibility */
+%hidden {
+  display: none;
+}
+
+
 /** Positioning */
 %fixed-top-fw {
   position: fixed;
@@ -61,87 +67,91 @@
 
 
 /** Transition effects */
+$FAST: 0.13s;
+$MED: 0.33s;
+$SLOW: 0.5s;
+
 %fade-in--fast {
-  @include transition(visibility 0.13s ease-in, opacity 0.13s ease-in);
+  @include transition(visibility $FAST ease-in, opacity $FAST ease-in);
 }
 
 
 %fade-out--fast {
-  @include transition(visibility 0.13s ease-out, opacity 0.13s ease-in);
+  @include transition(visibility $FAST ease-out, opacity $FAST ease-in);
 }
 
 
 %fade-in {
-  @include transition(visibility 0.33s ease-in, opacity 0.33s ease-in);
+  @include transition(visibility $MED ease-in, opacity $MED ease-in);
 }
 
 
 %fade-out {
-  @include transition(visibility 0.33s ease-out, opacity 0.33s ease-in);
+  @include transition(visibility $MED ease-out, opacity $MED ease-in);
 }
 
 
 %fade-in--slow {
-  @include transition(visibility 0.5s ease-in, opacity 0.5s ease-in);
+  @include transition(visibility $SLOW ease-in, opacity $SLOW ease-in);
 }
 
 
 %fade-out--slow {
-  @include transition(visibility 0.5s ease-out, opacity 0.5s ease-in);
+  @include transition(visibility $SLOW ease-out, opacity $SLOW ease-in);
 }
 
 
 %drop-in--fast {
   @extend %fade-in;
-  @include transition(top 0.13s ease-out, visibility 0.13s ease-out,
-                      opacity 0.13s ease-in);
+  @include transition(top $FAST ease-out, visibility $FAST ease-out,
+                      opacity $FAST ease-in);
 }
 
 
 %drop-in {
   @extend %fade-in;
-  @include transition(top 0.33s ease-out, visibility 0.33s ease-out,
-                      opacity 0.33s ease-in);
+  @include transition(top $MED ease-out, visibility $MED ease-out,
+                      opacity $MED ease-in);
 }
 
 
 %drop-in--slow {
   @extend %fade-in;
-  @include transition(top 0.5s ease-out, visibility 0.5s ease-out,
-                      opacity 0.5s ease-in);
+  @include transition(top $SLOW ease-out, visibility $SLOW ease-out,
+                      opacity $SLOW ease-in);
 }
 
 
 %drop-out--fast {
   @extend %fade-out--fast;
-  @include transition(top 0.13s ease-out, visibility 0.13s ease-out,
-                      opacity 0.13s ease-in);
+  @include transition(top $FAST ease-out, visibility $FAST ease-out,
+                      opacity $FAST ease-in);
 }
 
 
 %drop-out {
   @extend %fade-out;
-  @include transition(top 0.33s ease-out, visibility 0.33s ease-out,
-                      opacity 0.33s ease-in);
+  @include transition(top $MED ease-out, visibility $MED ease-out,
+                      opacity $MED ease-in);
 }
 
 
 %drop-out--slow {
-  @include transition(visibility 0.5s ease-out, opacity 0.5s ease-in,
-                      top 0.5s ease-out);
+  @include transition(visibility $SLOW ease-out, opacity $SLOW ease-in,
+                      top $SLOW ease-out);
 }
 
 
 %transform--fast {
-  @include transition(transform 0.13s ease-out);
+  @include transition(transform $FAST ease-out);
 }
 
 
 %transform {
-  @include transition(transform 0.33s ease-out);
+  @include transition(transform $MED ease-out);
 }
 
 
 %transform--slow {
-  @include transition(transform 0.5s ease-out);
+  @include transition(transform $SLOW ease-out);
 }

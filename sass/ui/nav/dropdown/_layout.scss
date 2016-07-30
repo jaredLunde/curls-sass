@@ -14,25 +14,24 @@
 }
 
 
-#{$dropdown-class}.dropped #{$dropdown-class}__caret.fa-chevron-down {
-  top: 1px;
-}
-
-
 #{$dropdown-class}__caret.fa-chevron-down,
 #{$dropdown-class}__caret.fa-caret-down {
   @extend %#{$flex-name}--self-y-center;
   @include font-size(10px);
 }
 
+
 #{$dropdown-class}__caret {
   @extend %hardware-accel;
   @extend %transform--fast;
-  left: 4px;
+  left: 6px;
+  top: -1px;
   position: relative;
 }
 
+
 .dropped #{$dropdown-class}__caret {
+  top: 0px;
   @include transform(rotate(180deg));
 }
 
@@ -41,8 +40,8 @@
   @extend #{$dropdown-class}__caret;
   @extend %#{$flex-name}--first;
   float: left;
-  margin-right: 4px;
-  left: auto;
+  margin-right: 6px;
+  margin-left: auto;
 }
 
 
@@ -50,7 +49,7 @@
   @extend #{$dropdown-class}__caret;
   @extend %#{$flex-name}--last;
   float: right;
-  margin-left: 4px;
+  margin-left: 6px;
 }
 
 
@@ -66,8 +65,8 @@
 #{$dropdown-class}__toggler,
 button#{$dropdown-class}__toggler,
 .button#{$dropdown-class}__toggler {
-  @extend %#{$flex-name};
   @extend %#{$flex-name}--y-center;
+  display: inline-block;
   background: $dropdown-toggler-background;
   color: $dropdown-toggler-color;
   border-style: $dropdown-toggler-border-style;

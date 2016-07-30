@@ -49,7 +49,7 @@
 
 
 %#{$flex-name}--x-left {
-  @include justify-content(flex-end);
+  @include justify-content(flex-start);
 }
 
 

@@ -54,7 +54,7 @@
   &.disabled {
     @extend .disabled;
   }
-  
+
   &.active {
     color: $paginate-link-active-color;
   }
@@ -68,3 +68,6 @@
     color: $paginate-link-hover-color;
   }
 }
+
+
+@include extend-flex($paginate-name);

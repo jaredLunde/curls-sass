@@ -84,26 +84,19 @@ a {
 }
 
 
+.no-touchevents .disabled:hover {
+  cursor: not-allowed;
+  color: $disabled-link-color;
+}
+
+
 .noborder {
   border: 0 !important;
 }
 
 
-.no-touchevents .disabled:hover {
-  cursor: not-allowed;
-}
-
-
-.type--left {
-  text-align: left;
-}
-
-
-.type--right {
-  text-align: right;
-}
-
-
-.type--center {
-  text-align: center;
+@each $x in (4px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 36px, 40px, 44px,
+             48px) {
+  @include margin-group($x);
+  @include padding-group($x);
 }

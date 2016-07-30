@@ -3,14 +3,15 @@ $card-class: unquote("#{unquote(".")}#{$card-name}") !default;
 $card-background: #fff !default;
 $card-border-width: 1px !default;
 $card-border-style: solid !default;
-$card-border-color: #ccc !default;
+$card-border-color: #dbdbdb !default;
+$card-border-radius: 2px;
 
 $card-header-background: #f2f2f2 !default;
-$card-header-border-width: 0 0 1px !default;
-$card-header-border-color: #ccc !default;
+$card-header-border-width: 1px 0 !default;
+$card-header-border-color: #dbdbdb !default;
 $card-header-border-style: solid !default;
 
 $card-footer-background: $card-header-background !default;
-$card-footer-border-width: 1px 0 0 !default;
+$card-footer-border-width: 1px 0 !default;
 $card-footer-border-color: $card-header-border-color !default;
 $card-footer-border-style: $card-header-border-style !default;

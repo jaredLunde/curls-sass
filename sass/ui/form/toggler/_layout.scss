@@ -1,0 +1,57 @@
+#{$toggler-class} {
+  @extend #{$checkbox-class};
+
+  label:hover {
+    cursor: pointer;
+  }
+}
+
+
+#{$toggler-class}__container {
+  @extend %#{$flex-name};
+  @extend %#{$flex-name}--y-center;
+  @extend %#{$flex-name}--x-left;
+  width: 50px;
+  height: 24px;
+  border-radius: $MAX-PX;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ccc;
+  background: #dbdbdb;
+  padding: 3px;
+  @include transition(background $FAST ease-in);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+#{$toggler-class}.enabled  {
+  #{$toggler-class}__container {
+    @extend %#{$flex-name}--x-right;
+    border-color: $link-color;
+    background: $link-color;
+  }
+}
+
+
+#{$toggler-class}__handle {
+  @extend %#{$flex-name};
+  border-radius: 100%;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-color: #ccc;
+  border-width: 1px;
+  border-style: solid;
+  @include transition(background $FAST ease-in);
+}
+
+#{$toggler-class}.enabled {
+  #{$toggler-class}__handle {
+    margin-left: auto;
+    background: #fff;
+    border-color: #fff;
+  }
+}

@@ -1,5 +1,6 @@
 #{$card-class} {
   @extend %#{$card-name};
+  border-radius: $card-border-radius;
 }
 
 
@@ -40,7 +41,7 @@
 
 
 #{$card-class} p,
-#{$card-class} > a:not(#{$button-class}),
+#{$card-class} > a:not(#{$button-class}):not(#{$card-class}__image),
 #{$card-class}__link {
   @extend %media-gutters;
 }
@@ -68,10 +69,39 @@
 
 
 #{$card-class} > img,
+#{$card-class} > figure img,
 #{$card-class}__image,
 #{$card-class}__image img,
 #{$card-class} > video,
 #{$card-class}__video,
 #{$card-class}__video video {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
+
+
+#{$card-class} > img:first-child,
+#{$card-class}__image,
+#{$card-class} > img:last-child,
+#{$card-class} > video:first-child,
+#{$card-class}__video,
+#{$card-class} > video:last-child {
+  overflow: hidden;
+
+}
+
+
+#{$card-class} > *:first-child {
+  border-top-right-radius: $card-border-radius;
+  border-top-left-radius: $card-border-radius;
+}
+
+
+#{$card-class} > *:last-child {
+  border-bottom-right-radius: $card-border-radius;
+  border-bottom-left-radius: $card-border-radius;
+}
+
+
+@include extend-flex($card-name);
