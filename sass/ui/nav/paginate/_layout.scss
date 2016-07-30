@@ -67,6 +67,10 @@
   #{$paginate-link-class}:hover {
     color: $paginate-link-hover-color;
   }
+
+  #{$paginate-class} .disabled:hover {
+    color: $disabled-link-color;
+  }
 }
 
 

@@ -1,22 +1,22 @@
 // Forms
 $input-text-font-size: 16px !default;
 $input-text-line-height: normal !default;
-$input-text-font-color: #666 !default;
+$input-text-font-color: $grey !default;
 $input-text-font-weight: 300 !default;
 $input-text-font: $body-font !default;
 
 $input-text-margin: 0 !default;
-$input-text-padding-top: 8px!default;
-$input-text-padding-right: golden($input-text-padding-top) !default;
+$input-text-padding-top: 4px !default;
+$input-text-padding-right: 8px !default;
 $input-text-padding-bottom: $input-text-padding-top !default;
 $input-text-padding-left: $input-text-padding-right !default;
-$input-text-background: $body-background !default;
-$input-text-border: 1px solid #dbdbdb !default;
-$input-text-width: auto;
+$input-text-background: $lightest-grey !default;
+$input-text-border: unquote('#{$border-width} #{$border-style} #{$border}') !default;
+$input-text-width: auto !default;
 
 $textarea-font-size: 16px !default;
 $textarea-line-height: 1.38 !default;
-$textarea-font-color: #666 !default;
+$textarea-font-color: $grey !default;
 $textarea-font-weight: 300 !default;
 $textarea-font: $body-font !default;
 
@@ -29,7 +29,7 @@ $textarea-background: $input-text-background !default;
 $textarea-border: $input-text-border !default;
 $textarea-border-radius: 2px !default;
 
-$submit-font-color: #666 !default;
+$submit-font-color: $grey !default;
 $submit-font-size: 16px !default;
 $submit-line-height: 1.1 !default;
 $submit-font-weight: 700 !default;
@@ -41,7 +41,7 @@ $submit-padding-top: 8px!default;
 $submit-padding-right: golden($submit-padding-top) !default;
 $submit-padding-bottom: $submit-padding-top !default;
 $submit-padding-left: $submit-padding-right !default;
-$submit-background: white !default;
+$submit-background: $white !default;
 $submit-background-active: darken($submit-background, 7%) !default;
 $submit-background-hover: darken($submit-background, 5%) !default;
 $submit-border-radius: $MAX-PX !default;

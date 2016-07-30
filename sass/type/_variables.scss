@@ -1,14 +1,18 @@
+$type-name: 'type' !default;
+$type-class: unquote("#{unquote(".")}#{$type-name}") !default;
+
+
 // Body
-$body-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$body-font: -apple-system, "Roboto", "Helvetica Neue", Arial, sans-serif !default;
 $body-font-size: 16px !default;
-$body-font-color: #666 !default;
+$body-font-color: $grey !default;
 $body-line-height: 1.38em !default;
 $body-font-weight: 300 !default;
 
 
 // Headings */
-$heading-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
-$heading-color: #666 !default;
+$heading-font: -apple-system, "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$heading-color: $grey !default;
 $heading-max-font-size: 48px !default;
 $heading-font-weight: 300 !default;
 $heading-text-align: left !default;
@@ -19,7 +23,7 @@ $heading-line-height: 1.1 !default;
 $paragraph-padding: 0 !default;
 $paragraph-margin: 0 0 1.2em !default;
 
-$paragraph-font: "Roboto", "Helvetica Neue", Arial, sans-serif !default;
+$paragraph-font: -apple-system, "Roboto", "Helvetica Neue", Arial, sans-serif !default;
 $paragraph-font-size: 16px !default;
 $paragraph-line-height: 1.38em !default;
 $paragraph-letter-spacing: 0.62px !default;
@@ -29,12 +33,37 @@ $paragraph-text-align: left !default;
 
 
 // Type sizes
-$type-s-font-size: 12px;
-$type-s-phone-font-size: 12px;
-$type-s-line-height: $body-line-height;
-$type-m-font-size: 24px;
-$type-m-phone-font-size: 21px;
-$type-m-line-height: $body-line-height;
-$type-l-font-size: 32px;
-$type-l-phone-font-size: 28px;
-$type-l-line-height: $body-line-height;
+$type-font-size: (
+  xs: 10px,
+  s: 12px,
+  m: 20px,
+  l: 32px,
+  xl: 40px
+) !default;
+
+
+$type-line-height: (
+  xs: $body-line-height,
+  s: $body-line-height,
+  m: $body-line-height,
+  l: $body-line-height,
+  xl: $body-line-height
+) !default;
+
+
+$type-font-size-phone: (
+  xs: 10px,
+  s: 12px,
+  m: 18px,
+  l: 28px,
+  xl: 36px
+) !default;
+
+
+$type-line-height-phone: (
+  xs: $body-line-height,
+  s: $body-line-height,
+  m: $body-line-height,
+  l: $body-line-height,
+  xl: $body-line-height
+) !default;

@@ -1,0 +1,4 @@
+@each $x in $spacing-sizes {
+  @include margin-group($x);
+  @include padding-group($x);
+}

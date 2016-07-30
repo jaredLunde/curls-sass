@@ -1,0 +1,5 @@
+@for $x from 1 through $columns-max-count {
+  %#{$columns-name}--#{$x} {
+    @include columns($x, $columns-width);
+  }
+}

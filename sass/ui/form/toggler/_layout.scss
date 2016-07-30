@@ -16,9 +16,9 @@
   border-radius: $MAX-PX;
   border-width: 1px;
   border-style: solid;
-  border-color: #ccc;
-  background: #dbdbdb;
-  padding: 3px;
+  border-color: $light-border;
+  background: $light-grey;
+  padding: 2px;
   @include transition(background $FAST ease-in);
 
   &:hover {
@@ -30,8 +30,8 @@
 #{$toggler-class}.enabled  {
   #{$toggler-class}__container {
     @extend %#{$flex-name}--x-right;
-    border-color: $link-color;
-    background: $link-color;
+    border-color: $blue;
+    background: $blue;
   }
 }
 
@@ -39,10 +39,10 @@
 #{$toggler-class}__handle {
   @extend %#{$flex-name};
   border-radius: 100%;
-  width: 18px;
-  height: 18px;
-  background: #fff;
-  border-color: #ccc;
+  width: 20px;
+  height: 20px;
+  background: $white;
+  border-color: $dark-border;
   border-width: 1px;
   border-style: solid;
   @include transition(background $FAST ease-in);
@@ -51,7 +51,7 @@
 #{$toggler-class}.enabled {
   #{$toggler-class}__handle {
     margin-left: auto;
-    background: #fff;
-    border-color: #fff;
+    background: $white;
+    border-color: $blue;
   }
 }

@@ -1,23 +1,23 @@
 $button-name: 'button' !default;
 $button-class: unquote("#{unquote(".")}#{$button-name}") !default;
 
-$button-background: none !default;
-$button-color: #227fc4 !default;
-$button-border-color: $button-color !default;
+$button-background: $blue !default;
+$button-color: #fff !default;
+$button-border-color: $border !default;
 $button-border-style: solid !default;
 $button-border-width: 1px !default;
 $button-border-radius: 3px;
 $button-line-height: 1.1;
 
-$button-hover-background: none !default;
-$button-hover-color: lighten($button-color, 10%) !default;
-$button-hover-border-color: $button-hover-color !default;
+$button-hover-background: lighten($blue, 5%) !default;
+$button-hover-color: white !default;
+$button-hover-border-color: $button-border-color !default;
 $button-hover-border-style: solid !default;
 $button-hover-border-width: 1px !default;
 
-$button-active-background: $button-color !default;
+$button-active-background: darken($blue, 5%) !default;
 $button-active-color: white !default;
-$button-active-border-color: $button-color !default;
+$button-active-border-color: $button-border-color !default;
 $button-active-border-style: solid !default;
 $button-active-border-width: 1px !default;
 

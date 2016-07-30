@@ -1,19 +1,22 @@
 @mixin grid($cols, $gutter-size: 0, $name-prefix: 'x', $name-ext: null,
-            $multiple: 1) {
+            $multiple: 1, $breakpoint: null) {
   @for $x from 1 through $cols {
     @include grid-column($x, $cols, $gutter-size, $name-prefix, $name-ext,
-                         $multiple);
+                         $multiple, $breakpoint);
   }
 }
 
 
 @mixin grid-column($x, $cols, $gutter-size: 0, $name-prefix: 'x',
-                   $name-ext: null, $multiple: 1) {
+                   $name-ext: null, $multiple: 1, $breakpoint: null) {
   @if $name-ext {
     $name-ext: "--#{$name-ext}";
   } @else {
     $name-ext: '';
   }
+
+  $p-name: '#{$x}--#{$cols}';
+  @warn $p-name;
   .#{$name-prefix}#{$x}#{$name-ext} {
     @include make-grid-column($x, $cols, $gutter-size, $multiple);
   }

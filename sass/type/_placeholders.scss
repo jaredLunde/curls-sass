@@ -1,0 +1,11 @@
+@each $size in map-keys($type-font-size) {
+  %#{$type-name}--#{$size} {
+    @include font-line(map-get($type-font-size, $size),
+                       map-get($type-line-height, $size));
+
+    @media #{$phone} {
+      @include font-line(map-get($type-font-size-phone, $size),
+                         map-get($type-line-height-phone, $size));
+    }
+  }
+}

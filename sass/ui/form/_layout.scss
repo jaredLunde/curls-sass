@@ -102,6 +102,7 @@ input[type=search] {
 
 // Submit Buttons */
 button[type=submit], input[type=submit], button.submit {
+  @extend %#{$flex-name}--y-center;
   background: $submit-background;
   border: $submit-border;
   padding: $submit-padding-top $submit-padding-right
@@ -112,6 +113,10 @@ button[type=submit], input[type=submit], button.submit {
                      $color: $submit-font-color,
                      $weight: $submit-font-weight,
                      $family: $submit-font);
+
+  & > * {
+    @extend %#{$flex-name};
+  }
 }
 
 

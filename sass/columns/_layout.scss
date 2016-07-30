@@ -35,17 +35,14 @@
 }
 
 
-@for $x from 1 through 12 {
+@for $x from 1 through $columns-max-count {
   #{$columns-class}--#{$x} {
-    @include columns($x, $columns-width);
-  }
-  %#{$columns-name}--#{$x} {
-    @include columns($x, $columns-width);
+    @extend %#{$columns-name}--#{$x};
   }
 }
 
 
-@for $x from 1 through 12 {
+@for $x from 1 through $columns-max-count {
   .no-csscolumns #{$columns-class}--#{$x} > * {
     float: left;
     $width: 1 / $x;
@@ -56,46 +53,18 @@
 }
 
 
-@media #{$phone} {
-  #{$columns-class} {
-    @include columns($gutter-size: $columns-phone-gutter);
-  }
+@each $size in map-keys($columns-gutter) {
+  @media #{map-get($columns-breakpoint, $size)} {
+    #{$columns-class} {
+      @include columns($gutter-size: map-get($columns-gutter, $size));
+    }
 
-  .no-csscolumns #{$columns-class} {
-    padding-left: $columns-phone-gutter;
-  }
+    .no-csscolumns #{$columns-class} {
+      padding-left: map-get($columns-gutter, $size);
+    }
 
-  .no-csscolumns #{$columns-class} > * {
-    padding: 0 $columns-phone-gutter 0 0;
-  }
-}
-
-
-@media #{$tablet} {
-  #{$columns-class} {
-    @include columns($gutter-size: $columns-tablet-gutter);
-  }
-
-  .no-csscolumns #{$columns-class} {
-    padding-left: $columns-tablet-gutter;
-  }
-
-  .no-csscolumns #{$columns-class} > * {
-    padding: 0 $columns-tablet-gutter 0 0;
-  }
-}
-
-
-@media #{$desktop} {
-  #{$columns-class} {
-    @include columns($gutter-size: $columns-desktop-gutter);
-  }
-
-  .no-csscolumns #{$columns-class} {
-    padding-left: $columns-desktop-gutter;
-  }
-
-  .no-csscolumns #{$columns-class} > * {
-    padding: 0 $columns-desktop-gutter 0 0;
+    .no-csscolumns #{$columns-class} > * {
+      padding: 0 map-get($columns-gutter, $size) 0 0;
+    }
   }
 }

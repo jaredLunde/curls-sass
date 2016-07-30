@@ -1,4 +1,3 @@
-/** Flexbox grids */
 #{$grid-row-class} {
   @extend %#{$grid-row-name};
 }
@@ -15,31 +14,8 @@
 }
 
 
+// Flex modifiers
 @include extend-flex($grid-name)
-
-
-@media #{$grid-breakpoint-s} {
-  #{$grid-row-class},
-  #{$float-grid-row-class} {
-    padding: 0 $grid-gutter-m / 2 0;
-  }
-}
-
-
-@media #{$grid-breakpoint-m} {
-  #{$grid-row-class},
-  #{$float-grid-row-class} {
-    padding: 0 $grid-gutter-m / 2 0;
-  }
-}
-
-
-@media #{$grid-breakpoint-l} {
-  #{$grid-row-class},
-  #{$float-grid-row-class} {
-    padding: 0 $grid-gutter-l / 2 0;
-  }
-}
 
 
 /** Cross-browser grids */
@@ -82,76 +58,85 @@
 }
 
 
-@include grid($grid-columns-l, $grid-gutter-l);
+// Grid row gutters
+@each $size in map-keys($grid-breakpoint) {
+  @media #{map-get($grid-breakpoint, $size)} {
+    #{$grid-row-class},
+    #{$float-grid-row-class} {
+      padding: 0 map-get($grid-gutter, $size) / 2 0;
+    }
+  }
+}
 
 
-@media #{$grid-breakpoint-m} {
-  @include grid($grid-columns-l,
-                $grid-gutter-m,
-                $multiple: $grid-columns-l / $grid-columns-m);
-  @include grid($grid-columns-m,
-                $grid-gutter-m,
+// Grid breakpoints / grid col padding / widths
+@include grid(map-get($grid-columns, l), map-get($grid-gutter, l));
+
+
+@include grid(map-get($grid-columns, l),
+              map-get($grid-gutter, m),
+              $multiple: map-get($grid-columns, l) / map-get($grid-columns, m),
+              $breakpoint: m);
+
+
+@media #{map-get($grid-breakpoint, m)} {
+  @include grid(map-get($grid-columns, l),
+                map-get($grid-gutter, m),
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, m));
+  @include grid(map-get($grid-columns, m),
+                map-get($grid-gutter, m),
                 $name-ext: 'm');
 }
 
 
-@media #{$grid-breakpoint-l} {
-  @include grid($grid-columns-l, $grid-gutter-l);
-  @include grid($grid-columns-l, $grid-gutter-l, $name-ext: 'l');
+@media #{map-get($grid-breakpoint, l)} {
+  @include grid(map-get($grid-columns, l), map-get($grid-gutter, l));
+  @include grid(map-get($grid-columns, l),
+                map-get($grid-gutter, l),
+                $name-ext: 'l');
 }
 
 
-@media #{$grid-breakpoint-xl} {
-  @for $x from 1 through 12 {
+@media #{map-get($grid-breakpoint, xl)} {
+  @for $x from 1 through map-get($grid-columns, xl) {
     .x#{$x} {
-      padding: 0 $grid-gutter-xl / 2;
+      padding: 0 map-get($grid-gutter, xl) / 2;
     }
   }
-  @include grid($grid-columns-xl, $grid-gutter-xl, $name-ext: 'xl');
+  @include grid(map-get($grid-columns, xl),
+                map-get($grid-gutter, xl),
+                $name-ext: 'xl');
 }
 
 
-@media #{$grid-breakpoint-s} {
-  @include grid($grid-columns-l,
-                $grid-gutter-s,
-                $multiple: $grid-columns-l / $grid-columns-s);
-  @include grid($grid-columns-xs, $grid-gutter-s, $name-ext: 's');
+@media #{map-get($grid-breakpoint, s)} {
+  @include grid(map-get($grid-columns, l),
+                map-get($grid-gutter, s),
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, s));
+  @include grid(map-get($grid-columns, xs),
+                map-get($grid-gutter, s),
+                $name-ext: 's');
 }
 
 
-@media #{$grid-breakpoint-xs} {
-  @include grid($grid-columns-l,
-                $grid-gutter-xs,
-                $multiple: $grid-columns-l / $grid-columns-xs);
-  @include grid($grid-columns-l, $grid-gutter-xs, $name-ext: 'xs');
+@media #{map-get($grid-breakpoint, xs)} {
+  @include grid(map-get($grid-columns, l),
+                map-get($grid-gutter, xs),
+                $multiple: map-get($grid-columns, l) / map-get($grid-columns, xs));
+  @include grid(map-get($grid-columns, l),
+                map-get($grid-gutter, xs),
+                $name-ext: 'xs');
+}
+
+// Hider classes
+@each $size in map-keys($grid-breakpoint) {
+  .hide--#{$size}, .x0--#{$size} {
+    @extend %hide--#{$size};
+  }
 }
 
 
-.hide--s, .x0--s {
-  @extend %hide--s;
-}
-
-
-.hide--xs, .x0--xs {
-  @extend %hide--xs;
-}
-
-
-.hide--m, .x0--m {
-  @extend %hide--m;
-}
-
-
-.hide--l, .x0--l {
-  @extend %hide--l;
-}
-
-
-.hide--xl, .x0--xl {
-  @extend %hide--xl;
-}
-
-
+// Float grid
 #{$grid-body-class},
 #{$float-grid-body-class} {
   display: block;

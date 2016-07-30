@@ -13,316 +13,122 @@
 
 %media-padding-gutters,
 %media-gutters {
-  @media #{$grid-breakpoint-xs} {
-    padding: $grid-gutter-xs;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: $grid-gutter-s;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: $grid-gutter-m;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: $grid-gutter-l;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: $grid-gutter-xl;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: map-get($grid-gutter, $size);
+    }
   }
 }
 
 
 %media-padding-gutters-x,
 %media-gutters-x {
-  @media #{$grid-breakpoint-xs} {
-    padding: 0 $grid-gutter-xs;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: 0 $grid-gutter-s;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: 0 $grid-gutter-m;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: 0 $grid-gutter-l;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: 0 $grid-gutter-xl;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: 0 map-get($grid-gutter, $size);
+    }
   }
 }
 
 
 %media-padding-gutters-y,
 %media-gutters-y {
-  @media #{$grid-breakpoint-xs} {
-    padding: $grid-gutter-xs 0;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: $grid-gutter-s 0;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: $grid-gutter-m 0;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: $grid-gutter-l 0;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: $grid-gutter-xl 0;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: map-get($grid-gutter, $size) 0;
+    }
   }
 }
 
 
 %media-padding-gutters-half,
 %media-gutters-half {
-  @media #{$grid-breakpoint-xs} {
-    padding: round($grid-gutter-xs / 2);
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: round($grid-gutter-s / 2);
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: round($grid-gutter-m / 2);
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: round($grid-gutter-l / 2);
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: round($grid-gutter-xl / 2);
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: round(map-get($grid-gutter, $size) / 2);
+    }
   }
 }
 
 
 %media-padding-gutters-half-x,
 %media-gutters-half-x {
-  @media #{$grid-breakpoint-xs} {
-    padding: 0 round($grid-gutter-xs / 2);
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: 0 round($grid-gutter-s / 2);
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: 0 round($grid-gutter-m / 2);
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: 0 round($grid-gutter-l / 2);
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: 0 round($grid-gutter-xl / 2);
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: 0 round(map-get($grid-gutter, $size) / 2);
+    }
   }
 }
 
 
 %media-padding-gutters-half-y,
 %media-gutters-half-y {
-  @media #{$grid-breakpoint-xs} {
-    padding: round($grid-gutter-xs / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    padding: round($grid-gutter-s / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    padding: round($grid-gutter-m / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    padding: round($grid-gutter-l / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    padding: round($grid-gutter-xl / 2) 0;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      padding: round(map-get($grid-gutter, $size) / 2) 0;
+    }
   }
 }
 
 
 %media-margin-gutters {
-  @media #{$grid-breakpoint-xs} {
-    margin: $grid-gutter-xs;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: $grid-gutter-s;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: $grid-gutter-m;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: $grid-gutter-l;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: $grid-gutter-xl;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: map-get($grid-gutter, $size);
+    }
   }
 }
 
 
 %media-margin-gutters-y {
-  @media #{$grid-breakpoint-xs} {
-    margin: $grid-gutter-xs 0;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: $grid-gutter-s 0;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: $grid-gutter-m 0;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: $grid-gutter-l 0;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: $grid-gutter-xl 0;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: map-get($grid-gutter, $size) 0;
+    }
   }
 }
 
 
 %media-margin-gutters-x {
-  @media #{$grid-breakpoint-xs} {
-    margin: 0 $grid-gutter-xs;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: 0 $grid-gutter-s;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: 0 $grid-gutter-m;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: 0 $grid-gutter-l;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: 0 $grid-gutter-xl;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: 0 map-get($grid-gutter, $size);
+    }
   }
 }
 
 
 %media-margin-gutters-half {
-  @media #{$grid-breakpoint-xs} {
-    margin: round($grid-gutter-xs / 2);
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: round($grid-gutter-s / 2);
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: round($grid-gutter-m / 2);
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: round($grid-gutter-l / 2);
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: round($grid-gutter-xl / 2);
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: round(map-get($grid-gutter, $size) / 2);
+    }
   }
 }
 
 
 %media-margin-gutters-half-y {
-  @media #{$grid-breakpoint-xs} {
-    margin: round($grid-gutter-xs / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: round($grid-gutter-s / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: round($grid-gutter-m / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: round($grid-gutter-l / 2) 0;
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: round($grid-gutter-xl / 2) 0;
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: round(map-get($grid-gutter, $size) / 2) 0;
+    }
   }
 }
 
 
 %media-margin-gutters-half-x {
-  @media #{$grid-breakpoint-xs} {
-    margin: 0 round($grid-gutter-xs / 2);
-  }
-
-  @media #{$grid-breakpoint-s} {
-    margin: 0 round($grid-gutter-s / 2);
-  }
-
-  @media #{$grid-breakpoint-m} {
-    margin: 0 round($grid-gutter-m / 2);
-  }
-
-  @media #{$grid-breakpoint-l} {
-    margin: 0 round($grid-gutter-l / 2);
-  }
-
-  @media #{$grid-breakpoint-xl} {
-    margin: 0 round($grid-gutter-xl / 2);
+  @each $size in map-keys($grid-breakpoint) {
+    @media #{map-get($grid-breakpoint, $size)} {
+      margin: 0 round(map-get($grid-gutter, $size) / 2);
+    }
   }
 }
 
 
-%hide--xs {
-  @media #{$grid-breakpoint-xs} {
-    display: none;
-  }
-}
-
-
-%hide--s {
-  @media #{$grid-breakpoint-s} {
-    display: none;
-  }
-}
-
-
-%hide--m {
-  @media #{$grid-breakpoint-m} {
-    display: none;
-  }
-}
-
-
-%hide--l {
-  @media #{$grid-breakpoint-l} {
-    display: none;
-  }
-}
-
-
-%hide--xl {
-  @media #{$grid-breakpoint-xl} {
-    display: none;
+@each $size in map-keys($grid-breakpoint) {
+  %hide--#{$size} {
+    @media #{map-get($grid-breakpoint, $size)} {
+      display: none;
+    }
   }
 }

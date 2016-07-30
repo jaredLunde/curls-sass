@@ -1,28 +1,69 @@
 $MAX-Z-INDEX: 2147483647;
 $MAX-PX: 10000000px;
 
+
+// Default colors
+$blue: #2c81c6 !default;
+$dark-blue: darken($blue, 5%) !default;
+$light-blue: lighten($blue, 20%) !default;
+
+$green: #2dc483 !default;
+$dark-green: darken($green, 5%) !default;
+$light-green: lighten($green, 30%) !default;
+
+$red: #bf3048 !default;
+$dark-red: darken($red, 5%) !default;
+$light-red: lighten($red, 30%) !default;
+
+$yellow: #e0d03b !default;
+$dark-yellow: darken($yellow, 10%) !default;
+$light-yellow: lighten($yellow, 20%) !default;
+
+$orange: #e87d34 !default;
+$dark-orange: #db4e00 !default;
+$light-orange: lighten($dark-orange, 40%) !default;
+
+
+// Greys
+$lightest-grey: #f4f4f5 !default;
+$light-grey: #dbdbda !default;
+$grey: #6f6567 !default;
+$dark-grey: darken($grey, 10%) !default;
+$darkest-grey: darken($grey, 20%) !default;
+$black: darken($darkest-grey, 5%) !default;
+$white: #fefeff !default;
+
+
+// Default borders
+$light-border: rgba(0, 0, 0, 0.07) !default;
+$border: rgba(0, 0, 0, 0.12) !default;
+$dark-border: rgba(0, 0, 0, 0.24) !default;
+$border-width: 1px !default;
+$border-style: solid !default;
+
+
 // Body */
 $body-alignment: left !default;
-$body-background: #f2f2f2 !default;
+$body-background: lighten($lightest-grey, 2%) !default;
 
 
 // Links */
-$link-color: #227fc4 !default;
-$link-hover-color: #666 !default;
-$link-active-color: #666 !default;
+$link-color: $blue !default;
+$link-hover-color: $grey !default;
+$link-active-color: $grey !default;
 $link-decoration: none !default;
-$link-tap-highlight: rgba(0,0,0,0.10) !default;
-$disabled-link-color: #bbb !default;
+$link-tap-highlight: $light-border !default;
+$disabled-link-color: $dark-border !default;
 
 
 // Document text selection */
-$selection-background: #343d3b !default;
-$selection-font-color: #fff !default;
+$selection-background: $light-blue !default;
+$selection-font-color: $white !default;
 
 
 // Dividers */
-$divider-color: #dbdbdb;
-$divider-height: 1px;
+$divider-color: $border !default;
+$divider-height: 1px !default;
 
 
 // Responsive media queries */

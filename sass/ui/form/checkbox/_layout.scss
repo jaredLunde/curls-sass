@@ -29,9 +29,9 @@ $checkbox-checkmark-width: 24px;
   @extend %#{$flex-name}--x-center;
   border-width: 1px;
   border-style: solid;
-  border-color: #ccc;
-  background: #dbdbdb;
-  color: $link-color;
+  border-color: $light-border;
+  background: $light-grey;
+  color: $blue;
   border-radius: $MAX-PX;
   height: $checkbox-checkmark-height;
   width: $checkbox-checkmark-width;
@@ -66,7 +66,7 @@ $checkbox-checkmark-width: 24px;
   @extend %#{$flex-name}--y-center;
   @extend %#{$flex-name}--x-center;
   @extend %fade-in;
-  color: #fff;
+  color: $white;
   visibility: hidden;
   opacity: 0;
 
@@ -81,11 +81,11 @@ $checkbox-checkmark-width: 24px;
     @extend %fade-out;
     visibility: visible;
     opacity: 1.0;
-    color: #fff;
+    color: $white;
   }
 
   #{$checkbox-class}__box {
-    border-color: $link-color;
-    background: $link-color;
+    border-color: $blue;
+    background: $blue;
   }
 }

@@ -19,7 +19,7 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6, .type--h1 {
+h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
   text-align: $heading-text-align;
   @include font-line($heading-max-font-size,
                      $heading-line-height,
@@ -35,7 +35,7 @@ $_size: $heading-max-font-size * 0.875 * 0.875;
   #{$x} {
     @include font-line($_size, $heading-line-height);
   }
-  .type--#{$x} {
+  #{$type-class}--#{$x} {
     @extend #{$x};
   }
 }
@@ -52,44 +52,23 @@ p {
                      $family: $paragraph-font);
 }
 
-
-.type--l {
-  @include font-line($type-l-font-size, $type-l-line-height);
-
-  @media #{$phone} {
-    @include font-line($type-l-phone-font-size, $type-l-line-height);
-  }
-}
-
-
-.type--m {
-  @include font-line($type-m-font-size, $type-m-line-height);
-
-  @media #{$phone} {
-    @include font-line($type-m-phone-font-size, $type-m-line-height);
-  }
-}
-
-
-.type--s {
-  @include font-line($type-s-font-size, $type-s-line-height);
-
-  @media #{$phone} {
-    @include font-line($type-s-phone-font-size, $type-s-line-height);
-  }
-}
-
-
-.type--left {
+#{$type-class}--left {
   text-align: left;
 }
 
 
-.type--right {
+#{$type-class}--right {
   text-align: right;
 }
 
 
-.type--center {
+#{$type-class}--center {
   text-align: center;
+}
+
+
+@each $size in map-keys($type-font-size) {
+  #{$type-class}--#{$size} {
+    @extend %#{$type-name}--#{$size};
+  }
 }

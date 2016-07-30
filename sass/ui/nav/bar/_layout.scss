@@ -42,23 +42,23 @@
     @extend %#{$flex-name}--self-y-stretch;
   }
 
-  #{$dropdown-class}.dropped  #{$dropdown-class}__menu {
+  #{$dropdown-class}.dropped #{$dropdown-class}__menu {
     top: 100%;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
   }
 
   #{$button-class},
-  button:not([type=submit]),
+  button:not([type=submit]):not(#{$dropdown-class}__toggler),
   #{$button-class}-group,
   .input-group {
     @extend %media-margin-gutters-half;
   }
 
-  #{$dropdown-class}__toggler {
-    @extend %media-margin-gutters-half-y;
+  #{$dropdown-class} {
+    @extend %media-margin-gutters-half-x;
   }
-  
+
   #{$button-class}-group button:not([type=submit]),
   .input-group button:not([type=submit]) {
     margin: 0

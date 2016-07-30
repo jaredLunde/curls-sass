@@ -10,29 +10,36 @@ $grid-col-class: unquote("#{unquote(".")}#{$grid-col-name}") !default;
 $grid-body-name: #{$grid-name}__body !default;
 $grid-body-class: unquote("#{unquote(".")}#{$grid-body-name}") !default;
 
-
-$grid-gutter-xs: 8px !default;
-$grid-gutter-s: 8px !default;
-$grid-gutter-m: 16px !default;
-$grid-gutter-l: 16px !default;
-$grid-gutter-xl: 24px !default;
-
-$grid-columns-xs: 4 !default;
-$grid-columns-s: 4 !default;
-$grid-columns-m: 8 !default;
-$grid-columns-l: 12 !default;
-$grid-columns-xl: 16 !default;
-
-$grid-breakpoint-xs: $phone-s !default;
-$grid-breakpoint-s: $phone-max !default;
-$grid-breakpoint-m: $tablet-max !default;
-$grid-breakpoint-l: $desktop !default;
-$grid-breakpoint-xl: $desktop-l !default;
-
-
 $float-grid-row-name: fl-row !default;
 $float-grid-row-class: unquote("#{unquote(".")}#{$float-grid-row-name}") !default;
 $float-grid-col-name: fl-col !default;
 $float-grid-col-class: unquote("#{unquote(".")}#{$float-grid-col-name}") !default;
 $float-grid-body-name: #{$grid-name}__fl-body !default;
 $float-grid-body-class: unquote("#{unquote(".")}#{$float-grid-body-name}") !default;
+
+
+$grid-gutter: (
+  xs: 8px,
+  s: 8px,
+  m: 16px,
+  l: 16px,
+  xl: 24px,
+) !default;
+
+
+$grid-columns: (
+  xs: 4,
+  s: 4,
+  m: 8,
+  l: 12,
+  xl: 16,
+) !default;
+
+
+$grid-breakpoint: (
+  xs: $phone-s,
+  s: $phone-max,
+  m: $tablet-max,
+  l: $desktop,
+  xl: $desktop-l,
+) !default;
