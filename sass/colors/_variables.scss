@@ -1,0 +1,56 @@
+$blue: #30A9DE !default;
+$dark-blue: darken($blue, 5%) !default;
+$light-blue: lighten($blue, 15%) !default;
+
+$green: #2dc483 !default;
+$dark-green: darken($green, 5%) !default;
+$light-green: lighten($green, 30%) !default;
+
+$red: #E53A40 !default;
+$dark-red: darken($red, 10%) !default;
+$light-red: lighten($red, 10%) !default;
+
+$yellow: #ffc952 !default;
+$dark-yellow: darken($yellow, 10%) !default;
+$light-yellow: lighten($yellow, 10%) !default;
+
+$orange: #e87d34 !default;
+$dark-orange: darken($orange, 10%) !default;
+$light-orange: lighten($dark-orange, 25%) !default;
+
+
+// Greys
+$lightest-grey: #f4f4f5 !default;
+$light-grey: #dbdbda !default;
+$grey: #6f6567 !default;
+$dark-grey: darken($grey, 10%) !default;
+$darkest-grey: darken($grey, 20%) !default;
+$black: darken($darkest-grey, 5%) !default;
+$white: #fefeff !default;
+
+
+// Color map
+$colors: (
+  blue: $blue,
+  dark-blue: $dark-blue,
+  light-blue: $light-blue,
+  green: $green,
+  dark-green: $dark-green,
+  light-green: $light-green,
+  red: $red,
+  dark-red: $dark-red,
+  light-red: $light-red,
+  yellow: $yellow,
+  dark-yellow: $dark-yellow,
+  light-yellow: $light-yellow,
+  orange: $orange,
+  dark-orange: $dark-orange,
+  light-orange: $light-orange,
+  lightest-grey: $lightest-grey,
+  light-grey: $light-grey,
+  grey: $grey,
+  dark-grey: $dark-grey,
+  darkest-grey: $darkest-grey,
+  black: $black,
+  white: $white
+);

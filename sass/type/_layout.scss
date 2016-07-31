@@ -67,6 +67,13 @@ p {
 }
 
 
+@each $color in map-keys($colors) {
+  #{$type-class}--#{$color} {
+    @extend %#{$type-name}--#{$color};
+  }
+}
+
+
 @each $size in map-keys($type-font-size) {
   #{$type-class}--#{$size} {
     @extend %#{$type-name}--#{$size};

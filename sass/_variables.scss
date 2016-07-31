@@ -2,38 +2,6 @@ $MAX-Z-INDEX: 2147483647;
 $MAX-PX: 10000000px;
 
 
-// Default colors
-$blue: #2c81c6 !default;
-$dark-blue: darken($blue, 5%) !default;
-$light-blue: lighten($blue, 20%) !default;
-
-$green: #2dc483 !default;
-$dark-green: darken($green, 5%) !default;
-$light-green: lighten($green, 30%) !default;
-
-$red: #bf3048 !default;
-$dark-red: darken($red, 5%) !default;
-$light-red: lighten($red, 30%) !default;
-
-$yellow: #e0d03b !default;
-$dark-yellow: darken($yellow, 10%) !default;
-$light-yellow: lighten($yellow, 20%) !default;
-
-$orange: #e87d34 !default;
-$dark-orange: #db4e00 !default;
-$light-orange: lighten($dark-orange, 40%) !default;
-
-
-// Greys
-$lightest-grey: #f4f4f5 !default;
-$light-grey: #dbdbda !default;
-$grey: #6f6567 !default;
-$dark-grey: darken($grey, 10%) !default;
-$darkest-grey: darken($grey, 20%) !default;
-$black: darken($darkest-grey, 5%) !default;
-$white: #fefeff !default;
-
-
 // Default borders
 $light-border: rgba(0, 0, 0, 0.07) !default;
 $border: rgba(0, 0, 0, 0.12) !default;

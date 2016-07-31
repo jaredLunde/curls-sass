@@ -1,4 +1,4 @@
-#{$button-class}:not(.submit), button:not([type=submit]) {
+button {
   background: $button-background;
   color: $button-color;
   border-style: $button-border-style;
@@ -17,8 +17,8 @@
 }
 
 
-.no-touchevents #{$button-class}:not(.submit),
-.no-touchevents button:not([type=submit]):not(.submit) {
+.no-touchevents #{$button-class},
+.no-touchevents button {
   &:hover {
     @extend %#{$button-name}--hover
   }
@@ -58,6 +58,9 @@
 #{$button-class}--l .button {
   @extend %#{$button-name}--l;
 }
+
+
+@include colorized-buttons();
 
 
 #{$button-class}-group:not(button):not(.button)#{$button-class}--l {

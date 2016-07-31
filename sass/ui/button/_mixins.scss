@@ -1,0 +1,24 @@
+//  type can be one of 'font', 'bg', 'border'
+@mixin colorized-buttons($type: 'bg') {
+  @each $color in map-keys($colors) {
+    $color-val: map-get($colors, $color);
+
+    #{$button-class}--#{$color} {
+      @extend %#{$type}--#{$color};
+
+      &.active {
+        background: darken($color-val, 5%);
+      }
+    }
+
+    .no-touchevents #{$button-class}--#{$color} {
+      &:hover, &.hover {
+        background: lighten($color-val, 5%);
+      }
+
+      &:active, {
+        background: darken($color-val, 5%);
+      }
+    }
+  }
+}

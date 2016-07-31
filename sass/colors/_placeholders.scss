@@ -1,0 +1,13 @@
+@each $color in map-keys($colors) {
+  %bg--#{$color} {
+    background: map-get($colors, $color);
+  }
+
+  %border--#{$color} {
+    border-color: map-get($colors, $color);
+  }
+
+  %font--#{$color} {
+    color: map-get($colors, $color);
+  }
+}

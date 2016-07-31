@@ -9,13 +9,13 @@ $button-border-width: 1px !default;
 $button-border-radius: 3px;
 $button-line-height: 1.1;
 
-$button-hover-background: lighten($blue, 5%) !default;
+$button-hover-background: lighten($button-background, 5%) !default;
 $button-hover-color: white !default;
 $button-hover-border-color: $button-border-color !default;
 $button-hover-border-style: solid !default;
 $button-hover-border-width: 1px !default;
 
-$button-active-background: darken($blue, 5%) !default;
+$button-active-background: darken($button-background, 5%) !default;
 $button-active-color: white !default;
 $button-active-border-color: $button-border-color !default;
 $button-active-border-style: solid !default;

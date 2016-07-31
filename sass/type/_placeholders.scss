@@ -9,3 +9,10 @@
     }
   }
 }
+
+
+@each $color in map-keys($colors) {
+  %#{$type-name}--#{$color} {
+    color: map-get($colors, $color);
+  }
+}

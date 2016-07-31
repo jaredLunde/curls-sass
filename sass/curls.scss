@@ -7,9 +7,12 @@
  ***                                                                          *
  ******************************************************************************/
 // Base
+@import 'colors/index';
 @import 'variables';
 @import 'mixins';
 @import 'placeholders';
+
+
 
 /** General layout presets */
 @import 'layout';
@@ -30,4 +33,4 @@
 @import 'ui/index';
 
 /** Spacing */
-@import 'spacing/index'
+@import 'spacing/index';

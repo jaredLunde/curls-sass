@@ -101,7 +101,7 @@ input[type=search] {
 
 
 // Submit Buttons */
-button[type=submit], input[type=submit], button.submit {
+button[type=submit], input[type=submit] {
   @extend %#{$flex-name}--y-center;
   background: $submit-background;
   border: $submit-border;
