@@ -191,175 +191,177 @@
 }
 
 
-@mixin extend-flex-justify($name, $prefix: 'x-', $selectors: ()) {
-  .#{$name}--#{$prefix}left {
+@mixin extend-flex-justify($name, $prefix: 'x-', $selector: '') {
+  #{$selector}.#{$name}--#{$prefix}left {
     @extend %#{$flex-name}--x-left;
   }
 
 
-  .#{$name}--#{$prefix}right {
+  #{$selector}.#{$name}--#{$prefix}right {
     @extend %#{$flex-name}--x-right;
   }
 
 
-  .#{$name}--#{$prefix}center {
+  #{$selector}.#{$name}--#{$prefix}center {
     @extend %#{$flex-name}--x-center;
   }
 
 
-  .#{$name}--#{$prefix}around {
+  #{$selector}.#{$name}--#{$prefix}around {
     @extend %#{$flex-name}--x-around;
   }
 
 
-  .#{$name}--#{$prefix}between {
+  #{$selector}.#{$name}--#{$prefix}between {
     @extend %#{$flex-name}--x-between;
   }
 }
 
 
-@mixin extend-flex-align($name, $prefix: 'y-', $selectors: ()) {
-  .#{$name}--#{$prefix}top {
+@mixin extend-flex-align($name, $prefix: 'y-', $selector: '') {
+  #{$selector}.#{$name}--#{$prefix}top {
     @extend %#{$flex-name}--y-top;
   }
 
 
-  .#{$name}--#{$prefix}bottom {
+  #{$selector}.#{$name}--#{$prefix}bottom {
     @extend %#{$flex-name}--y-bottom;
   }
 
 
-  .#{$name}--#{$prefix}center {
+  #{$selector}.#{$name}--#{$prefix}center {
     @extend %#{$flex-name}--y-center;
   }
 
 
-  .#{$name}--#{$prefix}stretch {
+  #{$selector}.#{$name}--#{$prefix}stretch {
     @extend %#{$flex-name}--y-stretch;
   }
 
 
-  .#{$name}--#{$prefix}between {
+  #{$selector}.#{$name}--#{$prefix}between {
     @extend %#{$flex-name}--y-between;
   }
 
 
-  .#{$name}--#{$prefix}around {
+  #{$selector}.#{$name}--#{$prefix}around {
     @extend %#{$flex-name}--y-around;
   }
 
 
-  .#{$name}--#{$prefix}baseline {
+  #{$selector}.#{$name}--#{$prefix}baseline {
     @extend %#{$flex-name}--y-baseline;
   }
 }
 
 
-@mixin extend-flex-content($name, $prefix: 'content-', $selectors: ()) {
-  .#{$name}--content-top {
+@mixin extend-flex-content($name, $prefix: 'content-', $selector: null) {
+  #{$selector}.#{$name}--content-top {
     @extend %#{$flex-name}--#{$prefix}top;
   }
 
 
-  .#{$name}--content-bottom {
+  #{$selector}.#{$name}--content-bottom {
     @extend %#{$flex-name}--#{$prefix}bottom;
   }
 
 
-  .#{$name}--content-center {
+  #{$selector}.#{$name}--content-center {
     @extend %#{$flex-name}--#{$prefix}center;
   }
 
 
-  .#{$name}--content-stretch {
+  #{$selector}.#{$name}--content-stretch {
     @extend %#{$flex-name}--#{$prefix}stretch;
   }
 
 
-  .#{$name}--content-between {
+  #{$selector}.#{$name}--content-between {
     @extend %#{$flex-name}--#{$prefix}between;
   }
 
 
-  .#{$name}--content-around {
+  #{$selector}.#{$name}--content-around {
     @extend %#{$flex-name}--#{$prefix}around;
   }
 }
 
 
-@mixin extend-flex-self($name, $prefix: 'self-y-', $selectors: ()) {
-  .#{$name}--#{$prefix}top {
+@mixin extend-flex-self($name, $prefix: 'self-y-', $selector: null) {
+  #{$selector}.#{$name}--#{$prefix}top {
     @extend %#{$flex-name}--self-y-top;
   }
 
 
-  .#{$name}--#{$prefix}bottom {
+  #{$selector}.#{$name}--#{$prefix}bottom {
     @extend %#{$flex-name}--self-y-bottom;
   }
 
 
-  .#{$name}--#{$prefix}center {
+  #{$selector}.#{$name}--#{$prefix}center {
     @extend %#{$flex-name}--self-y-center;
   }
 
 
-  .#{$name}--#{$prefix}stretch {
+  #{$selector}.#{$name}--#{$prefix}stretch {
     @extend %#{$flex-name}--self-y-stretch;
   }
 
 
-  .#{$name}--#{$prefix}baseline {
+  #{$selector}.#{$name}--#{$prefix}baseline {
     @extend %#{$flex-name}--self-y-baseline;
   }
 }
 
 
-@mixin extend-flex-base($name, $selectors: ()) {
-  .#{$name}--fixed {
+@mixin extend-flex-base($name, $selector: '') {
+  #{$selector}.#{$name}--fixed {
     @extend %#{$flex-name}--fixed;
   }
 
 
-  .#{$name}--fluid {
+  #{$selector}.#{$name}--fluid {
     @extend %#{$flex-name}--fixed;
   }
 
 
-  .#{$name}--first {
+  #{$selector}.#{$name}--first {
     @extend %#{$flex-name}--first;
   }
 
 
-  .#{$name}--last {
+  #{$selector}.#{$name}--last {
     @extend %#{$flex-name}--last;
   }
 
 
-  .#{$name}--grow {
+  #{$selector}.#{$name}--grow {
     @extend %#{$flex-name}--last;
   }
 
 
-  .#{$name}--shrink {
+  #{$selector}.#{$name}--shrink {
     @extend %#{$flex-name}--shrink;
   }
 
 
-  .#{$name}--reverse {
+  #{$selector}.#{$name}--reverse {
     @extend %#{$flex-name}--reverse;
   }
 
 
-  .#{$name}--nowrap {
+  #{$selector}.#{$name}--nowrap {
     @extend %#{$flex-name}--nowrap;
   }
 }
 
 
-@mixin extend-flex($name, $selectors: ()) {
-  @include extend-flex-base($name, $selectors: $selectors);
-  @include extend-flex-justify($name,  $selectors: $selectors);
-  @include extend-flex-align($name,  $selectors: $selectors);
-  @include extend-flex-content($name,  $selectors: $selectors);
-  @include extend-flex-self($name,  $selectors: $selectors);
+@mixin extend-flex($name, $selectors: ('',)) {
+  @each $selector in $selectors {
+    @include extend-flex-base($name, $selector: $selector);
+    @include extend-flex-justify($name,  $selector: $selector);
+    @include extend-flex-align($name,  $selector: $selector);
+    @include extend-flex-content($name,  $selector: $selector);
+    @include extend-flex-self($name,  $selector: $selector);
+  }
 }

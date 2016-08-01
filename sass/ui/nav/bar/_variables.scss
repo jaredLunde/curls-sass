@@ -3,7 +3,7 @@ $navbar-class: unquote("#{unquote(".")}#{$navbar-name}") !default;
 $navbar-background: $white !default;
 $navbar-border-color: $border !default;
 $navbar-border-style: solid !default;
-$navbar-border-width: 1px 0 !default;
+$navbar-border-width: $border-width 0 !default;
 $navbar-padding: 0 0 !default;
 $navbar-width: 100% !default;
 

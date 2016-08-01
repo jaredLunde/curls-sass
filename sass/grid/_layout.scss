@@ -14,10 +14,6 @@
 }
 
 
-// Flex modifiers
-@include extend-flex($grid-name)
-
-
 /** Cross-browser grids */
 #{$float-grid-col-class},
 #{$grid-col-class} {
@@ -101,7 +97,7 @@
     $breakpoint: 'xl';
     @include make-gutter($x, $gutter-size, $breakpoint);
   }
-  
+
   @include grid(map-get($grid-columns, xl),
                 map-get($grid-gutter, xl),
                 $name-ext: 'xl',
@@ -161,3 +157,7 @@
 #{$float-grid-col-class}--nopad  {
   padding: 0;
 }
+
+
+// Flex modifiers
+@include extend-flex($grid-name, ('', '.col', '.row'));

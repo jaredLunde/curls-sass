@@ -74,4 +74,4 @@
 }
 
 
-@include extend-flex($paginate-name);
+@include extend-flex($paginate-name, ($paginate-class));

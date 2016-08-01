@@ -6,7 +6,8 @@
   &.dropped {
     #{$dropdown-class}__menu {
       @extend %drop-out--fast;
-      top: 95%;
+      top: 100%;
+      margin-top: -1px;
       visibility: visible;
       @include opacity(1.0);
     }
@@ -14,10 +15,31 @@
 }
 
 
+.input-group, #{$button-class}-group {
+  & > #{$dropdown-class}:first-child:not(:last-child) #{$dropdown-class}__toggler {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+  & > #{$dropdown-class}:last-child:not(:first-child) #{$dropdown-class}__toggler {
+    border-left: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  & > #{$dropdown-class}:not(:first-child):not(:last-child) #{$dropdown-class}__toggler {
+    border-left: 0 !important;
+    border-radius: 0 !important;
+  }
+  #{$dropdown-class} {
+    margin: 0;
+  }
+}
+
+
 #{$dropdown-class}__caret.fa-chevron-down,
-#{$dropdown-class}__caret.fa-caret-down {
+#{$dropdown-class}__caret.fa-caret-down,
+#{$dropdown-class}__caret.fa-angle-down {
   @extend %#{$flex-name}--self-y-center;
-  @include font-size(10px);
+  @extend %#{$type-name}--s;
 }
 
 
@@ -25,13 +47,14 @@
   @extend %hardware-accel;
   @extend %transform--fast;
   left: 6px;
-  top: -1px;
+  top: 1px;
+  color: $dropdown-toggler-color;
   position: relative;
 }
 
 
 .dropped #{$dropdown-class}__caret {
-  top: 0px;
+  top: 1px;
   @include transform(rotate(180deg));
 }
 
@@ -64,7 +87,7 @@
 
 #{$dropdown-class}__toggler,
 button#{$dropdown-class}__toggler,
-.button#{$dropdown-class}__toggler {
+#{$button-class}#{$dropdown-class}__toggler {
   @extend %#{$flex-name}--y-center;
   display: inline-block;
   background: $dropdown-toggler-background;
@@ -177,3 +200,6 @@ button#{$dropdown-class}__toggler,
                      $color: $dropdown-heading-color,
                      $weight: $dropdown-heading-weight);
 }
+
+
+@include extend-flex(#{$dropdown-name}, (#{$dropdown-class}))

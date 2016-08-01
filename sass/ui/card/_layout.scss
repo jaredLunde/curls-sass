@@ -104,4 +104,4 @@
 }
 
 
-@include extend-flex($card-name);
+@include extend-flex($card-name, ($card-class));

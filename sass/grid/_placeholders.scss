@@ -25,7 +25,8 @@
 %media-gutters-x {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      padding: 0 map-get($grid-gutter, $size);
+      padding-left: map-get($grid-gutter, $size);
+      padding-right: map-get($grid-gutter, $size);
     }
   }
 }
@@ -35,7 +36,8 @@
 %media-gutters-y {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      padding: map-get($grid-gutter, $size) 0;
+      padding-top: map-get($grid-gutter, $size);
+      padding-bottom: map-get($grid-gutter, $size);
     }
   }
 }
@@ -55,7 +57,8 @@
 %media-gutters-half-x {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      padding: 0 round(map-get($grid-gutter, $size) / 2);
+      padding-left: round(map-get($grid-gutter, $size) / 2);
+      padding-right: round(map-get($grid-gutter, $size) / 2);
     }
   }
 }
@@ -65,7 +68,8 @@
 %media-gutters-half-y {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      padding: round(map-get($grid-gutter, $size) / 2) 0;
+      padding-top: round(map-get($grid-gutter, $size) / 2);
+      padding-bottom: round(map-get($grid-gutter, $size) / 2);
     }
   }
 }
@@ -83,7 +87,8 @@
 %media-margin-gutters-y {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      margin: map-get($grid-gutter, $size) 0;
+      margin-top: map-get($grid-gutter, $size);
+      margin-bottom: map-get($grid-gutter, $size);
     }
   }
 }
@@ -92,7 +97,8 @@
 %media-margin-gutters-x {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      margin: 0 map-get($grid-gutter, $size);
+      margin-left: map-get($grid-gutter, $size);
+      margin-right: map-get($grid-gutter, $size);
     }
   }
 }
@@ -110,7 +116,8 @@
 %media-margin-gutters-half-y {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      margin: round(map-get($grid-gutter, $size) / 2) 0;
+      margin-top: round(map-get($grid-gutter, $size) / 2);
+      margin-bottom: round(map-get($grid-gutter, $size) / 2);
     }
   }
 }
@@ -119,7 +126,8 @@
 %media-margin-gutters-half-x {
   @each $size in map-keys($grid-breakpoint) {
     @media #{map-get($grid-breakpoint, $size)} {
-      margin: 0 round(map-get($grid-gutter, $size) / 2);
+      margin-left: round(map-get($grid-gutter, $size) / 2);
+      margin-right: round(map-get($grid-gutter, $size) / 2);
     }
   }
 }

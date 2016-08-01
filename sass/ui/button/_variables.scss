@@ -1,11 +1,11 @@
-$button-name: 'button' !default;
+$button-name: 'btn' !default;
 $button-class: unquote("#{unquote(".")}#{$button-name}") !default;
 
 $button-background: $blue !default;
 $button-color: #fff !default;
 $button-border-color: $border !default;
 $button-border-style: solid !default;
-$button-border-width: 1px !default;
+$button-border-width: $border-width !default;
 $button-border-radius: 3px;
 $button-line-height: 1.1;
 
@@ -13,13 +13,13 @@ $button-hover-background: lighten($button-background, 5%) !default;
 $button-hover-color: white !default;
 $button-hover-border-color: $button-border-color !default;
 $button-hover-border-style: solid !default;
-$button-hover-border-width: 1px !default;
+$button-hover-border-width: $border-width !default;
 
 $button-active-background: darken($button-background, 5%) !default;
 $button-active-color: white !default;
 $button-active-border-color: $button-border-color !default;
 $button-active-border-style: solid !default;
-$button-active-border-width: 1px !default;
+$button-active-border-width: $border-width !default;
 
 $button-s-font-size: 14px !default;
 $button-m-font-size: 16px !default;

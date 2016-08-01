@@ -7,7 +7,7 @@ $paginate-font-weight: 400 !default;
 $paginate-link-color: $link-color !default;
 $paginate-link-hover-color: $link-hover-color !default;
 $paginate-link-class: unquote("#{unquote(".")}#{$paginate-name}__link") !default;
-$paginate-link-border-width: 1px !default;
+$paginate-link-border-width: $border-width !default;
 $paginate-link-border-style: solid !default;
 $paginate-link-border-color: rgba(0, 0, 0, 0.14) !default;
 $paginate-link-background: $white !default;

@@ -38,29 +38,29 @@
     @extend %#{$flex-name}--self-y-center;
   }
 
-  #{$dropdown-class} {
+  & > #{$dropdown-class} {
     @extend %#{$flex-name}--self-y-stretch;
   }
 
-  #{$dropdown-class}.dropped #{$dropdown-class}__menu {
-    top: 100%;
+  & > #{$dropdown-class}.dropped #{$dropdown-class}__menu {
+    margin-top: 0;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
   }
 
-  #{$button-class},
-  button:not([type=submit]):not(#{$dropdown-class}__toggler),
-  #{$button-class}-group,
+  & > #{$button-class},
+  & > button:not([type=submit]):not(#{$dropdown-class}__toggler),
+  & > #{$button-class}-group,
   .input-group {
     @extend %media-margin-gutters-half;
   }
 
-  #{$dropdown-class} {
+  & > #{$dropdown-class} {
     @extend %media-margin-gutters-half-x;
   }
 
-  #{$button-class}-group button:not([type=submit]),
-  .input-group button:not([type=submit]) {
+  & > #{$button-class}-group button:not([type=submit]),
+  & > .input-group button:not([type=submit]) {
     margin: 0
   }
 }
@@ -143,6 +143,6 @@ h1, h2, h3, h4, h5, h6,
 }
 
 
-@include extend-flex-align($navbar-name);
-@include extend-flex-justify($navbar-name);
-@include extend-flex-self($navbar-name, '');
+@include extend-flex-align($navbar-name, $selector: $navbar-class);
+@include extend-flex-justify($navbar-name, $selector: $navbar-class);
+@include extend-flex-self($navbar-name, $selector: $navbar-class);

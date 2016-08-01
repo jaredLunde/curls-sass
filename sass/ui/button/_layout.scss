@@ -8,11 +8,11 @@ button {
   line-height: $button-line-height;
 
   &.hover {
-    @extend %#{$button-name}--hover
+    @extend %#{$button-name}--hover;
   }
 
   &.active {
-    @extend %#{$button-name}--active
+    @extend %#{$button-name}--active;
   }
 }
 
@@ -20,42 +20,42 @@ button {
 .no-touchevents #{$button-class},
 .no-touchevents button {
   &:hover {
-    @extend %#{$button-name}--hover
+    @extend %#{$button-name}--hover;
   }
 
   &:active {
-    @extend %#{$button-name}--active
+    @extend %#{$button-name}--active;
   }
 }
 
 
 #{$button-class}--s,
 #{$button-class}--s button,
-#{$button-class}--s .button {
+#{$button-class}--s #{$button-class} {
   @extend %#{$button-name}--s;
 }
 
 
-#{$button-class}-group:not(button):not(.button)#{$button-class}--s {
+#{$button-class}-group:not(button):not(#{$button-class})#{$button-class}--s {
   padding: 0;
 }
 
 
 #{$button-class}--m,
 #{$button-class}--m button,
-#{$button-class}--m .button {
+#{$button-class}--m #{$button-class} {
   @extend %#{$button-name}--m;
 }
 
 
-#{$button-class}-group:not(button):not(.button)#{$button-class}--m {
+#{$button-class}-group:not(button):not(#{$button-class})#{$button-class}--m {
   padding: 0;
 }
 
 
 #{$button-class}--l,
 #{$button-class}--l button,
-#{$button-class}--l .button {
+#{$button-class}--l #{$button-class} {
   @extend %#{$button-name}--l;
 }
 
@@ -63,7 +63,7 @@ button {
 @include colorized-buttons();
 
 
-#{$button-class}-group:not(button):not(.button)#{$button-class}--l {
+#{$button-class}-group:not(button):not(#{$button-class})#{$button-class}--l {
   padding: 0;
 }
 
@@ -88,3 +88,6 @@ button {
     @extend %#{$flex-name}--fluid;
   }
 }
+
+
+@include extend-flex(#{$button-name}-group, (#{$button-class}-group));
