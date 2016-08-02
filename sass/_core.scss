@@ -1,14 +1,9 @@
 /**
  ** Core
  **/
-@import 'colors/index';
+@import 'colors/variables';
+@import 'type/variables';
 @import 'variables';
 @import 'mixins';
 @import 'placeholders';
-
-/** Flexible containers (.flex) */
-@import 'flexibility/index';
-
-// Typography
-@import 'type/variables';
-@import 'type/placeholders';
+@include placeholders-init();

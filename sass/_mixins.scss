@@ -25,46 +25,18 @@
 }
 
 
-@mixin border-radius($radius) {
-  border-radius: $radius;
-}
-
-
-// DEPRECATED! Use `@extend %hardware-accel` instead */
-@mixin hardware-optimize() {
-  @include prefix((transform: translateZ(0),
-                   backface-visibility: hidden,
-                   perspective: 1000),
-                  webkit moz ms);
-  @include prefix((transform: translate3d(0, 0, 0)), webkit moz ms);
-}
-
-
 @mixin transform($style...) {
-  -ms-transform: $style; /* IE 9 */
-  -webkit-transform: $style; /* Chrome, Safari, Opera */
-  transform: $style;
+  @include prefix((transform: $style), ms webkit);
 }
 
 
 @mixin transition($style...) {
-  -webkit-transition: $style;
-  -moz-transition: $style;
-  -ms-transition: $style;
-  -o-transition: $style;
-  transition: $style;
+  @include prefix((transition: $style), webkit moz ms o);
 }
 
 
 @mixin box-shadow($style) {
-  -webkit-box-shadow: $style;
-     -moz-box-shadow: $style;
-      box-shadow: $style;
-}
-
-
-@mixin default-box-shadow() {
-  @include box-shadow(0px 2px 5px 0px rgba(0,0,0,0.33))
+  @include prefix((box-shadow: $style), webkit moz);
 }
 
 
@@ -125,46 +97,6 @@
 }
 
 
-@mixin centered($width:null, $position:null) {
-  @if $width {
-    width: $width;
-  }
-  @if $position {
-    position: $position;
-  }
-  left: 0;
-  right: 0;
-  display: block;
-  margin: 0 auto;
-}
-
-
-$image-path: '/images' !default;
-$fallback-extension: 'png' !default;
-$retina-suffix: '@2x';
-@mixin background-image($name, $size:false){
-  background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
-  @media only screen and (-moz-min-device-pixel-ratio: 1.5),
-  only screen and (-o-min-device-pixel-ratio: 3/2), only screen and
-  (-webkit-min-device-pixel-ratio: 1.5), only screen and
-  (min-device-pixel-ratio: 1.5) {
-    background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
-    background-image: url(#{$image-path}/#{$name}.svg);
-  }
-  background-image: url(#{$image-path}/#{$name}.svg);
-  @if($size){
-    background-size: $size;
-  }
-}
-
-
-@mixin opacity($opacity) {
-  opacity: $opacity;
-  $opacity-ie: $opacity * 100;
-  filter: alpha(opacity=$opacity-ie); //IE8
-}
-
-
 @mixin alpha-attribute($attribute, $color, $background) {
   $percent: alpha($color) * 100%;
   $opaque: opacify($color, 1);
@@ -175,13 +107,8 @@ $retina-suffix: '@2x';
 
 
 @mixin blur($size) {
-  filter: blur($size);
-  -webkit-filter: blur($size);
-  -moz-filter: blur($size);
-  -o-filter: blur($size);
-  -ms-filter: blur($size);
   filter: url(blur.svg#blur);
-  filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='20');
+  @include prefix((blur: $size), webkit moz o ms);
 }
 
 

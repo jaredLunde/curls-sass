@@ -1,5 +1,11 @@
-@for $x from 1 through $columns-max-count {
-  %#{$columns-name}--#{$x} {
-    @include columns($x, $columns-width);
+@mixin columns-placeholders-init() {
+  @if not global-variable-exists(-COLUMNS-PLACEHOLDERS-LOADED) {
+    $-COLUMNS-PLACEHOLDERS-LOADED: true !global;
+
+    @for $x from 1 through $columns-max-count {
+      %#{$columns-name}--#{$x} {
+        @include columns($x, $columns-width);
+      }
+    }
   }
 }

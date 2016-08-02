@@ -1,0 +1,25 @@
+/**
+ ** Button (.btn)
+ **/
+@import '../../core';
+
+@import '../../colors/mixins';
+@import '../../colors/placeholders';
+@include colors-placeholders-init()
+
+@import '../../flexibility/variables';
+@import '../../flexibility/mixins';
+@import '../../flexibility/placeholders';
+@include flex-placeholders-init();
+
+@import '../form/input-group/core';
+@include input-group-init();
+
+@import 'variables';
+@import 'mixins';
+
+@import 'placeholders';
+@include button-placeholders-init();
+
+@import 'layout';
+@include button-init();

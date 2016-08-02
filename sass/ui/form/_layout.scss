@@ -1,189 +1,152 @@
-// Resets */
-input[type=text],
-input[type=email],
-input[type=tel],
-input[type=url],
-input[type=search],
-input[type=submit],
-input[type=date],
-input[type=password],
-textarea,
-button {
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  margin: 0;
-}
+@mixin form-init() {
+  @if not global-variable-exists(-FORM-LOADED) {
+    $-FORM-LOADED: true !global;
+    // Resets */
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=url],
+    input[type=search],
+    input[type=submit],
+    input[type=date],
+    input[type=password],
+    textarea,
+    button {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      margin: 0;
+    }
 
 
-button::-moz-focus-inner {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
+    button::-moz-focus-inner {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
 
-:focus { outline: 0 }
+    :focus { outline: 0 }
 
-input[type=date] {
-    min-height: $input-text-line-height;
-}
-
-
-select {
-  @include font-line($input-text-font-size, $input-text-line-height,
-                     $color: $input-text-font-color,
-                     $weight: $input-text-font-weight,
-                     $family: $input-text-font);
-}
+    input[type=date] {
+        min-height: $input-text-line-height;
+    }
 
 
-// Text inputs */
-input[type=text],
-input[type=email],
-input[type=tel],
-input[type=number],
-input[type=url],
-input[type=password],
-input[type=date],
-input[type=search] {
-  border-radius: $input-text-border-radius;
-  background: $input-text-background;
-  padding: $input-text-padding-top $input-text-padding-right
-           $input-text-padding-bottom $input-text-padding-left;
-  margin: $input-text-margin;
-  border: $input-text-border;
-  width: $input-text-width;
-  @include font-line($input-text-font-size,
-                     $input-text-line-height,
-                     $color: $input-text-font-color,
-                     $weight: $input-text-font-weight,
-                     $family: $input-text-font);
-}
+    select {
+      @include font-line($input-text-font-size, $input-text-line-height,
+                         $color: $input-text-font-color,
+                         $weight: $input-text-font-weight,
+                         $family: $input-text-font);
+    }
 
 
-.input-group {
-  @extend %#{$flex-name};
-  @extend %#{$flex-name}--nowrap;
-  @extend %#{$flex-name}--y-stretch;
-  @extend %#{$flex-name}--x-center;
-  position: relative;
+    // Text inputs */
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=number],
+    input[type=url],
+    input[type=password],
+    input[type=date],
+    input[type=search] {
+      border-radius: $input-text-border-radius;
+      background: $input-text-background;
+      padding: $input-text-padding-top $input-text-padding-right
+               $input-text-padding-bottom $input-text-padding-left;
+      margin: $input-text-margin;
+      border: $input-text-border;
+      width: $input-text-width;
+      @include font-line($input-text-font-size,
+                         $input-text-line-height,
+                         $color: $input-text-font-color,
+                         $weight: $input-text-font-weight,
+                         $family: $input-text-font);
+    }
 
-  input {
-    @extend %#{$flex-name}--fluid;
+
+    // Submit Buttons */
+    button[type=submit], input[type=submit] {
+      @extend %#{$flex-name}--y-center;
+      background: $submit-background;
+      border: $submit-border;
+      padding: $submit-padding-top $submit-padding-right
+               $submit-padding-bottom $submit-padding-left;
+      margin: $submit-margin;
+      border-radius: $submit-border-radius;
+      @include font-line($submit-font-size, $submit-line-height,
+                         $color: $submit-font-color,
+                         $weight: $submit-font-weight,
+                         $family: $submit-font);
+
+      & > * {
+        @extend %#{$flex-name};
+      }
+    }
+
+
+    .no-touchevents button[type=submit],
+    .no-touchevents input[type=submit] {
+      &:hover {
+        cursor: pointer;
+        background: $submit-background-hover;
+        color: $submit-font-color;
+      }
+
+      &:active {
+        background: $submit-background-active;
+        color: $submit-font-color;
+      }
+    }
+
+
+    // Textareas */
+    textarea {
+      background: $textarea-background;
+      padding: $textarea-padding-top $textarea-padding-right
+               $textarea-padding-bottom $textarea-padding-left;
+      margin: $textarea-margin;
+      border: $textarea-border;
+      border-radius: $textarea-border-radius;
+      @include font-line($textarea-font-size, $textarea-line-height,
+                         $color: $textarea-font-color,
+                         $weight: $textarea-font-weight,
+                         $family: $textarea-font);
+    }
+
+
+    // Placeholders */
+    .placeholder {
+      opacity: $placeholder-opacity;
+      @include font-line($placeholder-font-size,
+                         $placeholder-line-height,
+                         $color: $placeholder-font-color,
+                         $weight: $placeholder-font-weight,
+                         $family: $placeholder-font);
+    }
+
+
+    *::-webkit-input-placeholder {
+      /* Chrome + Safari */
+      @extend .placeholder;
+    }
+
+
+    *:-moz-placeholder {
+      /* FF 4-18 */
+      @extend .placeholder;
+    }
+
+
+    *::-moz-placeholder {
+      /* FF 19+ */
+      @extend .placeholder;
+    }
+
+
+    *:-ms-input-placeholder {
+      /* IE 10+ */
+      @extend .placeholder;
+    }
   }
-
-  label, .input-group__member {
-    @extend input[type=text];
-    background: darken($input-text-background, 5%);
-  }
-
-  & > * {
-    @extend %#{$flex-name}--fixed;
-    @extend %#{$flex-name}--y-center;
-    margin: 0;
-  }
-
-  & > *:first-child:not(:last-child) {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
-
-  & > *:last-child:not(:first-child) {
-    border-left: 0 !important;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-  }
-  & > *:not(:first-child):not(:last-child) {
-    border-left: 0 !important;
-    border-radius: 0 !important;
-  }
-}
-
-
-@include extend-flex('input-group', ('.input-group'));
-
-
-// Submit Buttons */
-button[type=submit], input[type=submit] {
-  @extend %#{$flex-name}--y-center;
-  background: $submit-background;
-  border: $submit-border;
-  padding: $submit-padding-top $submit-padding-right
-           $submit-padding-bottom $submit-padding-left;
-  margin: $submit-margin;
-  border-radius: $submit-border-radius;
-  @include font-line($submit-font-size, $submit-line-height,
-                     $color: $submit-font-color,
-                     $weight: $submit-font-weight,
-                     $family: $submit-font);
-
-  & > * {
-    @extend %#{$flex-name};
-  }
-}
-
-
-.no-touchevents button[type=submit],
-.no-touchevents input[type=submit] {
-  &:hover {
-    cursor: pointer;
-    background: $submit-background-hover;
-    color: $submit-font-color;
-  }
-
-  &:active {
-    background: $submit-background-active;
-    color: $submit-font-color;
-  }
-}
-
-
-// Textareas */
-textarea {
-  background: $textarea-background;
-  padding: $textarea-padding-top $textarea-padding-right
-           $textarea-padding-bottom $textarea-padding-left;
-  margin: $textarea-margin;
-  border: $textarea-border;
-  border-radius: $textarea-border-radius;
-  @include font-line($textarea-font-size, $textarea-line-height,
-                     $color: $textarea-font-color,
-                     $weight: $textarea-font-weight,
-                     $family: $textarea-font);
-}
-
-
-// Placeholders */
-.placeholder {
-  @include opacity($placeholder-opacity);
-  @include font-line($placeholder-font-size,
-                     $placeholder-line-height,
-                     $color: $placeholder-font-color,
-                     $weight: $placeholder-font-weight,
-                     $family: $placeholder-font);
-}
-
-
-*::-webkit-input-placeholder {
-  /* Chrome + Safari */
-  @extend .placeholder;
-}
-
-
-*:-moz-placeholder {
-  /* FF 4-18 */
-  @extend .placeholder;
-}
-
-
-*::-moz-placeholder {
-  /* FF 19+ */
-  @extend .placeholder;
-}
-
-
-*:-ms-input-placeholder {
-  /* IE 10+ */
-  @extend .placeholder;
 }

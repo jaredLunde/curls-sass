@@ -1,36 +1,41 @@
-@each $size in map-keys($type-font-size) {
-  %#{$type-name}--#{$size} {
-    @include font-line(map-get($type-font-size, $size),
-                       map-get($type-line-height, $size));
+@mixin type-placeholders-init() {
+  @if not global-variable-exists(-TYPE-PLACEHOLDERS-LOADED) {
+    $-TYPE-PLACEHOLDERS-LOADED: true !global;
+    @each $size in map-keys($type-font-size) {
+      %#{$type-name}--#{$size} {
+        @include font-line(map-get($type-font-size, $size),
+                           map-get($type-line-height, $size));
 
-    @media #{$phone} {
-      @include font-line(map-get($type-font-size-phone, $size),
-                         map-get($type-line-height-phone, $size));
+        @media #{$phone} {
+          @include font-line(map-get($type-font-size-phone, $size),
+                             map-get($type-line-height-phone, $size));
+        }
+      }
+    }
+
+
+    @each $color in map-keys($colors) {
+      %#{$type-name}--#{$color} {
+        color: map-get($colors, $color);
+      }
+    }
+
+
+    %#{$type-name}--left {
+      text-align: left;
+      justify-content: left;
+    }
+
+
+    %#{$type-name}--right {
+      text-align: right;
+      justify-content: right;
+    }
+
+
+    %#{$type-name}--center {
+      text-align: center;
+      justify-content: center;
     }
   }
-}
-
-
-@each $color in map-keys($colors) {
-  %#{$type-name}--#{$color} {
-    color: map-get($colors, $color);
-  }
-}
-
-
-%#{$type-name}--left {
-  text-align: left;
-  justify-content: left;
-}
-
-
-%#{$type-name}--right {
-  text-align: right;
-  justify-content: right;
-}
-
-
-%#{$type-name}--center {
-  text-align: center;
-  justify-content: center;
 }

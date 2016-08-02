@@ -1,6 +1,12 @@
-#{$flex-class} {
-  @extend %#{$flex-name};
+@mixin flex-init() {
+  @if not global-variable-exists(-FLEX-LOADED) {
+    $-FLEX-LOADED: true !global;
+
+    #{$flex-class} {
+      @extend %#{$flex-name};
+    }
+
+
+    @include extend-flex($flex-name);
+  }
 }
-
-
-@include extend-flex($flex-name);

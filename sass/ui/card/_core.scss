@@ -1,0 +1,22 @@
+/**
+ ** Card (.card)
+ **/
+@import '../../core';
+@import '../../flexibility/variables';
+@import '../../flexibility/mixins';
+@import '../../flexibility/placeholders';
+@include flex-placeholders-init();
+
+@import '../../grid/variables';
+@import '../../grid/placeholders';
+@include grid-placeholders-init();
+
+@import '../nav/bar/variables';
+@import '../button/variables';
+@import 'variables';
+
+@import 'placeholders';
+@include card-placeholders-init();
+
+@import 'layout';
+@include card-init();

@@ -1,8 +1,7 @@
-$-GRID-PLACEHOLDERS-LOADED: false;
 @mixin grid-placeholders-init() {
-  @if not $-GRID-PLACEHOLDERS-LOADED {
-    $-GRID-PLACEHOLDERS-LOADED: true;
-    
+  @if not global-variable-exists(-GRID-PLACEHOLDERS-LOADED) {
+    $-GRID-PLACEHOLDERS-LOADED: true !global;
+
     %#{$grid-row-name} {
       @extend %#{$flex-name};
       @include flex-wrap(wrap);

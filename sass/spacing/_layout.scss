@@ -1,4 +1,10 @@
-@each $x in $spacing-sizes {
-  @include margin-group($x);
-  @include padding-group($x);
+@mixin spacing-init() {
+  @if not global-variable-exists(-SPACING-LOADED) {
+    $SPACING-LOADED: true;
+
+    @each $x in $spacing-sizes {
+      @include margin-group($x);
+      @include padding-group($x);
+    }
+  }
 }

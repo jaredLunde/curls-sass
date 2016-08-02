@@ -1,8 +1,7 @@
-$-GRID-LOADED: false;
 @mixin grid-init() {
-  @if not $-GRID-LOADED {
+  @if not global-variable-exists(-GRID-LOADED) {
     $-GRID-LOADED: true !global;
-    
+
     #{$grid-row-class} {
       @extend %#{$grid-row-name};
     }

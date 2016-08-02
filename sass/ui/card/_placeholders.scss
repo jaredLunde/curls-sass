@@ -1,8 +1,14 @@
-%#{$card-name} {
-  @extend %#{$flex-name};
-  background: $card-background;
-  border-width: $card-border-width;
-  border-style: $card-border-style;
-  border-color: $card-border-color;
-  @include flex-direction(column);
+@mixin card-placeholders-init() {
+  @if not global-variable-exists(-CARD-PLACEHOLDERS-LOADED) {
+    $-CARD-PLACEHOLDERS-LOADED: true !global;
+
+    %#{$card-name} {
+      @extend %#{$flex-name};
+      background: $card-background;
+      border-width: $card-border-width;
+      border-style: $card-border-style;
+      border-color: $card-border-color;
+      @include flex-direction(column);
+    }
+  }
 }

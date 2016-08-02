@@ -1,163 +1,170 @@
-%#{$flex-name} {
-  @include display-flex;
-}
+@mixin flex-placeholders-init() {
+  @if not global-variable-exists(-FLEX-PLACEHOLDERS-LOADED) {
+    $-FLEX-PLACEHOLDERS-LOADED: true !global;
+
+    %#{$flex-name} {
+      @include display-flex;
+    }
 
 
-%#{$flex-name}--fixed {
-  @include flex-grow(0);
-  @include flex-shrink(0);
-  @include flex-basis(auto);
-}
+    %#{$flex-name}--fixed {
+      @include flex-grow(0);
+      @include flex-shrink(0);
+      @include flex-basis(auto);
+    }
 
 
-%#{$flex-name}--fluid {
-  @extend %#{$flex-name}--fixed;
-  @include flex-grow(1);
-}
+    %#{$flex-name}--fluid {
+      @extend %#{$flex-name}--fixed;
+      @include flex-grow(1);
+    }
 
 
-%#{$flex-name}--first {
-  @include order(-1);
-}
+    %#{$flex-name}--first {
+      @include order(-1);
+    }
 
 
-%#{$flex-name}--last {
-  @include order(1);
-}
+    %#{$flex-name}--last {
+      @include order(1);
+    }
 
 
-%#{$flex-name}--grow {
-  @include flex-grow(1);
-  @include flex-shrink(0);
-}
+    %#{$flex-name}--grow {
+      @include flex-grow(1);
+      @include flex-shrink(0);
+    }
 
 
-%#{$flex-name}--shrink {
-  @include flex-grow(0);
-  @include flex-shrink(1);
-}
+    %#{$flex-name}--shrink {
+      @include flex-grow(0);
+      @include flex-shrink(1);
+    }
 
 
-%#{$flex-name}--reverse {
-  @include flex-wrap(wrap-reverse);
-}
+    %#{$flex-name}--reverse {
+      @include flex-wrap(wrap-reverse);
+    }
 
 
-%#{$flex-name}--nowrap {
-  @include flex-wrap(nowrap);
-}
+    %#{$flex-name}--nowrap {
+      @include flex-wrap(nowrap);
+    }
 
 
-%#{$flex-name}--x-left {
-  @include justify-content(flex-start);
-}
+    %#{$flex-name}--x-left {
+      @include justify-content(flex-start);
+    }
 
 
-%#{$flex-name}--x-right {
-  @include justify-content(flex-end);
-}
+    %#{$flex-name}--x-right {
+      @include justify-content(flex-end);
+    }
 
 
-%#{$flex-name}--x-center {
-  @include justify-content(center);
-}
+    %#{$flex-name}--x-center {
+      @include justify-content(center);
+    }
 
 
-%#{$flex-name}--x-around {
-  @include justify-content(space-around);
-}
+    %#{$flex-name}--x-around {
+      @include justify-content(space-around);
+    }
 
 
-%#{$flex-name}--x-between {
-  @include justify-content(space-between);
-}
+    %#{$flex-name}--x-between {
+      @include justify-content(space-between);
+    }
 
 
-%#{$flex-name}--y-top {
-  @include align-items(flex-start);
-}
+    %#{$flex-name}--y-top {
+      @include align-items(flex-start);
+    }
 
 
-%#{$flex-name}--y-bottom {
-  @include align-items(flex-end);
-}
+    %#{$flex-name}--y-bottom {
+      @include align-items(flex-end);
+    }
 
 
-%#{$flex-name}--y-center {
-  @include align-items(center);
-}
+    %#{$flex-name}--y-center {
+      @include align-items(center);
+    }
 
 
-%#{$flex-name}--y-stretch {
-  @include align-items(stretch);
-}
+    %#{$flex-name}--y-stretch {
+      @include align-items(stretch);
+    }
 
 
-%#{$flex-name}--y-between {
-  @include align-items(space-between);
-}
+    %#{$flex-name}--y-between {
+      @include align-items(space-between);
+    }
 
 
-%#{$flex-name}--y-around {
-  @include align-items(space-around);
-}
+    %#{$flex-name}--y-around {
+      @include align-items(space-around);
+    }
 
 
-%#{$flex-name}--y-baseline {
-  @include align-items(baseline);
-}
+    %#{$flex-name}--y-baseline {
+      @include align-items(baseline);
+    }
 
 
-%#{$flex-name}--content-top {
-  @include align-content(flex-start);
-}
+    %#{$flex-name}--content-top {
+      @include align-content(flex-start);
+    }
 
 
-%#{$flex-name}--content-bottom {
-  @include align-content(flex-end);
-}
+    %#{$flex-name}--content-bottom {
+      @include align-content(flex-end);
+    }
 
 
-%#{$flex-name}--content-center {
-  @include align-content(center);
-}
+    %#{$flex-name}--content-center {
+      @include align-content(center);
+    }
 
 
-%#{$flex-name}--content-stretch {
-  @include align-content(stretch);
-}
+    %#{$flex-name}--content-stretch {
+      @include align-content(stretch);
+    }
 
 
-%#{$flex-name}--content-between {
-  @include align-content(space-between);
-}
+    %#{$flex-name}--content-between {
+      @include align-content(space-between);
+    }
 
 
-%#{$flex-name}--content-around {
-  @include align-content(space-around);
-}
+    %#{$flex-name}--content-around {
+      @include align-content(space-around);
+    }
 
 
-%#{$flex-name}--self-y-top {
-  @include align-self(flex-start);
-}
+    %#{$flex-name}--self-y-top {
+      @include align-self(flex-start);
+    }
 
 
-%#{$flex-name}--self-y-bottom {
-  @include align-self(flex-end);
-}
+    %#{$flex-name}--self-y-bottom {
+      @include align-self(flex-end);
+    }
 
 
-%#{$flex-name}--self-y-center {
-  @include align-self(center);
-}
+    %#{$flex-name}--self-y-center {
+      @include align-self(center);
+    }
 
 
-%#{$flex-name}--self-y-stretch {
-  @include align-self(stretch);
-}
+    %#{$flex-name}--self-y-stretch {
+      @include align-self(stretch);
+    }
 
 
-%#{$flex-name}--self-y-baseline {
-  @include align-self(baseline);
+    %#{$flex-name}--self-y-baseline {
+      @include align-self(baseline);
+    }
+
+  }
 }

@@ -1,79 +1,82 @@
-/**
- ** Paginate
- **/
-#{$paginate-class} {
-  @extend .input-group;
-  width: auto;
-  border: 0;
-  @include font-line($paginate-font-size,
-                     $paginate-line-height,
-                     $weight: $paginate-font-weight);
+@mixin paginate-init() {
+  @if not global-variable-exists(-PAGINATE-LOADED) {
+    $-PAGINATE-LOADED: true !global;
 
-  & > a:first-child:not(:last-child),
-  #{$paginate-link-class}:first-child:not(:last-child),
-  li:first-child:not(:last-child) a {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-  }
-  & > a:last-child:not(:first-child),
-  #{$paginate-link-class}:last-child:not(:first-child),
-  li:last-child:not(:first-child) a {
-    border-left: 0 !important;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-  }
-  & > a:not(:first-child):not(:last-child),
-  #{$paginate-link-class}:not(:first-child):not(:last-child),
-  li:not(:first-child):not(:last-child) a {
-    border-left: 0 !important;
-    border-radius: 0 !important;
+    #{$paginate-class} {
+      @extend .input-group;
+      width: auto;
+      border: 0;
+      @include font-line($paginate-font-size,
+                         $paginate-line-height,
+                         $weight: $paginate-font-weight);
+
+      & > a:first-child:not(:last-child),
+      #{$paginate-link-class}:first-child:not(:last-child),
+      li:first-child:not(:last-child) a {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+      & > a:last-child:not(:first-child),
+      #{$paginate-link-class}:last-child:not(:first-child),
+      li:last-child:not(:first-child) a {
+        border-left: 0 !important;
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+      }
+      & > a:not(:first-child):not(:last-child),
+      #{$paginate-link-class}:not(:first-child):not(:last-child),
+      li:not(:first-child):not(:last-child) a {
+        border-left: 0 !important;
+        border-radius: 0 !important;
+      }
+    }
+
+
+    #{$paginate-class} ul,
+    #{$paginate-class} ol,
+    #{$paginate-class} li {
+      @extend %#{$flex-name};
+    }
+
+
+
+    #{$paginate-class} > a,
+    #{$paginate-class} li a,
+    #{$paginate-link-class} {
+      @extend %#{$flex-name};
+      @extend %#{$flex-name}--self-y-stretch;
+      @extend %#{$flex-name}--y-center;
+      color: $paginate-link-color;
+      border-width: $paginate-link-border-width;
+      border-style: $paginate-link-border-style;
+      border-color: $paginate-link-border-color;
+      background: $paginate-link-background;
+      border-radius: $paginate-link-border-radius;
+      padding: $paginate-link-padding;
+
+      &.disabled {
+        @extend .disabled;
+      }
+
+      &.active {
+        color: $paginate-link-active-color;
+      }
+    }
+
+
+    .no-touchevents {
+      #{$paginate-class} > a:hover,
+      #{$paginate-class} li a:hover,
+      #{$paginate-link-class}:hover {
+        color: $paginate-link-hover-color;
+      }
+
+      #{$paginate-class} .disabled:hover {
+        color: $disabled-link-color;
+      }
+    }
+
+
+    @include extend-flex($paginate-name, ($paginate-class));
   }
 }
-
-
-#{$paginate-class} ul,
-#{$paginate-class} ol,
-#{$paginate-class} li {
-  @extend %#{$flex-name};
-}
-
-
-
-#{$paginate-class} > a,
-#{$paginate-class} li a,
-#{$paginate-link-class} {
-  @extend %#{$flex-name};
-  @extend %#{$flex-name}--self-y-stretch;
-  @extend %#{$flex-name}--y-center;
-  color: $paginate-link-color;
-  border-width: $paginate-link-border-width;
-  border-style: $paginate-link-border-style;
-  border-color: $paginate-link-border-color;
-  background: $paginate-link-background;
-  border-radius: $paginate-link-border-radius;
-  padding: $paginate-link-padding;
-
-  &.disabled {
-    @extend .disabled;
-  }
-
-  &.active {
-    color: $paginate-link-active-color;
-  }
-}
-
-
-.no-touchevents {
-  #{$paginate-class} > a:hover,
-  #{$paginate-class} li a:hover,
-  #{$paginate-link-class}:hover {
-    color: $paginate-link-hover-color;
-  }
-
-  #{$paginate-class} .disabled:hover {
-    color: $disabled-link-color;
-  }
-}
-
-
-@include extend-flex($paginate-name, ($paginate-class));

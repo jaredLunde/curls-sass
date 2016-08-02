@@ -1,82 +1,88 @@
-*, *:before, *:after {
-  /** the zoom makes zero sense to me */
-  -webkit-text-size-adjust: none;
-}
+@mixin type-init() {
+  @if not global-variable-exists(-TYPE-LOADED) {
+    $-TYPE-LOADED: true !global;
+
+    *, *:before, *:after {
+      /** the zoom makes zero sense to me */
+      -webkit-text-size-adjust: none;
+    }
 
 
-body {
-  text-rendering: optimizeLegibility;
-  @include font-line($body-font-size,
-                     $body-line-height,
-                     $color: $body-font-color,
-                     $weight: $body-font-weight,
-                     $family: $body-font);
+    body {
+      text-rendering: optimizeLegibility;
+      @include font-line($body-font-size,
+                         $body-line-height,
+                         $color: $body-font-color,
+                         $weight: $body-font-weight,
+                         $family: $body-font);
 
-  @media #{$high-dpi} {
-    font-smoothing: antialiased;
-    -webkit-font-smoothing: antialiased;
-  }
-}
-
-
-h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
-  text-align: $heading-text-align;
-  @include font-line($heading-max-font-size,
-                     $heading-line-height,
-                     $color: $heading-color,
-                     $weight: $heading-font-weight,
-                     $family: $heading-font);
-}
+      @media #{$high-dpi} {
+        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
+      }
+    }
 
 
-$_size: $heading-max-font-size * 0.875 * 0.875;
-@each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
-  $_size: round($_size * 0.875);
-  #{$x} {
-    @include font-line($_size, $heading-line-height);
-  }
-  #{$type-class}--#{$x} {
-    @extend #{$x};
-  }
-}
+    h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
+      text-align: $heading-text-align;
+      @include font-line($heading-max-font-size,
+                         $heading-line-height,
+                         $color: $heading-color,
+                         $weight: $heading-font-weight,
+                         $family: $heading-font);
+    }
 
 
-p {
-  padding: $paragraph-padding;
-  margin: $paragraph-margin;
-  text-align: $paragraph-text-align;
-  @include rem-property(letter-spacing, $paragraph-letter-spacing);
-  @include font-line($paragraph-font-size, $paragraph-line-height,
-                     $color: $paragraph-font-color,
-                     $weight: $paragraph-font-weight,
-                     $family: $paragraph-font);
-}
+    $_size: $heading-max-font-size * 0.875 * 0.875;
+    @each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
+      $_size: round($_size * 0.875);
+      #{$x} {
+        @include font-line($_size, $heading-line-height);
+      }
+      #{$type-class}--#{$x} {
+        @extend #{$x};
+      }
+    }
 
 
-#{$type-class}--left {
-  @extend %type--left;
-}
+    p {
+      padding: $paragraph-padding;
+      margin: $paragraph-margin;
+      text-align: $paragraph-text-align;
+      @include rem-property(letter-spacing, $paragraph-letter-spacing);
+      @include font-line($paragraph-font-size, $paragraph-line-height,
+                         $color: $paragraph-font-color,
+                         $weight: $paragraph-font-weight,
+                         $family: $paragraph-font);
+    }
 
 
-#{$type-class}--right {
-  @extend %type--right;
-}
+    #{$type-class}--left {
+      @extend %type--left;
+    }
 
 
-#{$type-class}--center {
-  @extend %type--center;
-}
+    #{$type-class}--right {
+      @extend %type--right;
+    }
 
 
-@each $color in map-keys($colors) {
-  #{$type-class}--#{$color} {
-    @extend %#{$type-name}--#{$color};
-  }
-}
+    #{$type-class}--center {
+      @extend %type--center;
+    }
 
 
-@each $size in map-keys($type-font-size) {
-  #{$type-class}--#{$size} {
-    @extend %#{$type-name}--#{$size};
+    @each $color in map-keys($colors) {
+      #{$type-class}--#{$color} {
+        @extend %#{$type-name}--#{$color};
+      }
+    }
+
+
+    @each $size in map-keys($type-font-size) {
+      #{$type-class}--#{$size} {
+        @extend %#{$type-name}--#{$size};
+      }
+    }
   }
 }

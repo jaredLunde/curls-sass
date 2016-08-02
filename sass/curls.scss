@@ -12,17 +12,16 @@
 /** General layout presets */
 @import 'layout';
 
-/** Typography */
-@import 'type/layout';
+@import 'flexibility/core';
 
-/** Grid layout (.grid, .col, .row) */
-@import 'grid/index';
+@import 'type/core';
 
-/** Multi-column layout (.cols) */
-@import 'columns/index';
+@import 'grid/core';
 
-/** UI Components */
-@import 'ui/index';
+@import 'columns/core';
 
-/** Spacing */
-@import 'spacing/index';
+@import 'ui/core';
+
+@import 'colors/core';
+
+@import 'spacing/core';

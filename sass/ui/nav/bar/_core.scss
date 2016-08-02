@@ -1,0 +1,18 @@
+/**
+ ** Navbar (.navbar)
+ **/
+@import '../../../core';
+@import '../../button/variables';
+@import '../dropdown/variables';
+@import '../../../flexibility/variables';
+@import '../../../flexibility/mixins';
+@import '../../../flexibility/placeholders';
+@include flex-placeholders-init();
+
+@import '../../../grid/variables';
+@import '../../../grid/placeholders';
+@include grid-placeholders-init();
+
+@import 'variables';
+@import 'layout';
+@include navbar-init();

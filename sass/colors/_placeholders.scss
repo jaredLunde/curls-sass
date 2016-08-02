@@ -1,13 +1,19 @@
-@each $color in map-keys($colors) {
-  %bg--#{$color} {
-    background: map-get($colors, $color);
-  }
+@mixin colors-placeholders-init() {
+  @if not global-variable-exists(-COLORS-PLACEHOLDERS-LOADED) {
+    $-COLORS-PLACEHOLDERS-LOADED: true !global;
 
-  %border--#{$color} {
-    border-color: map-get($colors, $color);
-  }
+    @each $color in map-keys($colors) {
+      %bg--#{$color} {
+        background: map-get($colors, $color);
+      }
 
-  %font--#{$color} {
-    color: map-get($colors, $color);
+      %border--#{$color} {
+        border-color: map-get($colors, $color);
+      }
+
+      %font--#{$color} {
+        color: map-get($colors, $color);
+      }
+    }
   }
 }

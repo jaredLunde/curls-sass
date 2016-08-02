@@ -1,0 +1,15 @@
+/**
+ ** Toggler
+ **/
+@import '../../../core';
+
+@import '../../../flexibility/variables';
+@import '../../../flexibility/mixins';
+@import '../../../flexibility/placeholders';
+@include flex-placeholders-init();
+
+@import '../checkbox/core';
+@import 'variables';
+
+@import 'layout';
+@include toggler-init();

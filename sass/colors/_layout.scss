@@ -1,2 +1,7 @@
-@include colorize('border', 'border');
-@include colorize('bg', 'bg');
+@mixin colors-init() {
+  @if not global-variable-exists(-COLORS-LOADED) {
+    $-COLORS-LOADED: true !global;
+    @include colorize('border', 'border');
+    @include colorize('bg', 'bg');
+  }
+}
