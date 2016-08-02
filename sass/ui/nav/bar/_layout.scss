@@ -1,3 +1,6 @@
+/**
+ ** Navbar
+ **/
 #{$navbar-class} {
   @extend %#{$flex-name};
   position: relative;
@@ -67,8 +70,8 @@
 
 
 #{$navbar-class}__link,
-ul#{$navbar-class} li a,
-#{$navbar-class} > a,
+ul#{$navbar-class} li a:not(.btn),
+#{$navbar-class} > a:not(.btn),
 h1, h2, h3, h4, h5, h6,
 .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
   @extend %#{$flex-name};

@@ -52,18 +52,19 @@ p {
                      $family: $paragraph-font);
 }
 
+
 #{$type-class}--left {
-  text-align: left;
+  @extend %type--left;
 }
 
 
 #{$type-class}--right {
-  text-align: right;
+  @extend %type--right;
 }
 
 
 #{$type-class}--center {
-  text-align: center;
+  @extend %type--center;
 }
 
 

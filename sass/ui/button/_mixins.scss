@@ -3,7 +3,12 @@
   @each $color in map-keys($colors) {
     $color-val: map-get($colors, $color);
 
-    #{$button-class}--#{$color} {
+    #{$button-class}--#{$color} #{$button-class},
+    #{$button-class}#{$button-class}--#{$color} #{$button-class},
+    #{$button-class}--#{$color} button,
+    #{$button-class}#{$button-class}--#{$color} button,
+    #{$button-class}--#{$color}:not(.btn-group),
+    #{$button-class}#{$button-class}--#{$color}:not(.btn-group) {
       @extend %#{$type}--#{$color};
 
       &.active {
@@ -11,7 +16,12 @@
       }
     }
 
-    .no-touchevents #{$button-class}--#{$color} {
+    .no-touchevents #{$button-class}--#{$color}:not(.btn-group),
+    .no-touchevents #{$button-class}#{$button-class}--#{$color}:not(.btn-group),
+    .no-touchevents #{$button-class}--#{$color} #{$button-class}:not(.btn-group),
+    .no-touchevents #{$button-class}#{$button-class}--#{$color} #{$button-class},
+    .no-touchevents #{$button-class}--#{$color} button,
+    .no-touchevents #{$button-class}#{$button-class}--#{$color} button {
       &:hover, &.hover {
         background: lighten($color-val, 5%);
       }
@@ -19,6 +29,34 @@
       &:active, {
         background: darken($color-val, 5%);
       }
+    }
+  }
+
+  #{$button-class}--transparent #{$button-class},
+  #{$button-class}#{$button-class}--transparent #{$button-class},
+  #{$button-class}--transparent button,
+  #{$button-class}#{$button-class}--transparent button,
+  #{$button-class}--transparent:not(.btn-group),
+  #{$button-class}#{$button-class}--transparent:not(.btn-group) {
+    background: transparent;
+
+    &.active {
+      background: rgba(0, 0, 0, 0.20);
+    }
+  }
+
+  .no-touchevents #{$button-class}--transparent:not(.btn-group),
+  .no-touchevents #{$button-class}#{$button-class}--transparent:not(.btn-group),
+  .no-touchevents #{$button-class}--transparent #{$button-class}:not(.btn-group),
+  .no-touchevents #{$button-class}#{$button-class}--transparent #{$button-class},
+  .no-touchevents #{$button-class}--transparent button,
+  .no-touchevents #{$button-class}#{$button-class}--transparent button {
+    &:hover, &.hover {
+      background: rgba(0, 0, 0, 0.10);
+    }
+
+    &:active, {
+      background: rgba(0, 0, 0, 0.20);
     }
   }
 }

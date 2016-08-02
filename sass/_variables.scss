@@ -36,13 +36,13 @@ $divider-height: 1px !default;
 
 
 // Responsive media queries */
-$phone: "only screen and (max-width: 719px)" !default;
+$phone: "only screen and (max-width: 639px)" !default;
 $phone-max: $phone !default;
 $phone-s: "only screen and (max-width: 359px)" !default;
 $phone-m: "only screen and (min-width: 360px) and (max-width: 469px)" !default;
-$phone-l: "only screen and (min-width: 480px) and (max-width: 719px)" !default;
+$phone-l: "only screen and (min-width: 480px) and (max-width: 639px)" !default;
 
-$tablet: "only screen and (min-width: 720px)" !default;
+$tablet: "only screen and (min-width: 640)" !default;
 $tablet-max: "only screen and (max-width: 1023px)" !default;
 $tablet-s: "only screen and (min-width: 600px) and (max-width: 719px)" !default;
 $tablet-m: "only screen and (min-width: 720px) and (max-width: 839px)" !default;

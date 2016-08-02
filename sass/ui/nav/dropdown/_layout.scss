@@ -1,3 +1,6 @@
+/**
+ ** Dropdown
+ **/
 #{$dropdown-class} {
   @extend %#{$flex-name};
   @extend %#{$flex-name}--y-center;
@@ -143,6 +146,8 @@ button#{$dropdown-class}__toggler,
   text-align: $dropdown-text-align;
   top: 200%;
   z-index: $MAX-Z-INDEX;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   @include opacity(0.0);
   @include box-shadow($dropdown-shadow);
 

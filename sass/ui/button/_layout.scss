@@ -1,4 +1,4 @@
-button {
+button, #{$button-class} {
   background: $button-background;
   color: $button-color;
   border-style: $button-border-style;

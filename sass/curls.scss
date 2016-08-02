@@ -7,21 +7,13 @@
  ***                                                                          *
  ******************************************************************************/
 // Base
-@import 'colors/index';
-@import 'variables';
-@import 'mixins';
-@import 'placeholders';
-
-
+@import 'core';
 
 /** General layout presets */
 @import 'layout';
 
 /** Typography */
-@import 'type/index';
-
-/** Flexible containers (.flex) */
-@import 'flexibility/index';
+@import 'type/layout';
 
 /** Grid layout (.grid, .col, .row) */
 @import 'grid/index';

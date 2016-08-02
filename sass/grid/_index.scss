@@ -1,4 +1,6 @@
 @import 'variables';
 @import 'placeholders';
+@include grid-placeholders-init();
 @import 'mixins';
 @import 'layout';
+@include grid-init();

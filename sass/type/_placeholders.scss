@@ -16,3 +16,21 @@
     color: map-get($colors, $color);
   }
 }
+
+
+%#{$type-name}--left {
+  text-align: left;
+  justify-content: left;
+}
+
+
+%#{$type-name}--right {
+  text-align: right;
+  justify-content: right;
+}
+
+
+%#{$type-name}--center {
+  text-align: center;
+  justify-content: center;
+}
