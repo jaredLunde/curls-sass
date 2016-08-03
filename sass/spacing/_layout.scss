@@ -1,6 +1,6 @@
 @mixin spacing-init() {
   @if not global-variable-exists(-SPACING-LOADED) {
-    $SPACING-LOADED: true;
+    $SPACING-LOADED: true !global;
 
     @each $x in $spacing-sizes {
       @include margin-group($x);

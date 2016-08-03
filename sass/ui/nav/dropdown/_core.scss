@@ -5,7 +5,9 @@
 @import '../../../type/placeholders';
 @include type-placeholders-init();
 
-@import '../../button/variables';
+@import '../../button/core';
+@include button-placeholders-init();
+
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';

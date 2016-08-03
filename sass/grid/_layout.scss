@@ -59,7 +59,7 @@
 
 
     // Grid row gutters
-    @each $size in ('xl', 'l', 'm', 's', 'xs') {
+    @each $size in map-keys(map-reverse($grid-breakpoint)) {
       @media #{map-get($grid-breakpoint, $size)} {
         #{$grid-row-class},
         #{$float-grid-row-class} {

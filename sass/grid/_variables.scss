@@ -20,8 +20,8 @@ $float-grid-body-class: unquote("#{unquote(".")}#{$float-grid-body-name}") !defa
 
 $grid-gutter: (
   xs: 8px,
-  s: 16px,
-  m: 16px,
+  s: 12px,
+  m: 12px,
   l: 16px,
   xl: 24px,
 ) !default;

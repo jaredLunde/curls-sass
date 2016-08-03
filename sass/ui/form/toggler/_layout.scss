@@ -1,6 +1,6 @@
 @mixin toggler-init() {
   @if not global-variable-exists(-TOGGLER-LOADED) {
-    $-TOGGLER-LOADED: true;
+    $-TOGGLER-LOADED: true !global;
 
     #{$toggler-class} {
       @extend #{$checkbox-class};

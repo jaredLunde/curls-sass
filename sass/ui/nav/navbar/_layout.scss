@@ -1,15 +1,15 @@
 @mixin navbar-init() {
   @if not global-variable-exists(-NAVBAR-LOADED) {
-    $-NAVBAR-LOADED: true;
+    $-NAVBAR-LOADED: true !global;
 
     #{$navbar-class} {
       @extend %#{$flex-name};
+      @extend %media-gutters-half-x;
       position: relative;
       background: $navbar-background;
       border-style: $navbar-border-style;
       border-width: $navbar-border-width;
       border-color: $navbar-border-color;
-      padding: $navbar-padding;
       width: $navbar-width;
       @include flex-wrap(nowrap);
 
@@ -39,31 +39,47 @@
 
     #{$navbar-class} {
       & > * {
-        @extend %#{$flex-name}--self-y-center;
+        @extend %#{$flex-name};
+        @extend %#{$flex-name}--self-y-stretch;
+        @extend %#{$flex-name}--y-center;
+
+        & > * {
+          @extend %#{$flex-name}--self-y-center;
+        }
       }
 
-      & > #{$dropdown-class} {
+      & > a,
+      & > li a,
+      & #{$navbar-class}__link {
+        @extend %media-gutters-half-x;
+      }
+
+      & > #{$dropdown-class},
+      & > li #{$dropdown-class} {
         @extend %#{$flex-name}--self-y-stretch;
       }
 
-      & > #{$dropdown-class}.dropped #{$dropdown-class}__menu {
+      & > #{$dropdown-class}.dropped #{$dropdown-class}__menu,
+      & > li #{$dropdown-class}.dropped #{$dropdown-class}__menu {
         margin-top: 0;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
       }
-
+      /**
       & > #{$button-class},
       & > button:not([type=submit]):not(#{$dropdown-class}__toggler),
       & > #{$button-class}-group,
       .input-group {
-        @extend %media-margin-gutters-half;
+
       }
 
-      & > #{$dropdown-class} {
+      & > #{$dropdown-class},
+      & > li #{$dropdown-class} {
         @extend %media-margin-gutters-half-x;
       }
+      */
 
-      & > #{$button-class}-group button:not([type=submit]),
+      & > #{$button-class}-group button,
       & > .input-group button:not([type=submit]) {
         margin: 0
       }
@@ -71,14 +87,14 @@
 
 
     #{$navbar-class}__link,
-    ul#{$navbar-class} li a:not(.btn),
-    #{$navbar-class} > a:not(.btn),
+    #{$navbar-class} > li > a:not(#{$button-class}),
+    #{$navbar-class} > a:not(#{$button-class}),
     h1, h2, h3, h4, h5, h6,
     .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--self-y-stretch;
       @extend %#{$flex-name}--y-center;
-      @extend %media-gutters;
+      @extend %media-gutters-y;
       font-weight: 400;
     }
 
@@ -92,7 +108,9 @@
     .no-touchevents #{$navbar-class}__link.active:hover,
     #{$navbar-class}__link.active,
     #{$navbar-class} > a.active,
-    #{$navbar-class} > a:active {
+    #{$navbar-class} > a:active,
+    #{$navbar-class} > li > a.active,
+    #{$navbar-class} > li > a:active {
       background: $navbar-link-active-background;
       color: $navbar-link-active-color;
     }
@@ -106,11 +124,6 @@
 
     #{$navbar-class} > * {
       @extend %#{$flex-name}--fixed;
-    }
-
-
-    #{$navbar-class} > *.navbar--fluid {
-      @extend %#{$flex-name}--fluid;
     }
 
 
@@ -147,8 +160,6 @@
     }
 
 
-    @include extend-flex-align($navbar-name, $selector: $navbar-class);
-    @include extend-flex-justify($navbar-name, $selector: $navbar-class);
-    @include extend-flex-self($navbar-name, $selector: $navbar-class);
+    @include extend-flex($navbar-name, ($navbar-class));
   }
 }

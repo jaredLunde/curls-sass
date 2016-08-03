@@ -7,6 +7,9 @@
 }
 
 
+$-column-cache: ();
+
+
 @mixin grid-column($x, $cols, $gutter-size: 0, $name-prefix: 'x',
                    $name-ext: null, $multiple: 1, $breakpoint: null) {
   @if $name-ext {
@@ -15,39 +18,31 @@
     $name-ext: '';
   }
 
-  .#{$name-prefix}#{$x}#{$name-ext} {
-    @include make-grid-column($x, $cols, $gutter-size, $multiple);
+  $-width: ($x / $cols) * $multiple;
+  @if $-width > 1 {
+    $-width: 1;
+  }
+  $column-name: 'column--#{$-width}--#{$cols}--#{$breakpoint}';
+  $column-cached: true;
+
+  @if not index($-column-cache, $column-name) {
+    $-column-cache: append($-column-cache, $column-name) !global;
+    $column-cached: false;
   }
 
-  @include make-gutter($x, $gutter-size, $breakpoint, $name-prefix: 'x',
-                       $name-ext: $name-ext)
-}
-
-
-
-$-pad-cache: ();
-
-
-@mixin make-gutter($x, $gutter-size, $breakpoint, $name-prefix: 'x',
-                   $name-ext: null) {
-  $padding-name: 'gridpad--#{$gutter-size}--#{$breakpoint}';
-  $pad-cached: true;
-
-  @if not index($-pad-cache, $padding-name) {
-    $-pad-cache: append($-pad-cache, $padding-name) !global;
-    $pad-cached: false;
-  }
-
-  @if $pad-cached == false {
-    %#{$padding-name} {
-      padding: 0 $gutter-size / 2;
+  @if $column-cached == false {
+    %#{$column-name} {
+      @include make-grid-column($x, $cols, $gutter-size, $multiple);
     }
   }
 
   .#{$name-prefix}#{$x}#{$name-ext} {
-    @extend %#{$padding-name};
+    @extend %#{$column-name};
   }
 }
+
+
+$-pad-cache: ();
 
 
 @mixin make-grid-column($n, $columns, $gutter-size: 0, $multiple: 1) {

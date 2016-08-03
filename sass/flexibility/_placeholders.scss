@@ -15,8 +15,9 @@
 
 
     %#{$flex-name}--fluid {
-      @extend %#{$flex-name}--fixed;
       @include flex-grow(1);
+      @include flex-shrink(0);
+      @include flex-basis(auto);
     }
 
 

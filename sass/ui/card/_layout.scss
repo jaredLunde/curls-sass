@@ -4,7 +4,6 @@
 
     #{$card-class} {
       @extend %#{$card-name};
-      border-radius: $card-border-radius;
     }
 
 

@@ -10,7 +10,11 @@
 
 @import '../variables';
 @import '../layout';
-@include form-init();
+@import '../placeholders';
+@include form-placeholders-init();
+
+@import 'placeholders';
+@include input-group-placeholders-init();
 
 @import 'layout';
 @include input-group-init();

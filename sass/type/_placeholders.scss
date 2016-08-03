@@ -1,6 +1,7 @@
 @mixin type-placeholders-init() {
   @if not global-variable-exists(-TYPE-PLACEHOLDERS-LOADED) {
     $-TYPE-PLACEHOLDERS-LOADED: true !global;
+    
     @each $size in map-keys($type-font-size) {
       %#{$type-name}--#{$size} {
         @include font-line(map-get($type-font-size, $size),

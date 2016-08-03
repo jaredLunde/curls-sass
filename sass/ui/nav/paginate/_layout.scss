@@ -3,7 +3,8 @@
     $-PAGINATE-LOADED: true !global;
 
     #{$paginate-class} {
-      @extend .input-group;
+      @extend %input-group;
+      // @extend %media-margin-gutters-half;
       width: auto;
       border: 0;
       @include font-line($paginate-font-size,
@@ -36,6 +37,7 @@
     #{$paginate-class} ol,
     #{$paginate-class} li {
       @extend %#{$flex-name};
+      @extend %#{$flex-name}--self-y-stretch;
     }
 
 

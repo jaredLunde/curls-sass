@@ -321,7 +321,7 @@
 
 
   #{$selector}.#{$name}--fluid {
-    @extend %#{$flex-name}--fixed;
+    @extend %#{$flex-name}--fluid;
   }
 
 

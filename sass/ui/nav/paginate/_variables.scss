@@ -1,7 +1,7 @@
 $paginate-name: 'paginate' !default;
 $paginate-class: unquote("#{unquote(".")}#{$paginate-name}") !default;
 $paginate-font-size: 18px !default;
-$paginate-line-height: 1.0em !default;
+$paginate-line-height: $body-line-height !default;
 $paginate-font-weight: 400 !default;
 
 $paginate-link-color: $link-color !default;

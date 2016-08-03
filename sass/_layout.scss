@@ -1,95 +1,74 @@
-*, *:before, *:after {
-  /** border-box for all, as it should be */
-  @include prefix((box-sizing: border-box), webkit moz);
-}
+@mixin resets-init() {
+  @if not global-variable-exists(-RESETS-LOADED) {
+    $-RESETS-LOADED: true !global;
+
+    /**
+     ** Browser resets
+     **/
+    *, *:before, *:after {
+      /** border-box for all, as it should be */
+      @include prefix((box-sizing: border-box), webkit moz);
+    }
 
 
-a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
-  background: none;
-  border: 0;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  vertical-align: middle;
-  word-wrap: break-word;
-}
+    a, b, body, code, div, em, fieldset,  h1, h2, h3, h4, h5, h6, html, i, iframe,
+    img, label, li, ol, p, pre, span, ul {
+      @extend %browser-reset;
+    }
 
 
-@-ms-viewport {
-  width: device-width;
-}
+    @-ms-viewport {
+      width: device-width;
+    }
 
 
-html, body {
-  min-height: 100%;
-  height: 100%;
-}
+    html, body {
+      min-height: 100%;
+      height: 100%;
+    }
 
 
-li, ol, ul { list-style: none }
+    li, ol, ul { list-style: none }
 
 
-body {
-  min-height: 100%;
-  text-align: $body-alignment;
-  background: $body-background;
-  position: relative;
-}
-
-.xfaps__header {
-  border-top: 0;
-}
-
-pre {
-  -webkit-font-smoothing: auto;
-}
+    body {
+      min-height: 100%;
+      position: relative;
+    }
 
 
-a {
-  cursor: pointer;
-  text-decoration: $link-decoration;
-  color: $link-color;
-  -webkit-tap-highlight-color: $link-tap-highlight;
-}
+    pre {
+      -webkit-font-smoothing: auto;
+    }
 
 
-.no-touchevents a {
-  &:hover {
-    color: $link-hover-color;
+    a {
+      cursor: pointer;
+    }
+
+
+    .divider {
+      background: $divider-color;
+      height: $divider-height;
+      width: 100%;
+      display: block;
+      position: relative;
+    }
+
+
+    .disabled {
+      color: $disabled-link-color;
+    }
+
+
+    .no-touchevents .disabled:hover {
+      cursor: not-allowed;
+      color: $disabled-link-color;
+    }
+
+
+    .noborder {
+      border: 0 !important;
+    }
   }
-
-  &:active {
-    color: $link-active-color;
-  }
-}
-
-
--moz-selection, ::selection, textarea::selection {
-  background: $selection-background;
-  color: $selection-font-color;
-}
-
-
-.divider {
-  background: $divider-color;
-  height: $divider-height;
-  width: 100%;
-  display: block;
-  position: relative;
-}
-
-
-.disabled {
-  color: $disabled-link-color;
-}
-
-
-.no-touchevents .disabled:hover {
-  cursor: not-allowed;
-  color: $disabled-link-color;
-}
-
-
-.noborder {
-  border: 0 !important;
 }

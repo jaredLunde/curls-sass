@@ -16,7 +16,7 @@ $input-text-width: auto !default;
 $input-text-border-radius: 2px !default;
 
 $textarea-font-size: 16px !default;
-$textarea-line-height: 1.38 !default;
+$textarea-line-height: $paragraph-line-height !default;
 $textarea-font-color: $grey !default;
 $textarea-font-weight: 300 !default;
 $textarea-font: $body-font !default;
@@ -32,7 +32,7 @@ $textarea-border-radius: 2px !default;
 
 $submit-font-color: $grey !default;
 $submit-font-size: 16px !default;
-$submit-line-height: 1.1 !default;
+$submit-line-height: $body-line-height !default;
 $submit-font-weight: 700 !default;
 $submit-font: $body-font !default;
 

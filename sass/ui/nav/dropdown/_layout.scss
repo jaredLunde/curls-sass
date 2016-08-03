@@ -5,6 +5,7 @@
     #{$dropdown-class} {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--y-center;
+      @extend %media-margin-gutters-half;
       position: relative;
 
       &.dropped {
@@ -51,14 +52,14 @@
       @extend %hardware-accel;
       @extend %transform--fast;
       left: 6px;
-      top: 1px;
+      // top: 1px;
       color: $dropdown-toggler-color;
       position: relative;
     }
 
 
     .dropped #{$dropdown-class}__caret {
-      top: 1px;
+      top: -1px;
       @include transform(rotate(180deg));
     }
 
@@ -93,7 +94,6 @@
     button#{$dropdown-class}__toggler,
     #{$button-class}#{$dropdown-class}__toggler {
       @extend %#{$flex-name}--y-center;
-      display: inline-block;
       background: $dropdown-toggler-background;
       color: $dropdown-toggler-color;
       border-style: $dropdown-toggler-border-style;
@@ -101,6 +101,7 @@
       border-color: $dropdown-toggler-border-color;
       border-radius: $dropdown-toggler-border-radius;
       line-height: $dropdown-toggler-line-height;
+      margin: 0;
 
       &.hover {
         @extend %#{$dropdown-name}__toggler--hover;
@@ -118,8 +119,7 @@
     }
 
 
-    .no-touchevents #{$dropdown-class}__toggler:not(.submit),
-    .no-touchevents #{$dropdown-class}__toggler:not([type=submit]):not(.submit) {
+    .no-touchevents #{$dropdown-class}__toggler {
       &:hover {
         @extend %#{$dropdown-name}__toggler--hover;
       }

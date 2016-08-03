@@ -3,5 +3,31 @@
     $-COLORS-LOADED: true !global;
     @include colorize('border', 'border');
     @include colorize('bg', 'bg');
+
+    a {
+      text-decoration: $link-decoration;
+      color: $link-color;
+      -webkit-tap-highlight-color: $link-tap-highlight;
+    }
+
+
+    .no-touchevents a {
+      &:hover {
+        color: $link-hover-color;
+      }
+
+      &:active {
+        color: $link-active-color;
+      }
+    }
+
+    -moz-selection, ::selection, textarea::selection {
+      background: $selection-background;
+      color: $selection-font-color;
+    }
+
+    body {
+      background: $body-background;
+    }
   }
 }

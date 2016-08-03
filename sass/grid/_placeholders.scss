@@ -15,9 +15,12 @@
     }
 
 
+    $-REVERSED-KEYS: map-keys(map-reverse($grid-breakpoint));
+
+
     %media-padding-gutters,
     %media-gutters {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding: map-get($grid-gutter, $size);
         }
@@ -27,7 +30,7 @@
 
     %media-padding-gutters-x,
     %media-gutters-x {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding-left: map-get($grid-gutter, $size);
           padding-right: map-get($grid-gutter, $size);
@@ -38,7 +41,7 @@
 
     %media-padding-gutters-y,
     %media-gutters-y {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding-top: map-get($grid-gutter, $size);
           padding-bottom: map-get($grid-gutter, $size);
@@ -49,7 +52,7 @@
 
     %media-padding-gutters-half,
     %media-gutters-half {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding: round(map-get($grid-gutter, $size) / 2);
         }
@@ -59,7 +62,7 @@
 
     %media-padding-gutters-half-x,
     %media-gutters-half-x {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding-left: round(map-get($grid-gutter, $size) / 2);
           padding-right: round(map-get($grid-gutter, $size) / 2);
@@ -70,7 +73,7 @@
 
     %media-padding-gutters-half-y,
     %media-gutters-half-y {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           padding-top: round(map-get($grid-gutter, $size) / 2);
           padding-bottom: round(map-get($grid-gutter, $size) / 2);
@@ -80,7 +83,7 @@
 
 
     %media-margin-gutters {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin: map-get($grid-gutter, $size);
         }
@@ -89,7 +92,7 @@
 
 
     %media-margin-gutters-y {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin-top: map-get($grid-gutter, $size);
           margin-bottom: map-get($grid-gutter, $size);
@@ -99,7 +102,7 @@
 
 
     %media-margin-gutters-x {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin-left: map-get($grid-gutter, $size);
           margin-right: map-get($grid-gutter, $size);
@@ -109,7 +112,7 @@
 
 
     %media-margin-gutters-half {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin: round(map-get($grid-gutter, $size) / 2);
         }
@@ -118,7 +121,7 @@
 
 
     %media-margin-gutters-half-y {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin-top: round(map-get($grid-gutter, $size) / 2);
           margin-bottom: round(map-get($grid-gutter, $size) / 2);
@@ -128,7 +131,7 @@
 
 
     %media-margin-gutters-half-x {
-      @each $size in ('xl', 'l', 'm', 's', 'xs') {
+      @each $size in $-REVERSED-KEYS {
         @media #{map-get($grid-breakpoint, $size)} {
           margin-left: round(map-get($grid-gutter, $size) / 2);
           margin-right: round(map-get($grid-gutter, $size) / 2);
@@ -137,7 +140,7 @@
     }
 
 
-    @each $size in ('xl', 'l', 'm', 's', 'xs') {
+    @each $size in $-REVERSED-KEYS {
       %hide--#{$size} {
         @media #{map-get($grid-breakpoint, $size)} {
           display: none !important;

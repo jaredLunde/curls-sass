@@ -25,6 +25,19 @@
 }
 
 
+@function map-reverse($map) {
+  $map-keys: map-keys($map);
+  $reversed-map: ();
+
+  @for $x from length($map-keys) through 1 {
+    $nth: nth($map-keys, $x);
+    $reversed-map: map-merge($reversed-map, ($nth: map-get($map, $nth)));
+  }
+
+  @return $reversed-map;
+}
+
+
 @mixin transform($style...) {
   @include prefix((transform: $style), ms webkit);
 }
@@ -47,13 +60,13 @@
 
 
 @mixin rem-property($property, $baseSize, $adjustedSize: 1.0) {
-  @if $baseSize and not (index('initial' 'inherit' 'auto' 'normal', $baseSize) \
-      or unit($baseSize) == 'px') {
+  @if ($baseSize and index('initial' 'inherit' 'auto' 'normal', $baseSize)) or
+      ($baseSize and unit($baseSize) != 'px') {
+    #{$property}: $baseSize;
+  } @else {
     $newSize: $baseSize * $adjustedSize;
     #{$property}: $newSize;
     #{$property}: calculateRem($newSize);
-  } @else {
-    #{$property}: $baseSize;
   }
 }
 

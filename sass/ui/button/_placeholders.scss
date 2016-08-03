@@ -2,6 +2,26 @@
   @if not global-variable-exists(-BUTTON-PLACEHOLDERS-LOADED) {
     $-BUTTON-PLACEHOLDERS-LOADED: true !global;
 
+    %#{$button-name}, %button {
+      @extend %media-margin-gutters-half-y;
+      background: $button-background;
+      color: $button-color;
+      border-style: $button-border-style;
+      border-width: $button-border-width;
+      border-color: $button-border-color;
+      border-radius: $button-border-radius;
+      line-height: $button-line-height;
+      outline: 0;
+
+      &.hover {
+        @extend %#{$button-name}--hover;
+      }
+
+      &.active {
+        @extend %#{$button-name}--active;
+      }
+    }
+
     %#{$button-name}--hover {
       cursor: pointer;
       background: $button-hover-background;

@@ -1,7 +1,7 @@
 @mixin checkbox-init() {
   @if not global-variable-exists(-CHECKBOX-LOADED) {
-    $-CHECKBOX-LOADED: true;
-    
+    $-CHECKBOX-LOADED: true !global;
+
     #{$checkbox-class} {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--y-center;
@@ -11,9 +11,6 @@
         display: none;
       }
     }
-
-    $checkbox-checkmark-height: 24px;
-    $checkbox-checkmark-width: 24px;
 
     #{$checkbox-class} label {
       @extend %#{$flex-name};
