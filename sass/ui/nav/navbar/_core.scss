@@ -6,15 +6,12 @@
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
-@include flex-placeholders-init();
 
 @import '../../../grid/variables';
 @import '../../../grid/placeholders';
-@include grid-placeholders-init();
 
 @import '../../button/variables';
 @import '../dropdown/variables';
 
 @import 'variables';
 @import 'layout';
-@include navbar-init();

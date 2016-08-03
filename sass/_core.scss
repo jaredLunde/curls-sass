@@ -5,9 +5,5 @@
 @import 'type/variables';
 @import 'variables';
 @import 'mixins';
-
 @import 'placeholders';
-@include placeholders-init();
-
 @import 'layout';
-@include resets-init();

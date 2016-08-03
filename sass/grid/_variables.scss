@@ -30,6 +30,6 @@ $grid-breakpoint: (
   xs: $phone-s,
   s: $phone-max,
   m: $tablet-max,
-  l: $desktop-m,
-  xl: $desktop-l,
+  l: $desktop-max-m,
+  xl: $desktop-max,
 ) !default;

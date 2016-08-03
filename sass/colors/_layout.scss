@@ -1,33 +1,30 @@
-@mixin colors-init() {
-  @if not global-variable-exists(-COLORS-LOADED) {
-    $-COLORS-LOADED: true !global;
-    @include colorize('border', 'border');
-    @include colorize('bg', 'bg');
+@include import-once('colors') {
+  @include colorize('border', 'border');
+  @include colorize('bg', 'bg');
 
-    a {
-      text-decoration: $link-decoration;
-      color: $link-color;
-      -webkit-tap-highlight-color: $link-tap-highlight;
+  a {
+    text-decoration: $link-decoration;
+    color: $link-color;
+    -webkit-tap-highlight-color: $link-tap-highlight;
+  }
+
+
+  .no-touchevents a {
+    &:hover {
+      color: $link-hover-color;
     }
 
-
-    .no-touchevents a {
-      &:hover {
-        color: $link-hover-color;
-      }
-
-      &:active {
-        color: $link-active-color;
-      }
+    &:active {
+      color: $link-active-color;
     }
+  }
 
-    -moz-selection, ::selection, textarea::selection {
-      background: $selection-background;
-      color: $selection-font-color;
-    }
+  -moz-selection, ::selection, textarea::selection {
+    background: $selection-background;
+    color: $selection-font-color;
+  }
 
-    body {
-      background: $body-background;
-    }
+  body {
+    background: $body-background;
   }
 }

@@ -2,12 +2,7 @@
  ** Flexibility
  **/
 @import '../core';
-
 @import 'variables';
 @import 'mixins';
-
 @import 'placeholders';
-@include flex-placeholders-init();
-
 @import 'layout';
-@include flex-init();

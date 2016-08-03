@@ -2,11 +2,6 @@
  ** Typography
  **/
 @import '../core';
-
 @import 'variables';
-
 @import 'placeholders';
-@include type-placeholders-init();
-
 @import 'layout';
-@include type-init();

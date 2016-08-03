@@ -1,63 +1,59 @@
-@mixin button-init() {
-  @if not global-variable-exists(-BUTTON-LOADED) {
-    $-BUTTON-LOADED: true !global;
-
-    button, #{$button-class} {
-      @extend %button;
-    }
-
-
-    .no-touchevents #{$button-class},
-    .no-touchevents button {
-      &:hover {
-        @extend %#{$button-name}--hover;
-      }
-
-      &:active {
-        @extend %#{$button-name}--active;
-      }
-    }
-
-
-    #{$button-class}--s,
-    #{$button-class}--s button,
-    #{$button-class}--s #{$button-class} {
-      @extend %#{$button-name}--s;
-    }
-
-
-    #{$button-class}--m,
-    #{$button-class}--m button,
-    #{$button-class}--m #{$button-class} {
-      @extend %#{$button-name}--m;
-    }
-
-    #{$button-class}--l,
-    #{$button-class}--l button,
-    #{$button-class}--l #{$button-class} {
-      @extend %#{$button-name}--l;
-    }
-
-
-    @include colorized-buttons();
-
-
-    #{$button-class}-group#{$button-class}--l,
-    #{$button-class}-group#{$button-class}--m,
-    #{$button-class}-group#{$button-class}--s  {
-      @extend %p--0;
-    }
-
-
-    #{$button-class}-group {
-      @extend %input-group;
-
-      button {
-        @extend %#{$flex-name}--fluid;
-      }
-    }
-
-
-    @include extend-flex(#{$button-name}-group, (#{$button-class}-group));
+@include import-once('button') {
+  button, #{$button-class} {
+    @extend %button;
   }
+
+
+  .no-touchevents #{$button-class},
+  .no-touchevents button {
+    &:hover {
+      @extend %#{$button-name}--hover;
+    }
+
+    &:active {
+      @extend %#{$button-name}--active;
+    }
+  }
+
+
+  #{$button-class}--s,
+  #{$button-class}--s button,
+  #{$button-class}--s #{$button-class} {
+    @extend %#{$button-name}--s;
+  }
+
+
+  #{$button-class}--m,
+  #{$button-class}--m button,
+  #{$button-class}--m #{$button-class} {
+    @extend %#{$button-name}--m;
+  }
+
+  #{$button-class}--l,
+  #{$button-class}--l button,
+  #{$button-class}--l #{$button-class} {
+    @extend %#{$button-name}--l;
+  }
+
+
+  @include colorized-buttons();
+
+
+  #{$button-class}-group#{$button-class}--l,
+  #{$button-class}-group#{$button-class}--m,
+  #{$button-class}-group#{$button-class}--s  {
+    @extend %p--0;
+  }
+
+
+  #{$button-class}-group {
+    @extend %input-group;
+
+    button {
+      @extend %#{$flex-name}--fluid;
+    }
+  }
+
+
+  @include extend-flex(#{$button-name}-group, (#{$button-class}-group));
 }

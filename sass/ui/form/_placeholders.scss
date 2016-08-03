@@ -1,85 +1,81 @@
-@mixin form-placeholders-init() {
-  @if not global-variable-exists(-FORM-PLACEHOLDERS-LOADED) {
-    $-FORM-PLACEHOLDERS-LOADED: true !global;
+@include import-once('form-placeholders') {
+  %reset-form-appearance {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    margin: 0;
+  }
 
-    %reset-form-appearance {
-      appearance: none;
-      -moz-appearance: none;
-      -webkit-appearance: none;
-      outline: none;
-      margin: 0;
+
+  %input-text {
+    border-radius: $input-text-border-radius;
+    background: $input-text-background;
+    padding: $input-text-padding-top $input-text-padding-right
+             $input-text-padding-bottom $input-text-padding-left;
+    margin: $input-text-margin;
+    border: $input-text-border;
+    width: $input-text-width;
+    @include font-line($input-text-font-size,
+                       $input-text-line-height,
+                       $color: $input-text-font-color,
+                       $weight: $input-text-font-weight,
+                       $family: $input-text-font);
+  }
+
+
+  %submit-button {
+    @extend %#{$flex-name}--y-center;
+    background: $submit-background;
+    border: $submit-border;
+    padding: $submit-padding-top $submit-padding-right
+             $submit-padding-bottom $submit-padding-left;
+    margin: $submit-margin;
+    border-radius: $submit-border-radius;
+    @include font-line($submit-font-size, $submit-line-height,
+                       $color: $submit-font-color,
+                       $weight: $submit-font-weight,
+                       $family: $submit-font);
+
+    & > * {
+      @extend %#{$flex-name};
     }
+  }
 
 
-    %input-text {
-      border-radius: $input-text-border-radius;
-      background: $input-text-background;
-      padding: $input-text-padding-top $input-text-padding-right
-               $input-text-padding-bottom $input-text-padding-left;
-      margin: $input-text-margin;
-      border: $input-text-border;
-      width: $input-text-width;
-      @include font-line($input-text-font-size,
-                         $input-text-line-height,
-                         $color: $input-text-font-color,
-                         $weight: $input-text-font-weight,
-                         $family: $input-text-font);
-    }
+  %submit-button-hover {
+    cursor: pointer;
+    background: $submit-background-hover;
+    color: $submit-font-color;
+  }
 
 
-    %submit-button {
-      @extend %#{$flex-name}--y-center;
-      background: $submit-background;
-      border: $submit-border;
-      padding: $submit-padding-top $submit-padding-right
-               $submit-padding-bottom $submit-padding-left;
-      margin: $submit-margin;
-      border-radius: $submit-border-radius;
-      @include font-line($submit-font-size, $submit-line-height,
-                         $color: $submit-font-color,
-                         $weight: $submit-font-weight,
-                         $family: $submit-font);
-
-      & > * {
-        @extend %#{$flex-name};
-      }
-    }
+  %submit-button-active {
+    background: $submit-background-active;
+    color: $submit-font-color;
+  }
 
 
-    %submit-button-hover {
-      cursor: pointer;
-      background: $submit-background-hover;
-      color: $submit-font-color;
-    }
+  %textarea {
+    background: $textarea-background;
+    padding: $textarea-padding-top $textarea-padding-right
+             $textarea-padding-bottom $textarea-padding-left;
+    margin: $textarea-margin;
+    border: $textarea-border;
+    border-radius: $textarea-border-radius;
+    @include font-line($textarea-font-size, $textarea-line-height,
+                       $color: $textarea-font-color,
+                       $weight: $textarea-font-weight,
+                       $family: $textarea-font);
+  }
 
 
-    %submit-button-active {
-      background: $submit-background-active;
-      color: $submit-font-color;
-    }
-
-
-    %textarea {
-      background: $textarea-background;
-      padding: $textarea-padding-top $textarea-padding-right
-               $textarea-padding-bottom $textarea-padding-left;
-      margin: $textarea-margin;
-      border: $textarea-border;
-      border-radius: $textarea-border-radius;
-      @include font-line($textarea-font-size, $textarea-line-height,
-                         $color: $textarea-font-color,
-                         $weight: $textarea-font-weight,
-                         $family: $textarea-font);
-    }
-
-
-    %input-placeholder {
-      opacity: $placeholder-opacity;
-      @include font-line($placeholder-font-size,
-                         $placeholder-line-height,
-                         $color: $placeholder-font-color,
-                         $weight: $placeholder-font-weight,
-                         $family: $placeholder-font);
-    }
+  %input-placeholder {
+    opacity: $placeholder-opacity;
+    @include font-line($placeholder-font-size,
+                       $placeholder-line-height,
+                       $color: $placeholder-font-color,
+                       $weight: $placeholder-font-weight,
+                       $family: $placeholder-font);
   }
 }

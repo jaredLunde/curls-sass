@@ -1,26 +1,22 @@
-@mixin dropdown-placeholders-init() {
-  @if not global-variable-exists(-DROPDOWN-PLACEHOLDERS-LOADED) {
-    $-DROPDOWN-PLACEHOLDERS-LOADED: true !global;
-
-    %#{$dropdown-name}__toggler--hover {
-      cursor: pointer;
-      background: $dropdown-toggler-hover-background;
-      color: $dropdown-toggler-hover-color;
-      border-style: $dropdown-toggler-hover-border-style;
-      border-width: $dropdown-toggler-hover-border-width;
-      border-color: $dropdown-toggler-hover-border-color;
-      border-radius: $dropdown-toggler-hover-border-radius;
-    }
+@include import-once('dropdown-placeholders') {
+  %#{$dropdown-name}__toggler--hover {
+    cursor: pointer;
+    background: $dropdown-toggler-hover-background;
+    color: $dropdown-toggler-hover-color;
+    border-style: $dropdown-toggler-hover-border-style;
+    border-width: $dropdown-toggler-hover-border-width;
+    border-color: $dropdown-toggler-hover-border-color;
+    border-radius: $dropdown-toggler-hover-border-radius;
+  }
 
 
-    %#{$dropdown-name}__toggler--active {
-      cursor: pointer;
-      background: $dropdown-toggler-active-background;
-      color: $dropdown-toggler-active-color;
-      border-style: $dropdown-toggler-active-border-style;
-      border-width: $dropdown-toggler-active-border-width;
-      border-color: $dropdown-toggler-active-border-color;
-      border-radius: $dropdown-toggler-active-border-radius;
-    }
+  %#{$dropdown-name}__toggler--active {
+    cursor: pointer;
+    background: $dropdown-toggler-active-background;
+    color: $dropdown-toggler-active-color;
+    border-style: $dropdown-toggler-active-border-style;
+    border-width: $dropdown-toggler-active-border-width;
+    border-color: $dropdown-toggler-active-border-color;
+    border-radius: $dropdown-toggler-active-border-radius;
   }
 }

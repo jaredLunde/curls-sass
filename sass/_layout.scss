@@ -1,69 +1,65 @@
-@mixin resets-init() {
-  @if not global-variable-exists(-RESETS-LOADED) {
-    $-RESETS-LOADED: true !global;
-
-    /**
-     ** Browser resets
-     **/
-    *, *:before, *:after {
-      /** border-box for all, as it should be */
-      @include prefix((box-sizing: border-box), webkit moz);
-    }
+@include import-once('core-layout') {
+  /**
+   ** Browser resets
+   **/
+  *, *:before, *:after {
+    /** border-box for all, as it should be */
+    @include prefix((box-sizing: border-box), webkit moz);
+  }
 
 
-    a, b, body, code, div, em, fieldset,  h1, h2, h3, h4, h5, h6, html, i, iframe,
-    img, label, li, ol, p, pre, span, ul {
-      @extend %browser-reset;
-    }
+  a, b, body, code, div, em, fieldset,  h1, h2, h3, h4, h5, h6, html, i, iframe,
+  img, label, li, ol, p, pre, span, ul {
+    @extend %browser-reset;
+  }
 
 
-    @-ms-viewport {
-      width: device-width;
-    }
+  @-ms-viewport {
+    width: device-width;
+  }
 
 
-    html, body {
-      min-height: 100%;
-      height: 100%;
-    }
+  html, body {
+    min-height: 100%;
+    height: 100%;
+  }
 
 
-    li, ol, ul { list-style: none }
+  li, ol, ul { list-style: none }
 
 
-    body {
-      min-height: 100%;
-      position: relative;
-    }
+  body {
+    min-height: 100%;
+    position: relative;
+  }
 
 
-    a {
-      cursor: pointer;
-    }
+  a {
+    cursor: pointer;
+  }
 
 
-    .divider {
-      background: $divider-color;
-      height: $divider-height;
-      width: 100%;
-      display: block;
-      position: relative;
-    }
+  .divider {
+    background: $divider-color;
+    height: $divider-height;
+    width: 100%;
+    display: block;
+    position: relative;
+  }
 
 
-    .disabled {
-      color: $disabled-link-color;
-    }
+  .disabled {
+    color: $disabled-link-color;
+  }
 
 
-    .no-touchevents .disabled:hover {
-      cursor: not-allowed;
-      color: $disabled-link-color;
-    }
+  .no-touchevents .disabled:hover {
+    cursor: not-allowed;
+    color: $disabled-link-color;
+  }
 
 
-    .noborder {
-      border: 0 !important;
-    }
+  .noborder {
+    border: 0 !important;
   }
 }

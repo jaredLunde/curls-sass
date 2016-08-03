@@ -3,14 +3,11 @@
 @import '../../flexibility/variables';
 @import '../../flexibility/mixins';
 @import '../../flexibility/placeholders';
-@include flex-placeholders-init();
 
 @import 'variables';
 @import 'placeholders';
-@include form-placeholders-init();
-
 @import 'layout';
-@include form-init();
+
 
 /** Input Group (.input-group) */
 @import 'input-group/core';

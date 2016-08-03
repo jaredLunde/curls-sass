@@ -6,9 +6,6 @@
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
-@include flex-placeholders-init();
 
 @import 'variables';
-
 @import 'layout';
-@include checkbox-init();

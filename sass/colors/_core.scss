@@ -2,12 +2,7 @@
  ** Colors
  **/
 @import '../core';
-
 @import 'variables';
 @import 'mixins';
-
 @import 'placeholders';
-@include colors-placeholders-init();
-
 @import 'layout';
-@include colors-init();

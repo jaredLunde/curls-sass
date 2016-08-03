@@ -1,10 +1,6 @@
-@mixin spacing-placeholders-init() {
-  @if not global-variable-exists(-SPACING-PLACEHOLDERS-LOADED) {
-    $-SPACING-PLACEHOLDERS-LOADED: true !global;
-
-    @each $x in $spacing-sizes {
-      @include margin-placeholders($x);
-      @include padding-placeholders($x);
-    }
+@include import-once('spacing-placeholders') {
+  @each $x in $spacing-sizes {
+    @include margin-placeholders($x);
+    @include padding-placeholders($x);
   }
 }

@@ -3,23 +3,16 @@
  **/
 @import '../../../core';
 @import '../../../type/placeholders';
-@include type-placeholders-init();
 
 @import '../../button/core';
-@include button-placeholders-init();
 
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
-@include flex-placeholders-init();
 
 @import '../../../grid/variables';
 @import '../../../grid/placeholders';
-@include grid-placeholders-init();
 
 @import 'variables';
 @import 'placeholders';
-@include dropdown-placeholders-init();
-
 @import 'layout';
-@include dropdown-init();

@@ -20,18 +20,25 @@ $phone: "only screen and (max-width: 639px)" !default;
 $phone-max: $phone !default;
 $phone-s: "only screen and (max-width: 324px)" !default;
 $phone-m: "only screen and (min-width: 325px) and (max-width: 469px)" !default;
+$phone-max-m: "only screen (max-width: 469px)" !default;
 $phone-l: "only screen and (min-width: 480px) and (max-width: 639px)" !default;
+$phone-max-l: "only screen (max-width: 639px)" !default;
 
 $tablet: "only screen and (min-width: 640)" !default;
 $tablet-max: "only screen and (max-width: 1023px)" !default;
 $tablet-s: "only screen and (min-width: 600px) and (max-width: 719px)" !default;
+$tablet-max-s: "only screen (max-width: 719px)" !default;
 $tablet-m: "only screen and (min-width: 720px) and (max-width: 839px)" !default;
+$tablet-max-m: "only screen (max-width: 839px)" !default;
 $tablet-l: "only screen and (min-width: 840px) and (max-width: 1023px)" !default;
+$tablet-max-l: "only screen (max-width: 1023px)" !default;
 
 $desktop: "only screen and (min-width: 960px)" !default;
 $desktop-max: "only screen" !default;
 $desktop-s: "only screen and (min-width: 960px) and (max-width: 1023px)" !default;
-$desktop-m: "only screen and (min-width: 1024px) and (max-width: 1360px)" !default;
+$desktop-max-s: "only screen (max-width: 1023px)" !default;
+$desktop-m: "only screen and (min-width: 1024px) and (max-width: 1359px)" !default;
+$desktop-max-m: "only screen and (max-width: 1359px)" !default;
 $desktop-l: "only screen and (min-width: 1360px)" !default;
 
 $high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi)" !default;

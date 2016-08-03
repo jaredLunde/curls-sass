@@ -7,11 +7,6 @@
 }
 
 
-@if not global-variable-exists(-column-cache) {
-  $-column-cache: () !global;
-}
-
-
 @mixin grid-column($x, $cols, $name-prefix: 'x', $name-ext: null, $multiple: 1,
                    $breakpoint: null) {
   @if $name-ext {
@@ -24,15 +19,10 @@
   @if $-width > 1 {
     $-width: 1;
   }
-  $column-name: 'column--#{$-width}--#{$cols}--#{$breakpoint}';
-  $column-cached: true;
 
-  @if not index($-column-cache, $column-name) {
-    $-column-cache: append($-column-cache, $column-name) !global;
-    $column-cached: false;
-  }
+  $column-name: --column--#{$-width}--#{$cols}--#{$breakpoint};
 
-  @if $column-cached == false {
+  @include cache($column-name) {
     %#{$column-name} {
       @include make-grid-column($x, $cols, $multiple);
     }

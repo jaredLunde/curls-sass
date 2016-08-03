@@ -1,128 +1,124 @@
-@mixin card-init() {
-  @if not global-variable-exists(-CARD-LOADED) {
-    $-CARD-LOADED: true !global;
+@include import-once('card') {
+  #{$card-class} {
+    @extend %#{$card-name};
 
-    #{$card-class} {
-      @extend %#{$card-name};
+    & > *:not(.button):not(button):first-child {
+      border-top: 0;
+    }
 
-      & > *:not(.button):not(button):first-child {
-        border-top: 0;
+    & > *:not(.button):not(button):last-child {
+      border-bottom: 0;
+    }
+
+    & > *:first-child {
+      border-top-right-radius: $card-border-radius;
+      border-top-left-radius: $card-border-radius;
+    }
+
+    & > *:last-child {
+      border-bottom-right-radius: $card-border-radius;
+      border-bottom-left-radius: $card-border-radius;
+    }
+
+    p,
+    & > a:not(#{$button-class}):not(#{$card-class}__image),
+    #{$card-class}__link,
+    #{$card-class}__row,
+    h1, h2, h3, h4, h5, h6,
+    .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
+      @extend %p--16;
+    }
+
+    p + p,
+    h1 + p,
+    h2 + p,
+    h3 + p,
+    h4 + p,
+    h5 + p,
+    h6 + p,
+    .type--h1 + p,
+    .type--h2 + p,
+    .type--h3 + p,
+    .type--h4 + p,
+    .type--h5 + p,
+    .type--h6 + p {
+      @extend %p--t0;
+    }
+
+    & > #{$button-class},
+    & > button {
+      @extend %m--16;
+    }
+
+    header, #{$card-class}__header {
+      @extend %#{$flex-name};
+      width: 100%;
+      background: $card-header-background;
+      border-width: $card-header-border-width;
+      border-color: $card-header-border-color;
+      border-style: $card-header-border-style;
+
+      & + #{$navbar-class} {
+        border-top: 0
       }
+    }
 
-      & > *:not(.button):not(button):last-child {
-        border-bottom: 0;
-      }
-
-      & > *:first-child {
-        border-top-right-radius: $card-border-radius;
-        border-top-left-radius: $card-border-radius;
-      }
-
-      & > *:last-child {
-        border-bottom-right-radius: $card-border-radius;
-        border-bottom-left-radius: $card-border-radius;
-      }
-
-      p,
-      & > a:not(#{$button-class}):not(#{$card-class}__image),
-      #{$card-class}__link,
-      #{$card-class}__row,
-      h1, h2, h3, h4, h5, h6,
-      .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
-        @extend %p--16;
-      }
-
-      p + p,
-      h1 + p,
-      h2 + p,
-      h3 + p,
-      h4 + p,
-      h5 + p,
-      h6 + p,
-      .type--h1 + p,
-      .type--h2 + p,
-      .type--h3 + p,
-      .type--h4 + p,
-      .type--h5 + p,
-      .type--h6 + p {
-        @extend %p--t0;
-      }
-
-      & > #{$button-class},
-      & > button {
-        @extend %m--16;
-      }
-
-      header, #{$card-class}__header {
-        @extend %#{$flex-name};
-        width: 100%;
-        background: $card-header-background;
-        border-width: $card-header-border-width;
-        border-color: $card-header-border-color;
-        border-style: $card-header-border-style;
-
-        & + #{$navbar-class} {
-          border-top: 0
-        }
-      }
-
-      footer, #{$card-class}__footer {
-        @extend %#{$flex-name};
-        width: 100%;
-        background: $card-footer-background;
-        border-width: $card-footer-border-width;
-        border-color: $card-footer-border-color;
-        border-style: $card-footer-border-style;
-
-        & > #{$navbar-class} {
-          border: 0
-        }
-      }
+    footer, #{$card-class}__footer {
+      @extend %#{$flex-name};
+      width: 100%;
+      background: $card-footer-background;
+      border-width: $card-footer-border-width;
+      border-color: $card-footer-border-color;
+      border-style: $card-footer-border-style;
 
       & > #{$navbar-class} {
-        @extend %p--x8;
-
-        #{$button-class}, button, a {
-          @extend %m--x8;
-          @extend %m--y16;
-        }
-      }
-
-      p {
-        width: 100%;
-        margin: 0;
-      }
-
-      #{$navbar-class} {
-        background: transparent;
+        border: 0
       }
     }
 
+    & > #{$navbar-class} {
+      @extend %p--x8;
 
-    #{$card-class} > img,
-    #{$card-class} > figure img,
-    #{$card-class}__image,
-    #{$card-class}__image img,
-    #{$card-class} > video,
-    #{$card-class}__video,
-    #{$card-class}__video video {
+      #{$button-class}, button, a {
+        @extend %m--x8;
+        @extend %m--y16;
+      }
+    }
+
+    p {
       width: 100%;
       margin: 0;
-      padding: 0;
     }
 
-
-    #{$card-class} > img:first-child,
-    #{$card-class}__image,
-    #{$card-class} > img:last-child,
-    #{$card-class} > video:first-child,
-    #{$card-class}__video,
-    #{$card-class} > video:last-child {
-      overflow: hidden;
-
+    #{$navbar-class} {
+      background: transparent;
     }
-
-
-    @include extend-flex($card-name, ($card-class));
   }
+
+
+  #{$card-class} > img,
+  #{$card-class} > figure img,
+  #{$card-class}__image,
+  #{$card-class}__image img,
+  #{$card-class} > video,
+  #{$card-class}__video,
+  #{$card-class}__video video {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  #{$card-class} > img:first-child,
+  #{$card-class}__image,
+  #{$card-class} > img:last-child,
+  #{$card-class} > video:first-child,
+  #{$card-class}__video,
+  #{$card-class} > video:last-child {
+    overflow: hidden;
+
+  }
+
+
+  @include extend-flex($card-name, ($card-class));
 }

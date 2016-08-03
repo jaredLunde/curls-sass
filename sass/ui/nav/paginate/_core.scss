@@ -6,20 +6,14 @@
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
-@include flex-placeholders-init();
 
 @import '../../form/variables';
 @import '../../form/placeholders';
-@include form-placeholders-init();
 
 @import '../../form/input-group/placeholders';
-@include input-group-placeholders-init();
 
 @import '../../../grid/variables';
 @import '../../../grid/placeholders';
-@include grid-placeholders-init();
 
 @import 'variables';
-
 @import 'layout';
-@include paginate-init();

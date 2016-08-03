@@ -1,125 +1,121 @@
-@mixin navbar-init() {
-  @if not global-variable-exists(-NAVBAR-LOADED) {
-    $-NAVBAR-LOADED: true !global;
+@include import-once('navbar') {
+  #{$navbar-class} {
+    @extend %#{$flex-name};
+    @extend %media-gutters-half-x;
+    @extend %#{$flex-name}--y-center;
+    position: relative;
+    background: $navbar-background;
+    border-style: $navbar-border-style;
+    border-width: $navbar-border-width;
+    border-color: $navbar-border-color;
+    width: $navbar-width;
+    @include flex-wrap(nowrap);
 
-    #{$navbar-class} {
+    &#{$grid-class}--nopad {
+      padding: 0
+    }
+
+    & > * {
       @extend %#{$flex-name};
-      @extend %media-gutters-half-x;
+      @extend %#{$flex-name}--fixed;
       @extend %#{$flex-name}--y-center;
-      position: relative;
-      background: $navbar-background;
-      border-style: $navbar-border-style;
-      border-width: $navbar-border-width;
-      border-color: $navbar-border-color;
-      width: $navbar-width;
-      @include flex-wrap(nowrap);
-
-      &#{$grid-class}--nopad {
-        padding: 0
-      }
-
+      /**
       & > * {
-        @extend %#{$flex-name};
-        @extend %#{$flex-name}--fixed;
-        @extend %#{$flex-name}--y-center;
-        /**
-        & > * {
-          @extend %#{$flex-name}--self-y-center;
-        }
-        */
+        @extend %#{$flex-name}--self-y-center;
       }
-
-      & > li {
-        @extend %#{$flex-name}--self-y-stretch;
-        @extend %#{$flex-name}--y-center;
-      }
-
-      & > #{$dropdown-class},
-      & > li > #{$dropdown-class},
-      & > #{$button-class}-group,
-      & > li > #{$button-class}-group,
-      & > .input-group,
-      & > li > .input-group {
-        @extend %media-margin-gutters-half;
-      }
-
-      #{$navbar-class}__link,
-      & > li > a,
-      & > a,
-      h1, h2, h3, h4, h5, h6,
-      .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
-        @extend %#{$flex-name};
-        @extend %#{$flex-name}--self-y-stretch;
-        @extend %#{$flex-name}--y-center;
-        @extend %media-margin-gutters-half-x;
-        @extend %media-margin-gutters-y;
-        font-weight: $navbar-link-font-weight;
-      }
-
-      & + #{$navbar-class} {
-        border-top: 0;
-      }
-
-      #{$navbar-class} {
-        border: 0;
-        width: auto;
-        background: transparent;
-      }
+      */
     }
 
-
-    #{$navbar-class}--overflow {
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+    & > li {
+      @extend %#{$flex-name}--self-y-stretch;
+      @extend %#{$flex-name}--y-center;
     }
 
-
-    #{$navbar-class}__link {
-      background: $navbar-link-background;
+    & > #{$dropdown-class},
+    & > li > #{$dropdown-class},
+    & > #{$button-class}-group,
+    & > li > #{$button-class}-group,
+    & > .input-group,
+    & > li > .input-group {
+      @extend %media-margin-gutters-half;
     }
 
-
-    .no-touchevents #{$navbar-class}__link:active,
-    .no-touchevents #{$navbar-class}__link.active:hover,
-    #{$navbar-class}__link.active,
-    #{$navbar-class} > a.active,
-    #{$navbar-class} > a:active,
-    #{$navbar-class} > li > a.active,
-    #{$navbar-class} > li > a:active {
-      background: $navbar-link-active-background;
-      color: $navbar-link-active-color;
+    #{$navbar-class}__link,
+    & > li > a,
+    & > a,
+    h1, h2, h3, h4, h5, h6,
+    .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
+      @extend %#{$flex-name};
+      @extend %#{$flex-name}--self-y-stretch;
+      @extend %#{$flex-name}--y-center;
+      @extend %media-margin-gutters-half-x;
+      @extend %media-margin-gutters-y;
+      font-weight: $navbar-link-font-weight;
     }
 
-    .no-touchevents #{$navbar-class}__link:hover {
-      background: $navbar-link-hover-background;
-      color: $navbar-link-hover-color;
-
-    }
-
-
-    #{$navbar-class}--sticky {
-      position: -webkit-sticky;
-      position: -moz-sticky;
-      position: -ms-sticky;
-      position: -o-sticky;
-      position: sticky;
-    }
-
-
-    #{$navbar-class}#{$navbar-class}--fixed-top,
-    #{$navbar-class}--fixed-top {
-      @extend %fixed-top-fw;
+    & + #{$navbar-class} {
       border-top: 0;
     }
 
-
-    #{$navbar-class}#{$navbar-class}--fixed-bottom,
-    #{$navbar-class}--fixed-bottom {
-      @extend %fixed-bottom-fw;
-      border-bottom: 0;
+    #{$navbar-class} {
+      border: 0;
+      width: auto;
+      background: transparent;
     }
-
-
-    @include extend-flex($navbar-name, ($navbar-class));
   }
+
+
+  #{$navbar-class}--overflow {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  #{$navbar-class}__link {
+    background: $navbar-link-background;
+  }
+
+
+  .no-touchevents #{$navbar-class}__link:active,
+  .no-touchevents #{$navbar-class}__link.active:hover,
+  #{$navbar-class}__link.active,
+  #{$navbar-class} > a.active,
+  #{$navbar-class} > a:active,
+  #{$navbar-class} > li > a.active,
+  #{$navbar-class} > li > a:active {
+    background: $navbar-link-active-background;
+    color: $navbar-link-active-color;
+  }
+
+  .no-touchevents #{$navbar-class}__link:hover {
+    background: $navbar-link-hover-background;
+    color: $navbar-link-hover-color;
+
+  }
+
+
+  #{$navbar-class}--sticky {
+    position: -webkit-sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    position: sticky;
+  }
+
+
+  #{$navbar-class}#{$navbar-class}--fixed-top,
+  #{$navbar-class}--fixed-top {
+    @extend %fixed-top-fw;
+    border-top: 0;
+  }
+
+
+  #{$navbar-class}#{$navbar-class}--fixed-bottom,
+  #{$navbar-class}--fixed-bottom {
+    @extend %fixed-bottom-fw;
+    border-bottom: 0;
+  }
+
+
+  @include extend-flex($navbar-name, ($navbar-class));
 }

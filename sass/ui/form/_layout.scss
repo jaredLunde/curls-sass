@@ -1,110 +1,108 @@
-@mixin form-init() {
-  @if not global-variable-exists(-FORM-LOADED) {
-    $-FORM-LOADED: true !global;
-    form {
-      @extend %browser-reset;
-    }
-    
-    // Resets */
-    input[type=text],
-    input[type=email],
-    input[type=tel],
-    input[type=url],
-    input[type=search],
-    input[type=submit],
-    input[type=date],
-    input[type=password],
-    textarea,
-    button {
-      @extend %reset-form-appearance;
-    }
+@include import-once('form') {
+  $-FORM-LOADED: true !global;
+  form {
+    @extend %browser-reset;
+  }
+
+  // Resets */
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  input[type=url],
+  input[type=search],
+  input[type=submit],
+  input[type=date],
+  input[type=password],
+  textarea,
+  button {
+    @extend %reset-form-appearance;
+  }
 
 
-    button::-moz-focus-inner {
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
+  button::-moz-focus-inner {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
 
-    :focus { outline: 0 }
+  :focus { outline: 0 }
 
-    input[type=date] {
-        min-height: $input-text-line-height;
-    }
-
-
-    select {
-      @include font-line($input-text-font-size, $input-text-line-height,
-                         $color: $input-text-font-color,
-                         $weight: $input-text-font-weight,
-                         $family: $input-text-font);
-    }
+  input[type=date] {
+      min-height: $input-text-line-height;
+  }
 
 
-    // Text inputs */
-    input[type=text],
-    input[type=email],
-    input[type=tel],
-    input[type=number],
-    input[type=url],
-    input[type=password],
-    input[type=date],
-    input[type=search] {
-      @extend %input-text;
-    }
+  select {
+    @include font-line($input-text-font-size, $input-text-line-height,
+                       $color: $input-text-font-color,
+                       $weight: $input-text-font-weight,
+                       $family: $input-text-font);
+  }
 
 
-    // Submit Buttons */
-    button[type=submit], input[type=submit] {
-      @extend %submit-button;
-    }
+  // Text inputs */
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  input[type=number],
+  input[type=url],
+  input[type=password],
+  input[type=date],
+  input[type=search] {
+    @extend %input-text;
+  }
 
 
-    .no-touchevents button[type=submit],
-    .no-touchevents input[type=submit] {
-      &:hover {
-        @extend %submit-button-hover;
-      }
+  // Submit Buttons */
+  button[type=submit], input[type=submit] {
+    @extend %submit-button;
+  }
 
-      &:active {
-        @extend %submit-button-active;
-      }
+
+  .no-touchevents button[type=submit],
+  .no-touchevents input[type=submit] {
+    &:hover {
+      @extend %submit-button-hover;
     }
 
-
-    // Textareas */
-    textarea {
-      @extend %textarea;
+    &:active {
+      @extend %submit-button-active;
     }
+  }
 
 
-    // Placeholders */
-    .placeholder {
-      @extend %input-placeholder;
-    }
+  // Textareas */
+  textarea {
+    @extend %textarea;
+  }
 
 
-    *::-webkit-input-placeholder {
-      /* Chrome + Safari */
-      @extend .placeholder;
-    }
+  // Placeholders */
+  .placeholder {
+    @extend %input-placeholder;
+  }
 
 
-    *:-moz-placeholder {
-      /* FF 4-18 */
-      @extend .placeholder;
-    }
+  *::-webkit-input-placeholder {
+    /* Chrome + Safari */
+    @extend .placeholder;
+  }
 
 
-    *::-moz-placeholder {
-      /* FF 19+ */
-      @extend .placeholder;
-    }
+  *:-moz-placeholder {
+    /* FF 4-18 */
+    @extend .placeholder;
+  }
 
 
-    *:-ms-input-placeholder {
-      /* IE 10+ */
-      @extend .placeholder;
-    }
+  *::-moz-placeholder {
+    /* FF 19+ */
+    @extend .placeholder;
+  }
+
+
+  *:-ms-input-placeholder {
+    /* IE 10+ */
+    @extend .placeholder;
   }
 }

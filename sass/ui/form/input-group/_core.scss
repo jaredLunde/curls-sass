@@ -6,15 +6,12 @@
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
-@include flex-placeholders-init();
+
+@import '../../../grid/variables';
+@import '../../../grid/placeholders';
 
 @import '../variables';
-@import '../layout';
 @import '../placeholders';
-@include form-placeholders-init();
 
 @import 'placeholders';
-@include input-group-placeholders-init();
-
 @import 'layout';
-@include input-group-init();

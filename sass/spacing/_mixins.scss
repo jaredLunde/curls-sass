@@ -1,15 +1,8 @@
 /** Creates placeholders and classes */
-@if not global-variable-exists(-spacing-cache) {
-  $-spacing-cache: () !global;
-}
-
-
 @mixin spacing-placeholders($size, $pre, $prop) {
-  $spacing-name: #{$prop}--#{$size}--#{$pre};
+  $spacing-name: --spacing--#{$prop}--#{$size}--#{$pre};
 
-  @if not index($-spacing-cache, $spacing-name) {
-    $-spacing-cache: append($-spacing-cache, $spacing-name) !global;
-
+  @include cache($spacing-name) {
     $stripped-size: strip-units($size);
 
     %#{$pre}--t#{$stripped-size} {

@@ -2,12 +2,7 @@
  ** Multi-column layout (.cols)
  **/
 @import '../core';
-
 @import 'variables';
 @import 'mixins';
-
 @import 'placeholders';
-@include columns-placeholders-init();
-
 @import 'layout';
-@include columns-init();

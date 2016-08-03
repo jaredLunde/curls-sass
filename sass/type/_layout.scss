@@ -1,92 +1,88 @@
-@mixin type-init() {
-  @if not global-variable-exists(-TYPE-LOADED) {
-    $-TYPE-LOADED: true !global;
+@include import-once('type') {
+  *, *:before, *:after {
+    /** the zoom makes zero sense to me */
+    -webkit-text-size-adjust: none;
+  }
 
-    *, *:before, *:after {
-      /** the zoom makes zero sense to me */
-      -webkit-text-size-adjust: none;
+  pre {
+    -webkit-font-smoothing: auto;
+  }
+
+
+  body {
+    text-rendering: optimizeLegibility;
+    @include font-line($body-font-size,
+                       $body-line-height,
+                       $color: $body-font-color,
+                       $weight: $body-font-weight,
+                       $family: $body-font);
+
+    @media #{$high-dpi} {
+      font-smoothing: antialiased;
+      -webkit-font-smoothing: antialiased;
     }
+  }
 
-    pre {
-      -webkit-font-smoothing: auto;
+
+  h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
+    text-align: $heading-text-align;
+    @include font-line($heading-max-font-size,
+                       $heading-line-height,
+                       $color: $heading-color,
+                       $weight: $heading-font-weight,
+                       $family: $heading-font);
+  }
+
+
+  $_size: $heading-max-font-size * 0.875 * 0.875;
+  @each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
+    $_size: round($_size * 0.875);
+    #{$x} {
+      @include font-line($_size, $heading-line-height);
     }
-    
-
-    body {
-      text-rendering: optimizeLegibility;
-      @include font-line($body-font-size,
-                         $body-line-height,
-                         $color: $body-font-color,
-                         $weight: $body-font-weight,
-                         $family: $body-font);
-
-      @media #{$high-dpi} {
-        font-smoothing: antialiased;
-        -webkit-font-smoothing: antialiased;
-      }
+    #{$type-class}--#{$x} {
+      @extend #{$x};
     }
+  }
 
 
-    h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
-      text-align: $heading-text-align;
-      @include font-line($heading-max-font-size,
-                         $heading-line-height,
-                         $color: $heading-color,
-                         $weight: $heading-font-weight,
-                         $family: $heading-font);
+  p {
+    padding: $paragraph-padding;
+    margin: $paragraph-margin;
+    text-align: $paragraph-text-align;
+    @include rem-property(letter-spacing, $paragraph-letter-spacing);
+    @include font-line($paragraph-font-size, $paragraph-line-height,
+                       $color: $paragraph-font-color,
+                       $weight: $paragraph-font-weight,
+                       $family: $paragraph-font);
+  }
+
+
+  #{$type-class}--left {
+    @extend %type--left;
+  }
+
+
+  #{$type-class}--right {
+    @extend %type--right;
+  }
+
+
+  #{$type-class}--center {
+    @extend %type--center;
+  }
+
+
+  @each $color in map-keys($colors) {
+    #{$type-class}--#{$color} {
+      @extend %#{$type-name}--#{$color};
     }
+  }
 
 
-    $_size: $heading-max-font-size * 0.875 * 0.875;
-    @each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
-      $_size: round($_size * 0.875);
-      #{$x} {
-        @include font-line($_size, $heading-line-height);
-      }
-      #{$type-class}--#{$x} {
-        @extend #{$x};
-      }
-    }
-
-
-    p {
-      padding: $paragraph-padding;
-      margin: $paragraph-margin;
-      text-align: $paragraph-text-align;
-      @include rem-property(letter-spacing, $paragraph-letter-spacing);
-      @include font-line($paragraph-font-size, $paragraph-line-height,
-                         $color: $paragraph-font-color,
-                         $weight: $paragraph-font-weight,
-                         $family: $paragraph-font);
-    }
-
-
-    #{$type-class}--left {
-      @extend %type--left;
-    }
-
-
-    #{$type-class}--right {
-      @extend %type--right;
-    }
-
-
-    #{$type-class}--center {
-      @extend %type--center;
-    }
-
-
-    @each $color in map-keys($colors) {
-      #{$type-class}--#{$color} {
-        @extend %#{$type-name}--#{$color};
-      }
-    }
-
-
-    @each $size in map-keys($type-font-size) {
-      #{$type-class}--#{$size} {
-        @extend %#{$type-name}--#{$size};
-      }
+  @each $size in map-keys($type-font-size) {
+    #{$type-class}--#{$size} {
+      @extend %#{$type-name}--#{$size};
     }
   }
 }

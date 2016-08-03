@@ -1,75 +1,71 @@
-@mixin columns-init() {
-  @if not global-variable-exists(-COLUMNS-LOADED) {
-    $-COLUMNS-LOADED: true !global;
+@include import-once('columns') {
+  #{$columns-class} {
+    display: block;
+  }
 
-    #{$columns-class} {
-      display: block;
+
+  #{$columns-class} > * {
+    display: inline-block;
+    width: 100%;
+  }
+
+
+  #{$columns-class}--center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+
+  .no-csscolumns #{$columns-class} > * {
+    float: left;
+    width: $columns-width;
+    display: inline-block;
+    @include prefix((box-sizing: border-box), webkit moz);
+  }
+
+  .no-csscolumns #{$columns-class} {
+    @include prefix((box-sizing: border-box), webkit moz);
+    &:before, &:after {
+        content: " ";
+        display: table;
     }
-
-
-    #{$columns-class} > * {
-      display: inline-block;
-      width: 100%;
+    &:after {
+        clear: both;
     }
+  }
 
 
-    #{$columns-class}--center {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
+  @for $x from 1 through $columns-max-count {
+    #{$columns-class}--#{$x} {
+      @extend %#{$columns-name}--#{$x};
     }
+  }
 
 
-    .no-csscolumns #{$columns-class} > * {
+  @for $x from 1 through $columns-max-count {
+    .no-csscolumns #{$columns-class}--#{$x} > * {
       float: left;
-      width: $columns-width;
-      display: inline-block;
-      @include prefix((box-sizing: border-box), webkit moz);
+      $width: 1 / $x;
+      $width: percentage($width);
+      width: $width;
+      max-width: $width;
     }
+  }
 
-    .no-csscolumns #{$columns-class} {
-      @include prefix((box-sizing: border-box), webkit moz);
-      &:before, &:after {
-          content: " ";
-          display: table;
+
+  @each $size in map-keys($columns-gutter) {
+    @media #{map-get($columns-breakpoint, $size)} {
+      #{$columns-class} {
+        @include columns($gutter-size: map-get($columns-gutter, $size));
       }
-      &:after {
-          clear: both;
+
+      .no-csscolumns #{$columns-class} {
+        padding-left: map-get($columns-gutter, $size);
       }
-    }
 
-
-    @for $x from 1 through $columns-max-count {
-      #{$columns-class}--#{$x} {
-        @extend %#{$columns-name}--#{$x};
-      }
-    }
-
-
-    @for $x from 1 through $columns-max-count {
-      .no-csscolumns #{$columns-class}--#{$x} > * {
-        float: left;
-        $width: 1 / $x;
-        $width: percentage($width);
-        width: $width;
-        max-width: $width;
-      }
-    }
-
-
-    @each $size in map-keys($columns-gutter) {
-      @media #{map-get($columns-breakpoint, $size)} {
-        #{$columns-class} {
-          @include columns($gutter-size: map-get($columns-gutter, $size));
-        }
-
-        .no-csscolumns #{$columns-class} {
-          padding-left: map-get($columns-gutter, $size);
-        }
-
-        .no-csscolumns #{$columns-class} > * {
-          padding: 0 map-get($columns-gutter, $size) 0 0;
-        }
+      .no-csscolumns #{$columns-class} > * {
+        padding: 0 map-get($columns-gutter, $size) 0 0;
       }
     }
   }

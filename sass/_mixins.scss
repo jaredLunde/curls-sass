@@ -139,3 +139,24 @@
 
   @return $string;
 }
+
+
+@if not global-variable-exists(-CURLS-CACHE) {
+  $-CURLS-CACHE: () !global;
+}
+
+
+@mixin cache($name) {
+  @if not index($-CURLS-CACHE, $name) {
+    $-CURLS-CACHE: append($-CURLS-CACHE, $name) !global;
+    @content;
+  }
+}
+
+
+@mixin import-once($name) {
+  $name: --IMPORT--#{$name};
+  @include cache($name) {
+    @content;
+  }
+}

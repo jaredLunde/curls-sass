@@ -1,12 +1,8 @@
-@mixin input-group-init() {
-  @if not global-variable-exists(-INPUT-GROUP-LOADED) {
-    $-INPUT-GROUP-LOADED: true !global;
-
-    .input-group {
-      @extend %input-group;
-    }
-
-
-    @include extend-flex('input-group', ('.input-group'));
+@include import-once('input-group') {
+  .input-group {
+    @extend %input-group;
   }
+
+
+  @include extend-flex('input-group', ('.input-group'));
 }
