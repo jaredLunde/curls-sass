@@ -39,17 +39,17 @@
 
 
 @mixin transform($style...) {
-  @include prefix((transform: $style), ms webkit);
+  @include prefix((transform: $style), webkit moz);
 }
 
 
 @mixin transition($style...) {
-  @include prefix((transition: $style), webkit moz ms o);
+  @include prefix((transition: $style), webkit);
 }
 
 
 @mixin box-shadow($style) {
-  @include prefix((box-shadow: $style), webkit moz);
+  @include prefix((box-shadow: $style), webkit);
 }
 
 
@@ -120,8 +120,7 @@
 
 
 @mixin blur($size) {
-  filter: url(blur.svg#blur);
-  @include prefix((blur: $size), webkit moz o ms);
+  @include prefix((filter: blur($size)), webkit);
 }
 
 

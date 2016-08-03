@@ -1,10 +1,58 @@
 @mixin spacing-init() {
   @if not global-variable-exists(-SPACING-LOADED) {
-    $SPACING-LOADED: true !global;
+    $-SPACING-LOADED: true !global;
 
     @each $x in $spacing-sizes {
       @include margin-group($x);
       @include padding-group($x);
+    }
+
+    .p--gutter {
+      @extend %media-gutters;
+    }
+
+    .m--gutter {
+      @extend %media-margin-gutters;
+    }
+
+    .p--gutter-x {
+      @extend %media-gutters-x;
+    }
+
+    .m--gutter-x {
+      @extend %media-margin-gutters-x;
+    }
+
+    .p--gutter-y {
+      @extend %media-gutters-y;
+    }
+
+    .m--gutter-y {
+      @extend %media-margin-gutters-y;
+    }
+
+    .p--half-gutter {
+      @extend %media-gutters-half;
+    }
+
+    .m--half-gutter {
+      @extend %media-margin-gutters-half;
+    }
+
+    .p--half-gutter-x {
+      @extend %media-gutters-half-x;
+    }
+
+    .m--half-gutter-x {
+      @extend %media-margin-gutters-half-x;
+    }
+
+    .p--half-gutter-y {
+      @extend %media-gutters-half-y;
+    }
+
+    .m--half-gutter-y {
+      @extend %media-margin-gutters-half-y;
     }
   }
 }

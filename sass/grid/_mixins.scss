@@ -1,17 +1,19 @@
-@mixin grid($cols, $gutter-size: 0, $name-prefix: 'x', $name-ext: null,
+@mixin grid($cols, $name-prefix: 'x', $name-ext: null,
             $multiple: 1, $breakpoint: null) {
   @for $x from 1 through $cols {
-    @include grid-column($x, $cols, $gutter-size, $name-prefix, $name-ext,
-                         $multiple, $breakpoint);
+    @include grid-column($x, $cols, $name-prefix, $name-ext, $multiple,
+                         $breakpoint);
   }
 }
 
 
-$-column-cache: ();
+@if not global-variable-exists(-column-cache) {
+  $-column-cache: () !global;
+}
 
 
-@mixin grid-column($x, $cols, $gutter-size: 0, $name-prefix: 'x',
-                   $name-ext: null, $multiple: 1, $breakpoint: null) {
+@mixin grid-column($x, $cols, $name-prefix: 'x', $name-ext: null, $multiple: 1,
+                   $breakpoint: null) {
   @if $name-ext {
     $name-ext: "--#{$name-ext}";
   } @else {
@@ -32,7 +34,7 @@ $-column-cache: ();
 
   @if $column-cached == false {
     %#{$column-name} {
-      @include make-grid-column($x, $cols, $gutter-size, $multiple);
+      @include make-grid-column($x, $cols, $multiple);
     }
   }
 
@@ -42,16 +44,12 @@ $-column-cache: ();
 }
 
 
-$-pad-cache: ();
-
-
-@mixin make-grid-column($n, $columns, $gutter-size: 0, $multiple: 1) {
+@mixin make-grid-column($n, $columns, $multiple: 1) {
   $width: ($n / $columns) * $multiple;
   @if $width > 1 {
     $width: 1;
   }
   $width: percentage($width);
   width: $width;
-  // max-width: $width;
   @include flex-basis($width);
 }

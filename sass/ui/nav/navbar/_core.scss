@@ -2,8 +2,7 @@
  ** Navbar (.navbar)
  **/
 @import '../../../core';
-@import '../../button/variables';
-@import '../dropdown/variables';
+
 @import '../../../flexibility/variables';
 @import '../../../flexibility/mixins';
 @import '../../../flexibility/placeholders';
@@ -12,6 +11,9 @@
 @import '../../../grid/variables';
 @import '../../../grid/placeholders';
 @include grid-placeholders-init();
+
+@import '../../button/variables';
+@import '../dropdown/variables';
 
 @import 'variables';
 @import 'layout';

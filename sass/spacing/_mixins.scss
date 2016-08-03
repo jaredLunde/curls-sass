@@ -1,47 +1,79 @@
 /** Creates placeholders and classes */
-@mixin _group($size, $pre, $prop) {
-  $stripped-size: strip-units($size);
-  %#{$pre}--t#{$stripped-size} {
-    #{$prop}-top: $size;
+@if not global-variable-exists(-spacing-cache) {
+  $-spacing-cache: () !global;
+}
+
+
+@mixin spacing-placeholders($size, $pre, $prop) {
+  $spacing-name: #{$prop}--#{$size}--#{$pre};
+
+  @if not index($-spacing-cache, $spacing-name) {
+    $-spacing-cache: append($-spacing-cache, $spacing-name) !global;
+
+    $stripped-size: strip-units($size);
+
+    %#{$pre}--t#{$stripped-size} {
+      #{$prop}-top: $size;
+    }
+
+    %#{$pre}--b#{$stripped-size} {
+      #{$prop}-bottom: $size;
+    }
+
+    %#{$pre}--y#{$stripped-size} {
+      @extend %#{$pre}--t#{$stripped-size};
+      @extend %#{$pre}--b#{$stripped-size};
+    }
+
+    %#{$pre}--r#{$stripped-size} {
+      #{$prop}-right: $size;
+    }
+
+    %#{$pre}--l#{$stripped-size} {
+      #{$prop}-left: $size;
+    }
+
+    %#{$pre}--x#{$stripped-size} {
+      @extend %#{$pre}--r#{$stripped-size};
+      @extend %#{$pre}--l#{$stripped-size};
+    }
+
+    %#{$pre}--#{$stripped-size} {
+      #{$prop}: $size;
+    }
   }
+}
+
+
+@mixin spacing-group($size, $pre, $prop) {
+  $stripped-size: strip-units($size);
+
+  @include spacing-placeholders($size, $pre, $prop);
+
   .#{$pre}--t#{$stripped-size} {
     @extend %#{$pre}--t#{$stripped-size};
   }
-  %#{$pre}--b#{$stripped-size} {
-    #{$prop}-bottom: $size;
-  }
+
   .#{$pre}--b#{$stripped-size} {
     @extend %#{$pre}--b#{$stripped-size};
   }
-  %#{$pre}--y#{$stripped-size} {
-    @extend %#{$pre}--t#{$stripped-size};
-    @extend %#{$pre}--b#{$stripped-size};
-  }
+
   .#{$pre}--y#{$stripped-size} {
     @extend %#{$pre}--y#{$stripped-size};
   }
-  %#{$pre}--r#{$stripped-size} {
-    #{$prop}-right: $size;
-  }
+
   .#{$pre}--r#{$stripped-size} {
     @extend %#{$pre}--r#{$stripped-size};
   }
-  %#{$pre}--l#{$stripped-size} {
-    #{$prop}-left: $size;
-  }
+
   .#{$pre}--l#{$stripped-size} {
     @extend %#{$pre}--l#{$stripped-size};
   }
-  %#{$pre}--x#{$stripped-size} {
-    @extend %#{$pre}--r#{$stripped-size};
-    @extend %#{$pre}--l#{$stripped-size};
-  }
+
   .#{$pre}--x#{$stripped-size} {
     @extend %#{$pre}--x#{$stripped-size};
   }
-  %#{$pre}--#{$stripped-size} {
-    #{$prop}: $size;
-  }
+
   .#{$pre}--#{$stripped-size} {
     @extend %#{$pre}--#{$stripped-size};
   }
@@ -49,10 +81,20 @@
 
 
 @mixin margin-group($size, $prefix: 'm') {
-  @include _group($size, $prefix, 'margin')
+  @include spacing-group($size, $prefix, 'margin')
 }
 
 
 @mixin padding-group($size, $prefix: 'p') {
-  @include _group($size, $prefix, 'padding')
+  @include spacing-group($size, $prefix, 'padding')
+}
+
+
+@mixin margin-placeholders($size, $prefix: 'm') {
+  @include spacing-placeholders($size, $prefix, 'margin')
+}
+
+
+@mixin padding-placeholders($size, $prefix: 'p') {
+  @include spacing-placeholders($size, $prefix, 'padding')
 }

@@ -2,17 +2,17 @@
   @if not global-variable-exists(-DROPDOWN-LOADED) {
     $-DROPDOWN-LOADED: true !global;
 
+
     #{$dropdown-class} {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--y-center;
-      @extend %media-margin-gutters-half;
       position: relative;
 
       &.dropped {
         #{$dropdown-class}__menu {
           @extend %drop-out--fast;
           top: 100%;
-          margin-top: -1px;
+          margin-top: -3px;
           visibility: visible;
           opacity: 1.0;
         }
@@ -40,19 +40,12 @@
     }
 
 
-    #{$dropdown-class}__caret.fa-chevron-down,
-    #{$dropdown-class}__caret.fa-caret-down,
-    #{$dropdown-class}__caret.fa-angle-down {
-      @extend %#{$flex-name}--self-y-center;
-      @extend %#{$type-name}--s;
-    }
-
-
     #{$dropdown-class}__caret {
       @extend %hardware-accel;
       @extend %transform--fast;
+      @extend %#{$flex-name}--self-y-center;
+      @extend %#{$type-name}--s;
       left: 6px;
-      // top: 1px;
       color: $dropdown-toggler-color;
       position: relative;
     }
@@ -61,32 +54,6 @@
     .dropped #{$dropdown-class}__caret {
       top: -1px;
       @include transform(rotate(180deg));
-    }
-
-
-    #{$dropdown-class}__caret--left {
-      @extend #{$dropdown-class}__caret;
-      @extend %#{$flex-name}--first;
-      float: left;
-      margin-right: 6px;
-      margin-left: auto;
-    }
-
-
-    #{$dropdown-class}__caret--right {
-      @extend #{$dropdown-class}__caret;
-      @extend %#{$flex-name}--last;
-      float: right;
-      margin-left: 6px;
-    }
-
-
-    #{$dropdown-class}__caret--left.fa-chevron-down,
-    #{$dropdown-class}__caret--left.fa-caret-down,
-    #{$dropdown-class}__caret--right.fa-chevron-down,
-    #{$dropdown-class}__caret--right.fa-caret-down {
-      @extend #{$dropdown-class}__caret.fa-caret-down;
-      margin-top: 4%;
     }
 
 

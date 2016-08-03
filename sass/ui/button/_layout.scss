@@ -51,20 +51,7 @@
 
     #{$button-class}-group {
       @extend %input-group;
-    }
 
-
-    #{$button-class}-group--grow {
-      @extend %#{$flex-name}--grow;
-    }
-
-
-    #{$button-class}-group--shrink {
-      @extend %#{$flex-name}--shrink;
-    }
-
-
-    #{$button-class}-group {
       button {
         @extend %#{$flex-name}--fluid;
       }

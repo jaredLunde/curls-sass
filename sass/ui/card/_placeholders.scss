@@ -4,12 +4,14 @@
 
     %#{$card-name} {
       @extend %#{$flex-name};
-      @extend %media-margin-gutters-half-y;
+      @extend %media-margin-gutters-y;
+      margin-top: 0;
       background: $card-background;
       border-width: $card-border-width;
       border-style: $card-border-style;
       border-color: $card-border-color;
       border-radius: $card-border-radius;
+      width: 100%;
       @include flex-direction(column);
     }
   }

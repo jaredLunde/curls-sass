@@ -1,5 +1,4 @@
 @mixin display-flex {
-  display: table;
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -336,7 +335,7 @@
 
 
   #{$selector}.#{$name}--grow {
-    @extend %#{$flex-name}--last;
+    @extend %#{$flex-name}--grow;
   }
 
 
@@ -345,8 +344,18 @@
   }
 
 
-  #{$selector}.#{$name}--reverse {
-    @extend %#{$flex-name}--reverse;
+  #{$selector}.#{$name}--x-reverse {
+    @extend %#{$flex-name}--x-reverse;
+  }
+
+
+  #{$selector}.#{$name}--y-reverse {
+    @extend %#{$flex-name}--y-reverse;
+  }
+
+
+  #{$selector}.#{$name}--wrap-reverse {
+    @extend %#{$flex-name}--wrap-reverse;
   }
 
 

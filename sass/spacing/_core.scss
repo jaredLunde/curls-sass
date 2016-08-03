@@ -3,8 +3,15 @@
  **/
 @import '../core';
 
+@import '../grid/variables';
+@import '../grid/placeholders';
+@include grid-placeholders-init();
+
 @import 'variables';
 @import 'mixins';
+
+@import 'placeholders';
+@include spacing-placeholders-init();
 
 @import 'layout';
 @include spacing-init();

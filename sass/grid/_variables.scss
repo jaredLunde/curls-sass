@@ -7,16 +7,6 @@ $grid-row-class: unquote("#{unquote(".")}#{$grid-row-name}") !default;
 $grid-col-name: col !default;
 $grid-col-class: unquote("#{unquote(".")}#{$grid-col-name}") !default;
 
-$grid-body-name: #{$grid-name}__body !default;
-$grid-body-class: unquote("#{unquote(".")}#{$grid-body-name}") !default;
-
-$float-grid-row-name: fl-row !default;
-$float-grid-row-class: unquote("#{unquote(".")}#{$float-grid-row-name}") !default;
-$float-grid-col-name: fl-col !default;
-$float-grid-col-class: unquote("#{unquote(".")}#{$float-grid-col-name}") !default;
-$float-grid-body-name: #{$grid-name}__fl-body !default;
-$float-grid-body-class: unquote("#{unquote(".")}#{$float-grid-body-name}") !default;
-
 
 $grid-gutter: (
   xs: 8px,

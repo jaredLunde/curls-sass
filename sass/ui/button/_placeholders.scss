@@ -4,6 +4,7 @@
 
     %#{$button-name}, %button {
       @extend %media-margin-gutters-half-y;
+      @extend %#{$flex-name}--y-center;
       background: $button-background;
       color: $button-color;
       border-style: $button-border-style;

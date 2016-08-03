@@ -5,6 +5,7 @@
     #{$navbar-class} {
       @extend %#{$flex-name};
       @extend %media-gutters-half-x;
+      @extend %#{$flex-name}--y-center;
       position: relative;
       background: $navbar-background;
       border-style: $navbar-border-style;
@@ -16,86 +17,60 @@
       &#{$grid-class}--nopad {
         padding: 0
       }
+
+      & > * {
+        @extend %#{$flex-name};
+        @extend %#{$flex-name}--fixed;
+        @extend %#{$flex-name}--y-center;
+        /**
+        & > * {
+          @extend %#{$flex-name}--self-y-center;
+        }
+        */
+      }
+
+      & > li {
+        @extend %#{$flex-name}--self-y-stretch;
+        @extend %#{$flex-name}--y-center;
+      }
+
+      & > #{$dropdown-class},
+      & > li > #{$dropdown-class},
+      & > #{$button-class}-group,
+      & > li > #{$button-class}-group,
+      & > .input-group,
+      & > li > .input-group {
+        @extend %media-margin-gutters-half;
+      }
+
+      #{$navbar-class}__link,
+      & > li > a,
+      & > a,
+      h1, h2, h3, h4, h5, h6,
+      .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
+        @extend %#{$flex-name};
+        @extend %#{$flex-name}--self-y-stretch;
+        @extend %#{$flex-name}--y-center;
+        @extend %media-margin-gutters-half-x;
+        @extend %media-margin-gutters-y;
+        font-weight: $navbar-link-font-weight;
+      }
+
+      & + #{$navbar-class} {
+        border-top: 0;
+      }
+
+      #{$navbar-class} {
+        border: 0;
+        width: auto;
+        background: transparent;
+      }
     }
 
 
     #{$navbar-class}--overflow {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
-    }
-
-
-    #{$navbar-class} + #{$navbar-class} {
-      border-top: 0;
-    }
-
-
-    #{$navbar-class} #{$navbar-class} {
-      border: 0;
-      width: auto;
-      background: transparent;
-    }
-
-
-    #{$navbar-class} {
-      & > * {
-        @extend %#{$flex-name};
-        @extend %#{$flex-name}--self-y-stretch;
-        @extend %#{$flex-name}--y-center;
-
-        & > * {
-          @extend %#{$flex-name}--self-y-center;
-        }
-      }
-
-      & > a,
-      & > li a,
-      & #{$navbar-class}__link {
-        @extend %media-gutters-half-x;
-      }
-
-      & > #{$dropdown-class},
-      & > li #{$dropdown-class} {
-        @extend %#{$flex-name}--self-y-stretch;
-      }
-
-      & > #{$dropdown-class}.dropped #{$dropdown-class}__menu,
-      & > li #{$dropdown-class}.dropped #{$dropdown-class}__menu {
-        margin-top: 0;
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-      }
-      /**
-      & > #{$button-class},
-      & > button:not([type=submit]):not(#{$dropdown-class}__toggler),
-      & > #{$button-class}-group,
-      .input-group {
-
-      }
-
-      & > #{$dropdown-class},
-      & > li #{$dropdown-class} {
-        @extend %media-margin-gutters-half-x;
-      }
-      */
-
-      & > #{$button-class}-group button,
-      & > .input-group button:not([type=submit]) {
-        margin: 0
-      }
-    }
-
-
-    #{$navbar-class}__link,
-    #{$navbar-class} > li > a:not(#{$button-class}),
-    #{$navbar-class} > a:not(#{$button-class}),
-    h1, h2, h3, h4, h5, h6,
-    .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
-      @extend %#{$flex-name};
-      @extend %#{$flex-name}--self-y-stretch;
-      @extend %#{$flex-name}--y-center;
-      @extend %media-gutters-y;
-      font-weight: 400;
     }
 
 
@@ -122,11 +97,6 @@
     }
 
 
-    #{$navbar-class} > * {
-      @extend %#{$flex-name}--fixed;
-    }
-
-
     #{$navbar-class}--sticky {
       position: -webkit-sticky;
       position: -moz-sticky;
@@ -136,27 +106,17 @@
     }
 
 
+    #{$navbar-class}#{$navbar-class}--fixed-top,
     #{$navbar-class}--fixed-top {
       @extend %fixed-top-fw;
       border-top: 0;
     }
 
 
+    #{$navbar-class}#{$navbar-class}--fixed-bottom,
     #{$navbar-class}--fixed-bottom {
       @extend %fixed-bottom-fw;
       border-bottom: 0;
-    }
-
-
-    #{$navbar-class}--first,
-    #{$navbar-class}--left {
-      @extend %#{$flex-name}--first;
-    }
-
-
-    #{$navbar-class}--last,
-    #{$navbar-class}--right {
-      @extend %#{$flex-name}--last;
     }
 
 

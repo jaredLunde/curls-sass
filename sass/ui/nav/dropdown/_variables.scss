@@ -4,7 +4,7 @@ $dropdown-background: $white !default;
 $dropdown-border-color: $border !default;
 $dropdown-border-style: solid !default;
 $dropdown-border-width: $border-width !default;
-$dropdown-border-radius: 2px !default;
+$dropdown-border-radius: 0 0 2px 2px !default;
 $dropdown-shadow: 0 4px 6px 0px $dark-border !default;
 $dropdown-padding-top: 0 !default;
 $dropdown-padding-right: $dropdown-padding-top * 2 !default;

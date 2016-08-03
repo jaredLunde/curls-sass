@@ -4,70 +4,98 @@
 
     #{$card-class} {
       @extend %#{$card-name};
-    }
 
+      & > *:not(.button):not(button):first-child {
+        border-top: 0;
+      }
 
-    #{$card-class} header {
-      @extend %#{$flex-name};
-      width: 100%;
-      background: $card-header-background;
-      border-width: $card-header-border-width;
-      border-color: $card-header-border-color;
-      border-style: $card-header-border-style;
-    }
+      & > *:not(.button):not(button):last-child {
+        border-bottom: 0;
+      }
 
+      & > *:first-child {
+        border-top-right-radius: $card-border-radius;
+        border-top-left-radius: $card-border-radius;
+      }
 
-    #{$card-class} footer {
-      @extend %#{$flex-name};
-      width: 100%;
-      background: $card-footer-background;
-      border-width: $card-footer-border-width;
-      border-color: $card-footer-border-color;
-      border-style: $card-footer-border-style;
-    }
+      & > *:last-child {
+        border-bottom-right-radius: $card-border-radius;
+        border-bottom-left-radius: $card-border-radius;
+      }
 
+      p,
+      & > a:not(#{$button-class}):not(#{$card-class}__image),
+      #{$card-class}__link,
+      #{$card-class}__row,
+      h1, h2, h3, h4, h5, h6,
+      .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
+        @extend %p--16;
+      }
 
-    #{$card-class} footer > #{$navbar-class} {
-      border: 0
-    }
+      p + p,
+      h1 + p,
+      h2 + p,
+      h3 + p,
+      h4 + p,
+      h5 + p,
+      h6 + p,
+      .type--h1 + p,
+      .type--h2 + p,
+      .type--h3 + p,
+      .type--h4 + p,
+      .type--h5 + p,
+      .type--h6 + p {
+        @extend %p--t0;
+      }
 
+      & > #{$button-class},
+      & > button {
+        @extend %m--16;
+      }
 
-    #{$card-class} header + #{$navbar-class} {
-      border-top: 0
-    }
+      header, #{$card-class}__header {
+        @extend %#{$flex-name};
+        width: 100%;
+        background: $card-header-background;
+        border-width: $card-header-border-width;
+        border-color: $card-header-border-color;
+        border-style: $card-header-border-style;
 
+        & + #{$navbar-class} {
+          border-top: 0
+        }
+      }
 
-    #{$card-class} #{$button-class},
-    #{$card-class} button:not([type=submit]):not(.submit) {
-      @extend %media-margin-gutters;
-    }
+      footer, #{$card-class}__footer {
+        @extend %#{$flex-name};
+        width: 100%;
+        background: $card-footer-background;
+        border-width: $card-footer-border-width;
+        border-color: $card-footer-border-color;
+        border-style: $card-footer-border-style;
 
+        & > #{$navbar-class} {
+          border: 0
+        }
+      }
 
-    #{$card-class} p,
-    #{$card-class} > a:not(#{$button-class}):not(#{$card-class}__image),
-    #{$card-class}__link {
-      @extend %media-gutters;
-    }
+      & > #{$navbar-class} {
+        @extend %p--x8;
 
+        #{$button-class}, button, a {
+          @extend %m--x8;
+          @extend %m--y16;
+        }
+      }
 
-    #{$card-class} p {
-      width: 100%;
-      margin: 0;
-    }
+      p {
+        width: 100%;
+        margin: 0;
+      }
 
-
-    #{$card-class} #{$navbar-class} {
-      background: transparent;
-    }
-
-
-    #{$card-class} > *:not(.button):not(button):first-child {
-      border-top: 0;
-    }
-
-
-    #{$card-class} > *:not(.button):not(button):last-child {
-      border-bottom: 0;
+      #{$navbar-class} {
+        background: transparent;
+      }
     }
 
 
@@ -92,18 +120,6 @@
     #{$card-class} > video:last-child {
       overflow: hidden;
 
-    }
-
-
-    #{$card-class} > *:first-child {
-      border-top-right-radius: $card-border-radius;
-      border-top-left-radius: $card-border-radius;
-    }
-
-
-    #{$card-class} > *:last-child {
-      border-bottom-right-radius: $card-border-radius;
-      border-bottom-left-radius: $card-border-radius;
     }
 
 

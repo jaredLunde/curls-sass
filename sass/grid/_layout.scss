@@ -12,74 +12,23 @@
     }
 
 
-    .no-flexbox.no-flexboxlegacy.no-flexboxtweener #{$grid-row-class} {
-      display: block;
-      width: 100%;
-    }
-
-
-    /** Cross-browser grids */
-    #{$float-grid-col-class},
     #{$grid-col-class} {
       position: relative;
     }
+    
 
-
-    #{$float-grid-col-class},
-    #{$float-grid-row-class},
+    // Grid gutters
     #{$grid-col-class},
-    #{$grid-row-class},
-    #{$grid-body-class},
-    #{$float-grid-body-class} {
-      @include prefix((box-sizing: border-box), webkit moz);
-      &:after, &:before {
-        @include prefix((box-sizing: border-box), webkit moz);
-      }
+    #{$grid-row-class} {
+      @extend %media-gutters-half-x;
     }
-
-
-    #{$float-grid-col-class},
-    .no-flexbox.no-flexboxlegacy.no-flexboxtweener #{$grid-col-class} {
-      position: relative;
-      float: left;
-      display: inline-block;
-    }
-
-
-    #{$float-grid-row-class},
-    .no-flexbox.no-flexboxlegacy.no-flexboxtweener #{$grid-row-class} {
-      &:before, &:after {
-          content: " ";
-          display: table;
-      }
-      &:after {
-          clear: both;
-      }
-    }
-
-
-    // Grid row gutters
-    @each $size in map-keys(map-reverse($grid-breakpoint)) {
-      @media #{map-get($grid-breakpoint, $size)} {
-        #{$grid-row-class},
-        #{$float-grid-row-class} {
-          padding: 0 map-get($grid-gutter, $size) / 2 0;
-        }
-      }
-    }
-
 
     // Grid breakpoints / grid col padding / widths
-    @include grid(map-get($grid-columns, xl), map-get($grid-gutter, xl));
-
-
     @media #{map-get($grid-breakpoint, m)} {
       @include grid(map-get($grid-columns, xl),
-                    map-get($grid-gutter, m),
                     $multiple: map-get($grid-columns, xl) / map-get($grid-columns, m),
                     $breakpoint: 'm');
       @include grid(map-get($grid-columns, m),
-                    map-get($grid-gutter, m),
                     $name-ext: 'm',
                     $breakpoint: 'm');
     }
@@ -87,19 +36,17 @@
 
     @media #{map-get($grid-breakpoint, l)} {
       @include grid(map-get($grid-columns, xl),
-                    map-get($grid-gutter, l),
                     $multiple: map-get($grid-columns, xl) / map-get($grid-columns, l),
                     $breakpoint: 'l');
       @include grid(map-get($grid-columns, l),
-                    map-get($grid-gutter, l),
                     $name-ext: 'l',
                     $breakpoint: 'l');
     }
 
 
     @media #{map-get($grid-breakpoint, xl)} {
+      @include grid(map-get($grid-columns, xl), $breakpoint: 'xl');
       @include grid(map-get($grid-columns, xl),
-                    map-get($grid-gutter, xl),
                     $name-ext: 'xl',
                     $breakpoint: 'xl');
     }
@@ -107,11 +54,9 @@
 
     @media #{map-get($grid-breakpoint, s)} {
       @include grid(map-get($grid-columns, xl),
-                    map-get($grid-gutter, s),
                     $multiple: map-get($grid-columns, xl) / map-get($grid-columns, s),
                     $breakpoint: 's');
       @include grid(map-get($grid-columns, s),
-                    map-get($grid-gutter, s),
                     $name-ext: 's',
                     $breakpoint: 's');
     }
@@ -119,11 +64,9 @@
 
     @media #{map-get($grid-breakpoint, xs)} {
       @include grid(map-get($grid-columns, xl),
-                    map-get($grid-gutter, xs),
                     $multiple: map-get($grid-columns, xl) / map-get($grid-columns, xs),
                     $breakpoint: 'xs');
       @include grid(map-get($grid-columns, xs),
-                    map-get($grid-gutter, xs),
                     $name-ext: 'xs',
                     $breakpoint: 'xs');
     }
@@ -137,24 +80,11 @@
     }
 
 
-    // Float grid
-    #{$grid-body-class},
-    #{$float-grid-body-class} {
-      display: block;
-      width: 100%;
-    }
-
-
-    #{$float-grid-body-class} {
-      float: left;
-    }
-
-
     #{$grid-class}--nopad,
     #{$grid-row-class}--nopad,
     #{$grid-col-class}--nopad,
-    #{$float-grid-row-class}--nopad,
-    #{$float-grid-col-class}--nopad  {
+    #{$grid-row-class}#{$grid-row-class}--nopad,
+    #{$grid-col-class}#{$grid-col-class}--nopad {
       padding: 0;
     }
 

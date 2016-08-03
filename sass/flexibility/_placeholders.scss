@@ -43,7 +43,17 @@
     }
 
 
-    %#{$flex-name}--reverse {
+    %#{$flex-name}--x-reverse {
+      @include flex-direction(row-reverse);
+    }
+
+
+    %#{$flex-name}--y-reverse {
+      @include flex-direction(column-reverse);
+    }
+
+
+    %#{$flex-name}--wrap-reverse {
       @include flex-wrap(wrap-reverse);
     }
 

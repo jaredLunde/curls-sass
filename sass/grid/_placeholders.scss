@@ -11,7 +11,11 @@
 
 
     %#{$grid-col-name} {
+      @extend %#{$flex-name};
       @extend %#{$flex-name}--fluid;
+      @extend %#{$flex-name}--y-top;
+      @include flex-wrap(wrap);
+      @include flex-direction(row);
     }
 
 

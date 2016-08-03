@@ -2,6 +2,7 @@
  ** Card (.card)
  **/
 @import '../../core';
+
 @import '../../flexibility/variables';
 @import '../../flexibility/mixins';
 @import '../../flexibility/placeholders';
@@ -10,6 +11,11 @@
 @import '../../grid/variables';
 @import '../../grid/placeholders';
 @include grid-placeholders-init();
+
+@import '../../spacing/variables';
+@import '../../spacing/mixins';
+@import '../../spacing/placeholders';
+@include spacing-placeholders-init();
 
 @import '../nav/bar/variables';
 @import '../button/variables';
