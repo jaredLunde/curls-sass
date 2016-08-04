@@ -1,11 +1,14 @@
 @include import-once('columns') {
   #{$columns-class} {
     display: block;
+    overflow: visible;
   }
 
 
   #{$columns-class} > * {
-    display: inherit;
+    /** Prevents weird overflowing into the next column */
+    display: inline-block;
+    width: 100%;
   }
 
 
