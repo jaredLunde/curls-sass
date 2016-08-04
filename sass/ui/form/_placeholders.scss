@@ -63,6 +63,7 @@
     margin: $textarea-margin;
     border: $textarea-border;
     border-radius: $textarea-border-radius;
+    overflow: auto;
     @include font-line($textarea-font-size, $textarea-line-height,
                        $color: $textarea-font-color,
                        $weight: $textarea-font-weight,

@@ -1,7 +1,7 @@
 /** Creates placeholders and classes */
 @mixin spacing-placeholders($size, $pre, $prop) {
   $spacing-name: --spacing--#{$prop}--#{$size}--#{$pre};
-  @warn $size $pre $prop;
+
   @include keep($spacing-name) {
     $stripped-size: strip-units($size);
 

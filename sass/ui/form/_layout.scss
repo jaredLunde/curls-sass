@@ -1,18 +1,29 @@
 @include import-once('form') {
-  $-FORM-LOADED: true !global;
-  form {
-    @extend %browser-reset;
+  // Resets */
+  button,
+  select {
+    text-transform: none;
   }
 
-  // Resets */
-  input[type=text],
-  input[type=email],
-  input[type=tel],
-  input[type=url],
-  input[type=search],
-  input[type=submit],
-  input[type=date],
-  input[type=password],
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+
+  [type="search"] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+  }
+
+  [type=text],
+  [type=email],
+  [type=tel],
+  [type=url],
+  [type=search],
+  [type=submit],
+  [type=date],
+  [type=password],
   textarea,
   button {
     @extend %reset-form-appearance;
@@ -41,26 +52,25 @@
 
 
   // Text inputs */
-  input[type=text],
-  input[type=email],
-  input[type=tel],
-  input[type=number],
-  input[type=url],
-  input[type=password],
-  input[type=date],
-  input[type=search] {
+  [type=text],
+  [type=email],
+  [type=tel],
+  [type=number],
+  [type=url],
+  [type=password],
+  [type=date],
+  [type=search] {
     @extend %input-text;
   }
 
 
   // Submit Buttons */
-  button[type=submit], input[type=submit] {
+  [type=submit] {
     @extend %submit-button;
   }
 
 
-  .no-touchevents button[type=submit],
-  .no-touchevents input[type=submit] {
+  .no-touchevents [type=submit] {
     &:hover {
       @extend %submit-button-hover;
     }

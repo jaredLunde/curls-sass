@@ -1,8 +1,9 @@
 @include import-once('type') {
-  *, *:before, *:after {
+  html {
     /** the zoom makes zero sense to me */
-    -webkit-text-size-adjust: none;
+    @include prefix((text-size-adjust: 100%), webkit ms);
   }
+
 
   pre {
     -webkit-font-smoothing: auto;
@@ -49,6 +50,7 @@
     padding: $paragraph-padding;
     margin: $paragraph-margin;
     text-align: $paragraph-text-align;
+    word-break: break-word;
     @include rem-property(letter-spacing, $paragraph-letter-spacing);
     @include font-line($paragraph-font-size, $paragraph-line-height,
                        $color: $paragraph-font-color,

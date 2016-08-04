@@ -1,7 +1,7 @@
 @include import-once('grid-placeholders') {
   %#{$grid-row-name} {
     @extend %#{$flex-name};
-    @extend %#{$flex-name}--wrap;
+    @extend %#{$flex-name}--nowrap;
     @extend %#{$flex-name}--x;
     @include flex-basis(100%);
     @include break-for(gutters--x); // Gutters
@@ -13,7 +13,7 @@
     @extend %#{$flex-name}--fluid;
     @extend %#{$flex-name}--y-top;
     @extend %#{$flex-name}--wrap;
-    @extend %#{$flex-name}--x;
+    // @extend %#{$flex-name}--x;
     position: relative;
     @include break-for(gutters--x); // Gutters
   }

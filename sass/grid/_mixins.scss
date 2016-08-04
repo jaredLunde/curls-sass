@@ -91,11 +91,7 @@
 
 
 @mixin make-grid-column($x, $columns) {
-  $width: $x / $columns;
-  @if $width > 1 {
-    $width: 1;
-  }
-  $width: percentage($width);
-  width: $width;
+  $width: percentage($x / $columns);
+  max-width: $width;
   @include flex-basis($width);
 }

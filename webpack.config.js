@@ -8,7 +8,7 @@ module.exports = {
   context: __dirname,
 
   // The entry point for the bundle
-  entry: "lib/index",
+  entry: ["babel-polyfill", "lib/index"],
 
   // Various output options, to give us a single bundle.js file with everything resolved and concatenated
   output: {
