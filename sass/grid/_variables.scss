@@ -33,3 +33,8 @@ $grid-breakpoint: (
   l: $desktop-max-m,
   xl: $desktop-max,
 ) !default;
+
+
+$BREAKPOINT-KEYS: map-keys($grid-breakpoint) !default;
+$R-BREAKPOINT-KEYS: map-keys(map-reverse($grid-breakpoint)) !default;
+$DEFAULT-BREAKPOINT: nth($R-BREAKPOINT-KEYS, 1) !default;

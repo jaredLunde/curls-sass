@@ -1,6 +1,5 @@
 @include import-once('button-placeholders') {
   %#{$button-name}, %button {
-    @extend %media-margin-gutters-half-y;
     @extend %#{$flex-name}--y-center;
     background: $button-background;
     color: $button-color;
@@ -10,7 +9,8 @@
     border-radius: $button-border-radius;
     line-height: $button-line-height;
     outline: 0;
-
+    @include break-for(margin-gutters--y);
+    
     &.hover {
       @extend %#{$button-name}--hover;
     }

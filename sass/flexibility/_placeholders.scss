@@ -40,6 +40,21 @@
   }
 
 
+  %#{$flex-name}--x {
+    @include flex-direction(row);
+  }
+
+
+  %#{$flex-name}--y {
+    @include flex-direction(column);
+  }
+
+
+  %#{$flex-name}--wrap {
+    @include flex-wrap(wrap);
+  }
+
+
   %#{$flex-name}--x-reverse {
     @include flex-direction(row-reverse);
   }

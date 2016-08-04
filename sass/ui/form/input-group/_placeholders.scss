@@ -4,8 +4,8 @@
     @extend %#{$flex-name}--nowrap;
     @extend %#{$flex-name}--y-stretch;
     @extend %#{$flex-name}--x-center;
-    @extend %media-margin-gutters-half-y;
     position: relative;
+    @include break-for(margin-gutters--y);
 
     input {
       @extend %#{$flex-name}--fluid;

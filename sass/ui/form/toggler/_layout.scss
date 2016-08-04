@@ -9,12 +9,13 @@
 
 
   #{$toggler-class}__container {
+    @extend %hardware-accel;
+    @extend %pill;
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y-center;
     @extend %#{$flex-name}--x-left;
     width: 50px;
     height: 24px;
-    border-radius: $MAX-PX;
     border-width: 1px;
     border-style: solid;
     border-color: $light-border;

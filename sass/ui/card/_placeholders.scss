@@ -1,7 +1,7 @@
 @include import-once('card-placeholders') {
   %#{$card-name} {
     @extend %#{$flex-name};
-    @extend %media-margin-gutters-y;
+    @extend %#{$flex-name}--y;
     margin-top: 0;
     background: $card-background;
     border-width: $card-border-width;
@@ -9,6 +9,6 @@
     border-color: $card-border-color;
     border-radius: $card-border-radius;
     width: 100%;
-    @include flex-direction(column);
+    @include break-for(margin-gutters--2y);
   }
 }

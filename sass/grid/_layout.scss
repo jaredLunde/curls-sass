@@ -9,72 +9,29 @@
   }
 
 
-  #{$grid-col-class} {
-    position: relative;
-  }
-
-
   // Grid gutters
   #{$grid-col-class},
   #{$grid-row-class} {
-    @extend %media-gutters-half-x;
+    @include break-for(gutters--x);
   }
 
 
   // Grid breakpoints / grid col padding / widths
-  @media #{map-get($grid-breakpoint, xl)} {
-    @include grid(map-get($grid-columns, xl), $breakpoint: 'xl');
-    @include grid(map-get($grid-columns, xl),
-                  $name-ext: 'xl',
-                  $breakpoint: 'xl');
-  }
-
-
-  @media #{map-get($grid-breakpoint, l)} {
-    @include grid(map-get($grid-columns, xl),
-                  $multiple: map-get($grid-columns, xl) / map-get($grid-columns, l),
-                  $breakpoint: 'l');
-    @include grid(map-get($grid-columns, l),
-                  $name-ext: 'l',
-                  $breakpoint: 'l');
-  }
-
-
-
-  @media #{map-get($grid-breakpoint, m)} {
-    @include grid(map-get($grid-columns, xl),
-                  $multiple: map-get($grid-columns, xl) / map-get($grid-columns, m),
-                  $breakpoint: 'm');
-    @include grid(map-get($grid-columns, m),
-                  $name-ext: 'm',
-                  $breakpoint: 'm');
-  }
-
-
-  @media #{map-get($grid-breakpoint, s)} {
-    @include grid(map-get($grid-columns, xl),
-                  $multiple: map-get($grid-columns, xl) / map-get($grid-columns, s),
-                  $breakpoint: 's');
-    @include grid(map-get($grid-columns, s),
-                  $name-ext: 's',
-                  $breakpoint: 's');
-  }
-
-
-  @media #{map-get($grid-breakpoint, xs)} {
-    @include grid(map-get($grid-columns, xl),
-                  $multiple: map-get($grid-columns, xl) / map-get($grid-columns, xs),
-                  $breakpoint: 'xs');
-    @include grid(map-get($grid-columns, xs),
-                  $name-ext: 'xs',
-                  $breakpoint: 'xs');
+  $DEFAULT-BREAKPOINT: nth($R-BREAKPOINT-KEYS, 1);
+  @include grid(map-get($grid-columns, $DEFAULT-BREAKPOINT));
+  @include grid(map-get($grid-columns, $DEFAULT-BREAKPOINT),
+                $name-mod: $DEFAULT-BREAKPOINT);
+  @each $bp in $R-BREAKPOINT-KEYS {
+    @if $bp != $DEFAULT-BREAKPOINT {
+      @include grid-breakpoint($bp);
+    }
   }
 
 
   // Hider classes
-  @each $size in map-keys($grid-breakpoint) {
-    .hide--#{$size}, .x0--#{$size} {
-      @extend %hide--#{$size};
+  @each $bp in $R-BREAKPOINT-KEYS {
+    .hide--#{$bp}, .x0--#{$bp} {
+      @extend %hide--#{$bp};
     }
   }
 
@@ -90,5 +47,4 @@
 
   // Flex modifiers
   @include extend-flex($grid-name, ('', '.col', '.row'));
-
 }

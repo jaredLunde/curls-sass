@@ -3,15 +3,15 @@
                /* column-gap */  $gutter-size: 0,
                /* column-rule */ $rule: auto) {
   @if $count != 0 {
-    @include prefix((column-count: $count), webkit moz ms);
+    @include prefix((column-count: $count), webkit moz);
   }
   @if $width != auto {
-    @include prefix((column-width: $width), webkit moz ms);
+    @include prefix((column-width: $width), webkit moz);
   }
   @if $gutter-size != 0 {
-    @include prefix((column-gap: $gutter-size), webkit moz ms);
+    @include prefix((column-gap: $gutter-size), webkit moz);
   }
   @if $rule != auto {
-    @include prefix((column-rule: $rule), webkit moz ms);
+    @include prefix((column-rule: $rule), webkit moz);
   }
 }

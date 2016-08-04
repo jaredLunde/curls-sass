@@ -1,41 +1,99 @@
-@mixin grid($cols, $name-prefix: 'x', $name-ext: null,
-            $multiple: 1, $breakpoint: null) {
-  @for $x from 1 through $cols {
-    @include grid-column($x, $cols, $name-prefix, $name-ext, $multiple,
-                         $breakpoint);
+// Breakpoint controllers */
+@mixin breakpoint($breakpoint) {
+  @media #{map-get($grid-breakpoint, $breakpoint)} {
+    @content;
   }
 }
 
 
-@mixin grid-column($x, $cols, $name-prefix: 'x', $name-ext: null, $multiple: 1,
+@mixin breakholder($prop-name, $directives: (), $breakpoints: null) {
+  @if $breakpoints == null {
+    $breakpoints: $R-BREAKPOINT-KEYS;
+  }
+
+  @at-root {
+    @include keep(#{$prop-name}) {
+      %#{$prop-name} {
+        @each $directive, $map in $directives {
+          #{$directive}: map-get($map, $DEFAULT-BREAKPOINT);
+        }
+        @content;
+      }
+    }
+
+    @each $bp in $breakpoints {
+      @include keep(#{$prop-name}--#{$bp}) {
+        %#{$prop-name}--#{$bp} {
+          @include breakpoint($bp) {
+            @each $directive, $map in $directives {
+              #{$directive}: map-get($map, $bp);
+            }
+            @content;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@mixin break-for($prop-name, $breakpoints: null) {
+  @if $breakpoints == null {
+    $breakpoints: $R-BREAKPOINT-KEYS;
+  }
+  @extend %#{$prop-name};
+  @each $bp in $breakpoints {
+    @extend %#{$prop-name}--#{$bp};
+  }
+}
+
+
+// Grid controllers */
+@mixin grid-breakpoint($breakpoint, $name-prefix: 'x') {
+  @include breakpoint($breakpoint) {
+    @include grid(map-get($grid-columns, $breakpoint),
+                  $name-prefix: $name-prefix,
+                  $name-mod: $breakpoint,
+                  $breakpoint: $breakpoint);
+  }
+}
+
+
+@mixin grid($cols, $name-prefix: 'x', $name-mod: null, $breakpoint: null) {
+  @for $x from 1 through $cols {
+    @include grid-column($x,
+                         $cols,
+                         $name-prefix: $name-prefix,
+                         $name-mod: $name-mod,
+                         $breakpoint: $breakpoint);
+  }
+}
+
+
+@mixin grid-column($x, $cols, $name-prefix: 'x', $name-mod: null,
                    $breakpoint: null) {
-  @if $name-ext {
-    $name-ext: "--#{$name-ext}";
+  @if $name-mod {
+    $name-mod: "--#{$name-mod}";
   } @else {
-    $name-ext: '';
+    $name-mod: '';
   }
 
-  $-width: ($x / $cols) * $multiple;
-  @if $-width > 1 {
-    $-width: 1;
-  }
+  $column-name: --column--#{$x / $cols}--#{$cols}--#{$breakpoint};
 
-  $column-name: --column--#{$-width}--#{$cols}--#{$breakpoint};
-
-  @include cache($column-name) {
+  @include keep($column-name) {
     %#{$column-name} {
-      @include make-grid-column($x, $cols, $multiple);
+      @include make-grid-column($x, $cols);
     }
   }
 
-  .#{$name-prefix}#{$x}#{$name-ext} {
+  .#{$name-prefix}#{$x}#{$name-mod} {
     @extend %#{$column-name};
   }
 }
 
 
-@mixin make-grid-column($n, $columns, $multiple: 1) {
-  $width: ($n / $columns) * $multiple;
+@mixin make-grid-column($x, $columns) {
+  $width: $x / $columns;
   @if $width > 1 {
     $width: 1;
   }

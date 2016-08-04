@@ -1,15 +1,15 @@
 @include import-once('navbar') {
   #{$navbar-class} {
     @extend %#{$flex-name};
-    @extend %media-gutters-half-x;
     @extend %#{$flex-name}--y-center;
+    @extend %#{$flex-name}--nowrap;
     position: relative;
     background: $navbar-background;
     border-style: $navbar-border-style;
     border-width: $navbar-border-width;
     border-color: $navbar-border-color;
     width: $navbar-width;
-    @include flex-wrap(nowrap);
+    @include break-for(gutters--x);
 
     &#{$grid-class}--nopad {
       padding: 0
@@ -37,7 +37,7 @@
     & > li > #{$button-class}-group,
     & > .input-group,
     & > li > .input-group {
-      @extend %media-margin-gutters-half;
+      @include break-for(margin-gutters);
     }
 
     #{$navbar-class}__link,
@@ -48,9 +48,9 @@
       @extend %#{$flex-name};
       @extend %#{$flex-name}--self-y-stretch;
       @extend %#{$flex-name}--y-center;
-      @extend %media-margin-gutters-half-x;
-      @extend %media-margin-gutters-y;
       font-weight: $navbar-link-font-weight;
+      @include break-for(margin-gutters--2y);
+      @include break-for(margin-gutters--x);
     }
 
     & + #{$navbar-class} {

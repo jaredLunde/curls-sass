@@ -2,7 +2,7 @@
 @mixin spacing-placeholders($size, $pre, $prop) {
   $spacing-name: --spacing--#{$prop}--#{$size}--#{$pre};
 
-  @include cache($spacing-name) {
+  @include keep($spacing-name) {
     $stripped-size: strip-units($size);
 
     %#{$pre}--t#{$stripped-size} {

@@ -4,51 +4,51 @@
     @include padding-group($x);
   }
 
-  .p--gutter {
-    @extend %media-gutters;
+  .p--gutters {
+    @include break-for(gutters);
   }
 
-  .m--gutter {
-    @extend %media-margin-gutters;
+  .m--gutters {
+    @include break-for(margin-gutters);
   }
 
-  .p--gutter-x {
-    @extend %media-gutters-x;
+  .p--gutters-x {
+    @include break-for(gutters--x);
   }
 
-  .m--gutter-x {
-    @extend %media-margin-gutters-x;
+  .m--gutters-x {
+    @include break-for(margin-gutters--x);
   }
 
-  .p--gutter-y {
-    @extend %media-gutters-y;
+  .p--gutters-y {
+    @include break-for(gutters--y);
   }
 
-  .m--gutter-y {
-    @extend %media-margin-gutters-y;
+  .m--gutters-y {
+    @include break-for(margin-gutters--y);
   }
 
-  .p--half-gutter {
-    @extend %media-gutters-half;
+  .p--gutters-2 {
+    @include break-for(gutters--2);
   }
 
-  .m--half-gutter {
-    @extend %media-margin-gutters-half;
+  .m--gutters-2 {
+    @include break-for(margin-gutters--2);
   }
 
-  .p--half-gutter-x {
-    @extend %media-gutters-half-x;
+  .p--gutters-2x {
+    @include break-for(gutters--2x);
   }
 
-  .m--half-gutter-x {
-    @extend %media-margin-gutters-half-x;
+  .m--gutters-2x {
+    @include break-for(margin-gutters--2x);
   }
 
-  .p--half-gutter-y {
-    @extend %media-gutters-half-y;
+  .p--gutters-2y {
+    @include break-for(gutters--2y);
   }
 
-  .m--half-gutter-y {
-    @extend %media-margin-gutters-half-y;
+  .m--gutters-2y {
+    @include break-for(margin-gutters--2y);
   }
 }

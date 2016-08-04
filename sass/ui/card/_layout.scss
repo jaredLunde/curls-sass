@@ -79,7 +79,12 @@
     & > #{$navbar-class} {
       @extend %p--x8;
 
-      #{$button-class}, button, a {
+      & > #{$button-class},
+      & > button,
+      & > a,
+      & > li > #{$button-class}, 
+      & > li > button, 
+      & > li > a {
         @extend %m--x8;
         @extend %m--y16;
       }
