@@ -1,14 +1,14 @@
 // Type = one of 'font', 'bg', 'border'
-@mixin colorize($name, $type: 'bg', $base-selector: null) {
+@mixin colorize($cls, $type: 'bg', $base-selector: null) {
   @if $base-selector {
     @each $color in map-keys($colors) {
-      #{$base-selector}.#{$name}--#{$color} {
+      #{$base-selector}#{$cls}--#{$color} {
         @extend %#{$type}--#{$color};
       }
     }
   } @else {
     @each $color in map-keys($colors) {
-      .#{$name}--#{$color} {
+      #{$cls}--#{$color} {
         @extend %#{$type}--#{$color};
       }
     }

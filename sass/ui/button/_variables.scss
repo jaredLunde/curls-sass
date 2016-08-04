@@ -1,5 +1,5 @@
 $button-name: 'btn' !default;
-$button-class: unquote("#{unquote(".")}#{$button-name}") !default;
+$button-class: ".#{$button-name}" !default;
 
 $button-background: $blue !default;
 $button-color: #fff !default;

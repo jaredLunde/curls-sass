@@ -26,7 +26,7 @@
     #{$card-class}__row,
     h1, h2, h3, h4, h5, h6,
     .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
-      @extend %p--16;
+      @extend %#{$padding-name}--16;
     }
 
     p + p,
@@ -42,12 +42,12 @@
     .type--h4 + p,
     .type--h5 + p,
     .type--h6 + p {
-      @extend %p--t0;
+      @extend %#{$padding-name}--t0;
     }
 
     & > #{$button-class},
     & > button {
-      @extend %m--16;
+      @extend %#{$margin-name}--16;
     }
 
     header, #{$card-class}__header {
@@ -77,16 +77,16 @@
     }
 
     & > #{$navbar-class} {
-      @extend %p--x8;
+      @extend %#{$padding-name}--x8;
 
       & > #{$button-class},
       & > button,
       & > a,
-      & > li > #{$button-class}, 
-      & > li > button, 
+      & > li > #{$button-class},
+      & > li > button,
       & > li > a {
-        @extend %m--x8;
-        @extend %m--y16;
+        @extend %#{$margin-name}--x8;
+        @extend %#{$margin-name}--y16;
       }
     }
 

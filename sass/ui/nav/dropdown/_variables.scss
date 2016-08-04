@@ -1,5 +1,5 @@
 $dropdown-name: 'dropdown' !default;
-$dropdown-class: unquote("#{unquote(".")}#{$dropdown-name}") !default;
+$dropdown-class: ".#{$dropdown-name}" !default;
 $dropdown-background: $white !default;
 $dropdown-border-color: $border !default;
 $dropdown-border-style: solid !default;

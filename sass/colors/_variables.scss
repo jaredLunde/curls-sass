@@ -1,3 +1,8 @@
+$bg-name: bg !default;
+$border-name: border !default;
+$bg-class: ".#{$bg-name}" !default;
+$border-class: ".#{$border-name}" !default;
+
 $blue: #30A9DE !default;
 $dark-blue: darken($blue, 5%) !default;
 $light-blue: lighten($blue, 15%) !default;
@@ -66,7 +71,7 @@ $dark-border: rgba(0, 0, 0, 0.24) !default;
 $link-color: $blue !default;
 $link-hover-color: $grey !default;
 $link-active-color: $grey !default;
-$link-decoration: none !default;
+$link-text-decoration: none !default;
 $link-tap-highlight: $light-border !default;
 
 

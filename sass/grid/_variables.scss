@@ -1,11 +1,11 @@
 $grid-name: 'grid' !default;
-$grid-class: unquote("#{unquote(".")}#{$grid-name}") !default;
+$grid-class: ".#{$grid-name}" !default;
 
 $grid-row-name: row !default;
-$grid-row-class: unquote("#{unquote(".")}#{$grid-row-name}") !default;
+$grid-row-class: ".#{$grid-row-name}" !default;
 
 $grid-col-name: col !default;
-$grid-col-class: unquote("#{unquote(".")}#{$grid-col-name}") !default;
+$grid-col-class: ".#{$grid-col-name}" !default;
 
 
 $grid-gutter: (
@@ -31,10 +31,10 @@ $grid-breakpoint: (
   s: $phone-max,
   m: $tablet-max,
   l: $desktop-max-m,
-  xl: $desktop-max,
+  xl: $desktop-l
 ) !default;
 
 
-$BREAKPOINT-KEYS: map-keys($grid-breakpoint) !default;
-$R-BREAKPOINT-KEYS: map-keys(map-reverse($grid-breakpoint)) !default;
+$BREAKPOINT-KEYS: map-keys($grid-breakpoint);
+$R-BREAKPOINT-KEYS: map-keys(map-reverse($grid-breakpoint));
 $DEFAULT-BREAKPOINT: nth($R-BREAKPOINT-KEYS, 1) !default;

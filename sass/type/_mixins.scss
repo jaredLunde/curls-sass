@@ -1,0 +1,27 @@
+@mixin font-size($size, $adjustedSize: 1.0) {
+  @include rem-property('font-size', $size, $adjustedSize);
+}
+
+
+@mixin line-height($size) {
+  @include rem-property('line-height', $size);
+}
+
+
+@mixin font($size, $weight:null, $color:null, $family:null) {
+  @if $size > 20px {
+    @extend %optimize-legibility;}
+  @if $weight {
+    font-weight: $weight;}
+  @if $color {
+    color: $color;}
+  @if $family {
+    font-family: $family;}
+  @include font-size($size);
+}
+
+
+@mixin font-line($size, $line-size, $weight:null, $color:null, $family:null) {
+  @include font($size, $weight, $color, $family);
+  @include line-height($line-size);
+}

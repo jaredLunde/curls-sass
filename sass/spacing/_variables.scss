@@ -1,3 +1,8 @@
+$padding-name: 'p' !default;
+$margin-name: 'm' !default;
+$padding-class: '.#{$padding-name}' !default;
+$margin-class: '.#{$margin-name}' !default;
+
 // padding + margins
 $spacing-sizes: (0, 4px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 36px, 40px,
-                 44px, 48px, 52px, 56px, 60px) !default;
+                 44px, 48px) !default;

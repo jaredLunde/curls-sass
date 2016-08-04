@@ -15,8 +15,7 @@
     @include keep(#{$prop-name}) {
       %#{$prop-name} {
         @each $directive, $map in $directives {
-          #{$directive}: map-get($map, $DEFAULT-BREAKPOINT);
-        }
+          #{$directive}: map-get($map, $DEFAULT-BREAKPOINT);}
         @content;
       }
     }
@@ -26,8 +25,7 @@
         %#{$prop-name}--#{$bp} {
           @include breakpoint($bp) {
             @each $directive, $map in $directives {
-              #{$directive}: map-get($map, $bp);
-            }
+              #{$directive}: map-get($map, $bp);}
             @content;
           }
         }

@@ -9,13 +9,6 @@
   }
 
 
-  // Grid gutters
-  #{$grid-col-class},
-  #{$grid-row-class} {
-    @include break-for(gutters--x);
-  }
-
-
   // Grid breakpoints / grid col padding / widths
   $DEFAULT-BREAKPOINT: nth($R-BREAKPOINT-KEYS, 1);
   @include grid(map-get($grid-columns, $DEFAULT-BREAKPOINT));
@@ -41,7 +34,7 @@
   #{$grid-col-class}--nopad,
   #{$grid-row-class}#{$grid-row-class}--nopad,
   #{$grid-col-class}#{$grid-col-class}--nopad {
-    padding: 0;
+    @extend %#{$padding-name}--0;
   }
 
 

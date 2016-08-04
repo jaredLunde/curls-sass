@@ -42,7 +42,7 @@
   #{$button-class}-group#{$button-class}--l,
   #{$button-class}-group#{$button-class}--m,
   #{$button-class}-group#{$button-class}--s  {
-    @extend %p--0;
+    @extend %#{$padding-name}--0;
   }
 
 

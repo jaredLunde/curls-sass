@@ -5,16 +5,12 @@
 
 
   %#{$flex-name}--fixed {
-    @include flex-grow(0);
-    @include flex-shrink(0);
-    @include flex-basis(auto);
+    @include flex(0, 0, auto);
   }
 
 
   %#{$flex-name}--fluid {
-    @include flex-grow(1);
-    @include flex-shrink(0);
-    @include flex-basis(auto);
+    @include flex(1, 0, auto);
   }
 
 
@@ -29,14 +25,12 @@
 
 
   %#{$flex-name}--grow {
-    @include flex-grow(1);
-    @include flex-shrink(0);
+    @include flex(1, 0);
   }
 
 
   %#{$flex-name}--shrink {
-    @include flex-grow(0);
-    @include flex-shrink(1);
+    @include flex(0, 1);
   }
 
 
@@ -165,27 +159,27 @@
   }
 
 
-  %#{$flex-name}--self-y-top {
+  %#{$flex-name}--self-top {
     @include align-self(flex-start);
   }
 
 
-  %#{$flex-name}--self-y-bottom {
+  %#{$flex-name}--self-bottom {
     @include align-self(flex-end);
   }
 
 
-  %#{$flex-name}--self-y-center {
+  %#{$flex-name}--self-center {
     @include align-self(center);
   }
 
 
-  %#{$flex-name}--self-y-stretch {
+  %#{$flex-name}--self-stretch {
     @include align-self(stretch);
   }
 
 
-  %#{$flex-name}--self-y-baseline {
+  %#{$flex-name}--self-baseline {
     @include align-self(baseline);
   }
 }

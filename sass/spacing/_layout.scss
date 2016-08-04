@@ -4,51 +4,51 @@
     @include padding-group($x);
   }
 
-  .p--gutters {
+  #{$padding-class}--gutters {
     @include break-for(gutters);
   }
 
-  .m--gutters {
+  #{$margin-class}--gutters {
     @include break-for(margin-gutters);
   }
 
-  .p--gutters-x {
+  #{$padding-class}--gutters-x {
     @include break-for(gutters--x);
   }
 
-  .m--gutters-x {
+  #{$margin-class}--gutters-x {
     @include break-for(margin-gutters--x);
   }
 
-  .p--gutters-y {
+  #{$padding-class}--gutters-y {
     @include break-for(gutters--y);
   }
 
-  .m--gutters-y {
+  #{$margin-class}--gutters-y {
     @include break-for(margin-gutters--y);
   }
 
-  .p--gutters-2 {
+  #{$padding-class}--gutters-2 {
     @include break-for(gutters--2);
   }
 
-  .m--gutters-2 {
+  #{$margin-class}--gutters-2 {
     @include break-for(margin-gutters--2);
   }
 
-  .p--gutters-2x {
+  #{$padding-class}--gutters-2x {
     @include break-for(gutters--2x);
   }
 
-  .m--gutters-2x {
+  #{$margin-class}--gutters-2x {
     @include break-for(margin-gutters--2x);
   }
 
-  .p--gutters-2y {
+  #{$padding-class}--gutters-2y {
     @include break-for(gutters--2y);
   }
 
-  .m--gutters-2y {
+  #{$margin-class}--gutters-2y {
     @include break-for(margin-gutters--2y);
   }
 }

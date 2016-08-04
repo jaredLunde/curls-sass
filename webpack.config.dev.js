@@ -39,7 +39,7 @@ module.exports = {
       },
       {
         test: /\/sass\/.*\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!group-css-media-queries!sass?sourceMap')
       }
     ],
   },

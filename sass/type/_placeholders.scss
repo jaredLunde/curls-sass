@@ -4,9 +4,8 @@
       @include font-line(map-get($type-font-size, $size),
                          map-get($type-line-height, $size));
 
-      @media #{$phone} {
-        @include font-line(map-get($type-font-size-phone, $size),
-                           map-get($type-line-height-phone, $size));
+      @include breakpoint(nth(map-keys($grid-breakpoint), 1)) {
+        @include font(map-get($type-font-size-s, $size));
       }
     }
   }
@@ -34,5 +33,13 @@
   %#{$type-name}--center {
     text-align: center;
     justify-content: center;
+  }
+
+  %optimize-legibility {
+    text-rendering: optimizeLegibility;
+  }
+
+  %optimize-speed {
+    text-rendering: optimizeSpeed;
   }
 }

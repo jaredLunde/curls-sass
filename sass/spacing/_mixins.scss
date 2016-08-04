@@ -1,16 +1,16 @@
 /** Creates placeholders and classes */
 @mixin spacing-placeholders($size, $pre, $prop) {
   $spacing-name: --spacing--#{$prop}--#{$size}--#{$pre};
-
+  @warn $size $pre $prop;
   @include keep($spacing-name) {
     $stripped-size: strip-units($size);
 
     %#{$pre}--t#{$stripped-size} {
-      #{$prop}-top: $size;
+      #{$prop}-top: $size !important;
     }
 
     %#{$pre}--b#{$stripped-size} {
-      #{$prop}-bottom: $size;
+      #{$prop}-bottom: $size !important;
     }
 
     %#{$pre}--y#{$stripped-size} {
@@ -19,11 +19,11 @@
     }
 
     %#{$pre}--r#{$stripped-size} {
-      #{$prop}-right: $size;
+      #{$prop}-right: $size !important;
     }
 
     %#{$pre}--l#{$stripped-size} {
-      #{$prop}-left: $size;
+      #{$prop}-left: $size !important;
     }
 
     %#{$pre}--x#{$stripped-size} {
@@ -32,7 +32,7 @@
     }
 
     %#{$pre}--#{$stripped-size} {
-      #{$prop}: $size;
+      #{$prop}: $size !important;
     }
   }
 }
@@ -73,21 +73,21 @@
 }
 
 
-@mixin margin-group($size, $prefix: 'm') {
+@mixin margin-group($size, $prefix: $margin-name) {
   @include spacing-group($size, $prefix, 'margin')
 }
 
 
-@mixin padding-group($size, $prefix: 'p') {
+@mixin padding-group($size, $prefix: $padding-name) {
   @include spacing-group($size, $prefix, 'padding')
 }
 
 
-@mixin margin-placeholders($size, $prefix: 'm') {
+@mixin margin-placeholders($size, $prefix: $margin-name) {
   @include spacing-placeholders($size, $prefix, 'margin')
 }
 
 
-@mixin padding-placeholders($size, $prefix: 'p') {
+@mixin padding-placeholders($size, $prefix: $padding-name) {
   @include spacing-placeholders($size, $prefix, 'padding')
 }

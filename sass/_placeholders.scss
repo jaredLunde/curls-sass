@@ -7,6 +7,7 @@
     @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
   }
 
+
   %browser-reset {
     background: none;
     border: 0;
@@ -16,12 +17,13 @@
     word-wrap: break-word;
   }
 
+
   %pill {
     border-radius: $MAX-PX;
   }
 
 
-  /** Visibility */
+  // Visibility */
   %visible {
     visibility: visible;
     opacity: 1;
@@ -33,7 +35,7 @@
   }
 
 
-  /** Positioning */
+  // Positioning */
   %fixed-top-fw {
     position: fixed;
     left: 0;
@@ -81,11 +83,7 @@
   }
 
 
-  /** Transition effects */
-  $FAST: 0.13s !global;
-  $MED: 0.33s !global;
-  $SLOW: 0.5s !global;
-
+  // Transition effects */
   %fade-in--fast {
     @include transition(visibility $FAST ease-in, opacity $FAST ease-in);
   }

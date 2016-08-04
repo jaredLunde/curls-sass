@@ -1,5 +1,5 @@
 $card-name: 'card' !default;
-$card-class: unquote("#{unquote(".")}#{$card-name}") !default;
+$card-class: ".#{$card-name}" !default;
 $card-background: $white !default;
 $card-border-width: $border-width !default;
 $card-border-style: solid !default;

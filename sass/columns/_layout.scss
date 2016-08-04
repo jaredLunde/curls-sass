@@ -21,11 +21,9 @@
     float: left;
     width: $columns-width;
     display: inline-block;
-    @include prefix((box-sizing: border-box), webkit moz);
   }
 
   .no-csscolumns #{$columns-class} {
-    @include prefix((box-sizing: border-box), webkit moz);
     &:before, &:after {
         content: " ";
         display: table;
@@ -36,14 +34,14 @@
   }
 
 
-  @for $x from 1 through $columns-max-count {
+  @for $x from 1 through $columns-count-max {
     #{$columns-class}--#{$x} {
       @extend %#{$columns-name}--#{$x};
     }
   }
 
 
-  @for $x from 1 through $columns-max-count {
+  @for $x from 1 through $columns-count-max {
     .no-csscolumns #{$columns-class}--#{$x} > * {
       float: left;
       $width: 1 / $x;
@@ -54,18 +52,20 @@
   }
 
 
-  @each $size in map-keys($columns-gutter) {
-    @media #{map-get($columns-breakpoint, $size)} {
+  @each $bp in map-keys($columns-gutter) {
+    @media #{map-get($columns-breakpoint, $bp)} {
+      $gutter-size: map-get($columns-gutter, $bp);
+
       #{$columns-class} {
-        @include columns($gutter-size: map-get($columns-gutter, $size));
+        @include columns($gutter-size: $gutter-size);
       }
 
       .no-csscolumns #{$columns-class} {
-        padding-left: map-get($columns-gutter, $size);
+        padding-left: $gutter-size;
       }
 
       .no-csscolumns #{$columns-class} > * {
-        padding: 0 map-get($columns-gutter, $size) 0 0;
+        padding: 0 $gutter-size 0 0;
       }
     }
   }

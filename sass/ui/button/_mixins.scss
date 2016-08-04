@@ -4,10 +4,7 @@
     $color-val: map-get($colors, $color);
 
     #{$button-class}--#{$color} #{$button-class},
-    // #{$button-class}#{$button-class}--#{$color} #{$button-class},
     #{$button-class}--#{$color} button,
-    // #{$button-class}#{$button-class}--#{$color} button,
-    // #{$button-class}--#{$color}:not(.btn-group),
     #{$button-class}#{$button-class}--#{$color} {
       @extend %#{$type}--#{$color};
 
@@ -16,12 +13,9 @@
       }
     }
 
-    // .no-touchevents #{$button-class}--#{$color}:not(.btn-group),
     .no-touchevents #{$button-class}#{$button-class}--#{$color},
     .no-touchevents #{$button-class}--#{$color} #{$button-class},
-    // .no-touchevents #{$button-class}#{$button-class}--#{$color} #{$button-class},
     .no-touchevents #{$button-class}--#{$color} button,
-    //.no-touchevents #{$button-class}#{$button-class}--#{$color} button
     {
       &:hover, &.hover {
         background: lighten($color-val, 5%);
@@ -34,11 +28,9 @@
   }
 
   #{$button-class}--transparent #{$button-class},
-  // #{$button-class}#{$button-class}--transparent #{$button-class},
   #{$button-class}--transparent button,
-  // #{$button-class}#{$button-class}--transparent button,
-  // #{$button-class}--transparent:not(.btn-group),
-  #{$button-class}#{$button-class}--transparent {
+  #{$button-class}#{$button-class}--transparent
+  {
     background: transparent;
 
     &.active {
@@ -46,12 +38,9 @@
     }
   }
 
-  // .no-touchevents #{$button-class}--transparent:not(.btn-group),
   .no-touchevents #{$button-class}#{$button-class}--transparent,
   .no-touchevents #{$button-class}--transparent #{$button-class},
-  // .no-touchevents #{$button-class}#{$button-class}--transparent #{$button-class},
   .no-touchevents #{$button-class}--transparent button,
-  // .no-touchevents #{$button-class}#{$button-class}--transparent button
   {
     &:hover, &.hover {
       background: rgba(0, 0, 0, 0.10);

@@ -39,7 +39,7 @@
   #{$dropdown-class}__caret {
     @extend %hardware-accel;
     @extend %transform--fast;
-    @extend %#{$flex-name}--self-y-center;
+    @extend %#{$flex-name}--self-center;
     @extend %#{$type-name}--s;
     left: 6px;
     color: $dropdown-toggler-color;

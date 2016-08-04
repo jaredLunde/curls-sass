@@ -1,5 +1,5 @@
 $type-name: 'type' !default;
-$type-class: unquote("#{unquote(".")}#{$type-name}") !default;
+$type-class: ".#{$type-name}" !default;
 
 
 // Body
@@ -13,10 +13,17 @@ $body-font-weight: 300 !default;
 // Headings */
 $heading-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;
 $heading-color: $grey !default;
-$heading-max-font-size: 48px !default;
 $heading-font-weight: 300 !default;
 $heading-text-align: left !default;
 $heading-line-height: 1.1 !default;
+$heading-size: (
+  h1: 48px,
+  h2: 36px,
+  h3: 28px,
+  h4: 21px,
+  h5: 18px,
+  h6: 14px
+) !default;
 
 
 // Paragraphs */
@@ -36,9 +43,9 @@ $paragraph-text-align: left !default;
 $type-font-size: (
   xs: 10px,
   s: 12px,
-  m: 20px,
-  l: 32px,
-  xl: 40px
+  m: 18px,
+  l: 24px,
+  xl: 32px
 ) !default;
 
 
@@ -51,19 +58,10 @@ $type-line-height: (
 ) !default;
 
 
-$type-font-size-phone: (
+$type-font-size-s: (
   xs: 10px,
   s: 12px,
   m: 18px,
   l: 28px,
   xl: 36px
-) !default;
-
-
-$type-line-height-phone: (
-  xs: $body-line-height,
-  s: $body-line-height,
-  m: $body-line-height,
-  l: $body-line-height,
-  xl: $body-line-height
 ) !default;

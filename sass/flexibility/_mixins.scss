@@ -1,6 +1,5 @@
 @mixin display-flex {
   display: -webkit-box;
-  display: -moz-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -9,7 +8,6 @@
 
 @mixin display-inline-flex {
   display: -webkit-inline-box;
-  display: -moz-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -20,23 +18,15 @@
   @if $value == row-reverse {
     -webkit-box-direction: reverse;
     -webkit-box-orient: horizontal;
-    -moz-box-direction: reverse;
-    -moz-box-orient: horizontal;
   } @else if $value == column {
     -webkit-box-direction: normal;
     -webkit-box-orient: vertical;
-    -moz-box-direction: normal;
-    -moz-box-orient: vertical;
   } @else if $value == column-reverse {
     -webkit-box-direction: reverse;
     -webkit-box-orient: vertical;
-    -moz-box-direction: reverse;
-    -moz-box-orient: vertical;
   } @else {
     -webkit-box-direction: normal;
     -webkit-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -moz-box-orient: horizontal;
   }
   -webkit-flex-direction: $value;
   -ms-flex-direction: $value;
@@ -57,7 +47,6 @@
 
 
 @mixin flex-flow($values: (row nowrap)) {
-  // No Webkit/FF Box fallback.
   -webkit-flex-flow: $values;
   -ms-flex-flow: $values;
   flex-flow: $values;
@@ -67,7 +56,6 @@
 @mixin flex-grow($int: 1) {
   -ms-flex-positive: $int;
   -webkit-box-flex: $int;
-  -moz-box-flex: $int;
   -webkit-flex-grow: $int;
   -ms-flex: $int;
   flex-grow: $int;
@@ -76,7 +64,6 @@
 
 @mixin flex-shrink($int: 0) {
   -webkit-flex-shrink: $int;
-  -moz-flex-shrink: $int;
   -ms-flex-shrink: $int;
   flex-shrink:  $int;
 }
@@ -91,7 +78,6 @@
 
 @mixin order($int: 0) {
   -webkit-box-ordinal-group: $int + 1;
-  -moz-box-ordinal-group: $int + 1;
   -webkit-order: $int;
   -ms-flex-order: $int;
   order: $int;
@@ -99,18 +85,13 @@
 
 
 @mixin flex($fg: 1, $fs: 0, $fb: auto) {
-
-  // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 
-  // Box-Flex only supports a flex-grow value so lets grab the
-  // first item in the list and just return that.
   @if type-of($fg) == 'list' {
     $fg-boxflex: nth($fg, 1);
   }
 
   -webkit-box: $fg-boxflex;
-  -moz-box: $fg-boxflex;
   -webkit-flex: $fg $fs $fb;
   -ms-flexbox: $fg $fs $fb;
   flex: $fg $fs $fb;
@@ -120,11 +101,9 @@
 @mixin justify-content($value: flex-start) {
   @if $value == flex-start {
     -webkit-box-pack: start;
-    -moz-box-pack: start;
     -ms-flex-pack: start;
   } @else if $value == flex-end {
     -webkit-box-pack: end;
-    -moz-box-pack: end;
     -ms-flex-pack: end;
   } @else if $value == space-between {
     -webkit-box-pack: justify;
@@ -135,7 +114,6 @@
     justify-content: space-between;
   } @else {
     -webkit-box-pack: $value;
-    -moz-box-pack: $value;
     -ms-flex-pack: $value;
   }
   -webkit-justify-content: $value;
@@ -146,15 +124,12 @@
 @mixin align-items($value: stretch) {
   @if $value == flex-start {
     -webkit-box-align: start;
-    -moz-box-align: start;
     -ms-flex-align: start;
   } @else if $value == flex-end {
     -webkit-box-align: end;
-    -moz-box-align: end;
     -ms-flex-align: end;
   } @else {
     -webkit-box-align: $value;
-    -mox-box-align: $value;
     -ms-flex-align: $value;
   }
   -webkit-align-items: $value;
@@ -163,7 +138,6 @@
 
 
 @mixin align-self($value: auto) {
-  // No Webkit Box Fallback.
   -webkit-align-self: $value;
   @if $value == flex-start {
     -ms-flex-item-align: start;
@@ -177,7 +151,6 @@
 
 
 @mixin align-content($value: stretch) {
-  // No Webkit Box Fallback.
   -webkit-align-content: $value;
   @if $value == flex-start {
     -ms-flex-line-pack: start;
@@ -191,176 +164,46 @@
 
 
 @mixin extend-flex-justify($name, $prefix: 'x-', $selector: '') {
-  #{$selector}.#{$name}--#{$prefix}left {
-    @extend %#{$flex-name}--x-left;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}right {
-    @extend %#{$flex-name}--x-right;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}center {
-    @extend %#{$flex-name}--x-center;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}around {
-    @extend %#{$flex-name}--x-around;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}between {
-    @extend %#{$flex-name}--x-between;
+  @each $value in $FLEX-JUSTIFY {
+    #{$selector}.#{$name}--#{$prefix}#{$value} {
+      @extend %#{$flex-name}--x-#{$value};
+    }
   }
 }
 
 
 @mixin extend-flex-align($name, $prefix: 'y-', $selector: '') {
-  #{$selector}.#{$name}--#{$prefix}top {
-    @extend %#{$flex-name}--y-top;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}bottom {
-    @extend %#{$flex-name}--y-bottom;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}center {
-    @extend %#{$flex-name}--y-center;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}stretch {
-    @extend %#{$flex-name}--y-stretch;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}between {
-    @extend %#{$flex-name}--y-between;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}around {
-    @extend %#{$flex-name}--y-around;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}baseline {
-    @extend %#{$flex-name}--y-baseline;
+  @each $value in $FLEX-ALIGN {
+    #{$selector}.#{$name}--#{$prefix}#{$value} {
+      @extend %#{$flex-name}--y-#{$value};
+    }
   }
 }
 
 
 @mixin extend-flex-content($name, $prefix: 'content-', $selector: null) {
-  #{$selector}.#{$name}--content-top {
-    @extend %#{$flex-name}--#{$prefix}top;
-  }
-
-
-  #{$selector}.#{$name}--content-bottom {
-    @extend %#{$flex-name}--#{$prefix}bottom;
-  }
-
-
-  #{$selector}.#{$name}--content-center {
-    @extend %#{$flex-name}--#{$prefix}center;
-  }
-
-
-  #{$selector}.#{$name}--content-stretch {
-    @extend %#{$flex-name}--#{$prefix}stretch;
-  }
-
-
-  #{$selector}.#{$name}--content-between {
-    @extend %#{$flex-name}--#{$prefix}between;
-  }
-
-
-  #{$selector}.#{$name}--content-around {
-    @extend %#{$flex-name}--#{$prefix}around;
+  @each $value in $FLEX-ALIGN-CONTENT {
+    #{$selector}.#{$name}--content-#{$value} {
+      @extend %#{$flex-name}--#{$prefix}#{$value};
+    }
   }
 }
 
 
-@mixin extend-flex-self($name, $prefix: 'self-y-', $selector: null) {
-  #{$selector}.#{$name}--#{$prefix}top {
-    @extend %#{$flex-name}--self-y-top;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}bottom {
-    @extend %#{$flex-name}--self-y-bottom;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}center {
-    @extend %#{$flex-name}--self-y-center;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}stretch {
-    @extend %#{$flex-name}--self-y-stretch;
-  }
-
-
-  #{$selector}.#{$name}--#{$prefix}baseline {
-    @extend %#{$flex-name}--self-y-baseline;
+@mixin extend-flex-self($name, $prefix: 'self-', $selector: null) {
+  @each $value in $FLEX-ALIGN-SELF {
+    #{$selector}.#{$name}--#{$prefix}#{$value} {
+      @extend %#{$flex-name}--self-#{$value};
+    }
   }
 }
 
 
 @mixin extend-flex-base($name, $selector: '') {
-  #{$selector}.#{$name}--fixed {
-    @extend %#{$flex-name}--fixed;
-  }
-
-
-  #{$selector}.#{$name}--fluid {
-    @extend %#{$flex-name}--fluid;
-  }
-
-
-  #{$selector}.#{$name}--first {
-    @extend %#{$flex-name}--first;
-  }
-
-
-  #{$selector}.#{$name}--last {
-    @extend %#{$flex-name}--last;
-  }
-
-
-  #{$selector}.#{$name}--grow {
-    @extend %#{$flex-name}--grow;
-  }
-
-
-  #{$selector}.#{$name}--shrink {
-    @extend %#{$flex-name}--shrink;
-  }
-
-
-  #{$selector}.#{$name}--x-reverse {
-    @extend %#{$flex-name}--x-reverse;
-  }
-
-
-  #{$selector}.#{$name}--y-reverse {
-    @extend %#{$flex-name}--y-reverse;
-  }
-
-
-  #{$selector}.#{$name}--wrap-reverse {
-    @extend %#{$flex-name}--wrap-reverse;
-  }
-
-
-  #{$selector}.#{$name}--nowrap {
-    @extend %#{$flex-name}--nowrap;
+  @each $value in $FLEX-BASE {
+    #{$selector}.#{$name}--#{$value} {
+      @extend %#{$flex-name}--#{$value};
+    }
   }
 }
 

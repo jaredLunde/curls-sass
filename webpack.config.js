@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         test: /\/sass\/.*\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css?minified!sass')
+        loader: ExtractTextPlugin.extract('style', 'css?minified!group-css-media-queries!sass')
       }
     ],
   },

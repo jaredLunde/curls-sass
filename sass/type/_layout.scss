@@ -10,7 +10,7 @@
 
 
   body {
-    text-rendering: optimizeLegibility;
+    @extend %optimize-speed;
     @include font-line($body-font-size,
                        $body-line-height,
                        $color: $body-font-color,
@@ -26,7 +26,7 @@
 
   h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
     text-align: $heading-text-align;
-    @include font-line($heading-max-font-size,
+    @include font-line(map-get($heading-size, h1),
                        $heading-line-height,
                        $color: $heading-color,
                        $weight: $heading-font-weight,
@@ -34,14 +34,13 @@
   }
 
 
-  $_size: $heading-max-font-size * 0.875 * 0.875;
-  @each $x in ('h2', 'h3', 'h4', 'h5', 'h6') {
-    $_size: round($_size * 0.875);
-    #{$x} {
-      @include font-line($_size, $heading-line-height);
+  @each $h in ('h2', 'h3', 'h4', 'h5', 'h6') {
+    #{$h} {
+      $size: map-get($heading-size, $h);
+      @include font($size);
     }
-    #{$type-class}--#{$x} {
-      @extend #{$x};
+    #{$type-class}--#{$h} {
+      @extend #{$h};
     }
   }
 

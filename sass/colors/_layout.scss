@@ -1,9 +1,9 @@
 @include import-once('colors') {
-  @include colorize('border', 'border');
-  @include colorize('bg', 'bg');
+  @include colorize($border-class, 'border');
+  @include colorize($bg-class, 'bg');
 
   a {
-    text-decoration: $link-decoration;
+    text-decoration: $link-text-decoration;
     color: $link-color;
     -webkit-tap-highlight-color: $link-tap-highlight;
   }

@@ -53,7 +53,12 @@
 }
 
 
-@function calculateRem($size) {
+@mixin blur($size) {
+  @include prefix((filter: blur($size)), webkit);
+}
+
+
+@function calculate-rem($size) {
   $remSize: $size / 16px;
   @return $remSize * 1rem;
 }
@@ -66,61 +71,8 @@
   } @else {
     $newSize: $baseSize * $adjustedSize;
     #{$property}: $newSize;
-    #{$property}: calculateRem($newSize);
+    #{$property}: calculate-rem($newSize);
   }
-}
-
-
-@mixin font-size($size, $adjustedSize: 1.0) {
-  @include rem-property('font-size', $size, $adjustedSize);
-}
-
-
-@mixin line-height($size) {
-  @include rem-property('line-height', $size);
-}
-
-
-@mixin font($size, $weight:null, $color:null, $family:null) {
-  @if $weight {
-    font-weight: $weight;
-  }
-  @if $color {
-    color: $color;
-  }
-  @if $family {
-    font-family: $family;
-  }
-  @include font-size($size);
-}
-
-
-@mixin font-line($size, $line-size, $weight:null, $color:null, $family:null) {
-  @if $weight {
-    font-weight: $weight;
-  }
-  @if $color {
-    color: $color;
-  }
-  @if $family {
-    font-family: $family;
-  }
-  @include font-size($size);
-  @include line-height($line-size);
-}
-
-
-@mixin alpha-attribute($attribute, $color, $background) {
-  $percent: alpha($color) * 100%;
-  $opaque: opacify($color, 1);
-  $solid-color: mix($opaque, $background, $percent);
-  #{$attribute}: $solid-color;
-  #{$attribute}: $color;
-}
-
-
-@mixin blur($size) {
-  @include prefix((filter: blur($size)), webkit);
 }
 
 

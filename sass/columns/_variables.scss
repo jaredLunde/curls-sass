@@ -1,22 +1,8 @@
 $columns-name: 'cols' !default;
-$columns-class: unquote("#{unquote(".")}#{$columns-name}") !default;
+$columns-class: ".#{$columns-name}" !default;
 $columns-width: auto !default;
-$columns-max-count: 12;
+$columns-count-max: 12 !default;
 
 
-$columns-gutter: (
-  xs: 8px,
-  s: 12px,
-  m: 12px,
-  l: 16px,
-  xl: 24px,
-) !default;
-
-
-$columns-breakpoint: (
-  xs: $phone-s,
-  s: $phone-max,
-  m: $tablet-max,
-  l: $desktop,
-  xl: $desktop-l,
-) !default;
+$columns-gutter: $grid-gutter !default;
+$columns-breakpoint: $grid-breakpoint !default;

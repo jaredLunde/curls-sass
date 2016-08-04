@@ -34,7 +34,7 @@
   #{$paginate-class} ol,
   #{$paginate-class} li {
     @extend %#{$flex-name};
-    @extend %#{$flex-name}--self-y-stretch;
+    @extend %#{$flex-name}--self-stretch;
   }
 
 
@@ -43,7 +43,7 @@
   #{$paginate-class} li a,
   #{$paginate-link-class} {
     @extend %#{$flex-name};
-    @extend %#{$flex-name}--self-y-stretch;
+    @extend %#{$flex-name}--self-stretch;
     @extend %#{$flex-name}--y-center;
     color: $paginate-link-color;
     border-width: $paginate-link-border-width;

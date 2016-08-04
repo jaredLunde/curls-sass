@@ -1,2 +1,2 @@
 $toggler-name: 'toggler' !default;
-$toggler-class: unquote("#{unquote(".")}#{$toggler-name}") !default;
+$toggler-class: ".#{$toggler-name}" !default;

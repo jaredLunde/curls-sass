@@ -1,5 +1,5 @@
 @include import-once('columns-placeholders') {
-  @for $x from 1 through $columns-max-count {
+  @for $x from 1 through $columns-count-max {
     %#{$columns-name}--#{$x} {
       @include columns($x, $columns-width);
     }

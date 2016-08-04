@@ -12,22 +12,17 @@
     @include break-for(gutters--x);
 
     &#{$grid-class}--nopad {
-      padding: 0
+      @extend #{$grid-class}--nopad;
     }
 
     & > * {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--fixed;
       @extend %#{$flex-name}--y-center;
-      /**
-      & > * {
-        @extend %#{$flex-name}--self-y-center;
-      }
-      */
     }
 
     & > li {
-      @extend %#{$flex-name}--self-y-stretch;
+      @extend %#{$flex-name}--self-stretch;
       @extend %#{$flex-name}--y-center;
     }
 
@@ -46,11 +41,16 @@
     h1, h2, h3, h4, h5, h6,
     .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
       @extend %#{$flex-name};
-      @extend %#{$flex-name}--self-y-stretch;
+      @extend %#{$flex-name}--self-stretch;
       @extend %#{$flex-name}--y-center;
-      font-weight: $navbar-link-font-weight;
       @include break-for(margin-gutters--2y);
       @include break-for(margin-gutters--x);
+    }
+
+    #{$navbar-class}__link,
+    & > li > a,
+    & > a {
+      font-weight: $navbar-link-font-weight;
     }
 
     & + #{$navbar-class} {
@@ -98,7 +98,6 @@
     position: -webkit-sticky;
     position: -moz-sticky;
     position: -ms-sticky;
-    position: -o-sticky;
     position: sticky;
   }
 

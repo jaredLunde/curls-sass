@@ -1,5 +1,5 @@
 $navbar-name: 'navbar' !default;
-$navbar-class: unquote("#{unquote(".")}#{$navbar-name}") !default;
+$navbar-class: ".#{$navbar-name}" !default;
 $navbar-background: $white !default;
 $navbar-border-color: $border !default;
 $navbar-border-style: solid !default;

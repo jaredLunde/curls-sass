@@ -1,0 +1,23 @@
+.divider {
+  background: $divider-color;
+  height: $divider-height;
+  width: 100%;
+  display: block;
+  position: relative;
+}
+
+
+.disabled {
+  color: $disabled-link-color;
+}
+
+
+.no-touchevents .disabled:hover {
+  cursor: not-allowed;
+  color: $disabled-link-color;
+}
+
+
+.noborder {
+  border: 0 !important;
+}
