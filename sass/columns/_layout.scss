@@ -3,12 +3,11 @@
     display: block;
   }
 
-  /**
+
   #{$columns-class} > * {
-    display: inline-block;
-    width: 100%;
+    display: inherit;
   }
-  */
+
 
   @for $x from 1 through $columns-count-max {
     #{$columns-class}--#{$x} {

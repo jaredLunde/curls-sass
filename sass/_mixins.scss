@@ -64,14 +64,19 @@
 }
 
 
-@mixin rem-property($property, $baseSize, $adjustedSize: 1.0) {
-  @if ($baseSize and index('initial' 'inherit' 'auto' 'normal', $baseSize)) or
-      ($baseSize and unit($baseSize) != 'px') {
-    #{$property}: $baseSize;
+@mixin rem-property($property, $base-size, $adjusted-size: 1.0,
+                    $with-original: false) {
+  @if ($base-size and index('initial' 'inherit' 'auto' 'normal', $base-size)) or
+      ($base-size and unit($base-size) != 'px') {
+    #{$property}: $base-size;
   } @else {
-    $newSize: $baseSize * $adjustedSize;
-    #{$property}: $newSize;
-    #{$property}: calculate-rem($newSize);
+    $new-size: $base-size * $adjusted-size;
+
+    @if $with-original {
+      #{$property}: $new-size;
+    }
+
+    #{$property}: calculate-rem($new-size);
   }
 }
 

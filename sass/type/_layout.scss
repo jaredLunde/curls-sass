@@ -12,6 +12,7 @@
 
   body {
     @extend %optimize-speed;
+    @include rem-property(letter-spacing, $body-letter-spacing);
     @include font-line($body-font-size,
                        $body-line-height,
                        $color: $body-font-color,
@@ -27,6 +28,7 @@
 
   h1, h2, h3, h4, h5, h6, #{$type-class}--h1 {
     text-align: $heading-text-align;
+    @include rem-property(letter-spacing, $heading-letter-spacing);
     @include font-line(map-get($heading-size, h1),
                        $heading-line-height,
                        $color: $heading-color,
