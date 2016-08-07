@@ -15,7 +15,7 @@
                        $tooltip-line-height,
                        $color: $tooltip-font-color,
                        $weight: $tooltip-font-weight);
-    @include break-for(gutters);
+    @include break-for(gutters, xl l m);
   }
 
   #{mod($tooltip-class, open)},

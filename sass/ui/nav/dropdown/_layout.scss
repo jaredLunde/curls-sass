@@ -10,7 +10,7 @@
         margin-top: -3px;
         visibility: visible;
         opacity: 1.0;
-        @include drop-out($VERY-FAST);
+        @include drop-in($VERY-FAST);
       }
     }
   }
@@ -114,7 +114,7 @@
     -webkit-overflow-scrolling: touch;
     opacity: 0.0;
     @include box-shadow($dropdown-shadow);
-    @include drop-in($VERY-FAST);
+    @include drop-out($FAST);
 
     li {
       a {

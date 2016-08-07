@@ -1,0 +1,23 @@
+@include import-once('drawer') {
+  #{$drawer-class} {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    // bottom: 0;
+    min-height: 100%;
+    background: $drawer-background;
+    z-index: $MAX-Z-INDEX;
+    border-width: $drawer-border-width;
+    border-style: $drawer-border-style;
+    border-color: $drawer-border-color;
+    @include box-shadow($drawer-box-shadow);
+    @include slide($SLOW, left, ease-in-out);
+  }
+
+  #{$drawer-class} #{$list-class} {
+    border: 0;
+    margin: 0;
+  }
+
+  @include extend-flex($drawer-name, $drawer-class);
+}
