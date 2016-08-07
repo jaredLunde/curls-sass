@@ -33,7 +33,7 @@
     border-radius: $MAX-PX;
     height: $checkbox-checkmark-height;
     width: $checkbox-checkmark-width;
-    @include transition(background $FAST linear);
+    @include animate(background $FAST linear);
 
     & > * {
       @extend %#{$flex-name};
@@ -59,14 +59,13 @@
 
 
   #{$checkbox-class}__checkmark {
-    @extend %hardware-accel;
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y-center;
     @extend %#{$flex-name}--x-center;
-    @extend %fade-in;
     color: $white;
     visibility: hidden;
     opacity: 0;
+    @include fade-in($FAST);
 
     & > * {
       @extend %#{$flex-name};
@@ -76,10 +75,10 @@
 
   #{$checkbox-class}.checked {
     #{$checkbox-class}__checkmark {
-      @extend %fade-out;
       visibility: visible;
       opacity: 1.0;
       color: $white;
+      @include fade-out($FAST);
     }
 
     #{$checkbox-class}__box {

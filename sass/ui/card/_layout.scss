@@ -2,6 +2,7 @@
   #{$card-class} {
     @extend %#{$card-name};
 
+    // Remove default styles */
     & > *:not(.button):not(button):first-child {
       border-top: 0;
     }
@@ -20,36 +21,14 @@
       border-bottom-left-radius: $card-border-radius;
     }
 
-    p,
-    & > a:not(#{$button-class}):not(#{$card-class}__image),
-    #{$card-class}__link,
-    #{$card-class}__row,
-    h1, h2, h3, h4, h5, h6,
-    .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
-      @extend %#{$padding-name}--16;
+    & > {
+      #{$button-class}, button {
+        @extend %#{$margin-name}--16;
+      }
     }
 
-    p + p,
-    h1 + p,
-    h2 + p,
-    h3 + p,
-    h4 + p,
-    h5 + p,
-    h6 + p,
-    .type--h1 + p,
-    .type--h2 + p,
-    .type--h3 + p,
-    .type--h4 + p,
-    .type--h5 + p,
-    .type--h6 + p {
-      @extend %#{$padding-name}--t0;
-    }
 
-    & > #{$button-class},
-    & > button {
-      @extend %#{$margin-name}--16;
-    }
-
+    // Header + Footer styles */
     header, #{$card-class}__header {
       @extend %#{$flex-name};
       width: 100%;
@@ -76,31 +55,82 @@
       }
     }
 
+
+    // Navbar styles */
+    #{$navbar-class} {
+      background: transparent;
+    }
+
     & > #{$navbar-class} {
       @extend %#{$padding-name}--x8;
 
-      & > #{$button-class},
-      & > button,
-      & > a,
-      & > li > #{$button-class},
-      & > li > button,
-      & > li > a {
-        @extend %#{$margin-name}--x8;
-        @extend %#{$margin-name}--y16;
+      & > {
+        button, #{$button-class} {
+          @extend %#{$margin-name}--x8;
+          @extend %#{$margin-name}--y16;
+        }
+
+        a {
+          @extend %#{$padding-name}--x8;
+          @extend %#{$padding-name}--y16;
+        }
+      }
+
+      & > li > {
+        button, #{$button-class} {
+          @extend %#{$margin-name}--x8;
+          @extend %#{$margin-name}--y16;
+        }
+
+        a {
+          @extend %#{$padding-name}--x8;
+          @extend %#{$padding-name}--y16;
+        }
       }
     }
 
-    p {
-      width: 100%;
-      margin: 0;
+
+    // Type styles */
+    & > {
+      p {
+        width: 100%;
+        margin: 0;
+      }
+
+      a:not(#{$button-class}):not(#{$card-class}__image) {
+        @extend %#{$padding-name}--16;
+      }
+
+      p + p,
+      h1 + p,
+      h2 + p,
+      h3 + p,
+      h4 + p,
+      h5 + p,
+      h6 + p,
+      #{$type-class}--h1 + p,
+      #{$type-class}--h2 + p,
+      #{$type-class}--h3 + p,
+      #{$type-class}--h4 + p,
+      #{$type-class}--h5 + p,
+      #{$type-class}--h6 + p {
+        @extend %#{$padding-name}--t0;
+      }
     }
 
-    #{$navbar-class} {
-      background: transparent;
+    p,
+    #{$card-class}__link,
+    #{$card-class}__row {
+      @extend %#{$padding-name}--16;
+    }
+
+    @include headings {
+      @extend %#{$padding-name}--16;
     }
   }
 
 
+  // Card image styles */
   #{$card-class} > img,
   #{$card-class} > figure img,
   #{$card-class}__image,
@@ -125,5 +155,6 @@
   }
 
 
+  // Flex extensions */
   @include extend-flex($card-name, ($card-class));
 }

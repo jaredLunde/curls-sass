@@ -3,11 +3,11 @@ $input-text-font-size: 16px !default;
 $input-text-line-height: normal !default;
 $input-text-font-color: $grey !default;
 $input-text-font-weight: 300 !default;
-$input-text-font: $body-font !default;
+$input-text-font: inherit !default;
 
 $input-text-margin: 0 !default;
-$input-text-padding-top: 4px !default;
-$input-text-padding-right: 8px !default;
+$input-text-padding-top: 8px !default;
+$input-text-padding-right: golden($input-text-padding-top) !default;
 $input-text-padding-bottom: $input-text-padding-top !default;
 $input-text-padding-left: $input-text-padding-right !default;
 $input-text-background: $lightest-grey !default;
@@ -19,7 +19,7 @@ $textarea-font-size: 16px !default;
 $textarea-line-height: $paragraph-line-height !default;
 $textarea-font-color: $grey !default;
 $textarea-font-weight: 300 !default;
-$textarea-font: $body-font !default;
+$textarea-font: inherit !default;
 
 $textarea-margin: 0 !default;
 $textarea-padding-top: 8px!default;
@@ -34,7 +34,7 @@ $submit-font-color: $grey !default;
 $submit-font-size: 16px !default;
 $submit-line-height: $body-line-height !default;
 $submit-font-weight: 700 !default;
-$submit-font: $body-font !default;
+$submit-font: inherit !default;
 
 $submit-border: $input-text-border !default;
 $submit-margin: 0 !default;

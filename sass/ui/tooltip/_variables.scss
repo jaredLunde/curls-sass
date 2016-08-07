@@ -1,0 +1,15 @@
+$tooltip-name: tooltip;
+$tooltip-class: '.#{$tooltip-name}';
+
+$tooltip-font-color: $white;
+$tooltip-font-size: map-get($type-font-size, s);
+$tooltip-font-weight: 400;
+$tooltip-line-height: 1.1;
+
+$tooltip-background: $black !default;
+$tooltip-border-width: $border-width !default;
+$tooltip-border-color: transparent !default;
+$tooltip-border-style: auto !default;
+$tooltip-border-radius: $border-radius !default;
+
+$tooltip-caret-size: 8px !default;

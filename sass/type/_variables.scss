@@ -3,7 +3,7 @@ $type-class: ".#{$type-name}" !default;
 
 
 // Body
-$body-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;
+$body-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
 $body-font-size: 16px !default;
 $body-font-color: $grey !default;
 $body-line-height: 1.1 !default;
@@ -13,7 +13,7 @@ $body-letter-spacing: inherit !default;
 
 
 // Headings */
-$heading-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;
+$heading-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
 $heading-color: $grey !default;
 $heading-font-weight: 300 !default;
 $heading-text-align: left !default;
@@ -33,7 +33,7 @@ $heading-size: (
 $paragraph-padding: 0 !default;
 $paragraph-margin: 0 0 1.2 !default;
 
-$paragraph-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif !default;
+$paragraph-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
 $paragraph-font-size: 16px !default;
 $paragraph-line-height: 1.4 !default;
 $paragraph-letter-spacing: inherit !default;
@@ -45,7 +45,7 @@ $paragraph-text-align: left !default;
 // Type sizes
 $type-font-size: (
   xs: 10px,
-  s: 12px,
+  s: 14px,
   m: 18px,
   l: 24px,
   xl: 32px

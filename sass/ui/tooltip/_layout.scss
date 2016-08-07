@@ -1,0 +1,157 @@
+@include import-once('tooltip') {
+  #{$tooltip-class} {
+    @extend %hardware-accel;
+    @extend %hidden;
+    position: absolute;
+    background: $tooltip-background;
+    border-width: $tooltip-border-width;
+    border-color: $tooltip-border-color;
+    border-style: $tooltip-border-style;
+    border-radius: $tooltip-border-radius;
+    z-index: $MAX-Z-INDEX;
+    white-space: nowrap;
+    top: calc(100% + #{$tooltip-caret-size + 12px});
+    @include font-line($tooltip-font-size,
+                       $tooltip-line-height,
+                       $color: $tooltip-font-color,
+                       $weight: $tooltip-font-weight);
+    @include break-for(gutters);
+  }
+
+  #{mod($tooltip-class, open)},
+  .no-touchevents #{$tooltip-class}:hover {
+    @extend %visible;
+    top: calc(100% + #{$tooltip-caret-size + 2px});
+    @include prefix((transition-delay: 0.24s), webkit);
+  }
+
+  #{mod($tooltip-class, bottom)},
+  .no-touchevents #{mod($tooltip-class, bottom)}:hover {
+    &:before {
+      @include caret($tooltip-caret-size + $tooltip-border-width,
+                     $tooltip-border-color,
+                     $pad: $tooltip-border-width);
+      left: calc(12px - #{$tooltip-border-width});
+    }
+
+    &:after {
+      @include caret($tooltip-caret-size, $tooltip-background);
+      left: 12px;
+    }
+  }
+
+  // Animations */
+  #{mod($tooltip-class, bottom)} {
+    @include drop-out($VERY-FAST, $delay: 0.24s);
+  }
+
+  #{mod($tooltip-class, top)} {
+    top: auto;
+    bottom: calc(100% + #{$tooltip-caret-size + 12px});
+    @include drop-out($VERY-FAST, $from: bottom, $delay: 0.24s);
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, top)},
+  .no-touchevents #{mod($tooltip-class, top)}:hover {
+    @include drop-in($VERY-FAST, $from: bottom, $delay: 0.12s);
+  }
+
+  #{mod($tooltip-class, left)} {
+    right: calc(100% + #{$tooltip-caret-size + 12px});
+    @include drop-out($VERY-FAST, $from: right, $delay: 0.24s);
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, left)},
+  .no-touchevents #{mod($tooltip-class, left)}:hover {
+    @include drop-in($VERY-FAST, $from: right, $delay: 0.12s);
+  }
+
+  #{mod($tooltip-class, right)} {
+    left: calc(100% + #{$tooltip-caret-size + 12px});
+    @include drop-out($VERY-FAST, $from: left, $delay: 0.24s);
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, right)},
+  .no-touchevents #{mod($tooltip-class, right)}:hover {
+    @include drop-in($VERY-FAST, $from: left, $delay: 0.12s);
+  }
+
+
+  // Open Positioning */
+  #{mod($tooltip-class, top)},
+  .no-touchevents #{mod($tooltip-class, top)}:hover {
+    &:before {
+      @include caret($tooltip-caret-size + $tooltip-border-width,
+                     $tooltip-border-color,
+                     $direction: bottom,
+                     $pad: $tooltip-border-width);
+      left: calc(12px - #{$tooltip-border-width});
+    }
+
+    &:after {
+      @include caret($tooltip-caret-size,
+                     $tooltip-background,
+                     $direction: bottom);
+      left: 12px;
+    }
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, top)},
+  .no-touchevents #{mod($tooltip-class, top)}:hover {
+    top: auto;
+    bottom: calc(100% + #{$tooltip-caret-size + 2px});
+  }
+
+  #{mod($tooltip-class, left)},
+  .no-touchevents #{mod($tooltip-class, left)}:hover {
+    &:before {
+      @include caret($tooltip-caret-size + $tooltip-border-width,
+                     $tooltip-border-color,
+                     $direction: right,
+                     $pad: $tooltip-border-width);
+      top: calc(50% - #{($tooltip-caret-size / 2) + $tooltip-border-width});
+    }
+
+    &:after {
+      @include caret($tooltip-caret-size,
+                     $tooltip-background,
+                     $direction: right);
+      top: calc(50% - #{$tooltip-caret-size / 2});
+    }
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, left)},
+  .no-touchevents #{mod($tooltip-class, left)}:hover {
+    top: -50%;
+    right: calc(100% + #{$tooltip-caret-size + 2px});
+  }
+
+  #{mod($tooltip-class, right)},
+  .no-touchevents #{mod($tooltip-class, right)}:hover {
+    &:before {
+      @include caret($tooltip-caret-size + $tooltip-border-width,
+                     $tooltip-border-color,
+                     $direction: left,
+                     $pad: $tooltip-border-width);
+      top: calc(50% - #{($tooltip-caret-size / 2) + $tooltip-border-width});
+    }
+
+    &:after {
+      @include caret($tooltip-caret-size,
+                     $tooltip-background,
+                     $direction: left);
+      top: calc(50% - #{$tooltip-caret-size / 2});
+    }
+  }
+
+  #{mod($tooltip-class, open)}#{mod($tooltip-class, right)},
+  .no-touchevents #{mod($tooltip-class, right)}:hover {
+    top: -50%;
+    left: calc(100% + #{$tooltip-caret-size + 2px});
+  }
+
+  #{el($tooltip-class, container)} {
+    position: relative;
+    // width: 100%;
+  }
+}

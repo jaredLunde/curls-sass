@@ -12,6 +12,38 @@
     @include break-for(margin-gutters);
   }
 
+  #{$padding-class}--gutters-l {
+    @include break-for(gutters--l);
+  }
+
+  #{$margin-class}--gutters-l {
+    @include break-for(margin-gutters--l);
+  }
+
+  #{$padding-class}--gutters-r {
+    @include break-for(gutters--r);
+  }
+
+  #{$margin-class}--gutters-r {
+    @include break-for(margin-gutters--r);
+  }
+
+  #{$padding-class}--gutters-t {
+    @include break-for(gutters--t);
+  }
+
+  #{$margin-class}--gutters-t {
+    @include break-for(margin-gutters--t);
+  }
+
+  #{$padding-class}--gutters-b {
+    @include break-for(gutters--b);
+  }
+
+  #{$margin-class}--gutters-b {
+    @include break-for(margin-gutters--b);
+  }
+
   #{$padding-class}--gutters-x {
     @include break-for(gutters--x);
   }
@@ -34,6 +66,38 @@
 
   #{$margin-class}--gutters-2 {
     @include break-for(margin-gutters--2);
+  }
+
+  #{$padding-class}--gutters-2l {
+    @include break-for(gutters--2l);
+  }
+
+  #{$margin-class}--gutters-2l {
+    @include break-for(margin-gutters--2l);
+  }
+
+  #{$padding-class}--gutters-2r {
+    @include break-for(gutters--2r);
+  }
+
+  #{$margin-class}--gutters-2r {
+    @include break-for(margin-gutters--2r);
+  }
+
+  #{$padding-class}--gutters-2t {
+    @include break-for(gutters--2t);
+  }
+
+  #{$margin-class}--gutters-2t {
+    @include break-for(margin-gutters--2t);
+  }
+
+  #{$padding-class}--gutters-2b {
+    @include break-for(gutters--2b);
+  }
+
+  #{$margin-class}--gutters-2b {
+    @include break-for(margin-gutters--2b);
   }
 
   #{$padding-class}--gutters-2x {

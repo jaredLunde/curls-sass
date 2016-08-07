@@ -1,10 +1,6 @@
-/**
- ** Input Group
- **/
-@import '../../../core';
-
 @import '../variables';
+@import '../mixins';
 @import '../placeholders';
-
+@import 'variables';
+@import 'mixins';
 @import 'placeholders';
-@import 'layout';

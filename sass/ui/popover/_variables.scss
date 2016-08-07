@@ -1,0 +1,11 @@
+$popover-name: popover !default;
+$popover-class: '.#{$popover-name}' !default;
+
+
+$popover-background: $white !default;
+$popover-border-width: $border-width !default;
+$popover-border-color: $border !default;
+$popover-border-style: $border-style !default;
+$popover-border-radius: $border-radius !default;
+
+$popover-caret-size: 12px !default;

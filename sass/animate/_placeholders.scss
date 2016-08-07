@@ -1,0 +1,25 @@
+@include import-once('animate-placeholders') {
+  // Attempt to force GPU rendering
+  %hardware-accel {
+    @include prefix((transform: translateZ(0),
+                     backface-visibility: hidden,
+                     perspective: 1000),
+                    webkit ms);
+    @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
+  }
+
+
+  %transform--fast {
+    @include animate(transform $FAST ease-out);
+  }
+
+
+  %transform {
+    @include animate(transform $MED ease-out);
+  }
+
+
+  %transform--slow {
+    @include animate(transform $SLOW ease-out);
+  }
+}

@@ -1,5 +1,6 @@
 @include import-once('type') {
   html {
+    word-wrap: break-word;
     /** the zoom makes zero sense to me */
     @include prefix((text-size-adjust: 100%), webkit ms);
   }
@@ -7,6 +8,7 @@
 
   pre {
     -webkit-font-smoothing: auto;
+    font-smoothing: auto;
   }
 
 
@@ -20,8 +22,8 @@
                        $family: $body-font);
 
     @media #{$high-dpi} {
-      font-smoothing: antialiased;
       -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased;
     }
   }
 

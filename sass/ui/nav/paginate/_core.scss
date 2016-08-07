@@ -2,18 +2,12 @@
  ** Paginate (.paginate)
  **/
 @import '../../../core';
-
-@import '../../../flexibility/variables';
-@import '../../../flexibility/mixins';
-@import '../../../flexibility/placeholders';
+@import '../../../basics/core';
 
 @import '../../form/variables';
 @import '../../form/placeholders';
 
 @import '../../form/input-group/placeholders';
-
-@import '../../../grid/variables';
-@import '../../../grid/placeholders';
 
 @import 'variables';
 @import 'layout';

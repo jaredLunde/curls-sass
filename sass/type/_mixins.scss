@@ -10,7 +10,8 @@
 
 @mixin font($size, $weight:null, $color:null, $family:null) {
   @if $size > 20px {
-    @extend %optimize-legibility;}
+    text-rendering: optimizeLegibility;
+  }
   @if $weight {
     font-weight: $weight;}
   @if $color {
@@ -24,4 +25,17 @@
 @mixin font-line($size, $line-size, $weight:null, $color:null, $family:null) {
   @include font($size, $weight, $color, $family);
   @include line-height($line-size);
+}
+
+
+@mixin headings {
+  h1, h2, h3, h4, h5, h6,
+  #{$type-class}--h1,
+  #{$type-class}--h2,
+  #{$type-class}--h3,
+  #{$type-class}--h4,
+  #{$type-class}--h5,
+  #{$type-class}--h6 {
+    @content;
+  }
 }

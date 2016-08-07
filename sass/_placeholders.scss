@@ -1,13 +1,4 @@
 @include import-once('core-placeholders') {
-  %hardware-accel {
-    @include prefix((transform: translateZ(0),
-                     backface-visibility: hidden,
-                     perspective: 1000),
-                    webkit ms);
-    @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
-  }
-
-
   %pill {
     border-radius: $MAX-PX;
   }
@@ -19,8 +10,12 @@
     opacity: 1;
   }
 
-
   %hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  %remove {
     display: none;
   }
 
@@ -70,92 +65,5 @@
   %absolute-bottom-fw {
     @extend %absolute-top-fw;
     @extend %absolute-bottom;
-  }
-
-
-  // Transition effects */
-  %fade-in--fast {
-    @include transition(visibility $FAST ease-in, opacity $FAST ease-in);
-  }
-
-
-  %fade-out--fast {
-    @include transition(visibility $FAST ease-out, opacity $FAST ease-in);
-  }
-
-
-  %fade-in {
-    @include transition(visibility $MED ease-in, opacity $MED ease-in);
-  }
-
-
-  %fade-out {
-    @include transition(visibility $MED ease-out, opacity $MED ease-in);
-  }
-
-
-  %fade-in--slow {
-    @include transition(visibility $SLOW ease-in, opacity $SLOW ease-in);
-  }
-
-
-  %fade-out--slow {
-    @include transition(visibility $SLOW ease-out, opacity $SLOW ease-in);
-  }
-
-
-  %drop-in--fast {
-    @extend %fade-in;
-    @include transition(top $FAST ease-out, visibility $FAST ease-out,
-                        opacity $FAST ease-in);
-  }
-
-
-  %drop-in {
-    @extend %fade-in;
-    @include transition(top $MED ease-out, visibility $MED ease-out,
-                        opacity $MED ease-in);
-  }
-
-
-  %drop-in--slow {
-    @extend %fade-in;
-    @include transition(top $SLOW ease-out, visibility $SLOW ease-out,
-                        opacity $SLOW ease-in);
-  }
-
-
-  %drop-out--fast {
-    @extend %fade-out--fast;
-    @include transition(top $FAST ease-out, visibility $FAST ease-out,
-                        opacity $FAST ease-in);
-  }
-
-
-  %drop-out {
-    @extend %fade-out;
-    @include transition(top $MED ease-out, visibility $MED ease-out,
-                        opacity $MED ease-in);
-  }
-
-
-  %drop-out--slow {
-    @include transition(visibility $SLOW ease-out, opacity $SLOW ease-in,
-                        top $SLOW ease-out);
-  }
-
-
-  %transform--fast {
-    @include transition(transform $FAST ease-out);
-  }
-
-
-  %transform {
-    @include transition(transform $MED ease-out);
-  }
-
-
-  %transform--slow {
-    @include transition(transform $SLOW ease-out);
   }
 }

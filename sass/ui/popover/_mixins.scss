@@ -1,0 +1,34 @@
+@mixin caret($size: 16px, $color: $white, $direction: top, $pad: 0) {
+  $caret-name: keep-safe(--caret--#{$size}--#{$color}--#{$direction});
+
+  @include keepholder($caret-name) {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    content: "";
+    position: absolute;
+    @if ($direction == top) {
+      border-width: 0 rgolden($size) $size rgolden($size);
+      border-color: transparent transparent $color transparent;
+      top: ($size * -1) - $pad;
+    } @else if ($direction == bottom) {
+      border-width: $size rgolden($size) 0 rgolden($size);
+      border-color: $color transparent transparent transparent;
+      bottom: ($size * -1) - $pad;
+    } @else if ($direction == left) {
+      border-width: rgolden($size) $size rgolden($size) 0;
+      border-color: transparent $color transparent transparent;
+      left: ($size * -1) - $pad;
+    } @else if ($direction == right) {
+      border-width: rgolden($size) 0 rgolden($size) $size;
+      border-color: transparent transparent transparent $color;
+      left: auto;
+      right: ($size * -1) - $pad;
+    }
+  }
+
+  @extend %#{$caret-name};
+  @content;
+}

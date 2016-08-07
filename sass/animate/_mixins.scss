@@ -1,0 +1,58 @@
+@mixin keep-animation($name) {
+  $name: --animate--#{keep-safe($name)};
+
+  @include keepholder($name) {
+    @content;
+  }
+
+  @extend %#{$name};
+}
+
+@mixin animate($args...) {
+  @include keep-animation(#{$args}) {
+    @include transition($args...);
+  }
+}
+
+
+@mixin fade($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
+  @include animate(visibility $speed $easing $delay,
+                   opacity $speed $easing $delay);
+}
+
+@mixin fade-in($speed: $FAST, $delay: 0s) {
+  @include fade($speed, $delay: $delay);
+}
+
+
+@mixin fade-out($speed: $FAST, $delay: 0s) {
+  @include fade($speed, $easing: $EASE-OUT, $delay: $delay);
+}
+
+
+@mixin drop($speed: $FAST, $from: top, $easing: $EASE-IN, $delay: 0s) {
+  @include animate(visibility $speed $easing $delay,
+                   opacity $speed $easing $delay,
+                   $from $speed $easing $delay);
+}
+
+@mixin drop-in($speed: $FAST, $from: top, $delay: 0s) {
+  @include drop($speed, $from, $delay: $delay);
+}
+
+@mixin drop-out($speed: $FAST, $from: top, $delay: 0s) {
+  @include drop($speed, $from, $easing: $EASE-OUT, $delay: $delay);
+}
+
+
+@mixin slide($speed: $FAST, $from: top, $easing: $EASE-IN, $delay: 0s) {
+  @include animate($from $speed $easing $delay);
+}
+
+@mixin slide-in($speed: $FAST, $from: top, $delay: 0s) {
+  @include animate($speed, $from, $delay: $delay);
+}
+
+@mixin slide-out($speed: $FAST, $from: top, $delay: 0s) {
+  @include animate($speed, $from, $easing: $EASE-OUT, $delay: $delay);
+}

@@ -12,7 +12,7 @@
     @include break-for(gutters--x);
 
     &#{$grid-class}--nopad {
-      @extend #{$grid-class}--nopad;
+      @extend %#{$padding-name}--0;
     }
 
     & > * {
@@ -35,16 +35,34 @@
       @include break-for(margin-gutters);
     }
 
-    #{$navbar-class}__link,
-    & > li > a,
-    & > a,
-    h1, h2, h3, h4, h5, h6,
-    .type--h1, .type--h2, .type--h3, .type--h4, .type--h5, .type--h6 {
+    #{$navbar-class}__link {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--self-stretch;
       @extend %#{$flex-name}--y-center;
-      @include break-for(margin-gutters--2y);
-      @include break-for(margin-gutters--x);
+      @include break-for(gutters--2y);
+      @include break-for(gutters--x);
+    }
+
+    & > {
+      @include headings  {
+        @extend #{$navbar-class}__link;
+      }
+
+      a {
+        @extend #{$navbar-class}__link;
+      }
+    }
+
+    & > li {
+      & > {
+        @include headings  {
+          @extend #{$navbar-class}__link;
+        }
+
+        a {
+          @extend #{$navbar-class}__link;
+        }
+      }
     }
 
     #{$navbar-class}__link,

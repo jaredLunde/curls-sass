@@ -2,10 +2,6 @@
 $MAX-Z-INDEX: 2147483647;
 $MAX-PX: 10000000px;
 
-// Transition timings
-$FAST: 0.13s !default;
-$MED: 0.33s !default;
-$SLOW: 0.5s !default;
 
 // Default borders
 $border-width: 1px !default;
@@ -39,4 +35,7 @@ $desktop-m: "only screen and (min-width: 1024px) and (max-width: 1359px)" !defau
 $desktop-max-m: "only screen and (max-width: 1359px)" !default;
 $desktop-l: "only screen and (min-width: 1360px)" !default;
 
-$high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3), (-o-min-device-pixel-ratio: 13/10), (min-resolution: 120dpi)" !default;
+$high-dpi: "only screen and (-webkit-min-device-pixel-ratio: 1.3),
+            only screen and (min--moz-device-pixel-ratio: 1.3),
+            only screen and (min-resolution: 1.3dppx),
+            only screen and (min-resolution: 125dpi)" !default;

@@ -98,6 +98,25 @@
 }
 
 
+@function normalize-whitespace($name) {
+  @if str-index($name, '  ') {
+    $name: str-replace($name, '  ', ' ');
+    $name: normalize-whitespace($name);
+  }
+
+  @return $name;
+}
+
+
+@function keep-safe($name) {
+  $name: normalize-whitespace($name);
+  @each $char in (' ', '(', '*', ')', ',', '.', '#') {
+    $name: str-replace($name, $char, '__');
+  }
+  @return $name;
+}
+
+
 @if not global-variable-exists(-CURLS-CACHE) {
   $-CURLS-CACHE: () !global;
 }
@@ -111,9 +130,29 @@
 }
 
 
+@mixin keepholder($name) {
+  @at-root {
+    @include keep(--keepholder--#{$name}) {
+      %#{$name} {
+        @content;
+      }
+    }
+  }
+}
+
+
 @mixin import-once($name) {
   $name: --IMPORT--#{$name};
   @include keep($name) {
     @content;
   }
+}
+
+
+@function mod($baseClass, $mod) {
+  @return #{$baseClass}#{$baseClass}--#{$mod};
+}
+
+@function el($baseClass, $el) {
+  @return #{$baseClass}__#{$el};
 }

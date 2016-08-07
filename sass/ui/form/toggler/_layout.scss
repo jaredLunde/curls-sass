@@ -21,7 +21,7 @@
     border-color: $light-border;
     background: $light-grey;
     padding: 2px;
-    @include transition(background $FAST ease-in);
+    @include animate(background $FAST ease-in);
 
     &:hover {
       cursor: pointer;
@@ -47,7 +47,7 @@
     border-color: $dark-border;
     border-width: 1px;
     border-style: solid;
-    @include transition(background $FAST ease-in);
+    @include animate(background $FAST ease-in);
   }
 
   #{$toggler-class}.enabled {

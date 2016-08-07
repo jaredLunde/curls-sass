@@ -1,0 +1,17 @@
+$VERY-FAST: .08s !default;
+$FAST: .16s !default;
+$MED: .32s !default;
+$SLOW: .48s !default;
+$VERY-SLOW: .96s !default;
+
+
+// Custom easing */
+$BOOMERANG: cubic-bezier(.41, 1.19, .54, 1.44) !default;
+$BOUNCE: cubic-bezier(.93, .13, .65, 1.34) !default;
+//$EASE-OUT: cubic-bezier(.12, 1, .76, 1);
+//$EASE-IN: cubic-bezier(.76, 0, .9, .34);
+$EASE-OUT: ease-out !default;
+$EASE-IN: ease-in !default;
+$EASE-IN-OUT: ease-in-out !default;
+//$EASE-IN-OUT: cubic-bezier(.5, 0, .5, 1);
+// $UNHINGE: cubic-bezier(0, .47, .34, -0.73);

@@ -1,10 +1,33 @@
 /**
  ** Core
  **/
-@import 'colors/variables';
-@import 'type/variables';
-@import 'type/mixins';
 @import 'variables';
 @import 'mixins';
 @import 'placeholders';
 @import 'layout';
+
+@import 'flexibility/variables';
+@import 'flexibility/mixins';
+@import 'flexibility/placeholders';
+
+@import 'grid/variables';
+@import 'grid/mixins';
+@import 'grid/placeholders';
+
+@import 'colors/variables';
+@import 'colors/mixins';
+@import 'colors/placeholders';
+
+@import 'columns/variables';
+@import 'columns/mixins';
+@import 'columns/placeholders';
+
+@import 'type/variables';
+@import 'type/mixins';
+@import 'type/placeholders';
+
+@import 'spacing/variables';
+@import 'spacing/mixins';
+@import 'spacing/placeholders';
+
+@import 'animate/core';

@@ -1,0 +1,166 @@
+@include import-once('popover') {
+  #{$popover-class} {
+    @extend %hardware-accel;
+    @extend %hidden;
+    position: absolute;
+    background: $popover-background;
+    border-width: $popover-border-width;
+    border-color: $popover-border-color;
+    border-style: $popover-border-style;
+    border-radius: $popover-border-radius;
+    z-index: $MAX-Z-INDEX;
+    top: calc(100% + #{$popover-caret-size + 24px});
+  }
+
+  #{mod($popover-class, open)},
+  .no-touchevents #{$popover-class}:hover {
+    @extend %visible;
+    top: calc(100% + #{$popover-caret-size + 2px});
+    @include prefix((transition-delay: 0.24s), webkit);
+  }
+
+  #{mod($popover-class, bottom)},
+  .no-touchevents #{mod($popover-class, bottom)}:hover {
+    &:before {
+      @include caret($popover-caret-size + $popover-border-width,
+                     $popover-border-color,
+                     $pad: $popover-border-width);
+      left: calc(24px - #{$popover-border-width});
+    }
+
+    &:after {
+      @include caret($popover-caret-size, $popover-background);
+      left: 24px;
+    }
+  }
+
+  // Animations */
+  #{mod($popover-class, bottom)} {
+    @include drop-out($VERY-FAST, $delay: 0.24s);
+  }
+
+  #{mod($popover-class, top)} {
+    top: auto;
+    bottom: calc(100% + #{$popover-caret-size + 24px});
+    @include drop-out($VERY-FAST, $from: bottom, $delay: 0.24s);
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, top)},
+  .no-touchevents #{mod($popover-class, top)}:hover {
+    @include drop-in($VERY-FAST, $from: bottom, $delay: 0.12s);
+  }
+
+  #{mod($popover-class, left)} {
+    right: calc(100% + #{$popover-caret-size + 24px});
+    @include drop-out($VERY-FAST, $from: right, $delay: 0.24s);
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, left)},
+  .no-touchevents #{mod($popover-class, left)}:hover {
+    @include drop-in($VERY-FAST, $from: right, $delay: 0.12s);
+  }
+
+  #{mod($popover-class, right)} {
+    left: calc(100% + #{$popover-caret-size + 24px});
+    @include drop-out($VERY-FAST, $from: left, $delay: 0.24s);
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, right)},
+  .no-touchevents #{mod($popover-class, right)}:hover {
+    @include drop-in($VERY-FAST, $from: left, $delay: 0.12s);
+  }
+
+
+  // Open Positioning */
+  #{mod($popover-class, top)},
+  .no-touchevents #{mod($popover-class, top)}:hover {
+    &:before {
+      @include caret($popover-caret-size + $popover-border-width,
+                     $popover-border-color,
+                     $direction: bottom,
+                     $pad: $popover-border-width);
+      left: calc(24px - #{$popover-border-width});
+    }
+
+    &:after {
+      @include caret($popover-caret-size,
+                     $popover-background,
+                     $direction: bottom);
+      left: 24px;
+    }
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, top)},
+  .no-touchevents #{mod($popover-class, top)}:hover {
+    top: auto;
+    bottom: calc(100% + #{$popover-caret-size + 2px});
+  }
+
+  #{mod($popover-class, left)},
+  .no-touchevents #{mod($popover-class, left)}:hover {
+    &:before {
+      @include caret($popover-caret-size + $popover-border-width,
+                     $popover-border-color,
+                     $direction: right,
+                     $pad: $popover-border-width);
+      top: calc(50% - #{($popover-caret-size / 2) + $popover-border-width});
+    }
+
+    &:after {
+      @include caret($popover-caret-size,
+                     $popover-background,
+                     $direction: right);
+      top: calc(50% - #{$popover-caret-size / 2});
+    }
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, left)},
+  .no-touchevents #{mod($popover-class, left)}:hover {
+    top: -50%;
+    right: calc(100% + #{$popover-caret-size + 2px});
+  }
+
+  #{mod($popover-class, right)},
+  .no-touchevents #{mod($popover-class, right)}:hover {
+    &:before {
+      @include caret($popover-caret-size + $popover-border-width,
+                     $popover-border-color,
+                     $direction: left,
+                     $pad: $popover-border-width);
+      top: calc(50% - #{($popover-caret-size / 2) + $popover-border-width});
+    }
+
+    &:after {
+      @include caret($popover-caret-size,
+                     $popover-background,
+                     $direction: left);
+      top: calc(50% - #{$popover-caret-size / 2});
+    }
+  }
+
+  #{mod($popover-class, open)}#{mod($popover-class, right)},
+  .no-touchevents #{mod($popover-class, right)}:hover {
+    top: -50%;
+    left: calc(100% + #{$popover-caret-size + 2px});
+  }
+
+  #{el($popover-class, container)} {
+    position: relative;
+    // width: 100%;
+  }
+
+  // Child elements */
+  #{$popover-class} > #{$card-class},
+  #{$popover-class} > #{$navbar-class},
+  #{$popover-class} > #{$list-class} {
+    border: 0;
+    margin: 0;
+    border-radius: $popover-border-radius;
+
+    header, #{el($card-class, header)} {
+      background: $popover-background;
+    }
+  }
+
+  @include extend-flex($popover-name, ('', $popover-class));
+}

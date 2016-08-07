@@ -11,6 +11,7 @@
 
   %#{$flex-name}--fluid {
     @include flex(1, 0, auto);
+    max-width: none;
   }
 
 

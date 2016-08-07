@@ -1,11 +1,9 @@
-/**
- ** Card (.card)
- **/
 @import '../../core';
 
+@import '../card/variables';
+@import '../list/variables';
 @import '../nav/navbar/variables';
-@import '../button/variables';
 
 @import 'variables';
-@import 'placeholders';
+@import 'mixins';
 @import 'layout';
