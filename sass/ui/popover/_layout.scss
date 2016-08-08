@@ -2,6 +2,7 @@
   #{$popover-class} {
     @extend %hardware-accel;
     @extend %hidden;
+    display: block;
     position: absolute;
     background: $popover-background;
     border-width: $popover-border-width;

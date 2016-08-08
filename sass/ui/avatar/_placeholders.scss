@@ -1,0 +1,21 @@
+@include import-once('avatar-placeholders') {
+  %#{$avatar-name} {
+    overflow: hidden;
+    width: map-get($avatar-size, $DEFAULT-AVATAR-SIZE);
+    height: map-get($avatar-size, $DEFAULT-AVATAR-SIZE);
+    background: $avatar-background;
+    border-width: $avatar-border-width;
+    border-style: $avatar-border-style;
+    border-color: $avatar-border-color;
+    border-radius: $avatar-border-radius;
+    position: relative;
+  }
+
+  @each $size in $AVATAR-SIZE-KEYS {
+    %#{$avatar-name}--#{$size} {
+      @extend %#{$avatar-name};
+      width: map-get($avatar-size, $size);
+      height: map-get($avatar-size, $size);
+    }
+  }
+}

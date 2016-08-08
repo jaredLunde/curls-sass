@@ -16,7 +16,7 @@
       background: darken($input-text-background, 5%);
     }
 
-    & > * {
+    & > *, & > button, & > #{$button-class} {
       @extend %#{$flex-name}--fixed;
       @extend %#{$flex-name}--y-center;
       margin: 0;

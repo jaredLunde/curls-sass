@@ -49,7 +49,7 @@ $dropdown-toggler-color: $grey !default;
 $dropdown-toggler-border-color: $border !default;
 $dropdown-toggler-border-style: solid !default;
 $dropdown-toggler-border-width: $border-width !default;
-$dropdown-toggler-border-radius: 3px !default;
+$dropdown-toggler-border-radius: $border-radius !default;
 $dropdown-toggler-line-height: $body-line-height !default;
 
 $dropdown-toggler-hover-background: none !default;
@@ -57,14 +57,14 @@ $dropdown-toggler-hover-color: lighten($dropdown-toggler-color, 10%) !default;
 $dropdown-toggler-hover-border-color: $dropdown-toggler-border-color !default;
 $dropdown-toggler-hover-border-style: solid !default;
 $dropdown-toggler-hover-border-width: $border-width !default;
-$dropdown-toggler-hover-border-radius: 3px !default;
+$dropdown-toggler-hover-border-radius: $border-radius !default;
 
 $dropdown-toggler-active-background: lighten($dropdown-toggler-color, 55%) !default;
 $dropdown-toggler-active-color: $dropdown-toggler-color !default;
 $dropdown-toggler-active-border-color: $dropdown-toggler-border-color !default;
 $dropdown-toggler-active-border-style: solid !default;
 $dropdown-toggler-active-border-width: $border-width !default;
-$dropdown-toggler-active-border-radius: 3px !default;
+$dropdown-toggler-active-border-radius: $border-radius !default;
 
 $dropdown-heading-font-size: map-get($type-font-size, s) !default;
 $dropdown-heading-line-height: $body-line-height !default;

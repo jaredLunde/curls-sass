@@ -36,16 +36,12 @@
     }
 
     #{$navbar-class}__link {
-      @extend %#{$flex-name};
-      @extend %#{$flex-name}--self-stretch;
-      @extend %#{$flex-name}--y-center;
-      @include break-for(gutters--2y);
-      @include break-for(gutters--x);
+      @extend %#{$navbar-name}__item;
     }
 
     & > {
       @include headings  {
-        @extend #{$navbar-class}__link;
+        @extend %#{$navbar-name}__item;
       }
 
       a {
@@ -56,7 +52,7 @@
     & > li {
       & > {
         @include headings  {
-          @extend #{$navbar-class}__link;
+          @extend %#{$navbar-name}__item;
         }
 
         a {

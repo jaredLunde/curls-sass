@@ -2,6 +2,7 @@
   #{$tooltip-class} {
     @extend %hardware-accel;
     @extend %hidden;
+    display: block;
     position: absolute;
     background: $tooltip-background;
     border-width: $tooltip-border-width;

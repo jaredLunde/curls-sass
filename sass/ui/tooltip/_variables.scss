@@ -8,8 +8,8 @@ $tooltip-line-height: 1.1 !default;
 
 $tooltip-background: $dark-grey !default;
 $tooltip-border-width: $border-width !default;
-$tooltip-border-color: transparent !default;
-$tooltip-border-style: auto !default;
+$tooltip-border-color: $dark-grey !default;
+$tooltip-border-style: solid !default;
 $tooltip-border-radius: $border-radius !default;
 
 $tooltip-caret-size: 8px !default;

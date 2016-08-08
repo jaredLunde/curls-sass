@@ -1,22 +1,84 @@
 @include import-once('drawer') {
   #{$drawer-class} {
-    position: absolute;
+    @extend %hardware-accel;
+    @extend %#{$flex-name}--y-top;
+    display: block;
+    position: fixed;
     top: 0;
     left: -100%;
-    // bottom: 0;
+    bottom: 0;
     min-height: 100%;
     background: $drawer-background;
     z-index: $MAX-Z-INDEX;
-    border-width: $drawer-border-width;
+    border-width: 0 $drawer-border-width 0 0;
     border-style: $drawer-border-style;
     border-color: $drawer-border-color;
+    overflow-y: auto;
     @include box-shadow($drawer-box-shadow);
+    @include slide($SLOW, left, ease-in-out);
+  }
+
+  #{mod($drawer-class, absolute)} {
+    position: absolute;
+  }
+
+  #{mod($drawer-class, open)} {
+    left: 0;
     @include slide($SLOW, left, ease-in-out);
   }
 
   #{$drawer-class} #{$list-class} {
     border: 0;
     margin: 0;
+  }
+
+  #{mod($drawer-class, top)} {
+    left: 0;
+    top: -100%;
+    right: 0;
+    bottom: auto;
+    min-width: 100%;
+    min-height: initial;
+    border-width: 0 0 $drawer-border-width 0;
+    @include slide($SLOW, top, ease-in-out);
+  }
+
+  #{mod($drawer-class, top)}#{mod($drawer-class, open)} {
+    top: 0;
+    bottom: auto;
+    @include slide($SLOW, top, ease-in-out);
+  }
+
+  #{mod($drawer-class, right)} {
+    left: auto;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    border-width: 0 0 0 $drawer-border-width;
+    @include slide($SLOW, right, ease-in-out);
+  }
+
+  #{mod($drawer-class, right)}#{mod($drawer-class, open)} {
+    right: 0;
+    left: auto;
+    @include slide($SLOW, right, ease-in-out);
+  }
+
+  #{mod($drawer-class, bottom)} {
+    left: 0;
+    top: auto;
+    right: 0;
+    bottom: -100%;
+    min-height: initial;
+    width: 100%;
+    border-width: $drawer-border-width 0 0 0;
+    @include slide($SLOW, bottom, ease-in-out);
+  }
+
+  #{mod($drawer-class, bottom)}#{mod($drawer-class, open)} {
+    top: auto;
+    bottom: 0;
+    @include slide($SLOW, bottom, ease-in-out);
   }
 
   @include extend-flex($drawer-name, $drawer-class);

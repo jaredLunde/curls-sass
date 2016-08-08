@@ -10,6 +10,15 @@
 
 @mixin animate($args...) {
   @include keep-animation(#{$args}) {
+    //$change: null;
+    //@each $arg in $args {
+    //  @if $change {
+    //    $change: '#{$change}, #{nth($arg, 1)}';
+    //  } @else {
+    //    $change: nth($arg, 1);
+    //  }
+    //}
+    //will-change: unquote($change);
     @include transition($args...);
   }
 }

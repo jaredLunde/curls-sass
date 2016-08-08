@@ -1,0 +1,9 @@
+@include import-once('navbar-placeholders') {
+  %#{$navbar-name}__item {
+    @extend %#{$flex-name};
+    @extend %#{$flex-name}--self-stretch;
+    @extend %#{$flex-name}--y-center;
+    @include break-for(gutters--2y);
+    @include break-for(gutters--x);
+  }
+}

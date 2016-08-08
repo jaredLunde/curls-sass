@@ -1,0 +1,74 @@
+$select-name: select !default;
+$select-class: '.#{$select-name}' !default;
+
+
+$select-menu-max-height: 200px;
+$select-menu-background: $white;
+$select-menu-border-color: $border !default;
+$select-menu-border-style: solid !default;
+$select-menu-border-width: $border-width !default;
+$select-menu-border-radius: 0 0 2px 2px !default;
+$select-menu-shadow: 0 4px 6px 0px $dark-border !default;
+$select-menu-padding-top: 0 !default;
+$select-menu-padding-right: $select-menu-padding-top * 2 !default;
+$select-menu-padding-bottom: $select-menu-padding-top !default;
+$select-menu-padding-left: $select-menu-padding-right !default;
+$select-menu-text-align: left !default;
+$select-menu-width: auto !default;
+$select-menu-min-width: 100% !default;
+
+$select-toggler-background: none !default;
+$select-toggler-color: $grey !default;
+$select-toggler-border-color: $grey !default;
+$select-toggler-border-style: solid !default;
+$select-toggler-border-width: 0 0 $border-width !default;
+$select-toggler-border-radius: 0 !default;
+$select-toggler-line-height: $body-line-height !default;
+$select-toggler-padding-top: map-get($grid-gutter, xs) !default;
+$select-toggler-padding-right: $select-toggler-padding-top !default;
+$select-toggler-padding-bottom: $select-toggler-padding-top !default;
+$select-toggler-padding-left: 0 !default;
+
+$select-toggler-hover-background: transparent !default;
+$select-toggler-hover-color: lighten($select-toggler-color, 10%) !default;
+$select-toggler-hover-border-color: $select-toggler-border-color !default;
+$select-toggler-hover-border-style: solid !default;
+$select-toggler-hover-border-width: 0 0 $border-width !default;
+$select-toggler-hover-border-radius: 0 !default;
+
+$select-toggler-active-background: transparent !default;
+$select-toggler-active-color: $select-toggler-color !default;
+$select-toggler-active-border-color: $select-toggler-border-color !default;
+$select-toggler-active-border-style: solid !default;
+$select-toggler-active-border-width: 0 0 $border-width !default;
+$select-toggler-active-border-radius: 0 !default;
+
+$select-item-color: $darkest-grey !default;
+$select-item-background: $white !default;
+$select-item-border-color: transparent !default;
+$select-item-border-style: none !default;
+$select-item-border-width: 0 !default;
+$select-item-padding-top: map-get($grid-gutter, xs) !default;
+$select-item-padding-right: golden($select-item-padding-top) !default;
+$select-item-padding-bottom: $select-item-padding-top !default;
+$select-item-padding-left: $select-item-padding-right !default;
+
+$select-item-hover-color: $grey !default;
+$select-item-hover-background: $lightest-grey !default;
+$select-item-hover-border-color: transparent !default;
+$select-item-hover-border-style: none !default;
+$select-item-hover-border-width: 0 !default;
+$select-item-hover-padding-top: $select-item-padding-top !default;
+$select-item-hover-padding-right: golden($select-item-hover-padding-top) !default;
+$select-item-hover-padding-bottom: $select-item-hover-padding-top !default;
+$select-item-hover-padding-left: $select-item-hover-padding-right !default;
+
+$select-item-active-color: $dark-grey !default;
+$select-item-active-background: $light-grey !default;
+$select-item-active-border-color: transparent !default;
+$select-item-active-border-style: none !default;
+$select-item-active-border-width: 0 !default;
+$select-item-active-padding-top: $select-item-padding-top !default;
+$select-item-active-padding-right: golden($select-item-active-padding-top) !default;
+$select-item-active-padding-bottom: $select-item-active-padding-top !default;
+$select-item-active-padding-left: $select-item-active-padding-right !default;

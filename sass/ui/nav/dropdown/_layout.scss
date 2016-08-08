@@ -4,13 +4,13 @@
     @extend %#{$flex-name}--y-center;
     position: relative;
 
-    &#{$dropdown-class}--dropped {
+    &#{$dropdown-class}--open {
       #{$dropdown-class}__menu {
         top: 100%;
         margin-top: -3px;
         visibility: visible;
         opacity: 1.0;
-        @include drop-in($VERY-FAST);
+        @include drop-in($FAST);
       }
     }
   }
@@ -47,7 +47,7 @@
   }
 
 
-  #{$dropdown-class}--dropped #{$dropdown-class}__caret {
+  #{$dropdown-class}--open #{$dropdown-class}__caret {
     top: -1px;
     @include transform(rotate(180deg));
   }
@@ -77,8 +77,8 @@
   }
 
 
-  #{$dropdown-class}#{$dropdown-class}--dropped #{$dropdown-class}__toggler,
-  .no-touchevents #{$dropdown-class}#{$dropdown-class}--dropped #{$dropdown-class}__toggler:hover {
+  #{$dropdown-class}#{$dropdown-class}--open #{$dropdown-class}__toggler,
+  .no-touchevents #{$dropdown-class}#{$dropdown-class}--open #{$dropdown-class}__toggler:hover {
     @extend %#{$dropdown-name}__toggler--active;
   }
 

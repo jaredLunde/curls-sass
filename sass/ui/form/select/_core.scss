@@ -1,9 +1,10 @@
 /**
- ** Drawer (.drawer)
+ ** Select (.select)
  **/
 @import '../../../core';
 
-@import '../../list/variables';
+@import '../../button/core';
 
 @import 'variables';
+@import 'placeholders';
 @import 'layout';

@@ -3,6 +3,6 @@ $drawer-class: '.#{$drawer-name}';
 
 $drawer-background: $lightest-grey;
 $drawer-border-color: $border;
-$drawer-border-width: 0 $border-width 0 0;
+$drawer-border-width: $border-width;
 $drawer-border-style: $border-style;
-$drawer-box-shadow: 6px 0px 20px $border;
+$drawer-box-shadow: 0 0 6px $dark-border;

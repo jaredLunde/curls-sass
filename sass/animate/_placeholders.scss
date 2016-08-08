@@ -1,11 +1,8 @@
 @include import-once('animate-placeholders') {
   // Attempt to force GPU rendering
   %hardware-accel {
-    @include prefix((transform: translateZ(0),
-                     backface-visibility: hidden,
-                     perspective: 1000),
-                    webkit ms);
-    @include prefix((transform: translate3d(0, 0, 0)), webkit ms);
+    @include prefix((transform: translateZ(0)),
+                    webkit);
   }
 
 

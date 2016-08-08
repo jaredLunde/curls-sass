@@ -1,0 +1,21 @@
+@include import-once('avatar') {
+  #{$avatar-class} {
+    @extend %#{$flex-name};
+    @extend %#{$flex-name}--y-center;
+    @extend %#{$flex-name}--x-center;
+    @extend %#{$avatar-name};
+
+    img {
+      min-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      border-radius: $avatar-border-radius;
+    }
+  }
+
+  @each $size in $AVATAR-SIZE-KEYS {
+    #{$avatar-class}#{$avatar-class}--#{$size} {
+      @extend %#{$avatar-name}--#{$size};
+    }
+  }
+}
