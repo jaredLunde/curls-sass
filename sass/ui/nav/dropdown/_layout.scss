@@ -140,10 +140,6 @@
       border-color: $dropdown-link-hover-border-color;
       border-style: $dropdown-link-hover-border-style;
       border-width: $dropdown-link-hover-border-width;
-      padding: $dropdown-link-hover-padding-top
-               $dropdown-link-hover-padding-right
-               $dropdown-link-hover-padding-bottom
-               $dropdown-link-hover-padding-left;
     }
 
     &:active {
@@ -152,10 +148,6 @@
       border-color: $dropdown-link-active-border-color;
       border-style: $dropdown-link-active-border-style;
       border-width: $dropdown-link-active-border-width;
-      padding: $dropdown-link-active-padding-top
-               $dropdown-link-active-padding-right
-               $dropdown-link-active-padding-bottom
-               $dropdown-link-active-padding-left;
     }
   }
 

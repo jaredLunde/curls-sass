@@ -1,6 +1,5 @@
 @include import-once('avatar-placeholders') {
   %#{$avatar-name} {
-    overflow: hidden;
     width: map-get($avatar-size, $DEFAULT-AVATAR-SIZE);
     height: map-get($avatar-size, $DEFAULT-AVATAR-SIZE);
     background: $avatar-background;

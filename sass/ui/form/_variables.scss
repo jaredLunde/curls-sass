@@ -13,7 +13,7 @@ $input-text-padding-left: $input-text-padding-right !default;
 $input-text-background: $lightest-grey !default;
 $input-text-border: unquote('#{$border-width} #{$border-style} #{$border}') !default;
 $input-text-width: auto !default;
-$input-text-border-radius: 2px !default;
+$input-text-border-radius: $border-radius !default;
 
 $textarea-font-size: 16px !default;
 $textarea-line-height: $paragraph-line-height !default;
@@ -28,7 +28,7 @@ $textarea-padding-bottom: $textarea-padding-top !default;
 $textarea-padding-left: $textarea-padding-right !default;
 $textarea-background: $input-text-background !default;
 $textarea-border: $input-text-border !default;
-$textarea-border-radius: 2px !default;
+$textarea-border-radius: $border-radius !default;
 
 $submit-font-color: $grey !default;
 $submit-font-size: 16px !default;
@@ -45,7 +45,7 @@ $submit-padding-left: $submit-padding-right !default;
 $submit-background: $white !default;
 $submit-background-active: darken(white, 7%) !default;
 $submit-background-hover: darken(white, 5%) !default;
-$submit-border-radius: 2px !default;
+$submit-border-radius: $border-radius !default;
 
 $placeholder-font-size: $input-text-font-size !default;
 $placeholder-line-height: $input-text-line-height !default;

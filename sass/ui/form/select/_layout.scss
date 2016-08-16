@@ -60,10 +60,6 @@
       border-color: $select-item-hover-border-color;
       border-style: $select-item-hover-border-style;
       border-width: $select-item-hover-border-width;
-      padding: $select-item-hover-padding-top
-               $select-item-hover-padding-right
-               $select-item-hover-padding-bottom
-               $select-item-hover-padding-left;
     }
 
     &:active {
@@ -72,10 +68,6 @@
       border-color: $select-item-active-border-color;
       border-style: $select-item-active-border-style;
       border-width: $select-item-active-border-width;
-      padding: $select-item-active-padding-top
-               $select-item-active-padding-right
-               $select-item-active-padding-bottom
-               $select-item-active-padding-left;
     }
   }
 

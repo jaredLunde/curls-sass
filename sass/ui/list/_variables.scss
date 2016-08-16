@@ -40,20 +40,12 @@ $list-link-hover-background: $lightest-grey !default;
 $list-link-hover-border-color: transparent !default;
 $list-link-hover-border-style: none !default;
 $list-link-hover-border-width: 0 !default;
-$list-link-hover-padding-top: map-get($grid-gutter, xs) !default;
-$list-link-hover-padding-right: golden($list-link-hover-padding-top) !default;
-$list-link-hover-padding-bottom: $list-link-hover-padding-top !default;
-$list-link-hover-padding-left: $list-link-hover-padding-right !default;
 
 $list-link-active-color: $link-active-color !default;
 $list-link-active-background: $light-grey !default;
 $list-link-active-border-color: transparent !default;
 $list-link-active-border-style: none !default;
 $list-link-active-border-width: 0 !default;
-$list-link-active-padding-top: map-get($grid-gutter, xs) !default;
-$list-link-active-padding-right: golden($list-link-active-padding-top) !default;
-$list-link-active-padding-bottom: $list-link-active-padding-top !default;
-$list-link-active-padding-left: $list-link-active-padding-right !default;
 
 $list-heading-font-size: map-get($type-font-size, s) !default;
 $list-heading-line-height: $body-line-height !default;

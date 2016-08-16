@@ -1,7 +1,7 @@
 @include import-once('checkbox') {
   #{$checkbox-class} {
     @extend %#{$flex-name};
-    @extend %#{$flex-name}--y-center;
+    @extend %#{$flex-name}--y-stretch;
     padding: 0 8px;
 
     input[type=checkbox] {
@@ -11,6 +11,7 @@
 
   #{$checkbox-class} label {
     @extend %#{$flex-name};
+    @extend %#{$flex-name}--y-center;
     padding: 0 0 0 8px;
     @include font-line(16px, 100%);
 
@@ -82,8 +83,8 @@
     }
 
     #{$checkbox-class}__box {
-      border-color: $blue;
-      background: $blue;
+      border-color: $checkbox-checked-background;
+      background: $checkbox-checked-background;
     }
   }
 }

@@ -10,12 +10,6 @@
     height: auto;
   }
 
-
-  [type="search"] {
-    -webkit-appearance: textfield;
-    outline-offset: -2px;
-  }
-
   [type=text],
   [type=email],
   [type=tel],
@@ -29,6 +23,10 @@
     @extend %reset-form-appearance;
   }
 
+  [type="search"] {
+    -webkit-appearance: none;
+    outline-offset: -2px;
+  }
 
   button::-moz-focus-inner {
     border: 0;

@@ -6,7 +6,7 @@ $button-color: #fff !default;
 $button-border-color: $border !default;
 $button-border-style: solid !default;
 $button-border-width: $border-width !default;
-$button-border-radius: 3px;
+$button-border-radius: $border-radius;
 $button-line-height: 1.1;
 
 $button-hover-background: lighten($button-background, 5%) !default;

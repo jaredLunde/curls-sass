@@ -29,20 +29,12 @@ $dropdown-link-hover-background: $lightest-grey !default;
 $dropdown-link-hover-border-color: transparent !default;
 $dropdown-link-hover-border-style: none !default;
 $dropdown-link-hover-border-width: 0 !default;
-$dropdown-link-hover-padding-top: $dropdown-link-padding-top !default;
-$dropdown-link-hover-padding-right: golden($dropdown-link-hover-padding-top) !default;
-$dropdown-link-hover-padding-bottom: $dropdown-link-hover-padding-top !default;
-$dropdown-link-hover-padding-left: $dropdown-link-hover-padding-right !default;
 
 $dropdown-link-active-color: $dark-grey !default;
 $dropdown-link-active-background: $light-grey !default;
 $dropdown-link-active-border-color: transparent !default;
 $dropdown-link-active-border-style: none !default;
 $dropdown-link-active-border-width: 0 !default;
-$dropdown-link-active-padding-top: $dropdown-link-padding-top !default;
-$dropdown-link-active-padding-right: golden($dropdown-link-active-padding-top) !default;
-$dropdown-link-active-padding-bottom: $dropdown-link-active-padding-top !default;
-$dropdown-link-active-padding-left: $dropdown-link-active-padding-right !default;
 
 $dropdown-toggler-background: none !default;
 $dropdown-toggler-color: $grey !default;

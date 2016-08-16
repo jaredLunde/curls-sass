@@ -4,6 +4,8 @@
     @extend %#{$flex-name}--y-center;
     @extend %#{$flex-name}--x-center;
     @extend %#{$avatar-name};
+    position:relative;
+    z-index:1;
 
     img {
       min-height: 100%;
