@@ -2,7 +2,6 @@
   %#{$card-name} {
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y;
-    margin-top: 0;
     background: $card-background;
     border-width: $card-border-width;
     border-style: $card-border-style;

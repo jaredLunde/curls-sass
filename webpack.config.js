@@ -25,17 +25,9 @@ var modernizrConfig = {
 }
 
 
-var stripLogger = 'strip-loader?strip[]=logger.green,' +
-                               'strip[]=logger.red,' +
-                               'strip[]=logger.blue,' +
-                               'strip[]=logger.orange,' +
-                               'strip[]=logger.warn,' +
-                               'strip[]=logger.success,' +
-                               'strip[]=logger.error,' +
-                               'strip[]=console.error,' +
-                               'strip[]=logger.log,' +
-                               'strip[]=logger.print,' +
-                               'strip[]=withPerf'
+var stripLogger = 'strip-loader?strip[]=console.error' +
+                              '&strip[]=console.log' +
+                              '&strip[]=console.warn'
 
 
 module.exports = {
