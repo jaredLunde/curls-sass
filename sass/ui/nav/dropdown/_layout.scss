@@ -8,7 +8,7 @@
       #{$dropdown-class}__menu {
         top: 100%;
         margin-top: -3px;
-        visibility: visible;
+        z-index: $MAX-Z-INDEX;
         opacity: 1.0;
         @include drop-in($FAST);
       }
@@ -97,7 +97,7 @@
   #{$dropdown-class}__menu {
     @extend %hardware-accel;
     @extend %absolute-top;
-    visibility: hidden;
+    z-index: -1000;
     background: $dropdown-background;
     border-color: $dropdown-border-color;
     border-style: $dropdown-border-style;
@@ -109,7 +109,6 @@
     min-width: $dropdown-min-width;
     text-align: $dropdown-text-align;
     top: 200%;
-    z-index: $MAX-Z-INDEX;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     opacity: 0.0;

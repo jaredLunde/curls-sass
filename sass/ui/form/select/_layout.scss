@@ -13,7 +13,7 @@
     #{el($select-class, menu)} {
       top: 100%;
       margin-top: -1px;
-      visibility: visible;
+      z-index: 1000;
       opacity: 1.0;
       @include drop-in($FAST);
     }
@@ -22,7 +22,7 @@
   #{el($select-class, menu)} {
     @extend %hardware-accel;
     position: absolute;
-    visibility: hidden;
+    z-index: -1000;
     background: $select-menu-background;
     max-height: $select-menu-max-height;
     overflow-y: auto;

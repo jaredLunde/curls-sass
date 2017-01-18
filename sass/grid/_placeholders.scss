@@ -9,11 +9,11 @@
 
 
   %#{$grid-col-name} {
-    @extend %#{$flex-name};
+    // @extend %#{$flex-name};
     @extend %#{$flex-name}--fluid;
-    @extend %#{$flex-name}--y-top;
-    @extend %#{$flex-name}--wrap;
-    // @extend %#{$flex-name}--x;
+    // @extend %#{$flex-name}--y-top;
+    // @extend %#{$flex-name}--wrap;
+    // @extend %#{$flex-name}--y;
     position: relative;
     @include break-for(gutters--x); // Gutters
   }
