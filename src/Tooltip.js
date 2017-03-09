@@ -1,6 +1,5 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import concat from 'lodash/concat'
 
 import removeDefaultProps from './removeDefaultProps'
 import {spacingProps, nodeProps} from './props'
@@ -36,11 +35,16 @@ class Tooltip extends Popover {
   }
 
   render () {
-    let children = concat([], this.props.children)
-    children = Array.isArray(children) ? children : [children]
+    let children = []
+    children = children.concat(
+      Array.isArray(this.props.children) ?
+      this.props.children :
+      [this.props.children]
+    )
 
-    if (this.props.text !== null)
+    if (this.props.text !== null) {
       children.push(this.props.text)
+    }
 
     return React.createElement(this.props.nodeType,
                                this.renderProps,

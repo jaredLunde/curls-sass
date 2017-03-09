@@ -1,17 +1,15 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import * as ns from 'react-cake/namespace'
-import {Toggle} from 'react-cake/toggle'
-import {Hover} from 'react-cake/hover'
+import {namespace as ns, Toggle, Hover} from 'react-cake'
 
 
-export default (Component) => {
+export default Component => {
   @Toggle('toggleIsEnabled')
   @Hover('hoverIsEnabled')
-  class PopoverComponent extends React.Component {
-    static displayName = ns.name.get(Component) || 'PopoverComponent'
+  class TooltipComponent extends React.Component {
+    static displayName = ns.name.get(Component) || 'TooltipComponent'
 
-    get popoverProps () {
+    get tooltipProps () {
       return {
         clickable: {
           onClick: this.props.Toggle.onClick
@@ -30,12 +28,12 @@ export default (Component) => {
 
     render () {
       const props = Object.assign({}, this.props)
-      props.Popover = this.popoverProps
+      props.Tooltip = this.tooltipProps
       delete props.open
 
       return <Component {...props}/>
     }
   }
 
-  return PopoverComponent
+  return TooltipComponent
 }

@@ -1,6 +1,5 @@
 import React from 'react'
-import * as ns from 'react-cake/namespace'
-import concat from 'lodash/concat'
+import {namespace as ns} from 'react-cake'
 
 import removeDefaultProps from './removeDefaultProps'
 import {flexProps, nodeProps, spacingProps} from './props'
@@ -25,10 +24,14 @@ class Component extends React.Component {
   getModifiers () {
     let modifiers = getModifiers(this.props, ...this.constructor.modifiers)
 
-    if (this.constructor.flexName !== void 0 &&
-        this.constructor.flexName !== null) {
-      modifiers = concat(
-        modifiers, getFlexModifiers(this.props, this.constructor.flexName))
+    if (
+      this.constructor.flexName !== void 0 &&
+      this.constructor.flexName !== null
+    ) {
+      modifiers = modifiers.concat(getFlexModifiers(
+        this.props,
+        this.constructor.flexName
+      ))
     }
 
     if (this.props.className)

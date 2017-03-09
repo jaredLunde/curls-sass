@@ -1,7 +1,6 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import concat from 'lodash/concat'
-import * as ns from 'react-cake/namespace'
+import {namespace as ns} from 'react-cake'
 
 import {nodeProps, spacingProps, flexProps} from './props'
 import Component from './Component'
@@ -15,7 +14,8 @@ class Avatar extends Component {
     {size: 's', src: null},
     nodeProps,
     spacingProps,
-    flexProps)
+    flexProps
+  )
 
   shouldComponentUpdate (nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState)
@@ -31,10 +31,12 @@ class Avatar extends Component {
   }
 
   render () {
-    const children = concat([], this.props.children)
+    let children = []
+    children = children.concat(this.props.children)
 
-    if (this.props.src)
+    if (this.props.src) {
       children.push((<img key={this.props.src} src={this.props.src}/>))
+    }
 
     return React.createElement(this.props.nodeType,
                                this.renderProps,

@@ -1,8 +1,7 @@
-import requestInterval from 'browser-essentials/requestInterval'
-import clearRequestInterval from 'browser-essentials/clearRequestInterval'
+import {requestInterval, clearRequestInterval} from 'browser-essentials'
 
 
-export default (el) => {
+export default el => {
   const images = el.getElementsByTagName('img')
 
   if (images === null || images.length === 0)

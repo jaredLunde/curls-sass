@@ -1,7 +1,6 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import * as ns from 'react-cake/namespace'
-import {Toggle} from 'react-cake/toggle'
+import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'

@@ -1,6 +1,6 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import * as ns from 'react-cake/namespace'
+import {namespace as ns} from 'react-cake'
 
 import {nodeProps, spacingProps, flexProps} from './props'
 import removeDefaultProps from './removeDefaultProps'

@@ -1,5 +1,5 @@
 import shallowCompare from 'react-addons-shallow-compare'
-import * as ns from 'react-cake/namespace'
+import {namespace as ns} from 'react-cake'
 import {nodeProps, spacingProps} from './props'
 import Component from './Component'
 import {nodeMods, spacingMods} from './modifiers'

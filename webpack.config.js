@@ -1,28 +1,29 @@
 var path = require('path')
 var webpack = require('webpack')
-var ModernizrPlugin = require('modernizr-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+//var ModernizrPlugin = require('modernizr-webpack-plugin');
 
-
+/**
 var modernizrConfig = {
-  "filename": "modernizr.js",
-  'options': [
+  filename: 'modernizr.js',
+  options: [
     'setClasses',
     'html5printshiv'
   ],
-  'feature-detects': [
-    "inputtypes",
-    "network/connection",
-    "touchevents"
+  feature-detects: [
+    'inputtypes',
+    'network/connection',
+    'touchevents'
   ],
-  "minify" : {
-    "output": {
-      "comments": false,
-      "beautify": false,
-      "screw_ie8": true
+  minify: {
+    output: {
+      comments: false,
+      beautify: false,
+      screw_ie8: true
     }
   }
 }
+*/
 
 
 var stripLogger = 'strip-loader?strip[]=console.error' +
@@ -35,42 +36,60 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    app: 'index.js',
-    vendor: ['react', 'react-dom']
+    app: 'index.dist'
   },
 
-  // Various output options, to give us a single bundle.js file with everything resolved and concatenated
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: "curls.js",
-    pathinfo: true
+    path: path.join(__dirname, 'dist'),
+    filename: 'curls.js',
+    pathinfo: true,
+    library: 'Curls',
+    libraryTarget: 'umd'
   },
 
-  // Where to resolve our loaders
   resolveLoader: {
-    root: path.join(__dirname, 'node_modules')
+    modules: [path.join(__dirname, 'node_modules')],
+    moduleExtensions: ['-loader'],
   },
+
   resolve: {
     // Directories that contain our modules
-    modules: [path.resolve(__dirname, "lib"), "node_modules"],
-    descriptionFiles: ["package.json"],
-    moduleExtensions: ["-loader"],
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    descriptionFiles: ['package.json'],
+    moduleExtensions: ['-loader'],
     // Extensions used to resolve modules
-    extensions: ['', '.js', '.react.js', '.scss', '.css']
+    extensions: ['.js', '.react.js', '.scss', '.css']
   },
 
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
-          loader: 'css?minifier!group-css-media-queries!sass'
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style',
+          use: [
+            'css?minifier',
+          ]
         })
       },
       {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style',
+          use: [
+            'css?minifier',
+            'group-css-media-queries',
+            'sass'
+          ]
+        })
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+        use: ['file']
+      },
+      {
         test: /\.js$/,
-        loaders: ['babel-loader', stripLogger, stripLogger],
+        use: ['babel', stripLogger],
         exclude: [/node_modules/]
       },
     ],
@@ -78,9 +97,15 @@ module.exports = {
 
   plugins: [
     new webpack.DefinePlugin({'process.env': {NODE_ENV: '"production"'}}),
+    /*
     new ModernizrPlugin(modernizrConfig),
-    new webpack.optimize.CommonsChunkPlugin({name: "vendor",
-                                             filename: "vendor.js"}),
+    */
+    /*
+    new webpack.optimize.AggressiveSplittingPlugin({
+                minSize: 30000,
+                maxSize: 50000
+    }),
+    */
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         pure_getters: true,
@@ -92,8 +117,6 @@ module.exports = {
         comments: false
       }
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false

@@ -1,7 +1,6 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import {Toggle} from 'react-cake/toggle'
-import * as ns from 'react-cake/namespace'
+import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import removeDefaultProps from './removeDefaultProps'

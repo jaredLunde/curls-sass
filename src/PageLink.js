@@ -1,8 +1,8 @@
 import React from 'react'
 import shallowCompare from 'react-addons-shallow-compare'
-import * as url from 'browser-essentials/url-extended'
-import * as ns from 'react-cake/namespace'
-import * as routeParser from 'react-pilot/routeParser'
+import {url} from 'browser-essentials'
+import {namespace as ns} from 'react-cake'
+import * as routeParser from 'react-pilot/es/routeParser'
 
 import removeDefaultProps from './removeDefaultProps'
 import {flexProps, spacingProps} from './props'
