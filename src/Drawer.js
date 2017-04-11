@@ -1,13 +1,12 @@
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import {nodeMods, spacingMods} from './modifiers'
 import removeDefaultProps from './removeDefaultProps'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Drawer extends Component {
+class Drawer extends PureComponent {
   static displayName = 'Drawer'
   static flexName = 'drawer'
   static defaultProps = Object.assign(
@@ -23,10 +22,6 @@ class Drawer extends Component {
   )
 
   state = {style: {}}
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()

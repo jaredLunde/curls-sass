@@ -1,10 +1,9 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import removeDefaultProps from './removeDefaultProps'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
 const _defaultCheckMark = (
@@ -14,7 +13,7 @@ const _defaultCheckMark = (
 
 
 @Toggle('checked')
-class Checkbox extends Component {
+class Checkbox extends PureComponent {
   static displayName = 'Checkbox'
 
   static defaultProps = Object.assign(
@@ -30,10 +29,6 @@ class Checkbox extends Component {
     flexProps,
     spacingProps
   )
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()

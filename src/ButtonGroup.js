@@ -1,12 +1,11 @@
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import {nodeProps, spacingProps, flexProps} from './props'
 import Button from './Button'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class ButtonGroup extends Component {
+class ButtonGroup extends PureComponent {
   static displayName = 'Btn-Group'
   static flexName = 'btn-group'
 
@@ -17,10 +16,6 @@ class ButtonGroup extends Component {
       color: null},
     spacingProps,
     flexProps)
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()

@@ -1,10 +1,9 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
 const _defaultCaret = (
@@ -13,7 +12,7 @@ const _defaultCaret = (
 
 
 @Toggle('open')
-class Dropdown extends Component {
+class Dropdown extends PureComponent {
   static displayName = 'Dropdown'
   static flexName = 'dropdown'
 

@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "0.2.3",
+  "version": "0.2.7",
   "main": "es/index",
   "module": "es/index",
   "jsnext:main": "es/index",
@@ -8,12 +8,11 @@
   "dependencies": {
     "browser-essentials": "^0.2.2",
     "lodash": "^4.17.4",
-    "react-cake": "^0.2.4",
+    "react-cake": "^0.2.9",
     "react-pilot": "^0.2.1"
   },
   "peerDependencies": {
     "react": ">=15.x",
-    "react-addons-shallow-compare": ">=15.x",
     "react-dom": ">=15.x"
   },
   "devDependencies": {

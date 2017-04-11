@@ -1,12 +1,11 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import {nodeProps, spacingProps, flexProps} from './props'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Avatar extends Component {
+class Avatar extends PureComponent {
   static displayName = 'Avatar'
   static flexName = 'avatar'
   static defaultProps = Object.assign(
@@ -16,10 +15,6 @@ class Avatar extends Component {
     spacingProps,
     flexProps
   )
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()

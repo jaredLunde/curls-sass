@@ -1,5 +1,4 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns, Toggle, Hover} from 'react-cake'
 
 
@@ -20,10 +19,6 @@ export default Component => {
         },
         open: this.props.toggleIsEnabled || this.props.hoverIsEnabled
       }
-    }
-
-    shouldComponentUpdate (nextProps) {
-      return shallowCompare(this, nextProps)
     }
 
     render () {

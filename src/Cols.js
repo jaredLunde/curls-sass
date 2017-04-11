@@ -1,12 +1,11 @@
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 import {nodeProps, spacingProps} from './props'
-import Component from './Component'
+import PureComponent from './PureComponent'
 import {nodeMods, spacingMods} from './modifiers'
 import getModifiers from './getModifiers'
 
 
-class Cols extends Component {
+class Cols extends PureComponent {
   static displayName = 'Cols'
   static flexName = null
 
@@ -28,10 +27,6 @@ class Cols extends Component {
       modifiers.push(ns.classes.mod(this, this.props.n))
 
     return ns.classes.append(this, ...modifiers)
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
   }
 }
 

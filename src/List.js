@@ -1,12 +1,11 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class List extends Component {
+class List extends PureComponent {
   static displayName = 'List'
   static flexName = 'list'
   static defaultProps = Object.assign(
@@ -16,11 +15,8 @@ class List extends Component {
       menuItems: null
     },
     flexProps,
-    spacingProps)
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
+    spacingProps
+  )
 
   isListItem (item) {
     if (item.type === void 0)

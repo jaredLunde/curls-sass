@@ -1,15 +1,12 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import removeDefaultProps from './removeDefaultProps'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-
-@Toggle('enabled')
-class Toggler extends Component {
+class Toggler extends PureComponent {
   static displayName = 'Toggler'
 
   static defaultProps = Object.assign(
@@ -21,10 +18,6 @@ class Toggler extends Component {
     flexProps,
     spacingProps
   )
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()
@@ -38,7 +31,7 @@ class Toggler extends Component {
   get label () {
     if (this.props.label) {
       return (
-        <label {...this.props.Toggle}>
+        <label>
           {this.props.label}
         </label>
       )
@@ -73,4 +66,7 @@ class Toggler extends Component {
 }
 
 
-export default Toggler
+export default props => {
+  const Component = Toggle('enabled', props.enabled)(Toggler)
+  return <Component {...props}/>
+}

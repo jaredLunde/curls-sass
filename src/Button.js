@@ -1,13 +1,12 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import {nodeProps, spacingProps, flexProps} from './props'
 import removeDefaultProps from './removeDefaultProps'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Button extends Component {
+class Button extends PureComponent {
   static displayName = 'Btn'
 
   static defaultProps = Object.assign(
@@ -21,11 +20,8 @@ class Button extends Component {
       hoveringClassName: 'hovering',
       color: null},
     spacingProps,
-    flexProps)
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
+    flexProps
+  )
 
   get className () {
     const modifiers = this.getModifiers()

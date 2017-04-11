@@ -1,11 +1,9 @@
-import shallowCompare from 'react-addons-shallow-compare'
-
 import {flexProps, nodeProps, spacingProps} from './props'
 import {nodeMods, spacingMods} from './modifiers'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Col extends Component {
+class Col extends PureComponent {
   static displayName = 'Col'
   static flexName = 'grid'
 
@@ -17,10 +15,6 @@ class Col extends Component {
   )
 
   static modifiers = [nodeMods, spacingMods]
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 }
 
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {url} from 'browser-essentials'
 import {namespace as ns} from 'react-cake'
 import * as routeParser from 'react-pilot/es/routeParser'
@@ -7,10 +6,10 @@ import * as routeParser from 'react-pilot/es/routeParser'
 import removeDefaultProps from './removeDefaultProps'
 import {flexProps, spacingProps} from './props'
 import {spacingMods} from './modifiers'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-export default class PageLink extends Component {
+export default class PageLink extends PureComponent {
   static displayName = 'paginate__link'
   static modifiers = [spacingMods]
   static flexName = null
@@ -55,10 +54,6 @@ export default class PageLink extends Component {
       modifiers.push('active')
 
     return ns.classes.append(this, ...modifiers)
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
   }
 
   render () {

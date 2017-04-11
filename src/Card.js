@@ -1,9 +1,8 @@
-import shallowCompare from 'react-addons-shallow-compare'
 import {flexProps, nodeProps, spacingProps} from './props'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Card extends Component {
+class Card extends PureComponent {
   static displayName = 'Card'
 
   static defaultProps = Object.assign(
@@ -15,10 +14,6 @@ class Card extends Component {
   )
 
   flexName = 'card'
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 }
 
 

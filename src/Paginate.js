@@ -1,14 +1,13 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import removeDefaultProps from './removeDefaultProps'
 import {nodeProps, flexProps, spacingProps} from './props'
 import PageLink from './PageLink'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Paginate extends Component {
+class Paginate extends PureComponent {
   static displayName = 'Paginate'
   static flexName = 'paginate'
   static defaultProps = Object.assign({
@@ -25,10 +24,6 @@ class Paginate extends Component {
     spacingProps,
     flexProps
   )
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   getLinkProps (page) {
     return {

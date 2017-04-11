@@ -1,11 +1,10 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 import removeDefaultProps from './removeDefaultProps'
 import {flexProps, spacingProps, nodeProps} from './props'
 import waitForImages from './waitForImages'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 /*
 function bound(el, pad = 8) {
@@ -41,7 +40,7 @@ function bound(el, pad = 8) {
 }
 */
 
-class Popover extends Component {
+class Popover extends PureComponent {
   static displayName = 'Popover'
   static flexName = 'popover'
   static defaultProps = Object.assign({
@@ -53,11 +52,6 @@ class Popover extends Component {
   }, nodeProps, spacingProps, flexProps)
 
   state = {style: {top: null, left: null, right: null, bottom: null}}
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
-
   _listener = null
 
   componentWillMount () {

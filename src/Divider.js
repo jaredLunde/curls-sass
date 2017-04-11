@@ -1,15 +1,10 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns} from 'react-cake'
 
 
-class Divider extends React.Component {
+class Divider extends React.PureComponent {
   static displayName = 'Divider'
   static defaultProps = {nodeType: 'div'}
-
-  shouldComponentUpdate (nextProps) {
-    return shallowCompare(this, nextProps)
-  }
 
   get renderProps () {
     const props = Object.assign({}, this.props)

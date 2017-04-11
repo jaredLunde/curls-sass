@@ -1,10 +1,9 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
 import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
 const _defaultCaret = (
@@ -13,7 +12,7 @@ const _defaultCaret = (
 
 
 @Toggle('open')
-class Select extends Component {
+class Select extends PureComponent {
   static displayName = 'Select'
   static flexName = 'select'
   static defaultProps = Object.assign({
@@ -26,10 +25,6 @@ class Select extends Component {
   }, nodeProps, spacingProps, flexProps)
 
   state = {selection: null}
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 
   componentWillMount () {
     const items = this.props.children

@@ -1,15 +1,10 @@
 import React from 'react'
-import shallowCompare from 'react-addons-shallow-compare'
-import Component from './Component'
+import PureComponent from './PureComponent'
 
 
-class Row extends Component {
+class Row extends PureComponent {
   static displayName = 'Row'
   static flexName = 'grid'
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
-  }
 }
 
 
