@@ -54,6 +54,7 @@ class Toggler extends PureComponent {
             {...this.renderProps}>
         <span className={ns.classes.el(this, 'container')}>
           <input type='checkbox'
+                 onChange={()=>{}}
                  checked={this.props.enabled}
                  name={this.props.name}/>
           <span className={ns.classes.el(this, 'handle')}/>
