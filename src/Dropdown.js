@@ -26,7 +26,7 @@ class Dropdown extends PureComponent {
   }, nodeProps, spacingProps, flexProps)
 
   shouldComponentUpdate (nextProps, nextState) {
-    return !isEqual(this.props, nextProps) && !isEqual(this.state, nextState)
+    return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState)
   }
 
   get className () {

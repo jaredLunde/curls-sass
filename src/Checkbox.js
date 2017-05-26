@@ -58,10 +58,7 @@ class Checkbox extends PureComponent {
   get label () {
     if (this.props.label) {
       return (
-        <label onClick={(e) => {
-          if (!this.props.readOnly)
-            return this.props.Toggle.onClick(e)
-        }}>
+        <label>
           {this.props.label}
         </label>
       )
