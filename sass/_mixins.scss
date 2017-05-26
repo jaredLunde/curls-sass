@@ -59,8 +59,17 @@
 
 
 @function calculate-rem($size) {
-  $remSize: $size / 16px;
-  @return $remSize * 1rem;
+  @if unit($size) != 'px' {
+    @return $size;
+  }
+
+  $remSize: $size / $base-rem;
+  @return $remSize * 1.0rem;
+}
+
+
+@function scale-rem($scale) {
+  @return calculate-rem($scale * $base-rem);
 }
 
 

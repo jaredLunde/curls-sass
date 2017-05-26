@@ -1,5 +1,6 @@
 import React from 'react'
 import {namespace as ns, Toggle} from 'react-cake'
+import isEqual from 'lodash/isEqual'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'
@@ -25,7 +26,7 @@ class Dropdown extends PureComponent {
   }, nodeProps, spacingProps, flexProps)
 
   shouldComponentUpdate (nextProps, nextState) {
-    return shallowCompare(this, nextProps, nextState)
+    return isEqual(this, nextProps, nextState)
   }
 
   get className () {

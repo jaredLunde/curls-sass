@@ -1,74 +1,73 @@
 /** Creates placeholders and classes */
-@mixin spacing-placeholders($size, $pre, $prop) {
-  $spacing-name: --spacing--#{$prop}--#{$size}--#{$pre};
+@mixin spacing-placeholders($scale, $pre, $prop) {
+  $size: scale-rem(nth($spacing-scale, $scale + 1));
+  $spacing-name: --spacing--#{$prop}--#{$scale}--#{$pre};
 
   @include keep($spacing-name) {
-    $stripped-size: strip-units($size);
-
-    %#{$pre}--t#{$stripped-size} {
+    %#{$pre}--t#{$scale} {
       #{$prop}-top: $size !important;
     }
 
-    %#{$pre}--b#{$stripped-size} {
+    %#{$pre}--b#{$scale} {
       #{$prop}-bottom: $size !important;
     }
 
-    %#{$pre}--y#{$stripped-size} {
-      @extend %#{$pre}--t#{$stripped-size};
-      @extend %#{$pre}--b#{$stripped-size};
+    %#{$pre}--y#{$scale} {
+      @extend %#{$pre}--t#{$scale};
+      @extend %#{$pre}--b#{$scale};
     }
 
-    %#{$pre}--r#{$stripped-size} {
+    %#{$pre}--r#{$scale} {
       #{$prop}-right: $size !important;
     }
 
-    %#{$pre}--l#{$stripped-size} {
+    %#{$pre}--l#{$scale} {
       #{$prop}-left: $size !important;
     }
 
-    %#{$pre}--x#{$stripped-size} {
-      @extend %#{$pre}--r#{$stripped-size};
-      @extend %#{$pre}--l#{$stripped-size};
+    %#{$pre}--x#{$scale} {
+      @extend %#{$pre}--r#{$scale};
+      @extend %#{$pre}--l#{$scale};
     }
 
-    %#{$pre}--#{$stripped-size} {
+    %#{$pre}--#{$scale} {
       #{$prop}: $size !important;
     }
   }
 }
 
 
-@mixin spacing-group($size, $pre, $prop) {
-  $stripped-size: strip-units($size);
+@mixin spacing-group($scale, $pre, $prop) {
+  $size: scale-rem(nth($spacing-scale, $scale + 1));
 
-  @include spacing-placeholders($size, $pre, $prop);
+  @include spacing-placeholders($scale, $pre, $prop);
 
-  .#{$pre}--t#{$stripped-size} {
-    @extend %#{$pre}--t#{$stripped-size};
+  .#{$pre}--t#{$scale} {
+    @extend %#{$pre}--t#{$scale};
   }
 
-  .#{$pre}--b#{$stripped-size} {
-    @extend %#{$pre}--b#{$stripped-size};
+  .#{$pre}--b#{$scale} {
+    @extend %#{$pre}--b#{$scale};
   }
 
-  .#{$pre}--y#{$stripped-size} {
-    @extend %#{$pre}--y#{$stripped-size};
+  .#{$pre}--y#{$scale} {
+    @extend %#{$pre}--y#{$scale};
   }
 
-  .#{$pre}--r#{$stripped-size} {
-    @extend %#{$pre}--r#{$stripped-size};
+  .#{$pre}--r#{$scale} {
+    @extend %#{$pre}--r#{$scale};
   }
 
-  .#{$pre}--l#{$stripped-size} {
-    @extend %#{$pre}--l#{$stripped-size};
+  .#{$pre}--l#{$scale} {
+    @extend %#{$pre}--l#{$scale};
   }
 
-  .#{$pre}--x#{$stripped-size} {
-    @extend %#{$pre}--x#{$stripped-size};
+  .#{$pre}--x#{$scale} {
+    @extend %#{$pre}--x#{$scale};
   }
 
-  .#{$pre}--#{$stripped-size} {
-    @extend %#{$pre}--#{$stripped-size};
+  .#{$pre}--#{$scale} {
+    @extend %#{$pre}--#{$scale};
   }
 }
 

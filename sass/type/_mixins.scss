@@ -9,7 +9,7 @@
 
 
 @mixin font($size, $weight:null, $color:null, $family:null) {
-  @if $size > 20px {
+  @if $size and $size > 20px {
     text-rendering: optimizeLegibility;
   }
   @if $weight {

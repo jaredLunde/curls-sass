@@ -23,7 +23,7 @@
 
     & > {
       #{$button-class}, button {
-        @extend %#{$margin-name}--16;
+        @extend %#{$margin-name}--3;
       }
     }
 
@@ -62,29 +62,29 @@
     }
 
     & > #{$navbar-class} {
-      @extend %#{$padding-name}--x8;
+      @extend %#{$padding-name}--x2;
 
       & > {
         button, #{$button-class} {
-          @extend %#{$margin-name}--x8;
-          @extend %#{$margin-name}--y16;
+          @extend %#{$margin-name}--x2;
+          @extend %#{$margin-name}--y3;
         }
 
         a {
-          @extend %#{$padding-name}--x8;
-          @extend %#{$padding-name}--y16;
+          @extend %#{$padding-name}--x2;
+          @extend %#{$padding-name}--y3;
         }
       }
 
       & > li > {
         button, #{$button-class} {
-          @extend %#{$margin-name}--x8;
-          @extend %#{$margin-name}--y16;
+          @extend %#{$margin-name}--x2;
+          @extend %#{$margin-name}--y3;
         }
 
         a {
-          @extend %#{$padding-name}--x8;
-          @extend %#{$padding-name}--y16;
+          @extend %#{$padding-name}--x2;
+          @extend %#{$padding-name}--y3;
         }
       }
     }
@@ -98,7 +98,7 @@
       }
 
       a:not(#{$button-class}):not(#{$card-class}__image) {
-        @extend %#{$padding-name}--16;
+        @extend %#{$padding-name}--3;
       }
 
       p + p,
@@ -121,11 +121,11 @@
     p,
     #{$card-class}__link,
     #{$card-class}__row {
-      @extend %#{$padding-name}--16;
+      @extend %#{$padding-name}--3;
     }
 
     @include headings {
-      @extend %#{$padding-name}--16;
+      @extend %#{$padding-name}--3;
     }
   }
 

@@ -1,6 +1,6 @@
 @include import-once('spacing-placeholders') {
-  @each $x in $spacing-sizes {
-    @include margin-placeholders($x);
-    @include padding-placeholders($x);
+  @for $x from 1 through length($spacing-scale) {
+    @include margin-placeholders($x - 1);
+    @include padding-placeholders($x - 1);
   }
 }

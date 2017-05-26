@@ -4,12 +4,68 @@ $type-class: ".#{$type-name}" !default;
 
 // Body
 $body-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
-$body-font-size: 16px !default;
+$body-font-size: $base-rem !default;
 $body-font-color: $grey !default;
 $body-line-height: 1.1 !default;
 $body-font-weight: 300 !default;
 $body-letter-spacing: inherit !default;
 
+
+// Paragraphs */
+$paragraph-padding: 0 !default;
+$paragraph-margin: 0 0 1.2 !default;
+
+$paragraph-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
+$paragraph-font-size: $base-rem !default;
+$paragraph-line-height: 1.4 !default;
+$paragraph-letter-spacing: inherit !default;
+$paragraph-font-color: inherit !default;
+$paragraph-font-weight: 300 !default;
+$paragraph-text-align: left !default;
+
+
+// Type sizes
+$type-scale: (
+  xxs: 12/16,
+  xs: 14/16,
+  s: 16/16,
+  m: 19/16,
+  l: 23/16,
+  xl: 36/16,
+  xxl: 48/16
+) !default;
+
+
+$type-font-size: (
+  xxs: strip-units(scale-rem(map-get($type-scale, xxs))) * 16px,
+  xs: strip-units(scale-rem(map-get($type-scale, xs))) * 16px,
+  s: strip-units(scale-rem(map-get($type-scale, s))) * 16px,
+  m: strip-units(scale-rem(map-get($type-scale, m))) * 16px,
+  l: strip-units(scale-rem(map-get($type-scale, l))) * 16px,
+  xl: strip-units(scale-rem(map-get($type-scale, xl))) * 16px,
+  xxl: strip-units(scale-rem(map-get($type-scale, xxl))) * 16px
+) !default;
+
+$type-line-height: (
+  xxs: $body-line-height,
+  xs: $body-line-height,
+  s: $body-line-height,
+  m: $body-line-height,
+  l: $body-line-height,
+  xl: $body-line-height,
+  xxl: $body-line-height
+) !default;
+
+
+$type-font-size-s: (
+  xxs: map-get($type-font-size, xxs) * 0.9,
+  xs: map-get($type-font-size, xs) * 0.9,
+  s: map-get($type-font-size, s) * 0.9,
+  m: map-get($type-font-size, m) * 0.9,
+  l: map-get($type-font-size, l) * 0.9,
+  xl: map-get($type-font-size, xl) * 0.9,
+  xxl: map-get($type-font-size, xxl) * 0.9
+) !default;
 
 
 // Headings */
@@ -20,51 +76,10 @@ $heading-text-align: left !default;
 $heading-line-height: 1.1 !default;
 $heading-letter-spacing: inherit !default;
 $heading-size: (
-  h1: 48px,
-  h2: 36px,
-  h3: 28px,
-  h4: 21px,
-  h5: 18px,
-  h6: 14px
-) !default;
-
-
-// Paragraphs */
-$paragraph-padding: 0 !default;
-$paragraph-margin: 0 0 1.2 !default;
-
-$paragraph-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
-$paragraph-font-size: 16px !default;
-$paragraph-line-height: 1.4 !default;
-$paragraph-letter-spacing: inherit !default;
-$paragraph-font-color: inherit !default;
-$paragraph-font-weight: 300 !default;
-$paragraph-text-align: left !default;
-
-
-// Type sizes
-$type-font-size: (
-  xs: 12px,
-  s: 14px,
-  m: 18px,
-  l: 24px,
-  xl: 32px
-) !default;
-
-
-$type-line-height: (
-  xs: $body-line-height,
-  s: $body-line-height,
-  m: $body-line-height,
-  l: $body-line-height,
-  xl: $body-line-height
-) !default;
-
-
-$type-font-size-s: (
-  xs: 11px,
-  s: 12px,
-  m: 18px,
-  l: 28px,
-  xl: 36px
+  h1: map-get($type-font-size, xxl),
+  h2: map-get($type-font-size, xl),
+  h3: map-get($type-font-size, l),
+  h4: map-get($type-font-size, m),
+  h5: map-get($type-font-size, s),
+  h6: map-get($type-font-size, xs)
 ) !default;

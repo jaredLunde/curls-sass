@@ -1,7 +1,7 @@
 @include import-once('spacing') {
-  @each $x in $spacing-sizes {
-    @include margin-group($x);
-    @include padding-group($x);
+  @for $x from 1 through length($spacing-scale) {
+    @include margin-group($x - 1);
+    @include padding-group($x - 1);
   }
 
   #{$padding-class}--gutters {

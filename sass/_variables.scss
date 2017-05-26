@@ -7,6 +7,7 @@ $MAX-PX: 10000000px;
 $border-width: 1px !default;
 $border-style: solid !default;
 $border-radius: 2px !default;
+$border-radius-scale: (0, 0.25, 0.5, 1, 2) !default;
 
 
 // Responsive media queries
