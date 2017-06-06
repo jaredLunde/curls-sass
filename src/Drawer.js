@@ -1,4 +1,4 @@
-import {namespace as ns} from 'react-cake'
+import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import {nodeMods, spacingMods} from './modifiers'
@@ -78,6 +78,3 @@ class Drawer extends PureComponent {
     return props
   }
 }
-
-
-export default Drawer

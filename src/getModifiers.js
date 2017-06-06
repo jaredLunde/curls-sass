@@ -1,5 +1,4 @@
 import endsWith from 'lodash/endsWith'
-import {format} from 'react-pilot/es/routeParser'
 
 
 export default (props, ...mods_) => {

@@ -11,7 +11,6 @@ const _defaultCaret = (
 )
 
 
-@Toggle('open')
 class Select extends PureComponent {
   static displayName = 'Select'
   static flexName = 'select'
@@ -121,7 +120,7 @@ class Select extends PureComponent {
                 aria-expanded={String(this.props.open)}
                 aria-haspopup='true'
                 type='button'
-                {...this.props.Toggle}>
+                onClick={this.props.toggle}>
           <span className={ns.classes.el(this, 'label')}>
             {this.selection}
           </span>
@@ -145,4 +144,8 @@ class Select extends PureComponent {
 }
 
 
-export default Select
+export default ({open, ...props}) => (
+  <Toggle propName='open' initialValue={open}>
+    <Select {...props}/>
+  </Toggle>
+)

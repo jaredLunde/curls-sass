@@ -4,12 +4,12 @@
     @extend %#{$flex-name}--y-center;
     position: relative;
 
-    &#{$dropdown-class}--open {
-      #{$dropdown-class}__menu {
-        top: 100%;
+    &#{mod($dropdown-class, open)} {
+      #{el($dropdown-class, menu)} {
         margin-top: -3px;
         z-index: $MAX-Z-INDEX;
         opacity: 1.0;
+        @include transform(translateY(0))
         @include drop-in($FAST);
       }
     }
@@ -17,16 +17,16 @@
 
 
   .input-group, #{$button-class}-group {
-    & > #{$dropdown-class}:first-child:not(:last-child) #{$dropdown-class}__toggler {
+    & > #{$dropdown-class}:first-child:not(:last-child) #{el($dropdown-class, toggler)} {
       border-top-right-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
     }
-    & > #{$dropdown-class}:last-child:not(:first-child) #{$dropdown-class}__toggler {
+    & > #{$dropdown-class}:last-child:not(:first-child) #{el($dropdown-class, toggler)} {
       border-left: 0 !important;
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
     }
-    & > #{$dropdown-class}:not(:first-child):not(:last-child) #{$dropdown-class}__toggler {
+    & > #{$dropdown-class}:not(:first-child):not(:last-child) #{el($dropdown-class, toggler)} {
       border-left: 0 !important;
       border-radius: 0 !important;
     }
@@ -36,8 +36,7 @@
   }
 
 
-  #{$dropdown-class}__caret {
-    @extend %hardware-accel;
+  #{el($dropdown-class, caret)} {
     @extend %transform--fast;
     @extend %#{$flex-name}--self-center;
     @extend %#{$type-name}--s;
@@ -47,15 +46,15 @@
   }
 
 
-  #{$dropdown-class}--open #{$dropdown-class}__caret {
+  #{mod($dropdown-class, open)} #{el($dropdown-class, caret)} {
     top: -1px;
     @include transform(rotate(180deg));
   }
 
 
-  #{$dropdown-class}__toggler,
-  button#{$dropdown-class}__toggler,
-  #{$button-class}#{$dropdown-class}__toggler {
+  #{el($dropdown-class, toggler)},
+  button#{el($dropdown-class, toggler)},
+  #{$button-class}#{el($dropdown-class, toggler)} {
     @extend %#{$flex-name}--y-center;
     background: $dropdown-toggler-background;
     color: $dropdown-toggler-color;
@@ -77,13 +76,13 @@
   }
 
 
-  #{$dropdown-class}#{$dropdown-class}--open #{$dropdown-class}__toggler,
-  .no-touchevents #{$dropdown-class}#{$dropdown-class}--open #{$dropdown-class}__toggler:hover {
+  #{$dropdown-class}#{mod($dropdown-class, open)} #{el($dropdown-class, toggler)},
+  .no-touchevents #{$dropdown-class}#{mod($dropdown-class, open)} #{el($dropdown-class, toggler)}:hover {
     @extend %#{$dropdown-name}__toggler--active;
   }
 
 
-  .no-touchevents #{$dropdown-class}__toggler {
+  .no-touchevents #{el($dropdown-class, toggler)} {
     &:hover {
       @extend %#{$dropdown-name}__toggler--hover;
     }
@@ -94,8 +93,7 @@
   }
 
 
-  #{$dropdown-class}__menu {
-    @extend %hardware-accel;
+  #{el($dropdown-class, menu)} {
     @extend %absolute-top;
     z-index: -1000;
     background: $dropdown-background;
@@ -108,10 +106,10 @@
     width: $dropdown-width;
     min-width: $dropdown-min-width;
     text-align: $dropdown-text-align;
-    top: 200%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     opacity: 0.0;
+    @include transform(translateY(100%));
     @include box-shadow($dropdown-shadow);
     @include drop-out($FAST);
 
@@ -132,7 +130,7 @@
   }
 
 
-  .no-touchevents #{$dropdown-class}__menu li a {
+  .no-touchevents #{el($dropdown-class, menu)} li a {
     &:hover {
       color: $dropdown-link-hover-color;
       background: $dropdown-link-hover-background;
@@ -151,7 +149,7 @@
   }
 
 
-  #{$dropdown-class}__heading {
+  #{el($dropdown-class, heading)} {
     white-space: nowrap;
     clear: both;
     padding: $dropdown-heading-padding-top $dropdown-heading-padding-right
@@ -161,7 +159,6 @@
                        $color: $dropdown-heading-color,
                        $weight: $dropdown-heading-weight);
   }
-
 
   @include extend-flex(#{$dropdown-name}, (#{$dropdown-class}));
 }

@@ -38,28 +38,29 @@
 }
 
 
-@mixin drop($speed: $FAST, $from: top, $easing: $EASE-IN, $delay: 0s) {
+@mixin drop($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
   @include animate(opacity $speed $easing $delay,
-                   $from $speed $easing $delay);
+                   z-index $speed $easing $delay,
+                   transform $speed $easing $delay);
 }
 
-@mixin drop-in($speed: $FAST, $from: top, $delay: 0s) {
-  @include drop($speed, $from, $delay: $delay);
+@mixin drop-in($speed: $FAST, $delay: 0s) {
+  @include drop($speed, $delay: $delay);
 }
 
-@mixin drop-out($speed: $FAST, $from: top, $delay: 0s) {
-  @include drop($speed, $from, $easing: $EASE-OUT, $delay: $delay);
+@mixin drop-out($speed: $FAST, $delay: 0s) {
+  @include drop($speed, $easing: $EASE-OUT, $delay: $delay);
 }
 
 
-@mixin slide($speed: $FAST, $from: top, $easing: $EASE-IN, $delay: 0s) {
-  @include animate($from $speed $easing $delay);
+@mixin slide($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
+  @include animate(transform $speed $easing $delay);
 }
 
-@mixin slide-in($speed: $FAST, $from: top, $delay: 0s) {
-  @include animate($speed, $from, $delay: $delay);
+@mixin slide-in($speed: $FAST, $delay: 0s) {
+  @include slide($speed, $delay: $delay);
 }
 
-@mixin slide-out($speed: $FAST, $from: top, $delay: 0s) {
-  @include animate($speed, $from, $easing: $EASE-OUT, $delay: $delay);
+@mixin slide-out($speed: $FAST, $delay: 0s) {
+  @include slide($speed, $easing: $EASE-OUT, $delay: $delay);
 }

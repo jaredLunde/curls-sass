@@ -1,12 +1,13 @@
 {
   "name": "curls",
-  "version": "0.2.7",
+  "version": "0.4.0-alpha.0",
   "main": "es/index",
   "module": "es/index",
   "jsnext:main": "es/index",
+  "esnext": "src/index",
   "private": false,
   "dependencies": {
-    "browser-essentials": "^0.2.2",
+    "browser-essentials": "^0.2.4",
     "lodash": "^4.17.4",
     "react-cake": "^0.2.9",
     "react-pilot": "^0.2.1"
@@ -16,7 +17,6 @@
     "react-dom": ">=15.x"
   },
   "devDependencies": {
-    "react-addons-shallow-compare": "^15.4.2",
     "webpack2-react-sass-env-boilerplate": "^0.1.14"
   },
   "repository": {

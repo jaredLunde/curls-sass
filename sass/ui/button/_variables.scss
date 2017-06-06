@@ -21,9 +21,9 @@ $button-active-border-color: $button-border-color !default;
 $button-active-border-style: solid !default;
 $button-active-border-width: $border-width !default;
 
-$button-s-font-size: 14px !default;
-$button-m-font-size: 16px !default;
-$button-l-font-size: 20px !default;
+$button-s-font-size: map-get($type-font-size, s) !default;
+$button-m-font-size: map-get($type-font-size, m) !default;
+$button-l-font-size: map-get($type-font-size, l) !default;
 
 $button-s-font-weight: 300 !default;
 $button-m-font-weight: 300 !default;

@@ -48,7 +48,7 @@ $submit-background-hover: darken(white, 5%) !default;
 $submit-border-radius: $border-radius !default;
 
 $placeholder-font-size: $input-text-font-size !default;
-$placeholder-line-height: $input-text-line-height !default;
+$placeholder-line-height: normal !default;
 $placeholder-font-color: $input-text-font-color !default;
 $placeholder-font-weight: $input-text-font-weight !default;
 $placeholder-font: $input-text-font !default;

@@ -12,7 +12,6 @@ const _defaultCaret = (
 )
 
 
-@Toggle('open')
 class Dropdown extends PureComponent {
   static displayName = 'Dropdown'
   static flexName = 'dropdown'
@@ -21,13 +20,8 @@ class Dropdown extends PureComponent {
     label: 'Drop',
     caret: _defaultCaret,
     size: 's',
-    items: null,
-    Toggle: null
+    items: null
   }, nodeProps, spacingProps, flexProps)
-
-  shouldComponentUpdate (nextProps, nextState) {
-    return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState)
-  }
 
   get className () {
     const modifiers = this.getModifiers()
@@ -39,7 +33,8 @@ class Dropdown extends PureComponent {
   }
 
   get items () {
-    const items = this.props.children || this.props.items
+    let items = this.props.children || this.props.items
+    items = Array.isArray(items) || !items ? items : [items]
     const menuItems = []
 
     for (let items_ of items) {
@@ -58,27 +53,39 @@ class Dropdown extends PureComponent {
   }
 
   render () {
+    const {nodeType} = this.props
+
     return (
       <div className={this.className} {...this.renderProps}>
         <Button className={ns.classes.el(this, 'toggler')}
                 size={this.props.size}
                 aria-expanded={String(this.props.open)}
                 aria-haspopup='true'
-                {...this.props.Toggle}>
+                onClick={this.props.toggle}>
           <span className={ns.classes.el(this, 'label')}>
             {this.props.label}
           </span>
           {this.props.caret}
         </Button>
 
-        <ul className={ns.classes.el(this, 'menu')}
-            aria-label='submenu'>
-          {this.items}
-        </ul>
+        {
+          React.createElement(
+            nodeType || 'ul',
+            {
+              className: ns.classes.el(this, 'menu'),
+              'aria-label': 'submenu'
+            },
+            this.items
+          )
+        }
       </div>
     )
   }
 }
 
 
-export default Dropdown
+export default ({open, ...props}) => (
+  <Toggle propName='open' initialValue={open || false}>
+    <Dropdown {...props}/>
+  </Toggle>
+)

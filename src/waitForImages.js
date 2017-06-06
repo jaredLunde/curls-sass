@@ -1,4 +1,4 @@
-import {requestInterval, clearRequestInterval} from 'browser-essentials'
+import {requestInterval, clearRequestInterval} from 'react-cake'
 
 
 export default el => {

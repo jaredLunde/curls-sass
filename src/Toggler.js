@@ -50,7 +50,7 @@ class Toggler extends PureComponent {
   render () {
     return (
       <span className={this.className}
-            {...this.props.Toggle}
+            onClick={this.props.toggle}
             {...this.renderProps}>
         <span className={ns.classes.el(this, 'container')}>
           <input type='checkbox'
@@ -67,7 +67,8 @@ class Toggler extends PureComponent {
 }
 
 
-export default props => {
-  const Component = Toggle('enabled', props.enabled)(Toggler)
-  return <Component {...props}/>
-}
+export default ({enabled, ...props}) => (
+  <Toggle propName='enabled' initialValue={enabled}>
+    <Toggler {...props}/>
+  </Toggle>
+)

@@ -22,12 +22,12 @@
 @import 'columns/mixins';
 @import 'columns/placeholders';
 
-@import 'type/variables';
-@import 'type/mixins';
-@import 'type/placeholders';
-
 @import 'spacing/variables';
 @import 'spacing/mixins';
 @import 'spacing/placeholders';
+
+@import 'type/variables';
+@import 'type/mixins';
+@import 'type/placeholders';
 
 @import 'animate/core';

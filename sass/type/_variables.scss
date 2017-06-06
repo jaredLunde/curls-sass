@@ -13,7 +13,7 @@ $body-letter-spacing: inherit !default;
 
 // Paragraphs */
 $paragraph-padding: 0 !default;
-$paragraph-margin: 0 0 1.2 !default;
+$paragraph-margin: 0 0 scale-rem(nth($spacing-scale, 2)) !default;
 
 $paragraph-font: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", sans-serif !default;
 $paragraph-font-size: $base-rem !default;

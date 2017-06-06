@@ -1,6 +1,5 @@
 @include import-once('popover') {
   #{$popover-class} {
-    @extend %hardware-accel;
     @extend %hidden;
     display: block;
     position: absolute;
@@ -11,12 +10,13 @@
     border-radius: $popover-border-radius;
     z-index: $MAX-Z-INDEX;
     top: calc(100% + #{$popover-caret-size + 24px});
+    @include transform(translateY(100%));
   }
 
   #{mod($popover-class, open)},
   .no-touchevents #{$popover-class}:hover {
     @extend %visible;
-    top: calc(100% + #{$popover-caret-size + 2px});
+    @include transform(translate(0, 0));
     @include prefix((transition-delay: 0.24s), webkit);
   }
 
@@ -43,32 +43,35 @@
   #{mod($popover-class, top)} {
     top: auto;
     bottom: calc(100% + #{$popover-caret-size + 24px});
-    @include drop-out($VERY-FAST, $from: bottom, $delay: 0.24s);
+    @include transform(translateY(-100%));
+    @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($popover-class, open)}#{mod($popover-class, top)},
   .no-touchevents #{mod($popover-class, top)}:hover {
-    @include drop-in($VERY-FAST, $from: bottom, $delay: 0.12s);
+    @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 
   #{mod($popover-class, left)} {
     right: calc(100% + #{$popover-caret-size + 24px});
-    @include drop-out($VERY-FAST, $from: right, $delay: 0.24s);
+    @include transform(translateX(-100%));
+    @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($popover-class, open)}#{mod($popover-class, left)},
   .no-touchevents #{mod($popover-class, left)}:hover {
-    @include drop-in($VERY-FAST, $from: right, $delay: 0.12s);
+    @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 
   #{mod($popover-class, right)} {
     left: calc(100% + #{$popover-caret-size + 24px});
-    @include drop-out($VERY-FAST, $from: left, $delay: 0.24s);
+    @include transform(translateX(100%));
+    @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($popover-class, open)}#{mod($popover-class, right)},
   .no-touchevents #{mod($popover-class, right)}:hover {
-    @include drop-in($VERY-FAST, $from: left, $delay: 0.12s);
+    @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 
 

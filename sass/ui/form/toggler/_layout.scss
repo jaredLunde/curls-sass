@@ -8,8 +8,7 @@
   }
 
 
-  #{$toggler-class}__container {
-    @extend %hardware-accel;
+  #{el($toggler-class, container)} {
     @extend %pill;
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y-center;
@@ -30,7 +29,7 @@
 
 
   #{$toggler-class}.enabled  {
-    #{$toggler-class}__container {
+    #{el($toggler-class, container)} {
       @extend %#{$flex-name}--x-right;
       border-color: $blue;
       background: $blue;
@@ -38,7 +37,7 @@
   }
 
 
-  #{$toggler-class}__handle {
+  #{el($toggler-class, handle)} {
     @extend %#{$flex-name};
     border-radius: 100%;
     width: 20px;
@@ -51,7 +50,7 @@
   }
 
   #{$toggler-class}.enabled {
-    #{$toggler-class}__handle {
+    #{el($toggler-class, handle)} {
       margin-left: auto;
       background: $white;
       border-color: $blue;

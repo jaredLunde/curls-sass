@@ -11,8 +11,6 @@ const _defaultCheckMark = (
 )
 
 
-
-@Toggle('checked')
 class Checkbox extends PureComponent {
   static displayName = 'Checkbox'
 
@@ -21,7 +19,6 @@ class Checkbox extends PureComponent {
      label: null,
      checkMark: _defaultCheckMark,
      name: void 0,
-     Toggle: null,
      onChange: null,
      readOnly: false},
     nodeProps,
@@ -87,7 +84,7 @@ class Checkbox extends PureComponent {
       <span className={this.className}
             onClick={(e) => {
               if (!this.props.readOnly)
-                return this.props.Toggle.onClick(e)
+                return this.props.toggle(e)
             }}
             {...this.renderProps}>
         {this.checkMark}
@@ -106,4 +103,8 @@ class Checkbox extends PureComponent {
 }
 
 
-export default Checkbox
+export default ({checked, ...props}) => (
+  <Toggle propName='checked' initialValue={checked || false}>
+    <Checkbox {...props}/>
+  </Toggle>
+)

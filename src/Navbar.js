@@ -1,5 +1,5 @@
 import React from 'react'
-import {namespace as ns, Toggle} from 'react-cake'
+import {namespace as ns} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import PureComponent from './PureComponent'
