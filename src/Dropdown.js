@@ -1,6 +1,5 @@
 import React from 'react'
 import {namespace as ns, Toggle} from 'react-cake'
-import isEqual from 'lodash/isEqual'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'

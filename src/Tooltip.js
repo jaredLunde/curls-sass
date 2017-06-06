@@ -5,7 +5,7 @@ import {spacingProps, nodeProps} from './props'
 import Popover from './Popover'
 
 
-class Tooltip extends Popover {
+export default class Tooltip extends Popover {
   static displayName = 'Tooltip'
   static flexName = null
   static defaultProps = Object.assign({
@@ -49,6 +49,3 @@ class Tooltip extends Popover {
                                ...children)
   }
 }
-
-
-export default Tooltip

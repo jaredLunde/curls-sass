@@ -6,7 +6,7 @@ import PureComponent from './PureComponent'
 
 
 class ButtonGroup extends PureComponent {
-  static displayName = 'Btn-Group'
+  static displayName = 'BtnGroup'
   static flexName = 'btn-group'
 
   static defaultProps = Object.assign(

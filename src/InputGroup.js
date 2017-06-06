@@ -3,7 +3,7 @@ import ButtonGroup from './ButtonGroup'
 
 
 class InputGroup extends ButtonGroup {
-  static displayName = 'Input-Group'
+  static displayName = 'InputGroup'
   static flexName = 'input-group'
   static defaultProps = Object.assign(
     {},

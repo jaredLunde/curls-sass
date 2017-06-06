@@ -6,7 +6,7 @@ import removeDefaultProps from './removeDefaultProps'
 import PureComponent from './PureComponent'
 
 
-class Drawer extends PureComponent {
+export default class Drawer extends PureComponent {
   static displayName = 'Drawer'
   static flexName = 'drawer'
   static defaultProps = Object.assign(

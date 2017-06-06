@@ -40,7 +40,7 @@ function bound(el, pad = 8) {
 }
 */
 
-class Popover extends PureComponent {
+export default class Popover extends PureComponent {
   static displayName = 'Popover'
   static flexName = 'popover'
   static defaultProps = Object.assign({
@@ -118,6 +118,3 @@ class Popover extends PureComponent {
     return props
   }
 }
-
-
-export default Popover
