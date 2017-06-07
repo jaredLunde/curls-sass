@@ -8,7 +8,8 @@
     border-color: $popover-border-color;
     border-style: $popover-border-style;
     border-radius: $popover-border-radius;
-    z-index: $MAX-Z-INDEX;
+    opacity: 0;
+    z-index: -1000;
     top: calc(100% + #{$popover-caret-size + 24px});
     @include transform(translateY(100%));
   }
@@ -16,6 +17,8 @@
   #{mod($popover-class, open)},
   .no-touchevents #{$popover-class}:hover {
     @extend %visible;
+    opacity: 1;
+    z-index: $MAX-Z-INDEX;
     @include transform(translate(0, 0));
     @include prefix((transition-delay: 0.24s), webkit);
   }

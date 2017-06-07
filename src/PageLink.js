@@ -3,7 +3,6 @@ import {url} from 'browser-essentials'
 import {namespace as ns} from 'react-cake'
 import * as routeParser from 'react-pilot/es/routeParser'
 
-import removeDefaultProps from './removeDefaultProps'
 import {flexProps, spacingProps} from './props'
 import {spacingMods} from './modifiers'
 import PureComponent from './PureComponent'
@@ -35,13 +34,6 @@ export default class PageLink extends PureComponent {
     path = path.filter(newQuery)
 
     return baseUrl.resolve(path.path).path
-  }
-
-  get renderProps () {
-    const props = removeDefaultProps(PageLink.defaultProps, this.props)
-    delete props.children
-    props.className = this.className
-    return props
   }
 
   get className () {

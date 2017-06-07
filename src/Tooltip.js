@@ -1,6 +1,5 @@
 import React from 'react'
 
-import removeDefaultProps from './removeDefaultProps'
 import {spacingProps, nodeProps} from './props'
 import Popover from './Popover'
 
@@ -18,14 +17,12 @@ export default class Tooltip extends Popover {
   }, nodeProps, spacingProps)
 
   get renderProps () {
-    const props = removeDefaultProps(this.constructor.defaultProps, this.props)
-    delete props.children
-    props.className = this.className
+    const props = super.renderProps
 
     if (this.props.open)
       props['aria-expanded'] = true
 
-    props['role'] = "tooltip"
+    props.role = "tooltip"
     props.ref = el => this._popover = el
     props.style = Object.assign({}, props.style || {}, this.state.style)
 

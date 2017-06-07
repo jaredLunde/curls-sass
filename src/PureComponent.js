@@ -1,7 +1,6 @@
 import React from 'react'
-import {namespace as ns} from 'react-cake'
+import {namespace as ns, reduceProps} from 'react-cake'
 
-import removeDefaultProps from './removeDefaultProps'
 import {flexProps, nodeProps, spacingProps} from './props'
 import {nodeMods, spacingMods} from './modifiers'
 import getModifiers from './getModifiers'
@@ -12,7 +11,7 @@ class PureComponent extends React.PureComponent {
   static displayName = 'CurlsComponent'
 
   static defaultProps = Object.assign(
-    {},
+    {passThroughRef: void 0},
     nodeProps,
     flexProps,
     spacingProps
@@ -45,16 +44,25 @@ class PureComponent extends React.PureComponent {
   }
 
   get renderProps () {
-    const props = removeDefaultProps(this.constructor.defaultProps, this.props)
-    delete props.children
+    const props = reduceProps(
+      this.props,
+      this.constructor.defaultProps,
+      ['children']
+    )
+
     props.className = this.className
+
+    if (this.props.passThroughRef) {
+      props.ref = this.props.passThroughRef
+    }
+
     return props
   }
 
   render () {
-    return React.createElement(this.props.nodeType,
-                               this.renderProps,
-                               this.props.children)
+    const {nodeType, children} = this.props
+
+    return React.createElement(nodeType, this.renderProps, children)
   }
 }
 

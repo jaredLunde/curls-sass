@@ -1,5 +1,5 @@
 import React from 'react'
-import {namespace as ns, Toggle} from 'react-cake'
+import {namespace as ns, Toggle, WillChange} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'
@@ -19,7 +19,14 @@ class Dropdown extends PureComponent {
     label: 'Drop',
     caret: _defaultCaret,
     size: 's',
-    items: null
+    items: null,
+    on: void 0,
+    off: void 0,
+    toggle: void 0,
+    open: false,
+    willChange: void 0,
+    willChangeRef: void 0,
+    willChangeIsOn: void 0
   }, nodeProps, spacingProps, flexProps)
 
   get className () {
@@ -52,15 +59,20 @@ class Dropdown extends PureComponent {
   }
 
   render () {
-    const {nodeType} = this.props
+    const {nodeType, willChangeRef} = this.props
+    const {style, ...renderProps} = this.renderProps
+    const {willChange, ...renderStyle} = style
 
     return (
-      <div className={this.className} {...this.renderProps}>
-        <Button className={ns.classes.el(this, 'toggler')}
-                size={this.props.size}
-                aria-expanded={String(this.props.open)}
-                aria-haspopup='true'
-                onClick={this.props.toggle}>
+      <div className={this.className} style={renderStyle} {...renderProps}>
+        <Button
+          className={ns.classes.el(this, 'toggler')}
+          size={this.props.size}
+          aria-expanded={String(this.props.open)}
+          aria-haspopup='true'
+          onClick={this.props.toggle}
+          passThroughRef={willChangeRef}
+        >
           <span className={ns.classes.el(this, 'label')}>
             {this.props.label}
           </span>
@@ -72,7 +84,8 @@ class Dropdown extends PureComponent {
             nodeType || 'ul',
             {
               className: ns.classes.el(this, 'menu'),
-              'aria-label': 'submenu'
+              'aria-label': 'submenu',
+              style: {willChange}
             },
             this.items
           )
@@ -84,7 +97,9 @@ class Dropdown extends PureComponent {
 
 
 export default ({open, ...props}) => (
-  <Toggle propName='open' initialValue={open || false}>
-    <Dropdown {...props}/>
-  </Toggle>
+  <WillChange opacity visibility zIndex transform whenClicked>
+    <Toggle propName='open' initialValue={open || false}>
+      <Dropdown {...props}/>
+    </Toggle>
+  </WillChange>
 )

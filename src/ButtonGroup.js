@@ -11,21 +11,26 @@ class ButtonGroup extends PureComponent {
 
   static defaultProps = Object.assign(
     {},
-    nodeProps, {
+    nodeProps,
+    {
       size: 's',
-      color: null},
+      color: null
+    },
     spacingProps,
-    flexProps)
+    flexProps
+  )
 
   get className () {
     const modifiers = this.getModifiers()
 
-    if (this.props.size)
+    if (this.props.size) {
       modifiers.push(ns.classes.mod(Button, this.props.size))
+    }
 
-    if (this.props.color)
+    if (this.props.color) {
       modifiers.push(ns.classes.mod(Button, this.props.color))
-
+    }
+    
     return ns.classes.append(this, ...modifiers)
   }
 }

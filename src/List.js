@@ -10,7 +10,8 @@ class List extends PureComponent {
   static flexName = 'list'
   static defaultProps = Object.assign(
     {},
-    nodeProps, {
+    nodeProps,
+    {
       nodeType: 'ul',
       menuItems: null
     },
@@ -19,10 +20,12 @@ class List extends PureComponent {
   )
 
   isListItem (item) {
-    if (item.type === void 0)
+    if (item.type === void 0) {
       return false
-    if (item.type.toLowerCase === void 0)
+    } else if (item.type.toLowerCase === void 0) {
       return false
+    }
+
     return item.type.toLowerCase() === 'li'
   }
 
@@ -45,9 +48,11 @@ class List extends PureComponent {
   }
 
   render () {
-    return React.createElement(this.props.nodeType,
-                               this.renderProps,
-                               this.menuItems)
+    return React.createElement(
+      this.props.nodeType,
+      this.renderProps,
+      this.menuItems
+    )
   }
 }
 

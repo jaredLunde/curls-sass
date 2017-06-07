@@ -1,7 +1,6 @@
 import React from 'react'
 import {namespace as ns} from 'react-cake'
 
-import removeDefaultProps from './removeDefaultProps'
 import {flexProps, spacingProps, nodeProps} from './props'
 import waitForImages from './waitForImages'
 import PureComponent from './PureComponent'
@@ -105,9 +104,7 @@ export default class Popover extends PureComponent {
   }
 
   get renderProps () {
-    const props = removeDefaultProps(this.constructor.defaultProps, this.props)
-    delete props.children
-    props.className = this.className
+    const props = super.renderProps
 
     if (this.props.open)
       props['aria-expanded'] = true

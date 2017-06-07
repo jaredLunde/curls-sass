@@ -4,14 +4,13 @@
     @extend %#{$flex-name}--y-center;
     position: relative;
 
-    &#{mod($dropdown-class, open)} {
-      #{el($dropdown-class, menu)} {
-        margin-top: -3px;
-        z-index: $MAX-Z-INDEX;
-        opacity: 1.0;
-        @include transform(translateY(0))
-        @include drop-in($FAST);
-      }
+    &#{mod($dropdown-class, open)} #{el($dropdown-class, menu)} {
+      @extend %visible;
+      margin-top: -3px;
+      z-index: $MAX-Z-INDEX;
+      opacity: 1.0;
+      @include transform(translateY(0))
+      @include drop-in($FAST);
     }
   }
 
@@ -94,6 +93,7 @@
 
 
   #{el($dropdown-class, menu)} {
+    @extend %hidden;
     @extend %absolute-top;
     z-index: -1000;
     background: $dropdown-background;

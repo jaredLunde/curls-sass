@@ -3981,9 +3981,8 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-cake@0.3.0-alpha.0:
+"react-cake@file:../../../../pkg/cake":
   version "0.3.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.3.0-alpha.0.tgz#2fec55af3874d39c5da85ec5c8b97e9c9d33106c"
   dependencies:
     bezier-easing "^2.0.3"
     fast-memoize "^2.2.7"

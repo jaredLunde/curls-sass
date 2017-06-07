@@ -40,6 +40,7 @@
 
 @mixin drop($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
   @include animate(opacity $speed $easing $delay,
+                   visiblity $speed $easing $delay,
                    z-index $speed $easing $delay,
                    transform $speed $easing $delay);
 }
@@ -54,7 +55,8 @@
 
 
 @mixin slide($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
-  @include animate(transform $speed $easing $delay);
+  @include animate(transform $speed $easing $delay,
+                   z-index $speed $easing $delay);
 }
 
 @mixin slide-in($speed: $FAST, $delay: 0s) {

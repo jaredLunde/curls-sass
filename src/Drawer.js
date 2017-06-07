@@ -2,7 +2,6 @@ import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
 import {nodeMods, spacingMods} from './modifiers'
-import removeDefaultProps from './removeDefaultProps'
 import PureComponent from './PureComponent'
 
 
@@ -68,9 +67,7 @@ export default class Drawer extends PureComponent {
   }
 
   get renderProps () {
-    const props = removeDefaultProps(this.constructor.defaultProps, this.props)
-    delete props.children
-    props.className = this.className
+    const props = super.renderProps
 
     props.ref = el => this._drawer = el
     props.style = Object.assign({}, props.style, this.state.style)

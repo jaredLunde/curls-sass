@@ -1,5 +1,5 @@
 import React from 'react'
-import {namespace as ns, Toggle} from 'react-cake'
+import {namespace as ns, Toggle, WillChange} from 'react-cake'
 
 import {flexProps, spacingProps, nodeProps} from './props'
 import Button from './Button'
@@ -20,7 +20,10 @@ class Select extends PureComponent {
     size: 's',
     Toggle: null,
     onChange: null,
-    name: null
+    name: null,
+    willChange: void 0,
+    willChangeRef: void 0,
+    willChangeIsOn: void 0
   }, nodeProps, spacingProps, flexProps)
 
   state = {selection: null}
@@ -113,14 +116,21 @@ class Select extends PureComponent {
   }
 
   render () {
+    const {willChangeRef} = this.props
+    const {style, ...renderProps} = this.renderProps
+    const {willChange, ...renderStyle} = style
+
     return (
-      <div className={this.className} {...this.renderProps}>
-        <Button className={ns.classes.el(this, 'toggler')}
-                size={this.props.size}
-                aria-expanded={String(this.props.open)}
-                aria-haspopup='true'
-                type='button'
-                onClick={this.props.toggle}>
+      <div className={this.className} style={renderStyle} {...renderProps}>
+        <Button
+          className={ns.classes.el(this, 'toggler')}
+          size={this.props.size}
+          aria-expanded={String(this.props.open)}
+          aria-haspopup='true'
+          type='button'
+          ref={willChangeRef}
+          onClick={this.props.toggle}
+        >
           <span className={ns.classes.el(this, 'label')}>
             {this.selection}
           </span>
@@ -132,10 +142,12 @@ class Select extends PureComponent {
           {this.items}
         </ul>
 
-        <select aria-hidden
-                value={this.value}
-                name={this.props.name}
-                readOnly>
+        <select
+          aria-hidden
+          value={this.value}
+          name={this.props.name}
+          readOnly
+        >
           {this.selectItems}
         </select>
       </div>
@@ -145,7 +157,9 @@ class Select extends PureComponent {
 
 
 export default ({open, ...props}) => (
-  <Toggle propName='open' initialValue={open}>
-    <Select {...props}/>
-  </Toggle>
+  <WillChange opacity visibility zIndex transform whenClicked>
+    <Toggle propName='open' initialValue={open}>
+      <Select {...props}/>
+    </Toggle>
+  </WillChange>
 )

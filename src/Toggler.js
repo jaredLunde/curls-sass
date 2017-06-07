@@ -2,7 +2,6 @@ import React from 'react'
 import {namespace as ns, Toggle} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
-import removeDefaultProps from './removeDefaultProps'
 import PureComponent from './PureComponent'
 
 
@@ -10,9 +9,14 @@ class Toggler extends PureComponent {
   static displayName = 'Toggler'
 
   static defaultProps = Object.assign(
-    {enabled: false,
-     label: void 0,
-     name: void 0},
+    {
+      enabled: false,
+      label: void 0,
+      name: void 0,
+      on: void 0,
+      off: void 0,
+      toggle: void 0
+    },
     nodeProps,
     {nodeType: 'span'},
     flexProps,
@@ -41,8 +45,7 @@ class Toggler extends PureComponent {
   }
 
   get renderProps () {
-    const props = removeDefaultProps(this.constructor.defaultProps, this.props)
-    delete props.children
+    const props = super.renderProps
     delete props.Toggle
     return props
   }

@@ -8,7 +8,7 @@
     border-color: $tooltip-border-color;
     border-style: $tooltip-border-style;
     border-radius: $tooltip-border-radius;
-    z-index: $MAX-Z-INDEX;
+    z-index: -1000;
     white-space: nowrap;
     top: calc(100% + #{$tooltip-caret-size + 12px});
     @include font-line($tooltip-font-size,
@@ -22,6 +22,7 @@
   .no-touchevents #{$tooltip-class}:hover {
     @extend %visible;
     top: calc(100% + #{$tooltip-caret-size + 2px});
+    z-index: $MAX-Z-INDEX;
     @include transform(translate(0, 0));
     @include prefix((transition-delay: 0.24s), webkit);
   }

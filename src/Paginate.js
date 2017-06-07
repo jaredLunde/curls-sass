@@ -1,7 +1,6 @@
 import React from 'react'
 import {namespace as ns} from 'react-cake'
 
-import removeDefaultProps from './removeDefaultProps'
 import {nodeProps, flexProps, spacingProps} from './props'
 import PageLink from './PageLink'
 import PureComponent from './PureComponent'

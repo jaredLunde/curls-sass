@@ -1,8 +1,7 @@
 import React from 'react'
-import {namespace as ns, Toggle} from 'react-cake'
+import {namespace as ns, Toggle, WillChange} from 'react-cake'
 
 import {flexProps, nodeProps, spacingProps} from './props'
-import removeDefaultProps from './removeDefaultProps'
 import PureComponent from './PureComponent'
 
 
@@ -15,12 +14,20 @@ class Checkbox extends PureComponent {
   static displayName = 'Checkbox'
 
   static defaultProps = Object.assign(
-    {checked: false,
-     label: null,
-     checkMark: _defaultCheckMark,
-     name: void 0,
-     onChange: null,
-     readOnly: false},
+    {
+      checked: false,
+      label: null,
+      checkMark: _defaultCheckMark,
+      name: void 0,
+      onChange: null,
+      readOnly: false,
+      on: void 0,
+      off: void 0,
+      toggle: void 0,
+      willChange: void 0,
+      willChangeRef: void 0,
+      willChangeIsOn: void 0
+    },
     nodeProps,
     {nodeType: 'span'},
     flexProps,
@@ -42,9 +49,12 @@ class Checkbox extends PureComponent {
     return () => {}
   }
 
-  get checkMark () {
+  getCheckMark (willChange) {
     return (
-      <span className={ns.classes.el(this, 'box')}>
+      <span
+        className={ns.classes.el(this, 'box')}
+        style={willChange ? {willChange} : {}}
+      >
         <span className={ns.classes.el(this, 'checkmark')}>
           {this.props.checkMark}
         </span>
@@ -80,21 +90,34 @@ class Checkbox extends PureComponent {
   }
 
   render () {
+    let {willChangeRef} = this.props
+    let {style, ...renderProps} = this.renderProps
+    let {willChange, ...renderStyle} = style
+
     return (
-      <span className={this.className}
-            onClick={(e) => {
-              if (!this.props.readOnly)
-                return this.props.toggle(e)
-            }}
-            {...this.renderProps}>
-        {this.checkMark}
-        <input type='checkbox'
-               ref={el => this._checkbox = el}
-               checked={this.props.checked}
-               name={this.props.name}
-               onChange={()=>{}}
-               value={this.props.value}
-               readOnly={this.props.readOnly}/>
+      <span
+        className={this.className}
+        ref={willChangeRef}
+        onClick={
+          (e) => {
+            if (!this.props.readOnly) {
+              return this.props.toggle(e)
+            }
+          }
+        }
+        style={renderStyle}
+        {...renderProps}
+      >
+        {this.getCheckMark(willChange)}
+        <input
+          type='checkbox'
+          ref={el => this._checkbox = el}
+          checked={this.props.checked}
+          name={this.props.name}
+          onChange={()=>{}}
+          value={this.props.value}
+          readOnly={this.props.readOnly}
+        />
         {this.label}
         {this.props.children}
       </span>
@@ -104,7 +127,9 @@ class Checkbox extends PureComponent {
 
 
 export default ({checked, ...props}) => (
-  <Toggle propName='checked' initialValue={checked || false}>
-    <Checkbox {...props}/>
-  </Toggle>
+  <WillChange backgroundColor whenClicked>
+    <Toggle propName='checked' initialValue={checked || false}>
+      <Checkbox {...props}/>
+    </Toggle>
+  </WillChange>
 )
