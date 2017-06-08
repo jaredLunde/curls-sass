@@ -8,7 +8,6 @@
   "private": false,
   "dependencies": {
     "browser-essentials": "^0.2.4",
-    "lodash.endswith": "^4.2.1",
     "react-cake": "file:../../../../pkg/cake",
     "react-pilot": "^0.2.1"
   },

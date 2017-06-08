@@ -107,7 +107,4 @@
       border-width: $list-link-active-border-width;
     }
   }
-
-
-  @include extend-flex(#{$list-name}, ("", #{$list-class}));
 }

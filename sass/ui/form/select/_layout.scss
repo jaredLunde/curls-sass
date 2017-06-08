@@ -12,17 +12,16 @@
 
   #{mod($select-class, open)} {
     #{el($select-class, menu)} {
+      @extend %visible;
       margin-top: -1px;
-      z-index: 1000;
-      opacity: 1.0;
       @include transform(translateY(0));
       @include drop-in($FAST);
     }
   }
 
   #{el($select-class, menu)} {
+    @extend %hidden;
     position: absolute;
-    z-index: -1000;
     background: $select-menu-background;
     max-height: $select-menu-max-height;
     overflow-y: auto;
@@ -38,7 +37,6 @@
     text-align: $select-menu-text-align;
     width: $select-menu-width;
     top: 100%;
-    opacity: 0;
     min-width: $select-menu-min-width;
     @include transform(translateY(100%));
     @include box-shadow($select-menu-shadow);
@@ -98,7 +96,7 @@
   #{el($select-class, caret)} {
     @extend %transform--fast;
     @extend %#{$flex-name}--self-center;
-    @extend %#{$type-name}--s;
+    @extend %#{$type-name}--sm;
     left: 6px;
     color: $select-toggler-color;
     position: relative;

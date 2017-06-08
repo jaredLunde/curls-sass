@@ -2,7 +2,7 @@ $tooltip-name: tooltip !default;
 $tooltip-class: '.#{$tooltip-name}' !default;
 
 $tooltip-font-color: $white !default;
-$tooltip-font-size: map-get($type-font-size, s) !default;
+$tooltip-font-size: map-get($type-font-size, sm) !default;
 $tooltip-font-weight: 400 !default;
 $tooltip-line-height: 1.1 !default;
 

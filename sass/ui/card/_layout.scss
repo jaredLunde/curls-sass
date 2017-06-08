@@ -154,8 +154,4 @@
     overflow: hidden;
 
   }
-
-
-  // Flex extensions */
-  @include extend-flex($card-name, ($card-class));
 }

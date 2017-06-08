@@ -28,9 +28,9 @@ $paragraph-text-align: left !default;
 $type-scale: (
   xxs: 12/16,
   xs: 14/16,
-  s: 16/16,
-  m: 19/16,
-  l: 23/16,
+  sm: 16/16,
+  md: 19/16,
+  lg: 23/16,
   xl: 36/16,
   xxl: 48/16
 ) !default;
@@ -39,9 +39,9 @@ $type-scale: (
 $type-font-size: (
   xxs: strip-units(scale-rem(map-get($type-scale, xxs))) * 16px,
   xs: strip-units(scale-rem(map-get($type-scale, xs))) * 16px,
-  s: strip-units(scale-rem(map-get($type-scale, s))) * 16px,
-  m: strip-units(scale-rem(map-get($type-scale, m))) * 16px,
-  l: strip-units(scale-rem(map-get($type-scale, l))) * 16px,
+  sm: strip-units(scale-rem(map-get($type-scale, sm))) * 16px,
+  md: strip-units(scale-rem(map-get($type-scale, md))) * 16px,
+  lg: strip-units(scale-rem(map-get($type-scale, lg))) * 16px,
   xl: strip-units(scale-rem(map-get($type-scale, xl))) * 16px,
   xxl: strip-units(scale-rem(map-get($type-scale, xxl))) * 16px
 ) !default;
@@ -49,9 +49,9 @@ $type-font-size: (
 $type-line-height: (
   xxs: $body-line-height,
   xs: $body-line-height,
-  s: $body-line-height,
-  m: $body-line-height,
-  l: $body-line-height,
+  sm: $body-line-height,
+  md: $body-line-height,
+  lg: $body-line-height,
   xl: $body-line-height,
   xxl: $body-line-height
 ) !default;
@@ -60,12 +60,25 @@ $type-line-height: (
 $type-font-size-s: (
   xxs: map-get($type-font-size, xxs) * 0.9,
   xs: map-get($type-font-size, xs) * 0.9,
-  s: map-get($type-font-size, s) * 0.9,
-  m: map-get($type-font-size, m) * 0.9,
-  l: map-get($type-font-size, l) * 0.9,
+  sm: map-get($type-font-size, sm) * 0.9,
+  md: map-get($type-font-size, md) * 0.9,
+  lg: map-get($type-font-size, lg) * 0.9,
   xl: map-get($type-font-size, xl) * 0.9,
   xxl: map-get($type-font-size, xxl) * 0.9
 ) !default;
+
+
+$type-weight: (
+  thin: 100,
+  ultra-light: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  heavy: 800,
+  ultra-heavy: 900,
+);
 
 
 // Headings */
@@ -78,8 +91,8 @@ $heading-letter-spacing: inherit !default;
 $heading-size: (
   h1: map-get($type-font-size, xxl),
   h2: map-get($type-font-size, xl),
-  h3: map-get($type-font-size, l),
-  h4: map-get($type-font-size, m),
-  h5: map-get($type-font-size, s),
+  h3: map-get($type-font-size, lg),
+  h4: map-get($type-font-size, md),
+  h5: map-get($type-font-size, sm),
   h6: map-get($type-font-size, xs)
 ) !default;

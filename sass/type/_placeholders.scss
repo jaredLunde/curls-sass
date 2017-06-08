@@ -17,6 +17,11 @@
     }
   }
 
+  @each $weight in map-keys($type-weight) {
+    %#{$type-name}--#{$weight} {
+      font-weight: map-get($type-weight, $weight);
+    }
+  }
 
   %#{$type-name}--left {
     text-align: left;

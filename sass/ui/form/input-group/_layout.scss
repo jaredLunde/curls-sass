@@ -2,7 +2,4 @@
   .input-group {
     @extend %input-group;
   }
-
-
-  @include extend-flex('input-group', ('.input-group'));
 }

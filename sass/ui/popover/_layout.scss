@@ -8,18 +8,14 @@
     border-color: $popover-border-color;
     border-style: $popover-border-style;
     border-radius: $popover-border-radius;
-    opacity: 0;
-    z-index: -1000;
     top: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translateY(100%));
+    @include transform(perspective(400px) translate3d(0, 100%, -200px));
   }
 
   #{mod($popover-class, open)},
   .no-touchevents #{$popover-class}:hover {
     @extend %visible;
-    opacity: 1;
-    z-index: $MAX-Z-INDEX;
-    @include transform(translate(0, 0));
+    @include transform(translate3d(0, 0, 0));
     @include prefix((transition-delay: 0.24s), webkit);
   }
 
@@ -46,7 +42,7 @@
   #{mod($popover-class, top)} {
     top: auto;
     bottom: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translateY(-100%));
+    @include transform(translate3d(0, -100%, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
@@ -57,7 +53,7 @@
 
   #{mod($popover-class, left)} {
     right: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translateX(-100%));
+    @include transform(translate3d(-100%, 0, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
@@ -68,7 +64,7 @@
 
   #{mod($popover-class, right)} {
     left: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translateX(100%));
+    @include transform(translate3d(100%, 0, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
@@ -168,6 +164,4 @@
       background: $popover-background;
     }
   }
-
-  @include extend-flex($popover-name, ('', $popover-class));
 }

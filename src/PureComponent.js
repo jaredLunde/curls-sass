@@ -47,7 +47,7 @@ class PureComponent extends React.PureComponent {
     const props = reduceProps(
       this.props,
       this.constructor.defaultProps,
-      ['children']
+      ['children', 'passThroughRef']
     )
 
     props.className = this.className
@@ -55,7 +55,7 @@ class PureComponent extends React.PureComponent {
     if (this.props.passThroughRef) {
       props.ref = this.props.passThroughRef
     }
-
+    
     return props
   }
 

@@ -47,11 +47,11 @@ $list-link-active-border-color: transparent !default;
 $list-link-active-border-style: none !default;
 $list-link-active-border-width: 0 !default;
 
-$list-heading-font-size: map-get($type-font-size, s) !default;
+$list-heading-font-size: map-get($type-font-size, sm) !default;
 $list-heading-line-height: $body-line-height !default;
 $list-heading-color: $grey !default;
 $list-heading-weight: 400 !default;
-$list-heading-padding-top: map-get($grid-gutter, m) !default;
+$list-heading-padding-top: map-get($grid-gutter, md) !default;
 $list-heading-padding-right: $list-content-padding-right !default;
 $list-heading-padding-bottom: rgolden($list-heading-padding-top) !default;
 $list-heading-padding-left: $list-heading-padding-right !default;

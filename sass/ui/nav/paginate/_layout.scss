@@ -74,7 +74,4 @@
       color: $disabled-link-color;
     }
   }
-
-
-  @include extend-flex($paginate-name, ($paginate-class));
 }

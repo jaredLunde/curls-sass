@@ -26,9 +26,11 @@ $light-orange: lighten($dark-orange, 25%) !default;
 
 // Greys
 $lightest-grey: #f4f4f5 !default;
-$light-grey: #dbdbda !default;
+$lighter-grey: #dbdbda !default;
+$light-grey: darken($lighter-grey, 25%) !default;
 $grey: #6f6567 !default;
 $dark-grey: darken($grey, 10%) !default;
+$darker-grey: darken($grey, 15%) !default;
 $darkest-grey: darken($grey, 20%) !default;
 $black: darken($darkest-grey, 5%) !default;
 $white: #fefeff !default;
@@ -52,9 +54,11 @@ $colors: (
   dark-orange: $dark-orange,
   light-orange: $light-orange,
   lightest-grey: $lightest-grey,
+  lighter-grey: $lighter-grey,
   light-grey: $light-grey,
   grey: $grey,
   dark-grey: $dark-grey,
+  darker-grey: $darker-grey,
   darkest-grey: $darkest-grey,
   black: $black,
   white: $white

@@ -8,22 +8,20 @@
     border-color: $tooltip-border-color;
     border-style: $tooltip-border-style;
     border-radius: $tooltip-border-radius;
-    z-index: -1000;
     white-space: nowrap;
     top: calc(100% + #{$tooltip-caret-size + 12px});
     @include font-line($tooltip-font-size,
                        $tooltip-line-height,
                        $color: $tooltip-font-color,
                        $weight: $tooltip-font-weight);
-    @include break-for(gutters, xl l m);
+    @include break-for(gutters, xl lg md);
   }
 
   #{mod($tooltip-class, open)},
   .no-touchevents #{$tooltip-class}:hover {
     @extend %visible;
     top: calc(100% + #{$tooltip-caret-size + 2px});
-    z-index: $MAX-Z-INDEX;
-    @include transform(translate(0, 0));
+    @include transform(translate3d(0, 0, 0));
     @include prefix((transition-delay: 0.24s), webkit);
   }
 
@@ -44,44 +42,44 @@
 
   // Animations */
   #{mod($tooltip-class, bottom)} {
-    @include transform(translateY(100%));
+    @include transform(translate3d(0, 100%, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($tooltip-class, top)} {
     top: auto;
     bottom: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translateY(-100%));
+    @include transform(translate3d(0, -100%, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($tooltip-class, open)}#{mod($tooltip-class, top)},
   .no-touchevents #{mod($tooltip-class, top)}:hover {
-    @include transform(translateY(0));
+    @include transform(translate3d(0, 0, 0));
     @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 
   #{mod($tooltip-class, left)} {
     right: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translateX(-100%));
+    @include transform(translate3d(-100%, 0, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($tooltip-class, open)}#{mod($tooltip-class, left)},
   .no-touchevents #{mod($tooltip-class, left)}:hover {
-    @include transform(translateX(0));
+    @include transform(translate3d(0, 0, 0));
     @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 
   #{mod($tooltip-class, right)} {
     left: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translateX(100%));
+    @include transform(translate3d(100%, 0, 0));
     @include drop-out($VERY-FAST, $delay: 0.24s);
   }
 
   #{mod($tooltip-class, open)}#{mod($tooltip-class, right)},
   .no-touchevents #{mod($tooltip-class, right)}:hover {
-    @include transform(translateX(0));
+    @include transform(translate3d(0, 0, 0));
     @include drop-in($VERY-FAST, $delay: 0.12s);
   }
 

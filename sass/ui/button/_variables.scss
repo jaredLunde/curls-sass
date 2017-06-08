@@ -21,25 +21,25 @@ $button-active-border-color: $button-border-color !default;
 $button-active-border-style: solid !default;
 $button-active-border-width: $border-width !default;
 
-$button-s-font-size: map-get($type-font-size, s) !default;
-$button-m-font-size: map-get($type-font-size, m) !default;
-$button-l-font-size: map-get($type-font-size, l) !default;
+$button-sm-font-size: map-get($type-font-size, sm) !default;
+$button-md-font-size: map-get($type-font-size, md) !default;
+$button-lg-font-size: map-get($type-font-size, lg) !default;
 
-$button-s-font-weight: 300 !default;
-$button-m-font-weight: 300 !default;
-$button-l-font-weight: 300 !default;
+$button-sm-font-weight: 300 !default;
+$button-md-font-weight: 300 !default;
+$button-lg-font-weight: 300 !default;
 
-$button-s-padding-top: 8px!default;
-$button-s-padding-right: golden($button-s-padding-top) !default;
-$button-s-padding-bottom: $button-s-padding-top !default;
-$button-s-padding-left: $button-s-padding-right !default;
+$button-sm-padding-top: 8px!default;
+$button-sm-padding-right: golden($button-sm-padding-top) !default;
+$button-sm-padding-bottom: $button-sm-padding-top !default;
+$button-sm-padding-left: $button-sm-padding-right !default;
 
-$button-m-padding-top: 12px!default;
-$button-m-padding-right: golden($button-m-padding-top) !default;
-$button-m-padding-bottom: $button-m-padding-top !default;
-$button-m-padding-left: $button-m-padding-right !default;
+$button-md-padding-top: 12px!default;
+$button-md-padding-right: golden($button-md-padding-top) !default;
+$button-md-padding-bottom: $button-md-padding-top !default;
+$button-md-padding-left: $button-md-padding-right !default;
 
-$button-l-padding-top: 16px!default;
-$button-l-padding-right: golden($button-l-padding-top) !default;
-$button-l-padding-bottom: $button-l-padding-top !default;
-$button-l-padding-left: $button-l-padding-right !default;
+$button-lg-padding-top: 16px!default;
+$button-lg-padding-right: golden($button-lg-padding-top) !default;
+$button-lg-padding-bottom: $button-lg-padding-top !default;
+$button-lg-padding-left: $button-lg-padding-right !default;

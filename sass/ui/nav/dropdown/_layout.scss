@@ -7,9 +7,9 @@
     &#{mod($dropdown-class, open)} #{el($dropdown-class, menu)} {
       @extend %visible;
       margin-top: -3px;
-      z-index: $MAX-Z-INDEX;
+      z-index: 1;
       opacity: 1.0;
-      @include transform(translateY(0))
+      @include transform(translate3d(0, 0, 0))
       @include drop-in($FAST);
     }
   }
@@ -38,7 +38,7 @@
   #{el($dropdown-class, caret)} {
     @extend %transform--fast;
     @extend %#{$flex-name}--self-center;
-    @extend %#{$type-name}--s;
+    @extend %#{$type-name}--sm;
     left: 6px;
     color: $dropdown-toggler-color;
     position: relative;
@@ -109,7 +109,7 @@
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     opacity: 0.0;
-    @include transform(translateY(100%));
+    @include transform(perspective(400px) translate3d(0, 100%, -200px));
     @include box-shadow($dropdown-shadow);
     @include drop-out($FAST);
 
@@ -159,6 +159,4 @@
                        $color: $dropdown-heading-color,
                        $weight: $dropdown-heading-weight);
   }
-
-  @include extend-flex(#{$dropdown-name}, (#{$dropdown-class}));
 }

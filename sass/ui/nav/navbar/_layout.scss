@@ -128,7 +128,4 @@
     @extend %fixed-bottom-fw;
     border-bottom: 0;
   }
-
-
-  @include extend-flex($navbar-name, ($navbar-class));
 }

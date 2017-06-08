@@ -1,4 +1,3 @@
-import endsWith from 'lodash.endswith'
 import {format} from 'react-pilot/es/routeParser'
 
 

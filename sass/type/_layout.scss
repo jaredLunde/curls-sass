@@ -90,4 +90,10 @@
       @extend %#{$type-name}--#{$size};
     }
   }
+
+  @each $weight in map-keys($type-weight) {
+    #{$type-class}--#{$weight} {
+      @extend %#{$type-name}--#{$weight};
+    }
+  }
 }

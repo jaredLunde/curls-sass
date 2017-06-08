@@ -58,11 +58,11 @@ $dropdown-toggler-active-border-style: solid !default;
 $dropdown-toggler-active-border-width: $border-width !default;
 $dropdown-toggler-active-border-radius: $border-radius !default;
 
-$dropdown-heading-font-size: map-get($type-font-size, s) !default;
+$dropdown-heading-font-size: map-get($type-font-size, sm) !default;
 $dropdown-heading-line-height: $body-line-height !default;
 $dropdown-heading-color: $grey !default;
 $dropdown-heading-weight: 400 !default;
-$dropdown-heading-padding-top: map-get($grid-gutter, m) !default;
+$dropdown-heading-padding-top: map-get($grid-gutter, md) !default;
 $dropdown-heading-padding-right: $dropdown-link-padding-right !default;
 $dropdown-heading-padding-bottom: rgolden($dropdown-heading-padding-top) !default;
 $dropdown-heading-padding-left: $dropdown-heading-padding-right !default;

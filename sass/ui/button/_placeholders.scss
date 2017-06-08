@@ -10,7 +10,7 @@
     line-height: $button-line-height;
     outline: 0;
     @include break-for(margin-gutters--y);
-    
+
     &.hover {
       @extend %#{$button-name}--hover;
     }
@@ -41,34 +41,34 @@
 
 
   %#{$button-name}--s {
-    padding: $button-s-padding-top
-             $button-s-padding-right
-             $button-s-padding-bottom
-             $button-s-padding-left;
-    @include font-line($button-s-font-size,
-                       $button-s-font-size,
-                       $weight: $button-s-font-weight);
+    padding: $button-sm-padding-top
+             $button-sm-padding-right
+             $button-sm-padding-bottom
+             $button-sm-padding-left;
+    @include font-line($button-sm-font-size,
+                       $button-sm-font-size,
+                       $weight: $button-sm-font-weight);
   }
 
 
   %#{$button-name}--m {
-    padding: $button-m-padding-top
-             $button-m-padding-right
-             $button-m-padding-bottom
-             $button-m-padding-left;
-    @include font-line($button-m-font-size,
-                       $button-m-font-size,
-                       $weight: $button-m-font-weight);
+    padding: $button-md-padding-top
+             $button-md-padding-right
+             $button-md-padding-bottom
+             $button-md-padding-left;
+    @include font-line($button-md-font-size,
+                       $button-md-font-size,
+                       $weight: $button-md-font-weight);
   }
 
 
   %#{$button-name}--l  {
-    padding: $button-l-padding-top
-             $button-l-padding-right
-             $button-l-padding-bottom
-             $button-l-padding-left;
-    @include font-line($button-l-font-size,
-                       $button-l-font-size,
-                       $weight: $button-l-font-weight);
+    padding: $button-lg-padding-top
+             $button-lg-padding-right
+             $button-lg-padding-bottom
+             $button-lg-padding-left;
+    @include font-line($button-lg-font-size,
+                       $button-lg-font-size,
+                       $weight: $button-lg-font-weight);
   }
 }
