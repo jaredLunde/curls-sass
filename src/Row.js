@@ -1,11 +1,15 @@
 import React from 'react'
-import PureComponent from './PureComponent'
+import Box from './Box'
+import {Col} from './Col'
 
 
-class Row extends PureComponent {
+export class Row extends Col {
   static displayName = 'Row'
-  static flexName = 'grid'
 }
 
 
-export default Row
+export default ({children, ...props}) => (
+  <Box {...props}>
+    <Row>{children}</Row>
+  </Box>
+)

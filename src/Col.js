@@ -1,21 +1,14 @@
-import {flexProps, nodeProps, spacingProps} from './props'
-import {nodeMods, spacingMods} from './modifiers'
-import PureComponent from './PureComponent'
+import React from 'react'
+import Box from './Box'
+import {node} from './PropTypes'
+import {createUINode} from './utils'
 
 
-class Col extends PureComponent {
-  static displayName = 'Col'
-  static flexName = 'grid'
-
-  static defaultProps = Object.assign(
-    {},
-    flexProps,
-    nodeProps,
-    spacingProps
-  )
-
-  static modifiers = [nodeMods, spacingMods]
-}
+export const Col = createUINode('Col', node)
 
 
-export default Col
+export default ({children, ...props}) => (
+  <Box {...props}>
+    <Col>{children}</Col>
+  </Box>
+)

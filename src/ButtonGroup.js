@@ -1,39 +1,18 @@
-import {namespace as ns} from 'react-cake'
-
-import {nodeProps, spacingProps, flexProps} from './props'
-import Button from './Button'
-import PureComponent from './PureComponent'
-
-
-class ButtonGroup extends PureComponent {
-  static displayName = 'BtnGroup'
-  static flexName = 'btn-group'
-
-  static defaultProps = Object.assign(
-    {},
-    nodeProps,
-    {
-      size: 's',
-      color: null
-    },
-    spacingProps,
-    flexProps
-  )
-
-  get className () {
-    const modifiers = this.getModifiers()
-
-    if (this.props.size) {
-      modifiers.push(ns.classes.mod(Button, this.props.size))
-    }
-
-    if (this.props.color) {
-      modifiers.push(ns.classes.mod(Button, this.props.color))
-    }
-    
-    return ns.classes.append(this, ...modifiers)
-  }
-}
+import React from 'react'
+import {Box} from './Box/Box'
+import Flex from './Flex'
+import propTypes from './Button/propTypes'
+import modifiers from './Button/modifiers'
+import {createUINode} from './utils'
 
 
-export default ButtonGroup
+export const ButtonGroup = createUINode('BtnGroup', propTypes, modifiers)
+
+
+export default ({children, ...props}) => (
+  <Flex {...props}>
+    <Box>
+      <ButtonGroup>{children}</ButtonGroup>
+    </Box>
+  </Flex>
+)

@@ -1,16 +1,14 @@
-import {nodeProps, spacingProps, flexProps} from './props'
-import ButtonGroup from './ButtonGroup'
+import React from 'react'
+import Box from './Box'
+import {node} from './PropTypes'
+import {createUINode} from './utils'
 
 
-class InputGroup extends ButtonGroup {
-  static displayName = 'InputGroup'
-  static flexName = 'input-group'
-  static defaultProps = Object.assign(
-    {},
-    nodeProps,
-    spacingProps,
-    flexProps)
-}
+export const InputGroup = createUINode('InputGroup', node)
 
 
-export default InputGroup
+export default ({children, ...props}) => (
+  <Box {...props}>
+    <InputGroup>{children}</InputGroup>
+  </Box>
+)

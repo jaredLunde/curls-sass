@@ -1,48 +1,65 @@
 import React from 'react'
+import {WillChange} from 'react-cake'
+import Box from './Box'
+import Drop from './Drop'
+import {Popover} from './Popover/Popover'
 
-import {spacingProps, nodeProps} from './props'
-import Popover from './Popover'
 
-
-export default class Tooltip extends Popover {
-  static displayName = 'Tooltip'
-  static flexName = null
-  static defaultProps = Object.assign({
-    open: true,
-    right: false,
-    left: false,
-    top: false,
-    bottom: false,
-    text: null
-  }, nodeProps, spacingProps)
-
-  get renderProps () {
-    const props = super.renderProps
-
-    if (this.props.open)
-      props['aria-expanded'] = true
-
-    props.role = "tooltip"
-    props.ref = el => this._popover = el
-    props.style = Object.assign({}, props.style || {}, this.state.style)
-
-    return props
+/**
+<Tooltip
+  fast
+  p='x3 y2'
+  content={
+    ({isVisible, toggle, show, hide}) => `I'm a tooltip`
   }
+>
+  {
+    ({tooltip, isVisible, toggle, show, hide, willChangeRef}) => (
+      <div className='pr m--b6'>
+        {tooltip}
 
-  render () {
-    let children = []
-    children = children.concat(
-      Array.isArray(this.props.children) ?
-      this.props.children :
-      [this.props.children]
+        <a
+          onMouseEnter={show}
+          onMouseLeave={hide}
+          ref={willChangeRef}
+        >
+          {isVisible ? 'Learn less' : 'Learn more'}
+        </a>
+      </div>
     )
-
-    if (this.props.text !== null) {
-      children.push(this.props.text)
-    }
-
-    return React.createElement(this.props.nodeType,
-                               this.renderProps,
-                               ...children)
+  }
+</Tooltip>
+*/
+export class Tooltip extends Popover {
+  static displayName = 'Tooltip'
+  static defaultProps = {
+    nodeType: 'span'
   }
 }
+
+
+const TooltipComponent = ({
+  willChangeIsOn,
+  willChange,
+  ...props
+}) => (
+  <Drop defaultFrom='bottom' {...props}>
+    {Tooltip}
+  </Drop>
+)
+
+
+export default ({children, ...props}) => (
+  <Box {...props}>
+    <WillChange
+      opacity
+      visibility
+      transform
+      whenClicked
+      whenMouseEnters
+      whenMouseLeaves
+    >
+      <TooltipComponent popoverChildren={children}/>
+    </WillChange>
+  </Box>
+)

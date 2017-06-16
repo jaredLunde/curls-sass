@@ -7,16 +7,15 @@
   "esnext": "src/index",
   "private": false,
   "dependencies": {
-    "browser-essentials": "^0.2.4",
     "react-cake": "file:../../../../pkg/cake",
-    "react-pilot": "^0.2.1"
+    "react-immutable-proptypes": "^2.1.0"
   },
   "peerDependencies": {
+    "immutable": ">=3.x",
     "react": ">=15.x",
     "react-dom": ">=15.x"
   },
   "devDependencies": {
-    "immutable": "^3.8.1",
     "webpack2-react-sass-env-boilerplate": "^0.2.3"
   },
   "repository": {

@@ -1,20 +1,14 @@
-import {flexProps, nodeProps, spacingProps} from './props'
-import PureComponent from './PureComponent'
+import React from 'react'
+import Box from './Box'
+import {node} from './PropTypes'
+import {createUINode} from './utils'
 
 
-class Card extends PureComponent {
-  static displayName = 'Card'
-
-  static defaultProps = Object.assign(
-    {},
-    nodeProps,
-    {nodeType: 'article'},
-    flexProps,
-    spacingProps
-  )
-
-  flexName = 'card'
-}
+export const Card = createUINode('Card', node)
 
 
-export default Card
+export default ({children, ...props}) => (
+  <Box {...props}>
+    <Card>{children}</Card>
+  </Box>
+)

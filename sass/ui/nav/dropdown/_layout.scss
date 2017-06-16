@@ -15,9 +15,6 @@
     width: 100%;
     z-index: 1;
     background: $dropdown-background;
-    border-color: $dropdown-border-color;
-    border-style: $dropdown-border-style;
-    border-width: $dropdown-border-width;
     border-radius: $dropdown-border-radius;
     padding: $dropdown-padding-top $dropdown-padding-right
              $dropdown-padding-bottom $dropdown-padding-left;
@@ -34,12 +31,12 @@
     left: 6px;
     position: relative;
     color: $button-color;
-    transform: rotate(0);
     font-weight: 700;
+    @include transform(rotate(0deg));
   }
 
   #{mod($dropdown-class, open)} #{el($dropdown-class, caret)} {
-    transform: rotate(-180deg);
+    @include transform(rotate(-180deg));
   }
 
   .input-group, #{$button-class}-group {
