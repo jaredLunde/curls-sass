@@ -1,0 +1,23 @@
+$toggler-name: 'switch' !default;
+$toggler-class: ".#{$toggler-name}" !default;
+
+$toggler-toggle-on-background: $white !default;
+$toggler-toggle-off-background: $lightest-grey !default;
+$toggler-toggle-size: 28px !default;
+$toggler-toggle-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25) !default;
+$toggler-toggle-border-color: rgba(0, 0, 0, 0.10);
+$toggler-toggle-border-width: scale-rem(nth($border-width-scale, 2));
+
+
+$toggler-border-radius: 100% !default;
+$toggler-control-off-background: $light-grey;
+$toggler-control-on-background: $green !default;
+$toggler-control-padding: 0 !default;
+$toggler-control-width: $toggler-toggle-size * 2 !default;
+$toggler-control-height: $toggler-toggle-size / 2 !default;
+$toggler-control-box-shadow: inset 0 0 $toggler-control-height * 0.482 rgba(0, 0, 0, 0.16) !default;
+
+$toggler-control-readonly-on-background: lighten($grey, 10%) !default;
+$toggler-toggle-readonly-on-background: darken($lightest-grey, 8%) !default;
+$toggler-control-readonly-off-background: lighten($grey, 10%) !default;
+$toggler-toggle-readonly-off-background: $light-grey !default;

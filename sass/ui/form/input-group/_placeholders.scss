@@ -5,7 +5,6 @@
     @extend %#{$flex-name}--y-stretch;
     @extend %#{$flex-name}--x-center;
     position: relative;
-    @include break-for(margin-gutters--y);
 
     input {
       @extend %#{$flex-name}--fluid;
@@ -23,18 +22,18 @@
     }
 
     & > *:first-child:not(:last-child) {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
     & > *:last-child:not(:first-child) {
-      border-left: 0 !important;
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
     & > *:not(:first-child):not(:last-child) {
-      border-left: 0 !important;
-      border-radius: 0 !important;
+      border-left: 0;
+      border-radius: 0;
     }
   }
 }

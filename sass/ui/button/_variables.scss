@@ -29,17 +29,17 @@ $button-sm-font-weight: 300 !default;
 $button-md-font-weight: 300 !default;
 $button-lg-font-weight: 300 !default;
 
-$button-sm-padding-top: 8px!default;
-$button-sm-padding-right: golden($button-sm-padding-top) !default;
+$button-sm-padding-top: map-get($grid-gutter, sm) !default;
+$button-sm-padding-right: golden(golden(map-get($grid-gutter, sm))) !default;
 $button-sm-padding-bottom: $button-sm-padding-top !default;
 $button-sm-padding-left: $button-sm-padding-right !default;
 
-$button-md-padding-top: 12px!default;
-$button-md-padding-right: golden($button-md-padding-top) !default;
+$button-md-padding-top: map-get($grid-gutter, md) !default;
+$button-md-padding-right: golden(golden(map-get($grid-gutter, md))) !default;
 $button-md-padding-bottom: $button-md-padding-top !default;
 $button-md-padding-left: $button-md-padding-right !default;
 
-$button-lg-padding-top: 16px!default;
-$button-lg-padding-right: golden($button-lg-padding-top) !default;
+$button-lg-padding-top: map-get($grid-gutter, lg) !default;
+$button-lg-padding-right: golden(golden(map-get($grid-gutter, lg))) !default;
 $button-lg-padding-bottom: $button-lg-padding-top !default;
 $button-lg-padding-left: $button-lg-padding-right !default;

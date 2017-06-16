@@ -3,13 +3,16 @@ $tooltip-class: '.#{$tooltip-name}' !default;
 
 $tooltip-font-color: $white !default;
 $tooltip-font-size: map-get($type-font-size, sm) !default;
-$tooltip-font-weight: 400 !default;
-$tooltip-line-height: 1.1 !default;
+$tooltip-font-weight: 500 !default;
+$tooltip-line-height: 1.0 !default;
 
-$tooltip-background: $dark-grey !default;
+$tooltip-background: $darkest-grey !default;
 $tooltip-border-width: $border-width !default;
-$tooltip-border-color: $dark-grey !default;
+$tooltip-border-color: $darkest-grey !default;
 $tooltip-border-style: solid !default;
 $tooltip-border-radius: $border-radius !default;
 
-$tooltip-caret-size: 8px !default;
+$tooltip-transition-delay-in: 0.16s !default;
+$tooltip-transition-delay-out: 0.24s !default;
+
+$tooltip-caret-size: calculate-rem(5px) !default;

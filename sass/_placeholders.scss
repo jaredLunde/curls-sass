@@ -6,12 +6,12 @@
 
   // Visibility */
   %visible {
-    z-index: 1;
+    visibility: visible;
     opacity: 1;
   }
 
   %hidden {
-    z-index: -1000;
+    visibility: hidden;
     opacity: 0;
   }
 

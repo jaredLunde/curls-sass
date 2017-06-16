@@ -1,21 +1,17 @@
 $avatar-name: avatar !default;
 $avatar-class: '.#{$avatar-name}' !default;
 
-$avatar-background: transparent !default;
 $avatar-border-radius: 100% !default;
-$avatar-border-width: 0 !default;
-$avatar-border-color: none !default;
-$avatar-border-style: auto !default;
 
 $avatar-size: (
   xs: 24px,
-  s: 36px,
-  m: 64px,
-  l: 96px,
-  xl: 128px
+  sm: 36px,
+  md: 72px,
+  lg: 128px,
+  xl: 256px
 ) !default;
 
 
 $AVATAR-SIZE-KEYS: map-keys($avatar-size);
 $R-AVATAR-SIZE-KEYS: map-keys(map-reverse($avatar-size));
-$DEFAULT-AVATAR-SIZE: s !default;
+$DEFAULT-AVATAR-SIZE: sm !default;

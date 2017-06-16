@@ -16,12 +16,12 @@
 
 
 @function golden($px) {
-  @return round(1.61803398875 * $px);
+  @return 1.61803398875 * $px;
 }
 
 
 @function rgolden($px) {
-  @return round(0.6180339887 * $px);
+  @return 0.6180339887 * $px;
 }
 
 
@@ -42,11 +42,25 @@
   @include prefix((transform: $style), webkit moz);
 }
 
-
 @mixin transition($style...) {
   @include prefix((transition: $style), webkit);
 }
 
+@mixin transition-property($style...) {
+  @include prefix((transition-property: $style), webkit);
+}
+
+@mixin transition-duration($style...) {
+  @include prefix((transition-duration: $style), webkit);
+}
+
+@mixin transition-timing-function($style...) {
+  @include prefix((transition-timing-function: $style), webkit);
+}
+
+@mixin transition-delay($style...) {
+  @include prefix((transition-delay: $style), webkit);
+}
 
 @mixin box-shadow($style) {
   @include prefix((box-shadow: $style), webkit);
@@ -87,6 +101,22 @@
 
     #{$property}: calculate-rem($new-size);
   }
+}
+
+@function unit-add($unit-a, $unit-b) {
+  $num-a: $unit-a;
+  $num-b: $unit-b;
+
+  @if (unit($unit-a) == 'px') {
+    $num-a: calculate-rem($unit-a);
+  }
+
+
+  @if (unit($unit-b) == 'px') {
+    $num-b: calculate-rem($unit-b);
+  }
+
+  @return $num-a + $num-b;
 }
 
 
@@ -164,4 +194,11 @@
 
 @function el($baseClass, $el) {
   @return #{$baseClass}__#{$el};
+}
+
+
+@mixin harden($base, $amendment) {
+  .#{$base}.#{$amendment} {
+    @extend .#{$amendment};
+  }
 }

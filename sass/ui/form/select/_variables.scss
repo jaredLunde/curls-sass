@@ -29,20 +29,6 @@ $select-toggler-padding-right: $select-toggler-padding-top !default;
 $select-toggler-padding-bottom: $select-toggler-padding-top !default;
 $select-toggler-padding-left: 0 !default;
 
-$select-toggler-hover-background: transparent !default;
-$select-toggler-hover-color: lighten($select-toggler-color, 10%) !default;
-$select-toggler-hover-border-color: $select-toggler-border-color !default;
-$select-toggler-hover-border-style: solid !default;
-$select-toggler-hover-border-width: 0 0 $border-width !default;
-$select-toggler-hover-border-radius: 0 !default;
-
-$select-toggler-active-background: transparent !default;
-$select-toggler-active-color: $select-toggler-color !default;
-$select-toggler-active-border-color: $select-toggler-border-color !default;
-$select-toggler-active-border-style: solid !default;
-$select-toggler-active-border-width: 0 0 $border-width !default;
-$select-toggler-active-border-radius: 0 !default;
-
 $select-item-color: $darkest-grey !default;
 $select-item-background: $white !default;
 $select-item-border-color: transparent !default;
@@ -53,14 +39,14 @@ $select-item-padding-right: golden($select-item-padding-top) !default;
 $select-item-padding-bottom: $select-item-padding-top !default;
 $select-item-padding-left: $select-item-padding-right !default;
 
-$select-item-hover-color: $grey !default;
+$select-item-hover-color: $dark-grey !default;
 $select-item-hover-background: $lightest-grey !default;
 $select-item-hover-border-color: transparent !default;
 $select-item-hover-border-style: none !default;
 $select-item-hover-border-width: 0 !default;
 
-$select-item-active-color: $dark-grey !default;
-$select-item-active-background: $light-grey !default;
+$select-item-active-color: $darker-grey !default;
+$select-item-active-background: $lighter-grey !default;
 $select-item-active-border-color: transparent !default;
 $select-item-active-border-style: none !default;
 $select-item-active-border-width: 0 !default;

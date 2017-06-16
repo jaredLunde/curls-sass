@@ -1,6 +1,6 @@
 @include import-once('colors') {
-  @include colorize($border-class, 'border');
-  @include colorize($bg-class, 'bg');
+  @include colorize($border-class, $border-name);
+  @include colorize($bg-class, $bg-name);
 
   a {
     text-decoration: $link-text-decoration;

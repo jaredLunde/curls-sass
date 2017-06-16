@@ -5,11 +5,11 @@
 
   @include keep($spacing-name) {
     %#{$pre}--t#{$scale} {
-      #{$prop}-top: $size !important;
+      #{$prop}-top: $size;
     }
 
     %#{$pre}--b#{$scale} {
-      #{$prop}-bottom: $size !important;
+      #{$prop}-bottom: $size;
     }
 
     %#{$pre}--y#{$scale} {
@@ -18,11 +18,11 @@
     }
 
     %#{$pre}--r#{$scale} {
-      #{$prop}-right: $size !important;
+      #{$prop}-right: $size;
     }
 
     %#{$pre}--l#{$scale} {
-      #{$prop}-left: $size !important;
+      #{$prop}-left: $size;
     }
 
     %#{$pre}--x#{$scale} {
@@ -31,7 +31,7 @@
     }
 
     %#{$pre}--#{$scale} {
-      #{$prop}: $size !important;
+      #{$prop}: $size;
     }
   }
 }
@@ -89,4 +89,41 @@
 
 @mixin padding-placeholders($size, $prefix: $padding-name) {
   @include spacing-placeholders($size, $prefix, 'padding')
+}
+
+
+@mixin harden-padding($base) {
+  @for $x from 1 through length($spacing-scale) {
+    $scale: scale-rem(nth($spacing-scale, $x));
+    $scale-label: $x - 1;
+    @each $type in ('', 't', 'r', 'b', 'l', 'y', 'x') {
+      .#{$base}.#{$padding-name}--#{$type}#{$scale-label} {
+        @extend %#{$padding-name}--#{$type}#{$scale-label};
+      }
+    }
+  }
+
+  @each $gutter in ('', '-2', '-t', '-2t', '-r', '-2r', '-b', '-2b', '-l', '-2l', '-x', '-2x', '-y', '-2y') {
+    .#{$base}.#{$padding-name}--gutters#{$gutter} {
+      @extend .#{$padding-name}--gutters#{$gutter};
+    }
+  }
+}
+
+@mixin harden-margin($base) {
+  @for $x from 1 through length($spacing-scale) {
+    $scale: scale-rem(nth($spacing-scale, $x));
+    $scale-label: $x - 1;
+    @each $type in ('', 't', 'r', 'b', 'l', 'y', 'x') {
+      .#{$base}.#{$margin-name}--#{$type}#{$scale-label} {
+        @extend %#{$margin-name}--#{$type}#{$scale-label};
+      }
+    }
+  }
+
+  @each $gutter in ('', '-2', '-t', '-2t', '-r', '-2r', '-b', '-2b', '-l', '-2l', '-x', '-2x', '-y', '-2y') {
+    .#{$base}.#{$margin-name}--gutters#{$gutter} {
+      @extend .#{$margin-name}--gutters#{$gutter};
+    }
+  }
 }

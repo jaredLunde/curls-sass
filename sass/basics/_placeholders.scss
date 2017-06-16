@@ -1,0 +1,74 @@
+@include import-once('basics-placeholders') {
+  @for $x from 1 through length($border-width-scale) {
+    $scale: scale-rem(nth($border-width-scale, $x));
+    $scale-label: $x - 1;
+
+    %#{$border-width-name}--#{$scale-label} {
+      border-width: $scale;
+      border-style: $border-style;
+    }
+
+    %#{$border-width-name}--t#{$scale-label} {
+      border-top-width: $scale;
+      border-top-style: $border-style;
+    }
+
+    %#{$border-width-name}--r#{$scale-label} {
+      border-right-width: $scale;
+      border-right-style: $border-style;
+    }
+
+    %#{$border-width-name}--b#{$scale-label} {
+      border-bottom-width: $scale;
+      border-bottom-style: $border-style;
+    }
+
+    %#{$border-width-name}--l#{$scale-label} {
+      border-left-width: $scale;
+      border-left-style: $border-style;
+    }
+
+    %#{$border-width-name}--y#{$scale-label} {
+      border-top-width: $scale;
+      border-top-style: $border-style;
+      border-bottom-width: $scale;
+      border-bottom-style: $border-style;
+    }
+
+    %#{$border-width-name}--x#{$scale-label} {
+      border-right-width: $scale;
+      border-right-style: $border-style;
+      border-left-width: $scale;
+      border-left-style: $border-style;
+    }
+  }
+
+  @for $x from 1 through length($border-radius-scale) {
+    $scale: scale-rem(nth($border-radius-scale, $x));
+    $scale-label: $x - 1;
+
+    %#{$border-radius-name}--#{$scale-label} {
+      border-radius: $scale;
+    }
+
+    %#{$border-radius-name}--t#{$scale-label} {
+      border-top-left-radius: $scale;
+      border-top-right-radius: $scale;
+    }
+
+    %#{$border-radius-name}--r#{$scale-label} {
+      border-top-right-radius: $scale;
+      border-bottom-right-radius: $scale;
+    }
+
+    %#{$border-radius-name}--b#{$scale-label} {
+      border-bottom-left-radius: $scale;
+      border-bottom-right-radius: $scale;
+    }
+
+    %#{$border-radius-name}--l#{$scale-label} {
+      border-top-left-radius: $scale;
+      border-bottom-left-radius: $scale;
+    }
+  }
+}

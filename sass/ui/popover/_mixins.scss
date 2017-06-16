@@ -9,20 +9,21 @@
     border-style: solid;
     content: "";
     position: absolute;
+
     @if ($direction == top) {
-      border-width: 0 rgolden($size) $size rgolden($size);
+      border-width: 0 $size * 0.8 $size $size * 0.8;
       border-color: transparent transparent $color transparent;
       top: ($size * -1) - $pad;
     } @else if ($direction == bottom) {
-      border-width: $size rgolden($size) 0 rgolden($size);
+      border-width: $size $size * 0.8 0 $size * 0.8;
       border-color: $color transparent transparent transparent;
       bottom: ($size * -1) - $pad;
     } @else if ($direction == left) {
-      border-width: rgolden($size) $size rgolden($size) 0;
+      border-width: $size * 0.8 $size $size * 0.8 0;
       border-color: transparent $color transparent transparent;
       left: ($size * -1) - $pad;
     } @else if ($direction == right) {
-      border-width: rgolden($size) 0 rgolden($size) $size;
+      border-width: $size * 0.8 0 $size * 0.8 $size;
       border-color: transparent transparent transparent $color;
       left: auto;
       right: ($size * -1) - $pad;

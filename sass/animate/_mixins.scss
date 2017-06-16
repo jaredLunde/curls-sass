@@ -24,45 +24,53 @@
 }
 
 
-@mixin fade($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
-  @include animate(opacity $speed $easing $delay);
-}
-
-@mixin fade-in($speed: $FAST, $delay: 0s) {
-  @include fade($speed, $delay: $delay);
+@mixin fade-in($speed: $MED, $delay: 0s, $easing: $SWIFT-OUT) {
+  @include animate(visibility 0s linear ($delay + $speed),
+                   opacity $speed $easing $delay);
 }
 
 
-@mixin fade-out($speed: $FAST, $delay: 0s) {
-  @include fade($speed, $easing: $EASE-OUT, $delay: $delay);
+@mixin fade-out($speed: $MED, $delay: 0s, $easing: $SWIFT-IN) {
+  @include animate(visibility 0s linear,
+                   opacity $speed $easing $delay);
 }
 
-
-@mixin drop($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
-  @include animate(opacity $speed $easing $delay,
-                   visiblity $speed $easing $delay,
-                   z-index $speed $easing $delay,
+@mixin drop-in($speed: $MED, $delay: 0s, $easing: $SWIFT-OUT) {
+  @include animate(visibility 0s linear ($delay + $speed),
+                   opacity $speed $easing $delay,
                    transform $speed $easing $delay);
 }
 
-@mixin drop-in($speed: $FAST, $delay: 0s) {
-  @include drop($speed, $delay: $delay);
+@mixin drop-out($speed: $MED, $delay: 0s, $easing: $SWIFT-IN) {
+  @include animate(visibility 0s linear,
+                   opacity $speed $easing $delay,
+                   transform $speed $easing $delay);
 }
 
-@mixin drop-out($speed: $FAST, $delay: 0s) {
-  @include drop($speed, $easing: $EASE-OUT, $delay: $delay);
+
+@mixin slide-in($speed: $MED, $delay: 0s, $easing: $HEAVY-MOVE) {
+  @include animate(visibility 0s linear ($delay + $speed),
+                   transform $speed $easing $delay);
+}
+
+@mixin slide-out($speed: $MED, $delay: 0s, $easing: $HEAVY-MOVE) {
+  @include animate(visibility 0s linear,
+                   transform $speed $easing $delay);
 }
 
 
-@mixin slide($speed: $FAST, $easing: $EASE-IN, $delay: 0s) {
-  @include animate(transform $speed $easing $delay,
-                   z-index $speed $easing $delay);
+@mixin harden-timing-functions($base) {
+  @each $tf in map-keys($timing-functions) {
+    .#{$base}.#{$margin-name}--#{$tf} {
+      @extend #{$animate-name}--#{$tf};
+    }
+  }
 }
 
-@mixin slide-in($speed: $FAST, $delay: 0s) {
-  @include slide($speed, $delay: $delay);
-}
-
-@mixin slide-out($speed: $FAST, $delay: 0s) {
-  @include slide($speed, $easing: $EASE-OUT, $delay: $delay);
+@mixin harden-animation-speeds($base) {
+  @each $speed in map-keys($animation-speeds) {
+    .#{$base}.#{$margin-name}--#{$speed} {
+      @extend #{$animate-name}--#{$speed};
+    }
+  }
 }

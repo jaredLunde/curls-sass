@@ -1,4 +1,54 @@
 @include import-once('basics') {
+  @for $x from 1 through length($border-width-scale) {
+    $scale-label: $x - 1;
+
+    #{$border-width-class}--#{$scale-label} {
+      @extend %#{$border-width-name}--#{$scale-label};
+    }
+
+    #{$border-width-class}--r#{$scale-label} {
+      @extend %#{$border-width-name}--r#{$scale-label};
+    }
+
+    #{$border-width-class}--t#{$scale-label} {
+      @extend %#{$border-width-name}--t#{$scale-label};
+    }
+
+    #{$border-width-class}--b#{$scale-label} {
+      @extend %#{$border-width-name}--b#{$scale-label};
+    }
+
+    #{$border-width-class}--l#{$scale-label} {
+      @extend %#{$border-width-name}--l#{$scale-label};
+    }
+  }
+
+
+  @for $x from 1 through length($border-radius-scale) {
+    $scale-label: $x - 1;
+
+    #{$border-radius-class}--#{$scale-label} {
+      @extend %#{$border-radius-name}--#{$scale-label};
+    }
+
+    #{$border-radius-class}--r#{$scale-label} {
+      @extend %#{$border-radius-name}--r#{$scale-label};
+    }
+
+    #{$border-radius-class}--t#{$scale-label} {
+      @extend %#{$border-radius-name}--t#{$scale-label};
+    }
+
+    #{$border-radius-class}--b#{$scale-label} {
+      @extend %#{$border-radius-name}--b#{$scale-label};
+    }
+
+    #{$border-radius-class}--l#{$scale-label} {
+      @extend %#{$border-radius-name}--l#{$scale-label};
+    }
+  }
+
+
   .divider {
     background: $divider-color;
     height: $divider-height;
@@ -19,8 +69,15 @@
     color: $disabled-link-color;
   }
 
+  .pr {
+    position: relative;
+  }
 
-  .noborder {
-    border: 0 !important;
-  }  
+  .pa {
+    position: absolute;
+  }
+
+  .pf {
+    position: fixed;
+  }
 }

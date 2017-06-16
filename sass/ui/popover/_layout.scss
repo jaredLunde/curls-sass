@@ -1,4 +1,6 @@
 @include import-once('popover') {
+  $caretWithBorder: unit-add($popover-caret-size, $popover-border-width);
+
   #{$popover-class} {
     @extend %hidden;
     display: block;
@@ -8,154 +10,131 @@
     border-color: $popover-border-color;
     border-style: $popover-border-style;
     border-radius: $popover-border-radius;
-    top: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(perspective(400px) translate3d(0, 100%, -200px));
-  }
 
-  #{mod($popover-class, open)},
-  .no-touchevents #{$popover-class}:hover {
-    @extend %visible;
-    @include transform(translate3d(0, 0, 0));
-    @include prefix((transition-delay: 0.24s), webkit);
-  }
-
-  #{mod($popover-class, bottom)},
-  .no-touchevents #{mod($popover-class, bottom)}:hover {
-    &:before {
-      @include caret($popover-caret-size + $popover-border-width,
-                     $popover-border-color,
-                     $pad: $popover-border-width);
-      left: calc(24px - #{$popover-border-width});
+    &#{$droppable-class} {
+      transition-delay: map-get($animation-speeds, med) + $popover-transition-delay-out, $popover-transition-delay-out, $popover-transition-delay-out;
     }
 
-    &:after {
-      @include caret($popover-caret-size, $popover-background);
-      left: 24px;
+    &#{mod($droppable-class, dropped)} {
+      transition-delay: $popover-transition-delay-in;
     }
   }
 
-  // Animations */
-  #{mod($popover-class, bottom)} {
-    @include drop-out($VERY-FAST, $delay: 0.24s);
+  @each $name in map-keys($animation-speeds) {
+    #{$popover-class}#{$droppable-class}#{$animate-class}--#{$name} {
+      transition-delay: map-get($animation-speeds, $name) + $popover-transition-delay-out, $popover-transition-delay-out, $popover-transition-delay-out;
+    }
+
+    #{$popover-class}#{mod($droppable-class, dropped)}#{$animate-class}--#{$name} {
+      transition-delay: $popover-transition-delay-in;
+    }
   }
 
-  #{mod($popover-class, top)} {
+  .no-touchevents {
+    #{$popover-class}:hover {
+      @extend %visible;
+      @include transform(translate3d(0, 0, 0));
+      @include prefix((transition-delay: $popover-transition-delay-out), webkit);
+    }
+  }
+
+  #{$popover-class}#{mod($droppable-class, top)},
+  #{$popover-class}#{mod($droppable-class, bottom)} {
     top: auto;
-    bottom: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translate3d(0, -100%, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
+    bottom: 100%;
+    margin-bottom: $popover-caret-size;
 
-  #{mod($popover-class, open)}#{mod($popover-class, top)},
-  .no-touchevents #{mod($popover-class, top)}:hover {
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
+    &:before,
+    &:after {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
 
-  #{mod($popover-class, left)} {
-    right: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translate3d(-100%, 0, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
-
-  #{mod($popover-class, open)}#{mod($popover-class, left)},
-  .no-touchevents #{mod($popover-class, left)}:hover {
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
-
-  #{mod($popover-class, right)} {
-    left: calc(100% + #{$popover-caret-size + 24px});
-    @include transform(translate3d(100%, 0, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
-
-  #{mod($popover-class, open)}#{mod($popover-class, right)},
-  .no-touchevents #{mod($popover-class, right)}:hover {
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
-
-
-  // Open Positioning */
-  #{mod($popover-class, top)},
-  .no-touchevents #{mod($popover-class, top)}:hover {
     &:before {
-      @include caret($popover-caret-size + $popover-border-width,
+      @include caret($caretWithBorder,
                      $popover-border-color,
                      $direction: bottom,
                      $pad: $popover-border-width);
-      left: calc(24px - #{$popover-border-width});
     }
 
     &:after {
-      @include caret($popover-caret-size,
+      @include caret($caretWithBorder,
                      $popover-background,
                      $direction: bottom);
-      left: 24px;
     }
   }
 
-  #{mod($popover-class, open)}#{mod($popover-class, top)},
-  .no-touchevents #{mod($popover-class, top)}:hover {
-    top: auto;
-    bottom: calc(100% + #{$popover-caret-size + 2px});
-  }
 
-  #{mod($popover-class, left)},
-  .no-touchevents #{mod($popover-class, left)}:hover {
-    &:before {
-      @include caret($popover-caret-size + $popover-border-width,
-                     $popover-border-color,
-                     $direction: right,
-                     $pad: $popover-border-width);
-      top: calc(50% - #{($popover-caret-size / 2) + $popover-border-width});
-    }
-
-    &:after {
-      @include caret($popover-caret-size,
-                     $popover-background,
-                     $direction: right);
-      top: calc(50% - #{$popover-caret-size / 2});
-    }
-  }
-
-  #{mod($popover-class, open)}#{mod($popover-class, left)},
-  .no-touchevents #{mod($popover-class, left)}:hover {
+  #{$popover-class}#{mod($droppable-class, right)},
+  #{$popover-class}#{mod($droppable-class, left)} {
     top: -50%;
-    right: calc(100% + #{$popover-caret-size + 2px});
-  }
+    left: calc(100% + #{unit-add($popover-caret-size, 2px)});
+    right: auto;
 
-  #{mod($popover-class, right)},
-  .no-touchevents #{mod($popover-class, right)}:hover {
+    &:before,
+    &:after {
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+
     &:before {
-      @include caret($popover-caret-size + $popover-border-width,
+      @include caret($caretWithBorder,
                      $popover-border-color,
                      $direction: left,
                      $pad: $popover-border-width);
-      top: calc(50% - #{($popover-caret-size / 2) + $popover-border-width});
     }
 
     &:after {
-      @include caret($popover-caret-size,
+      @include caret($caretWithBorder,
                      $popover-background,
                      $direction: left);
-      top: calc(50% - #{$popover-caret-size / 2});
     }
   }
 
-  #{mod($popover-class, open)}#{mod($popover-class, right)},
-  .no-touchevents #{mod($popover-class, right)}:hover {
-    top: -50%;
-    left: calc(100% + #{$popover-caret-size + 2px});
+  #{$popover-class}#{mod($droppable-class, bottom)} {
+    top: 100%;
+    bottom: auto;
+    margin-top: $popover-caret-size;
+    margin-bottom: auto;
+
+    &:before {
+      @include caret($caretWithBorder,
+                     $popover-border-color,
+                     $direction: top,
+                     $pad: $popover-border-width);
+    }
+
+    &:after {
+      @include caret($caretWithBorder,
+                     $popover-background,
+                     $direction: top);
+    }
   }
 
-  #{el($popover-class, container)} {
-    position: relative;
-    // width: 100%;
+  #{$popover-class}#{mod($droppable-class, left)} {
+    top: -50%;
+    left: auto;
+    right: calc(100% + #{unit-add($popover-caret-size, 2px)});
+
+    &:before {
+      @include caret($caretWithBorder,
+                     $popover-border-color,
+                     $direction: right,
+                     $pad: $popover-border-width);
+    }
+
+    &:after {
+      @include caret($caretWithBorder,
+                     $popover-background,
+                     $direction: right);
+    }
   }
 
   // Child elements */
   #{$popover-class} > #{$card-class},
-  #{$popover-class} > #{$navbar-class},
-  #{$popover-class} > #{$list-class} {
+  #{$popover-class} > #{$navbar-class} {
     border: 0;
     margin: 0;
     border-radius: $popover-border-radius;
@@ -163,5 +142,9 @@
     header, #{el($card-class, header)} {
       background: $popover-background;
     }
+  }
+
+  @each $pos in ('top', 'right', 'bottom', 'left') {
+    @include harden-margin('#{$popover-name}#{mod($droppable-class, $pos)}');
   }
 }

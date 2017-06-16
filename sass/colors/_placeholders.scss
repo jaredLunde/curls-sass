@@ -1,15 +1,11 @@
 @include import-once('colors-placeholders') {
   @each $color in map-keys($colors) {
-    %bg--#{$color} {
+    %#{$bg-name}--#{$color} {
       background: map-get($colors, $color);
     }
 
-    %border--#{$color} {
+    %#{$border-name}--#{$color} {
       border-color: map-get($colors, $color);
-    }
-
-    %font--#{$color} {
-      color: map-get($colors, $color);
     }
   }
 }

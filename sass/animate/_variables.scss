@@ -1,8 +1,19 @@
+$animate-name: 'transitionable' !default;
+$animate-class: '.#{$animate-name}' !default;
+
 $VERY-FAST: .08s !default;
 $FAST: .16s !default;
 $MED: .32s !default;
 $SLOW: .48s !default;
 $VERY-SLOW: .96s !default;
+
+$animation-speeds: (
+  'very-fast': $VERY-FAST,
+  'fast': $FAST,
+  'med': $MED,
+  'slow': $SLOW,
+  'very-slow': $VERY-SLOW
+);
 
 
 // Custom easing */
@@ -13,5 +24,24 @@ $BOUNCE: cubic-bezier(.93, .13, .65, 1.34) !default;
 $EASE-OUT: ease-out !default;
 $EASE-IN: ease-in !default;
 $EASE-IN-OUT: ease-in-out !default;
+$SWIFT-MOVE: cubic-bezier(0.4, 0, 0.2, 1);
+$SWIFTER-MOVE: cubic-bezier(0.4, 0, 0, 1);
+$HEAVY-MOVE: cubic-bezier(0.7, 0, 0.6, 1);
+$SWIFT-IN: cubic-bezier(0.4, 0, 1, 1);
+$SWIFT-OUT: cubic-bezier(0, 0, 0.58, 1);
+
+$timing-functions: (
+  boomerang: $BOOMERANG,
+  bounce: $BOUNCE,
+  ease-out: $EASE-OUT,
+  ease-in: $EASE-IN,
+  ease-in-out: $EASE-IN-OUT,
+  swift-move: $SWIFT-MOVE,
+  swifter-move: $SWIFTER-MOVE,
+  heavy-move: $HEAVY-MOVE,
+  swift-in: $SWIFT-IN,
+  swift-out: $SWIFT-OUT,
+  linear: linear
+);
 //$EASE-IN-OUT: cubic-bezier(.5, 0, .5, 1);
 // $UNHINGE: cubic-bezier(0, .47, .34, -0.73);

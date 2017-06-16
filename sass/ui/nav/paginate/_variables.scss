@@ -1,18 +1,18 @@
 $paginate-name: 'paginate' !default;
 $paginate-class: ".#{$paginate-name}" !default;
-$paginate-font-size: 18px !default;
-$paginate-line-height: $body-line-height !default;
-$paginate-font-weight: 400 !default;
+$paginate-font-size: map-get($type-font-size, sm) !default;
+$paginate-line-height: normal !default;
+$paginate-font-weight: 700 !default;
 
 $paginate-link-color: $link-color !default;
 $paginate-link-hover-color: $link-hover-color !default;
-$paginate-link-class: unquote("#{unquote(".")}#{$paginate-name}__link") !default;
-$paginate-link-border-width: $border-width !default;
+$paginate-link-class: unquote("#{$paginate-class}__page") !default;
+$paginate-link-border-width: 0 !default;
 $paginate-link-border-style: solid !default;
-$paginate-link-border-color: rgba(0, 0, 0, 0.14) !default;
-$paginate-link-background: $white !default;
+$paginate-link-border-color: $light-border !default;
+$paginate-link-background: $translucent-white !default;
 $paginate-link-border-radius: $border-radius !default;
-$paginate-link-padding: round(map-get($grid-gutter, lg) / 2) round(map-get($grid-gutter, lg)) !default;
+$paginate-link-padding: scale-rem(nth($spacing-scale, 4)) scale-rem(nth($spacing-scale, 4)) !default;
 $paginate-link-color: $link-color !default;
 $paginate-link-hover-color: $link-hover-color !default;
 $paginate-link-active-color: $link-active-color !default;

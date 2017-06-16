@@ -212,7 +212,7 @@
 }
 
 
-@mixin extend-flex($name, $selectors: ('',)) {
+@mixin extend-flex($name: 'flex', $selectors: ('',)) {
   @each $selector in $selectors {
     @include extend-flex-base($name, $selector: $selector);
     @include extend-flex-justify($name,  $selector: $selector);

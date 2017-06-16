@@ -8,6 +8,5 @@
     border-color: $card-border-color;
     border-radius: $card-border-radius;
     width: 100%;
-    @include break-for(margin-gutters--y);
   }
 }

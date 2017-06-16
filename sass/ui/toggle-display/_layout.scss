@@ -1,0 +1,5 @@
+@include import-once('hidable') {
+  #{mod($hidable-class, hidden)} {
+    @extend %remove;
+  }
+}

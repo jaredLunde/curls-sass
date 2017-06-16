@@ -1,4 +1,6 @@
 @include import-once('tooltip') {
+  $caretWithBorder: unit-add($tooltip-caret-size, $tooltip-border-width);
+
   #{$tooltip-class} {
     @extend %hidden;
     display: block;
@@ -9,156 +11,135 @@
     border-style: $tooltip-border-style;
     border-radius: $tooltip-border-radius;
     white-space: nowrap;
-    top: calc(100% + #{$tooltip-caret-size + 12px});
     @include font-line($tooltip-font-size,
                        $tooltip-line-height,
                        $color: $tooltip-font-color,
                        $weight: $tooltip-font-weight);
-    @include break-for(gutters, xl lg md);
-  }
 
-  #{mod($tooltip-class, open)},
-  .no-touchevents #{$tooltip-class}:hover {
-    @extend %visible;
-    top: calc(100% + #{$tooltip-caret-size + 2px});
-    @include transform(translate3d(0, 0, 0));
-    @include prefix((transition-delay: 0.24s), webkit);
-  }
-
-  #{mod($tooltip-class, bottom)},
-  .no-touchevents #{mod($tooltip-class, bottom)}:hover {
-    &:before {
-      @include caret($tooltip-caret-size + $tooltip-border-width,
-                     $tooltip-border-color,
-                     $pad: $tooltip-border-width);
-      left: calc(12px - #{$tooltip-border-width});
+    &#{$droppable-class} {
+      transition-delay: map-get($animation-speeds, med) + $tooltip-transition-delay-out, $tooltip-transition-delay-out, $tooltip-transition-delay-out;
     }
 
-    &:after {
-      @include caret($tooltip-caret-size, $tooltip-background);
-      left: 12px;
+    &#{mod($droppable-class, dropped)} {
+      transition-delay: $tooltip-transition-delay-in;
     }
   }
 
-  // Animations */
-  #{mod($tooltip-class, bottom)} {
-    @include transform(translate3d(0, 100%, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
+  @each $name in map-keys($animation-speeds) {
+    #{$tooltip-class}#{$droppable-class}#{$animate-class}--#{$name} {
+      transition-delay: map-get($animation-speeds, $name) + $tooltip-transition-delay-out, $tooltip-transition-delay-out, $tooltip-transition-delay-out;
+    }
+
+    #{$tooltip-class}#{mod($droppable-class, dropped)}#{$animate-class}--#{$name} {
+      transition-delay: $tooltip-transition-delay-in;
+    }
   }
 
-  #{mod($tooltip-class, top)} {
+  .no-touchevents {
+    #{$tooltip-class}:hover {
+      @extend %visible;
+      @include transform(translate3d(0, 0, 0));
+      @include prefix((transition-delay: $tooltip-transition-delay-out), webkit);
+    }
+  }
+
+  #{$tooltip-class}#{mod($droppable-class, top)},
+  #{$tooltip-class}#{mod($droppable-class, bottom)} {
     top: auto;
-    bottom: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translate3d(0, -100%, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
+    bottom: 100%;
+    margin-bottom: $tooltip-caret-size;
 
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, top)},
-  .no-touchevents #{mod($tooltip-class, top)}:hover {
-    @include transform(translate3d(0, 0, 0));
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
+    &:before,
+    &:after {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
 
-  #{mod($tooltip-class, left)} {
-    right: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translate3d(-100%, 0, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
-
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, left)},
-  .no-touchevents #{mod($tooltip-class, left)}:hover {
-    @include transform(translate3d(0, 0, 0));
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
-
-  #{mod($tooltip-class, right)} {
-    left: calc(100% + #{$tooltip-caret-size + 12px});
-    @include transform(translate3d(100%, 0, 0));
-    @include drop-out($VERY-FAST, $delay: 0.24s);
-  }
-
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, right)},
-  .no-touchevents #{mod($tooltip-class, right)}:hover {
-    @include transform(translate3d(0, 0, 0));
-    @include drop-in($VERY-FAST, $delay: 0.12s);
-  }
-
-
-  // Open Positioning */
-  #{mod($tooltip-class, top)},
-  .no-touchevents #{mod($tooltip-class, top)}:hover {
     &:before {
-      @include caret($tooltip-caret-size + $tooltip-border-width,
+      @include caret($caretWithBorder,
                      $tooltip-border-color,
                      $direction: bottom,
                      $pad: $tooltip-border-width);
-      left: calc(12px - #{$tooltip-border-width});
     }
 
     &:after {
-      @include caret($tooltip-caret-size,
+      @include caret($caretWithBorder,
                      $tooltip-background,
                      $direction: bottom);
-      left: 12px;
     }
   }
 
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, top)},
-  .no-touchevents #{mod($tooltip-class, top)}:hover {
-    top: auto;
-    bottom: calc(100% + #{$tooltip-caret-size + 2px});
-  }
 
-  #{mod($tooltip-class, left)},
-  .no-touchevents #{mod($tooltip-class, left)}:hover {
-    &:before {
-      @include caret($tooltip-caret-size + $tooltip-border-width,
-                     $tooltip-border-color,
-                     $direction: right,
-                     $pad: $tooltip-border-width);
-      top: calc(50% - #{($tooltip-caret-size / 2) + $tooltip-border-width});
-    }
-
-    &:after {
-      @include caret($tooltip-caret-size,
-                     $tooltip-background,
-                     $direction: right);
-      top: calc(50% - #{$tooltip-caret-size / 2});
-    }
-  }
-
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, left)},
-  .no-touchevents #{mod($tooltip-class, left)}:hover {
+  #{$tooltip-class}#{mod($droppable-class, right)},
+  #{$tooltip-class}#{mod($droppable-class, left)} {
     top: -50%;
-    right: calc(100% + #{$tooltip-caret-size + 2px});
-  }
+    left: calc(100% + #{unit-add($tooltip-caret-size, 2px)});
+    right: auto;
 
-  #{mod($tooltip-class, right)},
-  .no-touchevents #{mod($tooltip-class, right)}:hover {
+    &:before,
+    &:after {
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+
     &:before {
-      @include caret($tooltip-caret-size + $tooltip-border-width,
+      @include caret($caretWithBorder,
                      $tooltip-border-color,
                      $direction: left,
-                     $pad: $tooltip-border-width);
-      top: calc(50% - #{($tooltip-caret-size / 2) + $tooltip-border-width});
+                     $pad: unit-add($tooltip-border-width, -1px));
     }
 
     &:after {
-      @include caret($tooltip-caret-size,
+      @include caret($caretWithBorder,
                      $tooltip-background,
-                     $direction: left);
-      top: calc(50% - #{$tooltip-caret-size / 2});
+                     $direction: left,
+                     $pad: -1px);
     }
   }
 
-  #{mod($tooltip-class, open)}#{mod($tooltip-class, right)},
-  .no-touchevents #{mod($tooltip-class, right)}:hover {
-    top: -50%;
-    left: calc(100% + #{$tooltip-caret-size + 2px});
+  #{$tooltip-class}#{mod($droppable-class, bottom)} {
+    top: 100%;
+    bottom: auto;
+    margin-top: $tooltip-caret-size;
+    margin-bottom: auto;
+
+    &:before {
+      @include caret($caretWithBorder,
+                     $tooltip-border-color,
+                     $direction: top,
+                     $pad: $tooltip-border-width);
+    }
+
+    &:after {
+      @include caret($caretWithBorder,
+                     $tooltip-background,
+                     $direction: top);
+    }
   }
 
-  #{el($tooltip-class, container)} {
-    position: relative;
-    // width: 100%;
+  #{$tooltip-class}#{mod($droppable-class, left)} {
+    top: -50%;
+    left: auto;
+    right: calc(100% + #{unit-add($tooltip-caret-size, 2px)});
+
+    &:before {
+      @include caret($caretWithBorder,
+                     $tooltip-border-color,
+                     $direction: right,
+                     $pad: unit-add($tooltip-border-width, -1px));
+    }
+
+    &:after {
+      @include caret($caretWithBorder,
+                     $tooltip-background,
+                     $direction: right,
+                     $pad: -1px);
+    }
+  }
+
+  @each $pos in ('top', 'right', 'bottom', 'left') {
+    @include harden-margin('#{$tooltip-name}#{mod($droppable-class, $pos)}');
   }
 }

@@ -21,13 +21,6 @@
       border-bottom-left-radius: $card-border-radius;
     }
 
-    & > {
-      #{$button-class}, button {
-        @extend %#{$margin-name}--3;
-      }
-    }
-
-
     // Header + Footer styles */
     header, #{$card-class}__header {
       @extend %#{$flex-name};
@@ -61,6 +54,7 @@
       background: transparent;
     }
 
+    /*
     & > #{$navbar-class} {
       @extend %#{$padding-name}--x2;
 
@@ -88,15 +82,15 @@
         }
       }
     }
-
+    */
 
     // Type styles */
     & > {
       p {
         width: 100%;
-        margin: 0;
       }
 
+      /*
       a:not(#{$button-class}):not(#{$card-class}__image) {
         @extend %#{$padding-name}--3;
       }
@@ -116,8 +110,9 @@
       #{$type-class}--h6 + p {
         @extend %#{$padding-name}--t0;
       }
+      */
     }
-
+    /*
     p,
     #{$card-class}__link,
     #{$card-class}__row {
@@ -127,6 +122,7 @@
     @include headings {
       @extend %#{$padding-name}--3;
     }
+    */
   }
 
 
@@ -154,4 +150,10 @@
     overflow: hidden;
 
   }
+
+  @include harden-border-width($card-name);
+  @include harden-border-radius($card-name);
+  @include extend-flex($selectors: ($card-class,));
+  // @include harden-margin($card-name);
+  // @include harden-padding($card-name);
 }

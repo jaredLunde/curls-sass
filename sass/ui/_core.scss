@@ -1,3 +1,15 @@
+/** Droppable (.drop) **/
+@import 'drop/core';
+
+/** Slidable (.slide) **/
+@import 'slide/core';
+
+/** Hidable (.toggle-display) **/
+@import 'toggle-display/core';
+
+/** Fadable (.fade) **/
+@import 'fade/core';
+
 /** Form (default form styles) **/
 @import 'form/core';
 
@@ -9,9 +21,6 @@
 
 /** Card (.card) */
 @import 'card/core';
-
-/** List (.list) **/
-@import 'list/core';
 
 /** Popover (.popover) **/
 @import 'popover/core';

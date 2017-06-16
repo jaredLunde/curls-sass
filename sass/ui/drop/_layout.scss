@@ -1,0 +1,44 @@
+@include import-once('droppable') {
+  #{$droppable-class} {
+    @extend %hidden;
+    @include transform(translate3d(0, -48.2%, 0));
+    @include drop-in();
+  }
+
+  #{mod($droppable-class, right)} {
+    @include transform(translate3d(48.2%, 0, 0));
+  }
+
+  #{mod($droppable-class, bottom)} {
+    @include transform(translate3d(0, 48.2%, 0));
+  }
+
+  #{mod($droppable-class, left)} {
+    @include transform(translate3d(-48.2%, 0, 0));
+  }
+
+  #{mod($droppable-class, dropped)} {
+    @extend %visible;
+    @include transform(translate3d(0, 0, 0));
+    @include drop-out();
+  }
+
+  @each $name in map-keys($animation-speeds) {
+    #{$droppable-class}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name), map-get($animation-speeds, $name));
+      @include transition-delay(map-get($animation-speeds, $name), 0s, 0s);
+    }
+
+    #{mod($droppable-class, dropped)}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name), map-get($animation-speeds, $name));
+      @include transition-delay(0s);
+    }
+  }
+
+  @each $name in map-keys($timing-functions) {
+    #{$droppable-class}#{$animate-class}--#{$name},
+    #{mod($droppable-class, dropped)}#{$animate-class}--#{$name} {
+      @include transition-timing-function(linear, map-get($timing-functions, $name), map-get($timing-functions, $name));
+    }
+  }
+}

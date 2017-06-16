@@ -1,0 +1,23 @@
+@mixin harden-border-width($base) {
+  @for $x from 1 through length($border-width-scale) {
+    $scale: scale-rem(nth($border-width-scale, $x));
+    $scale-label: $x - 1;
+    @each $type in ('', 't', 'r', 'b', 'l', 'y', 'x') {
+      .#{$base}.#{$border-width-name}--#{$type}#{$scale-label} {
+        @extend %#{$border-width-name}--#{$type}#{$scale-label};
+      }
+    }
+  }
+}
+
+@mixin harden-border-radius($base) {
+  @for $x from 1 through length($border-radius-scale) {
+    $scale: scale-rem(nth($border-radius-scale, $x));
+    $scale-label: $x - 1;
+    @each $type in ('', 't', 'r', 'b', 'l') {
+      .#{$base}.#{$border-radius-name}--#{$type}#{$scale-label} {
+        @extend %#{$border-radius-name}--#{$type}#{$scale-label};
+      }
+    }
+  }
+}

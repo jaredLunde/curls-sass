@@ -1,0 +1,13 @@
+@include import-once('animate') {
+  @each $name in map-keys($animation-speeds) {
+    #{$animate-class}--#{$name} {
+      transition-duration: map-get($animation-speeds, $name);
+    }
+  }
+
+  @each $name in map-keys($timing-functions) {
+    #{$animate-class}--#{$name} {
+      transition-timing-function: map-get($timing-functions, $name);
+    }
+  }
+}

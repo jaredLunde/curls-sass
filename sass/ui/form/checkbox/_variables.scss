@@ -1,7 +1,11 @@
 $checkbox-name: 'checkbox' !default;
 $checkbox-class: ".#{$checkbox-name}" !default;
 
-$checkbox-checkmark-height: 24px !default;
-$checkbox-checkmark-width: 24px !default;
+$checkbox-height: 28px !default;
+$checkbox-width: 28px !default;
 
-$checkbox-checked-background: $blue !default;
+$checkbox-background: $light-grey !default;
+$checkbox-checked-background: $green !default;
+$checkbox-readonly-background: $grey !default;
+$checkbox-border-radius: $MAX-PX !default;
+$checkbox-line-height: 1.0 !default;

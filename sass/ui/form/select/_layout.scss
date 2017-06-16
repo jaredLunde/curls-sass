@@ -1,9 +1,6 @@
 @include import-once('select') {
   #{$select-class} {
-    @extend %#{$flex-name};
-    @extend %#{$flex-name}--y;
     position: relative;
-    @include transform(translateY(100%));
 
     select {
       display: none;
@@ -14,9 +11,12 @@
     #{el($select-class, menu)} {
       @extend %visible;
       margin-top: -1px;
-      @include transform(translateY(0));
-      @include drop-in($FAST);
     }
+  }
+
+  #{el($select-class, toggle)} {
+    position: relative;
+    z-index: 2;
   }
 
   #{el($select-class, menu)} {
@@ -38,11 +38,11 @@
     width: $select-menu-width;
     top: 100%;
     min-width: $select-menu-min-width;
-    @include transform(translateY(100%));
+    z-index: 1;
     @include box-shadow($select-menu-shadow);
-    @include drop-out($FAST);
 
     li {
+      color: $select-item-color;
       width: 100%;
       padding: $select-item-padding-top
                $select-item-padding-right
@@ -75,80 +75,31 @@
       border-top-right-radius: 0 !important;
       border-bottom-right-radius: 0 !important;
     }
+
     & > #{$select-class}:last-child:not(:first-child) #{el($select-class, toggler)} {
       border-left: 0 !important;
       border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
     }
+
     & > #{$select-class}:not(:first-child):not(:last-child) #{el($select-class, toggler)} {
       border-left: 0 !important;
       border-radius: 0 !important;
     }
+
     #{$select-class} {
       margin: 0;
-    }
-    #{el($select-class, toggler)} {
-      @include break-for(gutters--x)
     }
   }
 
 
   #{el($select-class, caret)} {
     @extend %transform--fast;
-    @extend %#{$flex-name}--self-center;
-    @extend %#{$type-name}--sm;
-    left: 6px;
-    color: $select-toggler-color;
+    left: 12px;
     position: relative;
   }
 
   #{mod($select-class, open)} #{el($select-class, caret)} {
-    top: -1px;
-    @include transform(rotate(180deg));
-  }
-
-
-  #{el($select-class, toggler)},
-  button#{el($select-class, toggler)},
-  #{$button-class}#{el($select-class, toggler)} {
-    @extend %#{$flex-name}--y-center;
-    background: $select-toggler-background;
-    color: $select-toggler-color;
-    border-style: $select-toggler-border-style;
-    border-width: $select-toggler-border-width;
-    border-color: $select-toggler-border-color;
-    border-radius: $select-toggler-border-radius;
-    line-height: $select-toggler-line-height;
-    padding: $select-toggler-padding-top
-             $select-toggler-padding-right
-             $select-toggler-padding-bottom
-             $select-toggler-padding-left;
-    width: 100%;
-    margin: 0;
-
-    &.hover {
-      @extend %#{el($select-name, toggler)}--hover;
-    }
-
-    &.active {
-      @extend %#{el($select-name, toggler)}--active;
-    }
-  }
-
-
-  #{$select-class}#{mod($select-class, open)} #{el($select-class, toggler)},
-  .no-touchevents #{$select-class}#{mod($select-class, open)} #{el($select-class, toggler)}:hover {
-    @extend %#{el($select-name, toggler)}--active;
-  }
-
-
-  .no-touchevents #{el($select-class, toggler)} {
-    &:hover {
-      @extend %#{el($select-name, toggler)}--hover;
-    }
-
-    &:active {
-      @extend %#{el($select-name, toggler)}--active;
-    }
+    @include transform(rotate(-180deg));
   }
 }

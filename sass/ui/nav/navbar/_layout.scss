@@ -11,10 +11,6 @@
     width: $navbar-width;
     @include break-for(gutters--x);
 
-    &#{$grid-class}--nopad {
-      @extend %#{$padding-name}--0;
-    }
-
     & > * {
       @extend %#{$flex-name};
       @extend %#{$flex-name}--fixed;
@@ -128,4 +124,8 @@
     @extend %fixed-bottom-fw;
     border-bottom: 0;
   }
+
+  @include harden-border-width($navbar-name);
+  @include extend-flex($selectors: ($navbar-class,));
+  @include harden-padding($navbar-name);
 }

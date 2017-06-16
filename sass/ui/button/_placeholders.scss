@@ -1,5 +1,7 @@
 @include import-once('button-placeholders') {
   %#{$button-name}, %button {
+    @extend %flex;
+    @extend %flex--x;
     @extend %#{$flex-name}--y-center;
     background: $button-background;
     color: $button-color;
@@ -9,7 +11,6 @@
     border-radius: $button-border-radius;
     line-height: $button-line-height;
     outline: 0;
-    @include break-for(margin-gutters--y);
 
     &.hover {
       @extend %#{$button-name}--hover;
@@ -40,7 +41,7 @@
   }
 
 
-  %#{$button-name}--s {
+  %#{$button-name}--sm {
     padding: $button-sm-padding-top
              $button-sm-padding-right
              $button-sm-padding-bottom
@@ -51,7 +52,7 @@
   }
 
 
-  %#{$button-name}--m {
+  %#{$button-name}--md {
     padding: $button-md-padding-top
              $button-md-padding-right
              $button-md-padding-bottom
@@ -62,7 +63,7 @@
   }
 
 
-  %#{$button-name}--l  {
+  %#{$button-name}--lg  {
     padding: $button-lg-padding-top
              $button-lg-padding-right
              $button-lg-padding-bottom

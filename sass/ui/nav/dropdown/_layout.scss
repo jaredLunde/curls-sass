@@ -1,101 +1,19 @@
 @include import-once('dropdown') {
   #{$dropdown-class} {
-    @extend %#{$flex-name};
-    @extend %#{$flex-name}--y-center;
-    position: relative;
-
-    &#{mod($dropdown-class, open)} #{el($dropdown-class, menu)} {
-      @extend %visible;
-      margin-top: -3px;
-      z-index: 1;
-      opacity: 1.0;
-      @include transform(translate3d(0, 0, 0))
-      @include drop-in($FAST);
-    }
-  }
-
-
-  .input-group, #{$button-class}-group {
-    & > #{$dropdown-class}:first-child:not(:last-child) #{el($dropdown-class, toggler)} {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
-    }
-    & > #{$dropdown-class}:last-child:not(:first-child) #{el($dropdown-class, toggler)} {
-      border-left: 0 !important;
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
-    }
-    & > #{$dropdown-class}:not(:first-child):not(:last-child) #{el($dropdown-class, toggler)} {
-      border-left: 0 !important;
-      border-radius: 0 !important;
-    }
-    #{$dropdown-class} {
-      margin: 0;
-    }
-  }
-
-
-  #{el($dropdown-class, caret)} {
-    @extend %transform--fast;
-    @extend %#{$flex-name}--self-center;
-    @extend %#{$type-name}--sm;
-    left: 6px;
-    color: $dropdown-toggler-color;
     position: relative;
   }
 
-
-  #{mod($dropdown-class, open)} #{el($dropdown-class, caret)} {
-    top: -1px;
-    @include transform(rotate(180deg));
+  #{$dropdown-class} button,
+  #{$dropdown-class} #{$button-class} {
+    z-index: 2;
+    position: relative;
   }
-
-
-  #{el($dropdown-class, toggler)},
-  button#{el($dropdown-class, toggler)},
-  #{$button-class}#{el($dropdown-class, toggler)} {
-    @extend %#{$flex-name}--y-center;
-    background: $dropdown-toggler-background;
-    color: $dropdown-toggler-color;
-    border-style: $dropdown-toggler-border-style;
-    border-width: $dropdown-toggler-border-width;
-    border-color: $dropdown-toggler-border-color;
-    border-radius: $dropdown-toggler-border-radius;
-    line-height: $dropdown-toggler-line-height;
-    width: 100%;
-    margin: 0;
-
-    &.hover {
-      @extend %#{$dropdown-name}__toggler--hover;
-    }
-
-    &.active {
-      @extend %#{$dropdown-name}__toggler--active;
-    }
-  }
-
-
-  #{$dropdown-class}#{mod($dropdown-class, open)} #{el($dropdown-class, toggler)},
-  .no-touchevents #{$dropdown-class}#{mod($dropdown-class, open)} #{el($dropdown-class, toggler)}:hover {
-    @extend %#{$dropdown-name}__toggler--active;
-  }
-
-
-  .no-touchevents #{el($dropdown-class, toggler)} {
-    &:hover {
-      @extend %#{$dropdown-name}__toggler--hover;
-    }
-
-    &:active {
-      @extend %#{$dropdown-name}__toggler--active;
-    }
-  }
-
 
   #{el($dropdown-class, menu)} {
-    @extend %hidden;
-    @extend %absolute-top;
-    z-index: -1000;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    z-index: 1;
     background: $dropdown-background;
     border-color: $dropdown-border-color;
     border-style: $dropdown-border-style;
@@ -103,60 +21,46 @@
     border-radius: $dropdown-border-radius;
     padding: $dropdown-padding-top $dropdown-padding-right
              $dropdown-padding-bottom $dropdown-padding-left;
-    width: $dropdown-width;
     min-width: $dropdown-min-width;
-    text-align: $dropdown-text-align;
+    box-shadow: $dropdown-box-shadow;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    opacity: 0.0;
-    @include transform(perspective(400px) translate3d(0, 100%, -200px));
-    @include box-shadow($dropdown-shadow);
-    @include drop-out($FAST);
-
-    li {
-      a {
-        display: block;
-        clear: both;
-        white-space: nowrap;
-        color: $dropdown-link-color;
-        background: $dropdown-link-background;
-        border-color: $dropdown-link-border-color;
-        border-style: $dropdown-link-border-style;
-        border-width: $dropdown-link-border-width;
-        padding: $dropdown-link-padding-top $dropdown-link-padding-right
-                 $dropdown-link-padding-bottom $dropdown-link-padding-left;
-      }
-    }
   }
 
-
-  .no-touchevents #{el($dropdown-class, menu)} li a {
-    &:hover {
-      color: $dropdown-link-hover-color;
-      background: $dropdown-link-hover-background;
-      border-color: $dropdown-link-hover-border-color;
-      border-style: $dropdown-link-hover-border-style;
-      border-width: $dropdown-link-hover-border-width;
-    }
-
-    &:active {
-      color: $dropdown-link-active-color;
-      background: $dropdown-link-active-background;
-      border-color: $dropdown-link-active-border-color;
-      border-style: $dropdown-link-active-border-style;
-      border-width: $dropdown-link-active-border-width;
-    }
+  #{el($dropdown-class, caret)} {
+    @extend %type--xxs;
+    @extend %transform--fast;
+    display: inline-block;
+    left: 6px;
+    position: relative;
+    color: $button-color;
+    transform: rotate(0);
+    font-weight: 700;
   }
 
+  #{mod($dropdown-class, open)} #{el($dropdown-class, caret)} {
+    transform: rotate(-180deg);
+  }
 
-  #{el($dropdown-class, heading)} {
-    white-space: nowrap;
-    clear: both;
-    padding: $dropdown-heading-padding-top $dropdown-heading-padding-right
-             $dropdown-heading-padding-bottom $dropdown-heading-padding-left;
-    @include font-line($dropdown-heading-font-size,
-                       $dropdown-heading-line-height,
-                       $color: $dropdown-heading-color,
-                       $weight: $dropdown-heading-weight);
+  .input-group, #{$button-class}-group {
+    & > #{$dropdown-class}:first-child:not(:last-child) #{$button-class} {
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    & > #{$dropdown-class}:last-child:not(:first-child) #{$button-class}{
+      border-left: 0 !important;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+
+    & > #{$dropdown-class}:not(:first-child):not(:last-child) #{$button-class} {
+      border-left: 0 !important;
+      border-radius: 0 !important;
+    }
+
+    #{$dropdown-class} {
+      margin: 0;
+    }
   }
 }

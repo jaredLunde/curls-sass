@@ -1,62 +1,81 @@
 @include import-once('checkbox') {
   #{$checkbox-class} {
     @extend %#{$flex-name};
-    @extend %#{$flex-name}--y-stretch;
-    padding: 0 8px;
+    @extend %#{$flex-name}--y-center;
+    @include line-height($checkbox-line-height);
+
+    &:hover {
+      cursor: pointer;
+    }
 
     input[type=checkbox] {
       display: none;
     }
   }
 
-  #{$checkbox-class} label {
+  #{$checkbox-class} label,
+  #{el($checkbox-class, label)} {
     @extend %#{$flex-name};
+    @extend %#{$flex-name}--self-stretch;
     @extend %#{$flex-name}--y-center;
-    padding: 0 0 0 8px;
-    @include font-line(16px, 100%);
-
-    &:hover {
-      cursor: pointer;
-    }
   }
-
 
   #{el($checkbox-class, box)} {
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y-center;
     @extend %#{$flex-name}--x-center;
-    border-width: 1px;
-    border-style: solid;
-    border-color: $light-border;
-    background: $light-grey;
-    color: $blue;
-    border-radius: $MAX-PX;
-    height: $checkbox-checkmark-height;
-    width: $checkbox-checkmark-width;
-    @include animate(background $FAST linear);
+    background: $checkbox-background;
+    border-radius: $checkbox-border-radius;
+    height: $checkbox-height;
+    width: $checkbox-width;
+    @include animate(background $FAST $SWIFT-MOVE);
+  }
 
-    & > * {
-      @extend %#{$flex-name};
+  #{el($checkbox-class, checkmark)} {
+    @extend %#{$flex-name};
+    @extend %#{$flex-name}--y-center;
+    @extend %#{$flex-name}--x-center;
+    @extend %hidden;
+    width: 60%;
+    height: 80%;
+    @include fade-in($FAST);
+  }
+
+  #{mod($checkbox-class, checked)} {
+    #{el($checkbox-class, checkmark)} {
+      @extend %visible;
+      @include fade-out($FAST);
     }
 
-    &:hover {
-      cursor: pointer;
+    #{el($checkbox-class, box)} {
+      background: $checkbox-checked-background;
     }
   }
 
+  #{mod($checkbox-class, readonly)} {
+    #{el($checkbox-class, box)} {
+      background: $checkbox-readonly-background;
+    }
+  }
 
   .no-touchevents {
     #{el($checkbox-class, box)}:hover #{el($checkbox-class, checkmark)} {
-      visibility: visible;
+      @extend %visible;
       opacity: 0.5;
     }
 
-    #{$checkbox-class}:not(.checked):hover {
+    #{$checkbox-class}:hover {
       cursor: pointer;
 
       #{el($checkbox-class, checkmark)} {
+        @extend %visible;
         opacity: 0.5;
-        visibility: visible;
+      }
+    }
+
+    #{mod($checkbox-class, checked)}:hover {
+      #{el($checkbox-class, checkmark)} {
+        opacity: 1.0;
       }
     }
 
@@ -66,32 +85,6 @@
     }
   }
 
-
-  #{el($checkbox-class, checkmark)} {
-    @extend %#{$flex-name};
-    @extend %#{$flex-name}--y-center;
-    @extend %#{$flex-name}--x-center;
-    color: $white;
-    visibility: hidden;
-    opacity: 0;
-    @include fade-in($FAST);
-
-    & > * {
-      @extend %#{$flex-name};
-    }
-  }
-
-  #{$checkbox-class}.checked {
-    #{el($checkbox-class, checkmark)} {
-      visibility: visible;
-      opacity: 1.0;
-      color: $white;
-      @include fade-out($FAST);
-    }
-
-    #{el($checkbox-class, box)} {
-      border-color: $checkbox-checked-background;
-      background: $checkbox-checked-background;
-    }
-  }
+  @include harden-border-radius(el($checkbox-name, box));
+  @include extend-flex($selectors: ($checkbox-class,));
 }

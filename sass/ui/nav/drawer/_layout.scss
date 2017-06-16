@@ -1,84 +1,45 @@
 @include import-once('drawer') {
   #{$drawer-class} {
-    @extend %#{$flex-name}--y-top;
     display: block;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    min-height: 100%;
     background: $drawer-background;
-    z-index: -1000;
-    border-width: 0 $drawer-border-width 0 0;
-    border-style: $drawer-border-style;
-    border-color: $drawer-border-color;
-    overflow-y: auto;
-    @include transform(translate3d(-100%, 0, 0));
+    z-index: $MAX-Z-INDEX;
     @include box-shadow($drawer-box-shadow);
-    @include slide($SLOW, ease-in-out);
   }
 
   #{mod($drawer-class, absolute)} {
     position: absolute;
   }
 
-  #{mod($drawer-class, open)} {
-    @include transform(translate3d(0, 0, 0));
-    z-index: $MAX-Z-INDEX;
-    @include slide($SLOW, ease-in-out);
-  }
-
-  #{$drawer-class} #{$list-class} {
-    border: 0;
-    margin: 0;
-  }
-
-  #{mod($drawer-class, top)} {
-    left: 0;
+  #{$drawer-class}#{mod($slidable-class, top)},
+  #{$drawer-class}#{mod($slidable-class, bottom)} {
     right: 0;
-    top: 0;
-    bottom: auto;
+    left: 0;
     min-width: 100%;
-    min-height: initial;
-    border-width: 0 0 $drawer-border-width 0;
-    @include transform(translate3d(0, -100%, 0));
-    @include slide($SLOW, ease-in-out);
+    overflow-x: auto;
   }
 
-  #{mod($drawer-class, top)}#{mod($drawer-class, open)} {
-    @include transform(translate3d(0, 0, 0));
-    @include slide($SLOW, ease-in-out);
-  }
-
-  #{mod($drawer-class, right)} {
-    left: auto;
+  #{$drawer-class}#{mod($slidable-class, left)},
+  #{$drawer-class}#{mod($slidable-class, right)} {
     top: 0;
     bottom: 0;
+    min-height: 100%;
+    overflow-y: auto;
+  }
+
+  #{$drawer-class}#{mod($slidable-class, top)} {
+    top: 0;
+  }
+
+  #{$drawer-class}#{mod($slidable-class, right)} {
     right: 0;
-    border-width: 0 0 0 $drawer-border-width;
-    @include transform(translate3d(100%, 0, 0));
-    @include slide($SLOW, ease-in-out);
   }
 
-  #{mod($drawer-class, right)}#{mod($drawer-class, open)} {
-    @include transform(translate3d(0, 0, 0));
-    @include slide($SLOW, ease-in-out);
-  }
-
-  #{mod($drawer-class, bottom)} {
-    left: 0;
-    top: auto;
+  #{$drawer-class}#{mod($slidable-class, bottom)} {
     bottom: 0;
-    right: 0;
-    min-height: initial;
-    width: 100%;
-    border-width: $drawer-border-width 0 0 0;
-    @include transform(translate3d(0, 100%, 0));
-    @include slide($SLOW, ease-in-out);
   }
 
-  #{mod($drawer-class, bottom)}#{mod($drawer-class, open)} {
-    @include transform(translate3d(0, 0, 0));
-    @include slide($SLOW, ease-in-out);
+  #{$drawer-class}#{mod($slidable-class, left)} {
+    left: 0;
   }
 }

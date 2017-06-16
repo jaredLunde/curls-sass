@@ -1,5 +1,5 @@
 $bg-name: bg !default;
-$border-name: border !default;
+$border-name: bc !default;
 $bg-class: ".#{$bg-name}" !default;
 $border-class: ".#{$border-name}" !default;
 
@@ -34,34 +34,42 @@ $darker-grey: darken($grey, 15%) !default;
 $darkest-grey: darken($grey, 20%) !default;
 $black: darken($darkest-grey, 5%) !default;
 $white: #fefeff !default;
-
+$translucent-dark: rgba(0, 0, 0, 0.6);
+$translucent: rgba(0, 0, 0, 0.4);
+$translucent-light: rgba(0, 0, 0, 0.2);
+$translucent-white: rgba(255, 255, 255, 0.6);
 
 // Color map
 $colors: (
-  blue: $blue,
+  'blue': $blue,
   dark-blue: $dark-blue,
   light-blue: $light-blue,
-  green: $green,
+  'green': $green,
   dark-green: $dark-green,
   light-green: $light-green,
-  red: $red,
+  'red': $red,
   dark-red: $dark-red,
   light-red: $light-red,
-  yellow: $yellow,
+  'yellow': $yellow,
   dark-yellow: $dark-yellow,
   light-yellow: $light-yellow,
-  orange: $orange,
+  'orange': $orange,
   dark-orange: $dark-orange,
   light-orange: $light-orange,
   lightest-grey: $lightest-grey,
   lighter-grey: $lighter-grey,
   light-grey: $light-grey,
-  grey: $grey,
+  'grey': $grey,
   dark-grey: $dark-grey,
   darker-grey: $darker-grey,
   darkest-grey: $darkest-grey,
-  black: $black,
-  white: $white
+  'black': $black,
+  'white': $white,
+  'transparent': transparent,
+  translucent-dark:$translucent-dark,
+  translucent: $translucent,
+  translucent-light: $translucent-light,
+  translucent-white: $translucent-white
 );
 
 

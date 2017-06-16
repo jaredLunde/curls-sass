@@ -25,7 +25,7 @@ var modernizrConfig = {
 }
 */
 
-
+var extractSass = new ExtractTextPlugin('curls.css')
 var stripLogger = 'strip-loader?strip[]=console.error' +
                               '&strip[]=console.log' +
                               '&strip[]=console.warn'
@@ -47,6 +47,21 @@ module.exports = {
     libraryTarget: 'umd'
   },
 
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    reactDom: {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
+  },
+
   resolveLoader: {
     modules: [path.join(__dirname, 'node_modules')],
     moduleExtensions: ['-loader'],
@@ -64,20 +79,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style',
-          use: [
-            'css?minifier',
-          ]
-        })
-      },
-      {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        use: extractSass.extract({
           fallback: 'style',
           use: [
-            'css?minifier',
+            'css',
             'group-css-media-queries',
             'sass'
           ]
@@ -121,7 +127,7 @@ module.exports = {
       minimize: true,
       debug: false
     }),
-    new ExtractTextPlugin('curls.css')
+    extractSass
   ],
 
   // Include mocks for when node.js specific modules may be required

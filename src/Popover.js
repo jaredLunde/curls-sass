@@ -5,39 +5,6 @@ import {flexProps, spacingProps, nodeProps} from './props'
 import waitForImages from './waitForImages'
 import PureComponent from './PureComponent'
 
-/*
-function bound(el, pad = 8) {
-  const newStyles = {top: null, bottom: null, left: null, right: null}
-  const rect = el.getBoundingClientRect()
-
-  const clientWidth = document.documentElement.clientWidth
-  const clientHeight = document.documentElement.clientHeight
-
-  const isOffTop = rect.top < 0
-  const isOffLeft = rect.left < 0
-  const isOffRight = (clientWidth - rect.left) <= rect.width
-  const isOffBottom = rect.height - (clientHeight - rect.top)
-
-  if (isOffTop)
-    newStyles.top = (parseInt(el.style.top, 10) +
-                    Math.abs(rect.top) + pad) + 'px'
-
-  if (isOffLeft)
-    newStyles.left = (parseInt(el.style.left, 10) +
-                     Math.abs(rect.left) + pad) + 'px'
-
-  if (isOffRight) {
-    newStyles.right = (parseInt(clientWidth - rect.left, 10) +
-                      Math.abs(rect.top) + pad) + 'px'
-  }
-
-  if (isOffBottom) {
-    newStyles.bottom = (parseInt(el.style.top, 10) + Math.abs(rect.top) + pad) + 'px'
-  }
-
-  return newStyles
-}
-*/
 
 export default class Popover extends PureComponent {
   static displayName = 'Popover'

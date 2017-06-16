@@ -1,11 +1,9 @@
 @include import-once('button') {
-  button, #{$button-class} {
+  #{$button-class} {
     @extend %button;
   }
 
-
-  .no-touchevents #{$button-class},
-  .no-touchevents button {
+  .no-touchevents #{$button-class} {
     &:hover {
       @extend %#{$button-name}--hover;
     }
@@ -16,32 +14,32 @@
   }
 
 
-  #{$button-class}--s,
-  #{$button-class}--s button,
-  #{$button-class}--s #{$button-class} {
-    @extend %#{$button-name}--s;
+  #{$button-class}--sm,
+  #{$button-class}--sm button,
+  #{$button-class}--sm #{$button-class} {
+    @extend %#{$button-name}--sm;
   }
 
 
-  #{$button-class}--m,
-  #{$button-class}--m button,
-  #{$button-class}--m #{$button-class} {
-    @extend %#{$button-name}--m;
+  #{$button-class}--md,
+  #{$button-class}--md button,
+  #{$button-class}--md #{$button-class} {
+    @extend %#{$button-name}--md;
   }
 
-  #{$button-class}--l,
-  #{$button-class}--l button,
-  #{$button-class}--l #{$button-class} {
-    @extend %#{$button-name}--l;
+  #{$button-class}--lg,
+  #{$button-class}--lg button,
+  #{$button-class}--lg #{$button-class} {
+    @extend %#{$button-name}--lg;
   }
 
 
   @include colorized-buttons();
 
 
-  #{$button-class}-group#{$button-class}--l,
-  #{$button-class}-group#{$button-class}--m,
-  #{$button-class}-group#{$button-class}--s  {
+  #{$button-class}-group#{$button-class}--lg,
+  #{$button-class}-group#{$button-class}--md,
+  #{$button-class}-group#{$button-class}--sm  {
     @extend %#{$padding-name}--0;
   }
 
@@ -53,4 +51,17 @@
       @extend %#{$flex-name}--fluid;
     }
   }
+
+  @include harden-border-width($button-name);
+  @include harden-border-radius($button-name);
+
+  .no-touchevents {
+    @include harden-border-width('#{$button-name}:hover');
+    @include harden-border-radius('#{$button-name}:hover');
+    @include harden-border-width('#{$button-name}:active');
+    @include harden-border-radius('#{$button-name}:active');
+  }
+
+  @include extend-flex($selectors: ($button-class,));
+  @include harden-padding($button-name);
 }

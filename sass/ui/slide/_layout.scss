@@ -1,0 +1,45 @@
+@include import-once('slidable') {
+  #{$slidable-class} {
+    @extend %hidden;
+    opacity: 1.0;
+    @include transform(translate3d(0, -100%, 0));
+    @include slide-in();
+  }
+
+  #{mod($slidable-class, right)} {
+    @include transform(translate3d(100%, 0, 0));
+  }
+
+  #{mod($slidable-class, bottom)} {
+    @include transform(translate3d(0, 100%, 0));
+  }
+
+  #{mod($slidable-class, left)} {
+    @include transform(translate3d(-100%, 0, 0));
+  }
+
+  #{mod($slidable-class, slid)} {
+    @extend %visible;
+    @include transform(translate3d(0, 0, 0));
+    @include slide-out();
+  }
+
+  @each $name in map-keys($animation-speeds) {
+    #{$slidable-class}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name));
+      @include transition-delay(map-get($animation-speeds, $name), 0s);
+    }
+
+    #{mod($slidable-class, slid)}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name));
+      @include transition-delay(0s);
+    }
+  }
+
+  @each $name in map-keys($timing-functions) {
+    #{$slidable-class}#{$animate-class}--#{$name},
+    #{mod($slidable-class, slid)}#{$animate-class}--#{$name} {
+      @include transition-timing-function(linear, map-get($timing-functions, $name));
+    }
+  }
+}

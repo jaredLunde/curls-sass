@@ -6,6 +6,7 @@ $popover-background: $white !default;
 $popover-border-width: $border-width !default;
 $popover-border-color: $border !default;
 $popover-border-style: $border-style !default;
-$popover-border-radius: 2px !default;
-
-$popover-caret-size: 12px !default;
+$popover-border-radius: scale-rem(nth($border-radius-scale, 2)) !default;
+$popover-transition-delay-in: 0.36s !default;
+$popover-transition-delay-out: 0.36s !default;
+$popover-caret-size: calculate-rem(12px) !default;

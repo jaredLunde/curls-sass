@@ -1,0 +1,30 @@
+@include import-once('fadable') {
+  #{$fadable-class} {
+    @extend %hidden;
+    @include fade-in();
+  }
+
+  #{mod($fadable-class, visible)} {
+    @extend %visible;
+    @include fade-out();
+  }
+
+  @each $name in map-keys($animation-speeds) {
+    #{$fadable-class}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name));
+      @include transition-delay(map-get($animation-speeds, $name), 0s);
+    }
+
+    #{mod($fadable-class, visible)}#{$animate-class}--#{$name} {
+      @include transition-duration(0s, map-get($animation-speeds, $name));
+      @include transition-delay(0s);
+    }
+  }
+
+  @each $name in map-keys($timing-functions) {
+    #{$fadable-class}#{$animate-class}--#{$name},
+    #{mod($fadable-class, visible)}#{$animate-class}--#{$name} {
+      @include transition-timing-function(linear, map-get($timing-functions, $name));
+    }
+  }
+}

@@ -1,7 +1,6 @@
 @include import-once('paginate') {
   #{$paginate-class} {
     @extend %input-group;
-    // @extend %media-margin-gutters-half;
     width: auto;
     border: 0;
     @include font-line($paginate-font-size,
@@ -9,26 +8,31 @@
                        $weight: $paginate-font-weight);
 
     & > a:first-child:not(:last-child),
+    #{el($paginate-class, next)}:first-child:not(:last-child),
+    #{el($paginate-class, prev)}:first-child:not(:last-child),
     #{$paginate-link-class}:first-child:not(:last-child),
     li:first-child:not(:last-child) a {
-      border-top-right-radius: 0 !important;
-      border-bottom-right-radius: 0 !important;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
     & > a:last-child:not(:first-child),
+    #{el($paginate-class, next)}:last-child:not(:first-child),
+    #{el($paginate-class, prev)}:last-child:not(:first-child),
     #{$paginate-link-class}:last-child:not(:first-child),
     li:last-child:not(:first-child) a {
-      border-left: 0 !important;
-      border-top-left-radius: 0 !important;
-      border-bottom-left-radius: 0 !important;
+      border-left: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
     & > a:not(:first-child):not(:last-child),
+    #{el($paginate-class, next)}:not(:first-child):not(:last-child),
+    #{el($paginate-class, prev)}:not(:first-child):not(:last-child),
     #{$paginate-link-class}:not(:first-child):not(:last-child),
     li:not(:first-child):not(:last-child) a {
-      border-left: 0 !important;
-      border-radius: 0 !important;
+      border-left: 0;
+      border-radius: 0;
     }
   }
-
 
   #{$paginate-class} ul,
   #{$paginate-class} ol,
@@ -37,11 +41,11 @@
     @extend %#{$flex-name}--self-stretch;
   }
 
-
-
   #{$paginate-class} > a,
   #{$paginate-class} li a,
-  #{$paginate-link-class} {
+  #{$paginate-link-class},
+  #{el($paginate-class, next)},
+  #{el($paginate-class, prev)} {
     @extend %#{$flex-name};
     @extend %#{$flex-name}--self-stretch;
     @extend %#{$flex-name}--y-center;
@@ -53,25 +57,28 @@
     border-radius: $paginate-link-border-radius;
     padding: $paginate-link-padding;
 
-    &.disabled {
-      @extend .disabled;
-    }
-
-    &.active {
+    &#{$paginate-class}--current {
       color: $paginate-link-active-color;
     }
-  }
 
+    &#{$paginate-class}--disabled {
+      @extend .disabled;
+    }
+  }
 
   .no-touchevents {
     #{$paginate-class} > a:hover,
     #{$paginate-class} li a:hover,
-    #{$paginate-link-class}:hover {
+    #{$paginate-link-class}:hover,
+    #{el($paginate-class, next)}:hover,
+    #{el($paginate-class, prev)}:hover {
       color: $paginate-link-hover-color;
     }
 
-    #{$paginate-class} .disabled:hover {
+    #{$paginate-class}--disabled:hover {
       color: $disabled-link-color;
     }
   }
+
+  @include extend-flex($selectors: ($paginate-class,));
 }

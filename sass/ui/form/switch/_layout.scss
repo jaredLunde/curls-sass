@@ -1,0 +1,76 @@
+@include import-once('switch') {
+  #{$toggler-class} {
+    @extend #{$checkbox-class};
+    min-height: $toggler-toggle-size;
+
+    label:hover {
+      cursor: pointer;
+    }
+  }
+
+
+  #{el($toggler-class, control)} {
+    @extend %pill;
+    @extend %#{$flex-name};
+    @extend %#{$flex-name}--y-center;
+    width: $toggler-control-width;
+    height: $toggler-control-height;
+    background-color: $toggler-control-off-background;
+    border: $toggler-control-padding solid $toggler-control-off-background;
+    box-shadow: $toggler-control-box-shadow;
+    @include animate(background-color $MED $SWIFT-OUT);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  #{mod($toggler-class, readonly)} {
+    #{el($toggler-class, control)}, {
+      background-color: $toggler-control-readonly-off-background;
+    }
+
+    #{el($toggler-class, toggle)} {
+      background-color: $toggler-toggle-readonly-off-background;
+    }
+  }
+
+  #{mod($toggler-class, readonly)}#{$toggler-class}--on {
+      #{el($toggler-class, control)}, {
+        background-color: $toggler-control-readonly-on-background;
+      }
+
+      #{el($toggler-class, toggle)} {
+        background-color: $toggler-toggle-readonly-on-background;
+      }
+  }
+
+  #{el($toggler-class, toggle)} {
+    @extend %#{$flex-name};
+    border-radius: $toggler-border-radius;
+    width: $toggler-toggle-size;
+    height: $toggler-toggle-size;
+    background-color: $toggler-toggle-off-background;
+    box-shadow: $toggler-toggle-box-shadow;
+    border-color: $toggler-toggle-border-color;
+    border-width: $toggler-toggle-border-width;
+    border-style: solid;
+    @include transform(translate3d(0, 0, 0));
+    @include animate(transform $MED $SWIFT-MOVE,
+                     background-color $MED $SWIFT-MOVE);
+  }
+
+  #{mod($toggler-class, on)} {
+    #{el($toggler-class, control)} {
+      background-color: $toggler-control-on-background;
+      border: $toggler-control-padding solid $toggler-control-on-background;
+    }
+
+    #{el($toggler-class, toggle)} {
+      background-color: $toggler-toggle-on-background;
+      @include transform(translate3d($toggler-toggle-size - $toggler-control-padding * 2, 0, 0));
+    }
+  }
+
+  @include extend-flex($selectors: ($toggler-class,));
+}
