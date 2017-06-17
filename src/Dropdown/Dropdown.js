@@ -29,10 +29,6 @@ export const DropdownToggle = ({
     <span className='dropdown__label'>
       {label}
     </span>
-
-    <span className='dropdown__caret' aria-hidden='true'>
-      ∨
-    </span>
   </Button>
 )
 

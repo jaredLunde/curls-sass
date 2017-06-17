@@ -39,13 +39,14 @@ export const SelectToggle = ({
     </Type>
 
     <Type
-      xxs
+      md
       heavy
       darkestGrey
+      m='l3'
       className='select__caret'
       aria-hidden='true'
     >
-      v
+      ⌄
     </Type>
   </Button>
 )
@@ -53,6 +54,7 @@ export const SelectToggle = ({
 export const SelectMenu = ({
   className,
   isVisible,
+  isSelected,
   option,
   options,
   style,
@@ -71,6 +73,7 @@ export const SelectMenu = ({
         (o, n) => option({
           option: o,
           select,
+          isSelected,
           n
         })
       )
@@ -93,12 +96,18 @@ const getOptionName = selection => getOptionLike(selection, 'name')
 export const SelectOption = ({
   option,
   select,
+  isSelected,
   n,
+  className = 'select__option',
   ...props
 }) => (
   <li
     onClick={() => select(option)}
-    className='select__option'
+    className={
+      isSelected(option)
+      ? joinClassName({className}, 'type--semi-bold')
+      : className
+    }
     key={n}
     {...props}
   >
@@ -183,6 +192,7 @@ Select.prototype.render = function () {
         option,
         options,
         isVisible,
+        isSelected,
         select: this.makeSelection.bind(this),
         className: dropClassName,
         style: {willChange}

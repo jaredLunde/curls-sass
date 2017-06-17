@@ -1,6 +1,6 @@
 {
   "name": "curls",
-  "version": "0.4.0-alpha.0",
+  "version": "0.4.0-alpha.1",
   "main": "es/index",
   "module": "es/index",
   "jsnext:main": "es/index",
@@ -11,7 +11,7 @@
     "react-immutable-proptypes": "^2.1.0"
   },
   "peerDependencies": {
-    "immutable": ">=3.x",
+    "immutable": "4.0.0-rc.2",
     "react": ">=15.x",
     "react-dom": ">=15.x"
   },

@@ -6,9 +6,7 @@
     display: block;
     position: absolute;
     background: $popover-background;
-    border-width: $popover-border-width;
-    border-color: $popover-border-color;
-    border-style: $popover-border-style;
+    box-shadow: $popover-box-shadow;
     border-radius: $popover-border-radius;
 
     &#{$droppable-class} {

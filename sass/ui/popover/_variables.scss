@@ -4,9 +4,10 @@ $popover-class: '.#{$popover-name}' !default;
 
 $popover-background: $white !default;
 $popover-border-width: $border-width !default;
-$popover-border-color: $border !default;
+$popover-border-color: transparent !default;
 $popover-border-style: $border-style !default;
 $popover-border-radius: scale-rem(nth($border-radius-scale, 2)) !default;
+$popover-box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.122132), 0px 2px 4px rgba(0, 0, 0, 0.24) !default;
 $popover-transition-delay-in: 0.36s !default;
 $popover-transition-delay-out: 0.36s !default;
 $popover-caret-size: calculate-rem(12px) !default;
