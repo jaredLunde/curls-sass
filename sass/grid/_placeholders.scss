@@ -3,7 +3,7 @@
     @extend %#{$flex-name};
     @extend %#{$flex-name}--wrap;
     @extend %#{$flex-name}--x;
-    @include flex-basis(100%);
+    width: 100%;
     @include break-for(gutters--x); // Gutters
   }
 

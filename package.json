@@ -7,7 +7,6 @@
   "esnext": "src/index",
   "private": false,
   "dependencies": {
-    "react-cake": "file:../../../../pkg/cake",
     "react-immutable-proptypes": "^2.1.0"
   },
   "peerDependencies": {

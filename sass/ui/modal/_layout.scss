@@ -1,0 +1,65 @@
+@include import-once('modal') {
+  #{$modal-class} {
+    @extend %#{$flex-name};
+    @extend %#{$flex-name}--y-center;
+    @extend %#{$flex-name}--x-center;
+    position: $modal-position;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: $modal-width;
+    height: $modal-height;
+    text-align: $modal-text-align;
+    overflow: $modal-overflow;
+    z-index: $modal-z-index;
+    background-color: $modal-background;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @each $key in map-keys($modal-breakpoints) {
+    @include breakpoint($key) {
+      #{$modal-class} {
+        @include print(map-get($modal-breakpoints, $key));
+      }
+    }
+  }
+
+  #{$modal-content-class} {
+    @extend %hidden;
+    overflow: $modal-content-overflow;
+    -webkit-overflow-scrolling: touch;
+    @include transform(translate3d(0, 100%, 0));
+  }
+
+  @each $pos in (top, right, bottom, left) {
+    #{$modal-content-class}#{mod($droppable-class, $pos)} {
+      @if ($pos == 'top') {
+        @include transform(translate3d(0, -100%, 0));
+      } @else if ($pos == 'bottom') {
+        @include transform(translate3d(0, 100%, 0));
+      } @else if ($pos == 'right') {
+        @include transform(translate3d(100%, 0, 0));
+      } @else {
+        @include transform(translate3d(-100%, 0, 0));
+      }
+    }
+  }
+
+  #{mod($droppable-class, dropped)} {
+    &#{$modal-content-class} {
+      @extend %visible;
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+
+  @each $key in map-keys($modal-content-breakpoints) {
+    @include breakpoint($key) {
+      #{$modal-content-class} {
+        @include print(map-get($modal-content-breakpoints, $key));
+      }
+    }
+  }
+
+  @include extend-flex($selectors: ($modal-class,));
+}

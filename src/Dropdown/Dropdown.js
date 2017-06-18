@@ -8,6 +8,38 @@ import propTypes from './propTypes'
 import {selectProps, createUINode} from '../utils'
 
 
+/**
+<Dropdown
+  fast
+  label='Jump to...'
+  items={
+    List([
+      (
+        <a>
+          <Type p='x3 y2' grey style={{display: 'block'}}>
+            Foo
+          </Type>
+        </a>
+      ),
+      (
+        <a>
+          <Type p='x3 y2' grey style={{display: 'block'}}>
+            Bar
+          </Type>
+        </a>
+      ),
+      (
+        <a>
+          <Type p='x3 y2' grey style={{display: 'block'}}>
+            Baz
+          </Type>
+        </a>
+      ),
+    ])
+  }
+  m='t2 b3'
+/>
+**/
 export const DropdownToggle = ({
   label,
   isVisible,

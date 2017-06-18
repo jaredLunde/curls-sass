@@ -1,0 +1,44 @@
+$modal-name: modal !default;
+$modal-class: '.#{$modal-name}' !default;
+$modal-content-class: el($modal-class, 'content');
+
+$modal-height: 100vh !default;
+$modal-width: 100vw !default;
+$modal-position: fixed !default;
+$modal-text-align: center !default;
+$modal-overflow: auto !default;
+$modal-z-index: $MAX-Z-INDEX !default;
+$modal-background: transparentize($darkest-grey, 0.25) !default;
+
+$modal-breakpoints: (
+  xs: (
+    background-color: transparent,
+  ),
+  sm: (
+    background-color: transparent,
+  ),
+  md: (),
+  lg: (),
+  xl: ()
+) !default;
+
+
+
+// $modal-content-background-color: $white !default;
+$modal-content-overflow: auto !default;
+
+$modal-content-breakpoints: (
+  xs: (
+    width: 100%,
+    height: 100%,
+    border-radius: 0
+  ),
+  sm: (
+    width: 100%,
+    height: 100%,
+    border-radius: 0
+  ),
+  md: (),
+  lg: (),
+  xl: ()
+) !default;

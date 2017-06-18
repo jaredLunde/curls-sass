@@ -2,7 +2,9 @@
   @each $size in $AVATAR-SIZE-KEYS {
     %#{$avatar-name}--#{$size} {
       width: map-get($avatar-size, $size);
+      min-width: map-get($avatar-size, $size);
       height: map-get($avatar-size, $size);
+      min-height: map-get($avatar-size, $size);
     }
   }
 }

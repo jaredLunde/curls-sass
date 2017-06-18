@@ -4,6 +4,7 @@ import {
   namespace as ns,
   cloneIfElement,
   requestAnimationFrame,
+  cancelAnimationFrame,
   loadImages
 } from 'react-cake'
 import Box from '../Box'
@@ -63,6 +64,10 @@ const popoverMethods = {
       window.removeEventListener('resize', this._listener)
       window.removeEventListener('orientationchange', this._listener)
     }
+
+    if (this._ticking !== null) {
+      cancelAnimationFrame(this._ticking)
+    }
   },
 
   componentDidMount: function () {
@@ -73,16 +78,21 @@ const popoverMethods = {
     this.reposition()
   },
 
+  _ticking: null,
+
   setPositionState: function () {
+    if (this._ticking) return;
+
     const {className} = this.props
     const fromLeft = className.includes('drop--left')
     const fromRight = className.includes('drop--right')
 
-    requestAnimationFrame(
+    this._ticking = requestAnimationFrame(
       () => this.setState(
         fromLeft || fromRight
         ? centerInParentY(this._popover)
-        : centerInParentX(this._popover)
+        : centerInParentX(this._popover),
+        () => this._ticking = null
       )
     )
   },

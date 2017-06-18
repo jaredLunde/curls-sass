@@ -1,0 +1,16 @@
+@include import-once('hero') {
+  #{$hero-class} {
+    @extend %flex;
+    @extend %flex--y;
+    @extend %flex--y-center;
+    @extend %flex--x-center;
+    position: $hero-position;
+    width: $hero-width;
+    height: $hero-height;
+    text-align: $hero-text-align;
+    overflow-y: $hero-overflow-y;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @include extend-flex($selectors: ($hero-class,));
+}
