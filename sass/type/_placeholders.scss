@@ -3,10 +3,11 @@
     %#{$type-name}--#{$size} {
       @include font-line(map-get($type-font-size, $size),
                          map-get($type-line-height, $size));
-
+      /*
       @include breakpoint(nth(map-keys($grid-breakpoint), 1)) {
         @include font(map-get($type-font-size-s, $size));
       }
+      */
     }
   }
 

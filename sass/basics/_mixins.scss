@@ -21,3 +21,25 @@
     }
   }
 }
+
+
+@function scale-border-radius($scale) {
+  @return scale-rem(nth($border-radius-scale, $scale + 1));
+}
+
+@mixin border-radius($scale) {
+  @include keep(--border-radius-#{$scale}) {
+    border-radius: scale-border-radius($scale);
+  }
+}
+
+
+@function scale-border-width($scale) {
+  @return scale-rem(nth($border-width-scale, $scale + 1));
+}
+
+@mixin border-width($scale) {
+  @include keep(--border-width-#{$scale}) {
+    border-width: scale-border-width($scale);
+  }
+}

@@ -141,8 +141,4 @@
       background: $popover-background;
     }
   }
-
-  @each $pos in ('top', 'right', 'bottom', 'left') {
-    @include harden-margin('#{$popover-name}#{mod($droppable-class, $pos)}');
-  }
 }

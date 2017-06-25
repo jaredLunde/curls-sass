@@ -1,5 +1,11 @@
-@mixin font-size($size, $adjustedSize: 1.0) {
-  @include rem-property('font-size', $size, $adjustedSize);
+@function get-font-size($scale) {
+  @return map-get($type-font-size, $scale);
+}
+
+@mixin font-size($scale) {
+  @include keep(--font-#{$scale}) {
+    font-size: get-font-size($scale);
+  }
 }
 
 
@@ -18,7 +24,7 @@
     color: $color;}
   @if $family {
     font-family: $family;}
-  @include font-size($size);
+  @include rem-property('font-size', $size);
 }
 
 

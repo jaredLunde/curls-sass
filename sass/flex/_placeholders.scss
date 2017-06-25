@@ -115,16 +115,6 @@
   }
 
 
-  %#{$flex-name}--y-between {
-    @include align-items(space-between);
-  }
-
-
-  %#{$flex-name}--y-around {
-    @include align-items(space-around);
-  }
-
-
   %#{$flex-name}--y-baseline {
     @include align-items(baseline);
   }

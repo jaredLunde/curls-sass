@@ -138,8 +138,4 @@
                      $pad: -1px);
     }
   }
-
-  @each $pos in ('top', 'right', 'bottom', 'left') {
-    @include harden-margin('#{$tooltip-name}#{mod($droppable-class, $pos)}');
-  }
 }

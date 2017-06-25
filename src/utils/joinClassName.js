@@ -1,1 +1,7 @@
-export default ({className}, ...classNames) => `${className ||''} ${classNames.join(' ')}`.trim() || void 0
+export default (className, ...classNames) => {
+  if (typeof className === 'object') {
+    className = className.className
+  }
+
+  return `${className ||''} ${classNames.join(' ')}`.trim() || void 0
+}

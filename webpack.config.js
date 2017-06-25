@@ -54,6 +54,12 @@ module.exports = {
       commonjs: 'react',
       amd: 'react'
     },
+    immutable: {
+      root: 'immutable',
+      commonjs2: 'immutable',
+      commonjs: 'immutable',
+      amd: 'immutable'
+    },
     reactDom: {
       root: 'ReactDOM',
       commonjs2: 'react-dom',
@@ -127,6 +133,7 @@ module.exports = {
       minimize: true,
       debug: false
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     extractSass
   ],
 

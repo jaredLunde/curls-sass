@@ -24,24 +24,24 @@
 }
 
 
-@mixin fade-in($speed: $MED, $delay: 0s, $easing: $SWIFT-OUT) {
+@mixin fade-in($speed: $MED, $delay: 0s, $easing: $SWIFT-IN) {
   @include animate(visibility 0s linear ($delay + $speed),
                    opacity $speed $easing $delay);
 }
 
 
-@mixin fade-out($speed: $MED, $delay: 0s, $easing: $SWIFT-IN) {
+@mixin fade-out($speed: $MED, $delay: 0s, $easing: $SWIFT-OUT) {
   @include animate(visibility 0s linear,
                    opacity $speed $easing $delay);
 }
 
-@mixin drop-in($speed: $MED, $delay: 0s, $easing: $SWIFT-OUT) {
+@mixin drop-in($speed: $MED, $delay: 0s, $easing: $SWIFT-MOVE) {
   @include animate(visibility 0s linear ($delay + $speed),
                    opacity $speed $easing $delay,
                    transform $speed $easing $delay);
 }
 
-@mixin drop-out($speed: $MED, $delay: 0s, $easing: $SWIFT-IN) {
+@mixin drop-out($speed: $MED, $delay: 0s, $easing: $HEAVY-MOVE) {
   @include animate(visibility 0s linear,
                    opacity $speed $easing $delay,
                    transform $speed $easing $delay);

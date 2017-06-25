@@ -42,7 +42,8 @@
 
 
   select {
-    @include font-line($input-text-font-size, $input-text-line-height,
+    @include font-line($input-text-font-size,
+                       $input-text-line-height,
                        $color: $input-text-font-color,
                        $weight: $input-text-font-weight,
                        $family: $input-text-font);

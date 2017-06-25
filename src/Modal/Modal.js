@@ -8,8 +8,6 @@ import {
 import Box from '../Box'
 import Drop from '../Drop'
 import propTypes from './propTypes'
-import centerInParentX from './centerInParentX'
-import centerInParentY from './centerInParentY'
 import {createUINode, joinClassName} from '../utils'
 
 
@@ -51,6 +49,13 @@ Modal.defaultProps = {
   nodeType: 'div'
 }
 
+Modal.prototype._modalBg = null
+Modal.prototype.closeModalFromBg = function (e) {
+  if (e.target === this._modalBg) {
+    this.props.dropOut()
+  }
+}
+
 Modal.prototype.render = function () {
   const {
     nodeType,
@@ -66,28 +71,31 @@ Modal.prototype.render = function () {
     ...modalProps
   } = this.props
   const {reposition} = this
-  const show = dropIn, hide = dropOut
+  const show = dropIn,
+        hide = dropOut
+
+  const modalContent = React.createElement(
+    'div',
+    {
+      className: joinClassName(className, ns.classes.el(this, 'content')),
+      style,
+      ...modalProps
+    },
+    content({isVisible, toggle, show, hide, willChangeRef})
+  )
 
   const modal = React.createElement(
     nodeType,
     {
+      ref: e => this._modalBg = e,
+      onClick: this.closeModalFromBg.bind(this),
       className: joinClassName(
-        {className: ns.classes.get(this)},
-        'fade',
-        isVisible
-        ? 'fade--visible'
-        : ''
+        ns.classes.get(this),
+        isVisible ? 'fade--visible' : '',
+        'fade'
       )
     },
-    React.createElement(
-      'div',
-      {
-        className: joinClassName({className}, ns.classes.el(this, 'content')),
-        style,
-        ...modalProps
-      },
-      content({isVisible, toggle, show, hide, willChangeRef})
-    )
+    modalContent
   )
 
   return cloneIfElement(

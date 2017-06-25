@@ -127,3 +127,20 @@
     }
   }
 }
+
+
+@function scale-spacing($scale) {
+  @return scale-rem(nth($spacing-scale, $scale + 1));
+}
+
+@mixin padding($scale) {
+  @include keep(--padding-#{$scale}) {
+    padding: scale-spacing($scale);
+  }
+}
+
+@mixin margin($scale) {
+  @include keep(--margin-#{$scale}) {
+    margin: scale-spacing($scale);
+  }
+}

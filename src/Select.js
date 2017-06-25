@@ -7,13 +7,11 @@ import {
   namespace as ns
 } from 'react-cake'
 import {OrderedSet} from 'immutable'
-import Box from '../Box'
-import boxPropTypes from '../Box/propTypes'
-import Button from '../Button'
-import Type from '../Type'
-import Drop from '../Drop'
-import propTypes from './propTypes'
-import {selectProps, createUINode, joinClassName} from '../utils'
+import Box from './Box'
+import Button from './Button'
+import Type from './Type'
+import Drop from './Drop'
+import {selectProps, createUINode, joinClassName} from './utils'
 
 
 export const SelectToggle = ({
@@ -115,7 +113,7 @@ export const SelectOption = ({
   </li>
 )
 
-export const Select = createUINode('Select', propTypes)
+export const Select = createUINode('Select')
 Select.defaultProps = {
   nodeType: 'div',
   button: SelectToggle,
@@ -158,17 +156,21 @@ Select.prototype.render = function () {
     toggle,
     ...props
   } = this.props
-  props = reduceProps(props, propTypes)
+
   let {willChange, ...style} = props.style
   const dropClassName = props.className
   const openClass = isVisible ? ns.classes.mod(this, 'open') : ''
   const selection = selections.first()
-  const htmlSelect = <select
-    readOnly
-    key='select__select'
-    name={name}
-    value={getOptionValue(selection)}
-  />
+  const htmlSelect = (
+    <select
+      readOnly
+      key='select__select'
+      name={name}
+      value={getOptionValue(selection)}
+    >
+      <option value={getOptionValue(selection)}/>
+    </select>
+  )
 
   return React.createElement(
     nodeType,

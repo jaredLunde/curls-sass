@@ -7,10 +7,11 @@
   "esnext": "src/index",
   "private": false,
   "dependencies": {
-    "react-immutable-proptypes": "^2.1.0"
+    "react-immutable-proptypes": "^2.1.0",
+    "webpack": "^3.0.0"
   },
   "peerDependencies": {
-    "immutable": "4.0.0-rc.2",
+    "immutable": "^3.8.1",
     "react": ">=15.x",
     "react-dom": ">=15.x"
   },

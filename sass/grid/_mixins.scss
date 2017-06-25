@@ -1,7 +1,9 @@
 // Breakpoint controllers */
-@mixin breakpoint($breakpoint) {
-  @media #{map-get($grid-breakpoint, $breakpoint)} {
-    @content;
+@mixin breakpoint($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    @media #{map-get($grid-breakpoint, $breakpoint)} {
+      @content;
+    }
   }
 }
 

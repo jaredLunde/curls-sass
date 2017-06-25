@@ -2,7 +2,7 @@ $flex-name: 'flex' !default;
 $flex-class: ".#{$flex-name}" !default;
 
 
-$FLEX-ALIGN: (top, bottom, center, stretch, between, around, baseline);
+$FLEX-ALIGN: (top, bottom, center, stretch, baseline);
 $FLEX-ALIGN-CONTENT: (top, bottom, center, stretch, between, around);
 $FLEX-ALIGN-SELF: (top, bottom, center, baseline, stretch);
 $FLEX-JUSTIFY: (left, right, center, around, between);

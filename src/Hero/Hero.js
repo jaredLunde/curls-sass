@@ -5,43 +5,43 @@ import propTypes from './propTypes'
 import {createUINode} from '../utils'
 
 
-const getExclusionSize = (exclusion, excludeFrom = 'width') => {
-  if (!exclusion) {
+const getTrimmedSize = (trimmed, trimFrom = 'width') => {
+  if (!trimmed) {
     return
   }
 
-  let exclusionPx = 0
-  const excludeFromWidth = excludeFrom === 'width'
+  let trimmedPx = 0
+  const trimFromWidth = trimFrom === 'width'
 
-  switch (typeof exclusion) {
+  switch (typeof trimmed) {
     case 'number':
     case 'string':
-      exclusionPx = exclusion
+      trimmedPx = trimmed
       break;
     case 'object':
       // Assumes document element
-      exclusionPx = excludeFromWidth
-        ? exclusion.offsetWidth
-        : exclusion.offsetHeight
+      trimmedPx = trimFromWidth
+        ? trimmed.offsetWidth
+        : trimmed.offsetHeight
       break;
     case 'function':
-      exclusionPx = exclusion()
+      trimmedPx = trimmed()
       break;
   }
 
-  return `calc(${excludeFromWidth ? '100vw' : '100vh'} - ${exclusionPx}px)`
+  return `calc(${trimFromWidth ? '100vw' : '100vh'} - ${trimmedPx}px)`
 }
 
-const getWidth = exclusion =>  getExclusionSize(exclusion)
-const getHeight = exclusion =>  getExclusionSize(exclusion, 'height')
+const getWidth = trimmed =>  getTrimmedSize(trimmed)
+const getHeight = trimmed =>  getTrimmedSize(trimmed, 'height')
 
 
 export const Hero = createUINode('Hero', propTypes)
 
 Hero.prototype.getStyle = function () {
-  const {excludeHeight, excludeWidth, style} = this.props
-  const width = getWidth(excludeWidth)
-  const height = getHeight(excludeHeight)
+  const {trimHeight, trimWidth, style} = this.props
+  const width = getWidth(trimWidth)
+  const height = getHeight(trimHeight)
 
   return {...style, width, height}
 }

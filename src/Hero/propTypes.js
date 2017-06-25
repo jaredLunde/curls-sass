@@ -10,8 +10,8 @@ const elsPropType = PropTypes.oneOfType([
 ])
 
 export default {
-  excludeHeight: elsPropType,
-  excludeWidth: elsPropType,
+  trimHeight: elsPropType,
+  trimWidth: elsPropType,
   getAspect: PropTypes.func.isRequired,
   getViewportSize: PropTypes.func.isRequired,
   viewportWidth: PropTypes.number.isRequired,

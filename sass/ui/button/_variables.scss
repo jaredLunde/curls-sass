@@ -29,8 +29,8 @@ $button-sm-font-weight: 300 !default;
 $button-md-font-weight: 300 !default;
 $button-lg-font-weight: 300 !default;
 
-$button-sm-padding-top: map-get($grid-gutter, sm) !default;
-$button-sm-padding-right: golden(golden(map-get($grid-gutter, sm))) !default;
+$button-sm-padding-top: map-get($grid-gutter, xs) !default;
+$button-sm-padding-right: golden(golden(map-get($grid-gutter, xs))) !default;
 $button-sm-padding-bottom: $button-sm-padding-top !default;
 $button-sm-padding-left: $button-sm-padding-right !default;
 

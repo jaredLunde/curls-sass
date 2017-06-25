@@ -2,7 +2,7 @@ import React from 'react'
 import {Counter, namespace as ns, cloneIfElement} from 'react-cake'
 import Type from '../Type'
 import propTypes from './propTypes'
-import {createUINode} from '../utils'
+import {createUINode, joinClassName} from '../utils'
 
 
 /**
@@ -33,7 +33,12 @@ export const PageNum = ({
   path
 }) => (
   <a
-    className={`paginate__page ${isCurrent ? 'paginate--current' : ''}`.trim()}
+    className={
+      joinClassName(
+        'paginate__page',
+        isCurrent ? 'paginate--current' : ''
+      )
+    }
     href={path}
     key={path}
   >
@@ -44,10 +49,10 @@ export const PageNum = ({
 export const NextPage = ({pageNum, path, isDisabled}) => (
   <a
     className={
-      `
-        paginate__next
-        ${isDisabled ? 'paginate--disabled' : ''}
-      `.trim()
+      joinClassName(
+        'paginate__next',
+        isDisabled ? 'paginate--disabled' : ''
+      )
     }
     href={isDisabled ? void 0 : path}
     key='pageinate__next'
@@ -61,10 +66,10 @@ export const NextPage = ({pageNum, path, isDisabled}) => (
 export const PrevPage = ({pageNum, path, isDisabled}) => (
   <a
     className={
-      `
-        paginate__prev
-        ${isDisabled ? 'paginate--disabled' : ''}
-      `.trim()
+      joinClassName(
+        'paginate__prev',
+        isDisabled ? 'paginate--disabled' : ''
+      )
     }
     href={isDisabled ? void 0 : path}
     key='pageinate__prev'
@@ -226,7 +231,7 @@ Paginate.prototype.render = function () {
       nodeType,
       {
         ...props,
-        className: `${className || ''} ${ns.classes.get(this)}`.trim()
+        className: joinClassName(className || '', ns.classes.get(this))
       },
       paginateChildren
     )
