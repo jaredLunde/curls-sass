@@ -19,11 +19,13 @@ export default {
   semiBold: () => `type--semi-bold`,
   bold: () => `type--bold`,
   heavy: () => `type--heavy`,
-  ultraHeavy: () => `type--ultra-heavy`,
+
   //Colors
   ...colors('type'),
   // Alignment
   left: () => `type--left`,
   center: () => `type--center`,
   right: () => `type--right`,
+  // Overflow
+  ellipsis: () => `type--ellipsis`,
 }

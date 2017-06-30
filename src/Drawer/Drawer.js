@@ -42,6 +42,7 @@ Drawer.defaultProps = {
 Drawer.prototype.render = function () {
   const {
     nodeType,
+    absolute,
     drawerChildren,
     isVisible,
     toggle,

@@ -31,3 +31,4 @@ export Type from './Type'
 
 export * from './utils'
 // TODO: Hamburger, Tabs
+// TODO: Consistency in sizing 'xxs, xs, sm, md, lg, xl, xxl' being preferred

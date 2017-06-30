@@ -5,7 +5,6 @@ $input-text-font-color: $grey !default;
 $input-text-font-weight: 300 !default;
 $input-text-font: inherit !default;
 
-$input-text-margin: 0 !default;
 $input-text-padding-top: 8px !default;
 $input-text-padding-right: golden($input-text-padding-top) !default;
 $input-text-padding-bottom: $input-text-padding-top !default;
@@ -21,7 +20,6 @@ $textarea-font-color: $grey !default;
 $textarea-font-weight: 300 !default;
 $textarea-font: inherit !default;
 
-$textarea-margin: 0 !default;
 $textarea-padding-top: 8px!default;
 $textarea-padding-right: golden($textarea-padding-top) !default;
 $textarea-padding-bottom: $textarea-padding-top !default;
@@ -37,7 +35,6 @@ $submit-font-weight: 700 !default;
 $submit-font: inherit !default;
 
 $submit-border: $input-text-border !default;
-$submit-margin: 0 !default;
 $submit-padding-top: 8px!default;
 $submit-padding-right: golden($submit-padding-top) !default;
 $submit-padding-bottom: $submit-padding-top !default;

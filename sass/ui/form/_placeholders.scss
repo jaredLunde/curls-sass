@@ -4,7 +4,6 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     outline: none;
-    margin: 0;
   }
 
 
@@ -13,7 +12,6 @@
     background: $input-text-background;
     padding: $input-text-padding-top $input-text-padding-right
              $input-text-padding-bottom $input-text-padding-left;
-    margin: $input-text-margin;
     border: $input-text-border;
     width: $input-text-width;
     @include font-line($input-text-font-size,
@@ -30,7 +28,6 @@
     border: $submit-border;
     padding: $submit-padding-top $submit-padding-right
              $submit-padding-bottom $submit-padding-left;
-    margin: $submit-margin;
     border-radius: $submit-border-radius;
     @include font-line($submit-font-size, $submit-line-height,
                        $color: $submit-font-color,
@@ -60,7 +57,6 @@
     background: $textarea-background;
     padding: $textarea-padding-top $textarea-padding-right
              $textarea-padding-bottom $textarea-padding-left;
-    margin: $textarea-margin;
     border: $textarea-border;
     border-radius: $textarea-border-radius;
     overflow: auto;

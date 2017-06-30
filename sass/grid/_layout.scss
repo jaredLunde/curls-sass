@@ -28,11 +28,11 @@
   }
 
 
-  #{$grid-class}--nopad,
-  #{$grid-row-class}--nopad,
-  #{$grid-col-class}--nopad,
-  #{$grid-row-class}#{$grid-row-class}--nopad,
-  #{$grid-col-class}#{$grid-col-class}--nopad {
+  #{$grid-class}.p--0,
+  #{$grid-row-class}.p--0,
+  #{$grid-col-class}.p--0,
+  #{$grid-row-class}#{$grid-row-class}.p--0,
+  #{$grid-col-class}#{$grid-col-class}.p--0 {
     @extend %#{$padding-name}--0;
   }
 }

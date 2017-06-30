@@ -27,5 +27,6 @@ export default {
   left: PropTypes.bool,
   center: PropTypes.bool,
   right: PropTypes.bool,
+  ellipsis: PropTypes.bool,
   ...node
 }

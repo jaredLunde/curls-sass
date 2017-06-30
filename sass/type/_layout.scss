@@ -77,6 +77,13 @@
     @extend %type--center;
   }
 
+  #{$type-class}--ellipsis {
+    max-width: 100%;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
   @each $color in map-keys($colors) {
     #{$type-class}--#{$color} {

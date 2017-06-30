@@ -28,6 +28,8 @@
     border-radius: $checkbox-border-radius;
     height: $checkbox-height;
     width: $checkbox-width;
+    max-width: $checkbox-width;
+    @include flex(1, 0, $checkbox-width);
     @include animate(background $FAST $SWIFT-MOVE);
   }
 

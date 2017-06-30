@@ -5,13 +5,12 @@ import propTypes from './propTypes'
 import {createUINode} from '../utils'
 
 
-const getTrimmedSize = (trimmed, trimFrom = 'width') => {
+const getTrimmedPx = (trimmed, trimFrom = 'width') => {
   if (!trimmed) {
     return
   }
 
   let trimmedPx = 0
-  const trimFromWidth = trimFrom === 'width'
 
   switch (typeof trimmed) {
     case 'number':
@@ -20,16 +19,27 @@ const getTrimmedSize = (trimmed, trimFrom = 'width') => {
       break;
     case 'object':
       // Assumes document element
-      trimmedPx = trimFromWidth
-        ? trimmed.offsetWidth
-        : trimmed.offsetHeight
+      if (Array.isArray(trimmed)) {
+        for (let item of trimmed) {
+          trimmedPx += getTrimmedPx(item, trimFrom)
+        }
+      } else {
+        trimmedPx = trimFrom === 'width'
+          ? trimmed.offsetWidth
+          : trimmed.offsetHeight
+      }
       break;
     case 'function':
       trimmedPx = trimmed()
       break;
   }
 
-  return `calc(${trimFromWidth ? '100vw' : '100vh'} - ${trimmedPx}px)`
+  return trimmedPx
+}
+
+const getTrimmedSize = (trimmed, trimFrom = 'width') => {
+  const trimmedPx = getTrimmedPx(trimmed, trimFrom)
+  return `calc(${trimFrom === 'width' ? '100vw' : '100vh'} - ${trimmedPx}px)`
 }
 
 const getWidth = trimmed =>  getTrimmedSize(trimmed)
