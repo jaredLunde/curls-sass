@@ -128,4 +128,5 @@
   @include harden-border-width($navbar-name);
   @include extend-flex($selectors: ($navbar-class,));
   @include harden-padding($navbar-name);
+  @include colorize('#{$navbar-class}#{$bg-class}');
 }

@@ -1,7 +1,7 @@
-export default (className, ...classNames) => {
-  if (typeof className === 'object') {
-    className = className.className
-  }
+const whichClassName = className => typeof className === 'object' ? className.className : className
 
-  return `${className ||''} ${classNames.join(' ')}`.trim() || void 0
-}
+
+export default (...classNames) => (
+  classNames.filter(className => className).map(whichClassName).join(' ')
+  || void 0
+)

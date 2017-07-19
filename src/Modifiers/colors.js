@@ -26,5 +26,6 @@ export default ComponentType => ({
   translucentDark: () => `${ComponentType}--translucent-dark`,
   translucent: () => `${ComponentType}--translucent`,
   translucentLight: () => `${ComponentType}--translucent-light`,
-  translucentWhite: () => `${ComponentType}--translucent-white`
+  translucentWhite: () => `${ComponentType}--translucent-white`,
+  transparent: () => `${ComponentType}--transparent`
 })

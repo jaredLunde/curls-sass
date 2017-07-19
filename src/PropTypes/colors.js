@@ -29,5 +29,6 @@ export default {
   translucentDark: PropTypes.bool,
   translucent: PropTypes.bool,
   translucentLight: PropTypes.bool,
-  translucentWhite: PropTypes.bool
+  translucentWhite: PropTypes.bool,
+  transparent: PropTypes.bool
 }

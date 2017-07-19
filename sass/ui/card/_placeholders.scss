@@ -2,11 +2,12 @@
   %#{$card-name} {
     @extend %#{$flex-name};
     @extend %#{$flex-name}--y;
+    overflow-x: hidden;
     background: $card-background;
     border-width: $card-border-width;
     border-style: $card-border-style;
     border-color: $card-border-color;
     border-radius: $card-border-radius;
-    width: 100%;
+    // flex-grow: 1;
   }
 }

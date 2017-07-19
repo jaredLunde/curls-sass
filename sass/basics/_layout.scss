@@ -58,6 +58,7 @@
     clear: both;
   }
 
+  @include colorize('.divider.bg');
 
   .disabled {
     color: $disabled-link-color;

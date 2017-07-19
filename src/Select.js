@@ -89,6 +89,7 @@ const getOptionLike = (selection, key) => (
       selection === null
       ? ''
       : selection
+    )
   )
 )
 const getOptionValue = selection => getOptionLike(selection, 'value')

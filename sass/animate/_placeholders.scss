@@ -1,15 +1,11 @@
 @include import-once('animate-placeholders') {
   // Attempt to force GPU rendering
-  %unflicker {
-    -webkit-backface-visibility: hidden;
-    -webkit-perspective: 1000;
-  }
-
   %hardware-accel {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-perspective: 1000;
     perspective: 1000;
+    transform: translateZ(0);
     /**
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;

@@ -35,4 +35,7 @@
   #{$grid-col-class}#{$grid-col-class}.p--0 {
     @extend %#{$padding-name}--0;
   }
+
+  @include harden-padding($grid-row-name);
+  @include harden-padding($grid-col-name);
 }
