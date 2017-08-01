@@ -4,6 +4,7 @@
     position: fixed;
     background: $drawer-background;
     z-index: $MAX-Z-INDEX;
+    -webkit-overflow-scrolling: touch;
     @include box-shadow($drawer-box-shadow);
   }
 

@@ -7,6 +7,8 @@
   "esnext": "src/index",
   "private": false,
   "dependencies": {
+    "react": "next",
+    "react-dom": "next",
     "react-immutable-proptypes": "^2.1.0",
     "webpack": "^3.0.0"
   },

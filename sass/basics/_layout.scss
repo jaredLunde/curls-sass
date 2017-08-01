@@ -81,4 +81,16 @@
   .pf {
     position: fixed;
   }
+
+  .hide {
+    visibility: hidden;
+  }
+
+  .show {
+    visibility: visible;
+  }
+
+  .remove {
+    display: none;
+  }
 }

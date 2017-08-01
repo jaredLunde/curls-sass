@@ -10,7 +10,7 @@
 
 
   %#{$flex-name}--fluid {
-    @include flex(1, 0, auto);
+    @include flex(1, 1, auto);
     max-width: none;
   }
 

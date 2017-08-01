@@ -123,7 +123,7 @@ const ModalComponent = ({
 )
 
 
-export default ({children, ...props}) => (
+export default ({children, onChange, ...props}) => (
   <Box {...props}>
     <WillChange
       opacity
@@ -131,7 +131,7 @@ export default ({children, ...props}) => (
       transform
       whenClicked
     >
-      <ModalComponent modalChildren={children}/>
+      <ModalComponent onChange={onChange} modalChildren={children}/>
     </WillChange>
   </Box>
 )
