@@ -1,8 +1,8 @@
 @include import-once('modal') {
   #{$modal-class} {
-    @extend %#{$flex-name};
-    @extend %#{$flex-name}--y-center;
-    @extend %#{$flex-name}--x-center;
+    // @extend %#{$flex-name}--y-top;
+    // @extend %#{$flex-name}--y-center;
+    // @extend %#{$flex-name}--x-center;
     position: $modal-position;
     top: 0;
     right: 0;
@@ -11,10 +11,18 @@
     width: $modal-width;
     height: $modal-height;
     text-align: $modal-text-align;
-    overflow: $modal-overflow;
     z-index: $modal-z-index;
     background-color: $modal-background;
+    min-height: -webkit-min-content;
+    min-height: min-content;
     -webkit-overflow-scrolling: touch;
+    overflow: $modal-overflow;
+  }
+
+  #{el($modal-class, window)} {
+    @extend %#{$flex-name};
+    height: 100%;
+    width: 100%;
   }
 
   @each $key in map-keys($modal-breakpoints) {
@@ -29,6 +37,7 @@
     @extend %hidden;
     overflow: $modal-content-overflow;
     -webkit-overflow-scrolling: touch;
+    margin: auto;
     @include transform(translate3d(0, 100%, 0));
   }
 

@@ -51,10 +51,13 @@ Modal.defaultProps = {
 
 Modal.prototype._modalBg = null
 Modal.prototype.closeModalFromBg = function (e) {
-  if (e.target === this._modalBg) {
+  if (e.target === this._modalBg || e.target === this._modalWindow) {
     this.props.dropOut()
   }
 }
+
+Modal.prototype.setWindowRef = function (e) {this._modalWindow = e}
+Modal.prototype.setBgRef = function (e) {this._modalBg = e}
 
 Modal.prototype.render = function () {
   const {
@@ -87,7 +90,7 @@ Modal.prototype.render = function () {
   const modal = React.createElement(
     nodeType,
     {
-      ref: e => this._modalBg = e,
+      ref: this.setBgRef.bind(this),
       onClick: this.closeModalFromBg.bind(this),
       className: joinClassName(
         ns.classes.get(this),
@@ -95,7 +98,14 @@ Modal.prototype.render = function () {
         'fade'
       )
     },
-    modalContent
+    React.createElement(
+      'div',
+      {
+        ref: this.setWindowRef.bind(this),
+        className: ns.classes.el(this, 'window')
+      },
+      modalContent
+    )
   )
 
   return cloneIfElement(
