@@ -58,9 +58,9 @@ Modal.prototype.closeModalFromBg = function (e) {
   }
 }
 
-Modal.prototype.setWindowRef = function (e) {this._modalWindow = e}
-Modal.prototype.setBgRef = function (e) {
-  this._modalBg = e
+Modal.prototype.setBgRef = function (e) {this._modalBg = e}
+Modal.prototype.setWindowRef = function (e) {
+  this._modalWindow = e
   this.props.fillToVhRef(e)
 }
 
@@ -99,7 +99,6 @@ Modal.prototype.render = function () {
     {
       ref: this.setBgRef.bind(this),
       onClick: this.closeModalFromBg.bind(this),
-      style,
       className: joinClassName(
         ns.classes.get(this),
         isVisible ? 'fade--visible' : '',
@@ -110,7 +109,8 @@ Modal.prototype.render = function () {
       'div',
       {
         ref: this.setWindowRef.bind(this),
-        className: ns.classes.el(this, 'window')
+        className: ns.classes.el(this, 'window'),
+        style
       },
       modalContent
     )

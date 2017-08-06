@@ -1,5 +1,10 @@
 import React from 'react'
-import {WithViewport, cloneIfElement} from 'react-cake'
+import {
+  WithViewport,
+  cloneIfElement,
+  requestAnimationFrame,
+  cancelAnimationFrame
+} from 'react-cake'
 
 
 class FillToViewportHeight extends React.PureComponent {
@@ -10,18 +15,26 @@ class FillToViewportHeight extends React.PureComponent {
   setRef = e => this.element = e
   element = null
 
+  ticking = false
+  frame = null
+
   setHeight = () => {
+    if (this.ticking) return;
     const {inViewY, getViewportSize} = this.props
     const {height} = getViewportSize()
+    this.ticking = true
 
-    this.setState(
-      prevState => {
-        if (inViewY(this.element) && prevState.height !== height) {
-          return {height}
-        }
+    this.frame = requestAnimationFrame(
+      () => this.setState(
+        prevState => {
+          if (inViewY(this.element) && prevState.height !== height) {
+            return {height}
+          }
 
-        return null
-      }
+          return null
+        },
+        () => this.ticking = false
+      )
     )
   }
 
@@ -34,6 +47,9 @@ class FillToViewportHeight extends React.PureComponent {
 
   componentWillUnmount () {
     this.props.unsubscribe(this.setHeight)
+    if (this.frame) {
+      cancelAnimationFrame(this.frame)
+    }
   }
 
   render () {
