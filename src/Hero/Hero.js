@@ -2,6 +2,7 @@ import React from 'react'
 import {ViewportSize} from 'react-cake'
 import Box from '../Box'
 import propTypes from './propTypes'
+import FillToViewportHeight from '../FillToViewportHeight'
 import {createUINode} from '../utils'
 
 
@@ -37,43 +38,50 @@ const getTrimmedPx = (trimmed, trimFrom = 'width') => {
   return trimmedPx
 }
 
-const getTrimmedSize = (trimmed, trimFrom = 'width') => {
+const getTrimmedSize = (val, trimmed, trimFrom = 'width') => {
   const trimmedPx = getTrimmedPx(trimmed, trimFrom)
-  return `calc(${trimFrom === 'width' ? '100vw' : '100vh'} - ${trimmedPx}px)`
+  const trimFromWidth  = trimFrom === 'width'
+  return trimFromWidth
+    ? `calc(${val} - ${trimmedPx}px)`
+    : val - trimmedPx
 }
 
-const getWidth = trimmed =>  getTrimmedSize(trimmed)
-const getHeight = trimmed =>  getTrimmedSize(trimmed, 'height')
+const getWidth = (val, trimmed) =>  getTrimmedSize(val, trimmed)
+const getHeight = (val, trimmed) =>
+  typeof val === 'string'
+  ? val
+  : getTrimmedSize(val, trimmed, 'height')
 
 
 export const Hero = createUINode('Hero', propTypes)
 
 Hero.prototype.getStyle = function () {
   const {trimHeight, trimWidth, style} = this.props
-  const width = getWidth(trimWidth)
-  const height = getHeight(trimHeight)
+  const width = getWidth('100vw', trimWidth)
+  const height = getHeight(style.height, trimHeight)
 
   return {...style, width, height}
 }
 
 Hero.prototype.render = function () {
-  let {style, ...renderProps} = this.renderProps
+  let {style, fillToVhRef, ...renderProps} = this.renderProps
 
   return React.createElement(
     this.props.nodeType,
     {
+      ...renderProps,
       style: this.getStyle(),
-      ...renderProps
+      ref: fillToVhRef
     }
   )
 }
 
 export default ({children, ...props}) => (
-  <ViewportSize>
-    <Box {...props}>
+  <FillToViewportHeight {...props}>
+    <Box>
       <Hero>
         {children}
       </Hero>
     </Box>
-  </ViewportSize>
+  </FillToViewportHeight>
 )

@@ -3,13 +3,15 @@ import {
   WillChange,
   namespace as ns,
   cloneIfElement,
-  loadImages
+  loadImages,
+  WithViewport,
+  Viewport
 } from 'react-cake'
 import Box from '../Box'
 import Drop from '../Drop'
+import FillToViewportHeight from '../FillToViewportHeight'
 import propTypes from './propTypes'
 import {createUINode, joinClassName} from '../utils'
-
 
 /**
 <Modal
@@ -57,7 +59,10 @@ Modal.prototype.closeModalFromBg = function (e) {
 }
 
 Modal.prototype.setWindowRef = function (e) {this._modalWindow = e}
-Modal.prototype.setBgRef = function (e) {this._modalBg = e}
+Modal.prototype.setBgRef = function (e) {
+  this._modalBg = e
+  this.props.fillToVhRef(e)
+}
 
 Modal.prototype.render = function () {
   const {
@@ -70,7 +75,9 @@ Modal.prototype.render = function () {
     willChangeRef,
     content,
     className,
+    modalStyle,
     style,
+    fillToVhRef,
     ...modalProps
   } = this.props
   const {reposition} = this
@@ -81,7 +88,7 @@ Modal.prototype.render = function () {
     'div',
     {
       className: joinClassName(className, ns.classes.el(this, 'content')),
-      style,
+      style: modalStyle,
       ...modalProps
     },
     content({isVisible, toggle, show, hide, willChangeRef})
@@ -92,6 +99,7 @@ Modal.prototype.render = function () {
     {
       ref: this.setBgRef.bind(this),
       onClick: this.closeModalFromBg.bind(this),
+      style,
       className: joinClassName(
         ns.classes.get(this),
         isVisible ? 'fade--visible' : '',
@@ -133,15 +141,26 @@ const ModalComponent = ({
 )
 
 
+const VpComponent = ({style, onVisibilityChange, ...props}) => (
+  <FillToViewportHeight
+    onChange={onVisibilityChange}
+    modalStyle={style}
+    {...props}
+  >
+    {ModalComponent}
+  </FillToViewportHeight>
+)
+
+
 export default ({children, onChange, ...props}) => (
-  <Box {...props}>
+  <Box modalChildren={children} onVisibilityChange={onChange} {...props}>
     <WillChange
       opacity
       visibility
       transform
       whenClicked
     >
-      <ModalComponent onChange={onChange} modalChildren={children}/>
+      {VpComponent}
     </WillChange>
   </Box>
 )
