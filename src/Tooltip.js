@@ -56,6 +56,7 @@ export default ({children, ...props}) => (
       visibility
       transform
       whenClicked
+      whenTouched
       whenMouseEnters
       whenMouseLeaves
     >

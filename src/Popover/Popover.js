@@ -68,6 +68,10 @@ const popoverMethods = {
     if (this._ticking !== null) {
       cancelAnimationFrame(this._ticking)
     }
+
+    if (this._loader && this._loader.resolved === false) {
+      this._loader.cancel()
+    }
   },
 
   componentDidMount: function () {
@@ -79,6 +83,7 @@ const popoverMethods = {
   },
 
   _ticking: null,
+  _loader: null,
 
   setPositionState: function () {
     if (this._ticking) return;
@@ -90,15 +95,21 @@ const popoverMethods = {
     this._ticking = requestAnimationFrame(
       () => this.setState(
         fromLeft || fromRight
-        ? centerInParentY(this._popover)
-        : centerInParentX(this._popover),
+          ? centerInParentY(this._popover)
+          : centerInParentX(this._popover),
         () => this._ticking = null
       )
     )
   },
 
   reposition: function () {
-    loadImages(this._popover).then(this.setPositionState.bind(this))
+    this._loader = loadImages(this._popover)
+    this._loader.then(
+      (...args) => {
+        this.setPositionState.bind(this)(...args)
+        this._loader = null
+      }
+    )
   }
 }
 
@@ -164,6 +175,7 @@ export default ({children, ...props}) => (
       visibility
       transform
       whenClicked
+      whenTouched
       whenMouseEnters
       whenMouseLeaves
     >

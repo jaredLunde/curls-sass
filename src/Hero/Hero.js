@@ -49,7 +49,7 @@ const getTrimmedSize = (val, trimmed, trimFrom = 'width') => {
 const getWidth = (val, trimmed) =>  getTrimmedSize(val, trimmed)
 const getHeight = (val, trimmed) =>
   typeof val === 'string'
-  ? val
+  ? '100vh'
   : getTrimmedSize(val, trimmed, 'height')
 
 

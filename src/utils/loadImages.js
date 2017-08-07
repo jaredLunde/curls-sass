@@ -1,4 +1,7 @@
-export const loadImage = img => new Promise((resolve, reject) => {
+import CancelablePromise from 'cancelable-promise'
+
+
+export const loadImage = img => new CancelablePromise((resolve, reject) => {
   if (img.complete === true || img.naturalHeight > 0) {
     resolve({target: img})
   } else {
@@ -12,7 +15,7 @@ export default el => {
   const images = el.getElementsByTagName('img')
 
   if (images === null || images.length === 0) {
-    return new Promise(resolve => resolve([]))
+    return new CancelablePromise(resolve => resolve([]))
   }
 
   const imgs = []
@@ -20,5 +23,5 @@ export default el => {
     imgs.push(loadImage(images[x]))
   }
 
-  return Promise.all(imgs)
+  return CancelablePromise.all(imgs)
 }
