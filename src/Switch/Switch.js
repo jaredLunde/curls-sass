@@ -89,6 +89,10 @@ Switch.prototype.render = function () {
   )
 }
 
+const switchControls = fromJS([
+  {name: 'turnOn', value: true},
+  {name: 'turnOff', value: false}
+])
 
 export default ({children, on, onChange, style, ...props}) => (
   <Box {...props} switchChildren={children} switchStyle={style}>
@@ -96,10 +100,7 @@ export default ({children, on, onChange, style, ...props}) => (
       <Toggle
         propName='isOn'
         initialValue={on || false}
-        controls={fromJS([
-          {name: 'turnOn', value: true},
-          {name: 'turnOff', value: false}
-        ])}
+        controls={switchControls}
         onChange={onChange}
       >
         {Switch}

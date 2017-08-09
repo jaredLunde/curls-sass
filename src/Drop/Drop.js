@@ -59,14 +59,18 @@ const DropComponent = ({
   </Drop>
 }
 
+
+const dropControls = fromJS([
+  {name: 'dropIn', value: true},
+  {name: 'dropOut', value: false}
+])
+
+
 export default ({children, visible, ...props}) => (
   <Toggle
     propName='isVisible'
     initialValue={visible || false}
-    controls={fromJS([
-      {name: 'dropIn', value: true},
-      {name: 'dropOut', value: false}
-    ])}
+    controls={dropControls}
     dropChildren={children}
     {...props}
   >

@@ -102,16 +102,17 @@ Checkbox.prototype.render = function () {
   )
 }
 
+const checkboxControls = fromJS([
+  {name: 'check', value: true},
+  {name: 'unCheck', value: false}
+])
 
 export default ({children, checked, onChange, ...props}) => (
   <Box {...props} checkboxChildren={children}>
     <Toggle
       propName='isChecked'
       initialValue={checked || false}
-      controls={fromJS([
-        {name: 'check', value: true},
-        {name: 'unCheck', value: false}
-      ])}
+      controls={checkboxControls}
       onChange={onChange}
     >
       {Checkbox}

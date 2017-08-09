@@ -54,14 +54,16 @@ const FadeComponent = ({
   </Fade>
 )
 
+const fadeControls = fromJS([
+  {name: 'fadeIn', value: true},
+  {name: 'fadeOut', value: false}
+])
+
 export default ({children, visible, ...props}) => (
   <Toggle
     propName='isVisible'
     initialValue={visible || false}
-    controls={fromJS([
-      {name: 'fadeIn', value: true},
-      {name: 'fadeOut', value: false}
-    ])}
+    controls={fadeControls}
     fadeChildren={children}
     {...props}
   >

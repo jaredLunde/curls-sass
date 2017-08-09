@@ -71,14 +71,16 @@ const SlideComponent = ({
   )
 }
 
+const slideControls = fromJS([
+  {name: 'slideIn', value: true},
+  {name: 'slideOut', value: false}
+])
+
 export default ({children, visible, ...props}) => (
   <Toggle
     propName='isVisible'
     initialValue={visible || false}
-    controls={fromJS([
-      {name: 'slideIn', value: true},
-      {name: 'slideOut', value: false}
-    ])}
+    controls={slideControls}
     slideChildren={children}
     {...props}
   >

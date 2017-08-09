@@ -65,12 +65,13 @@ const popoverMethods = {
       window.removeEventListener('orientationchange', this._listener)
     }
 
-    if (this._ticking !== null) {
-      cancelAnimationFrame(this._ticking)
+    if (this._loader) {
+      this._loader.cancel()
     }
 
-    if (this._loader && this._loader.resolved === false) {
-      this._loader.cancel()
+    if (this._ticking !== null) {
+      console.log('Canceling frame:', this._ticking)
+      cancelAnimationFrame(this._ticking)
     }
   },
 
@@ -106,7 +107,7 @@ const popoverMethods = {
     this._loader = loadImages(this._popover)
     this._loader.then(
       (...args) => {
-        this.setPositionState.bind(this)(...args)
+        this.setPositionState.bind(this)()
         this._loader = null
       }
     )

@@ -26,14 +26,16 @@ const ToggleDisplayComponent = ({
   </ToggleDisplay>
 )
 
+const toggleControls = fromJS([
+  {name: 'show', value: true},
+  {name: 'hide', value: false}
+])
+
 export default ({children, visible, ...props}) => (
   <Toggle
     propName='isVisible'
     initialValue={visible || false}
-    controls={fromJS([
-      {name: 'show', value: true},
-      {name: 'hide', value: false}
-    ])}
+    controls={toggleControls}
     toggleDisplayChildren={children}
     {...props}
   >
