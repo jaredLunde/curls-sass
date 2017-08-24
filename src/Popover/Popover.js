@@ -70,7 +70,6 @@ const popoverMethods = {
     }
 
     if (this._ticking !== null) {
-      console.log('Canceling frame:', this._ticking)
       cancelAnimationFrame(this._ticking)
     }
   },

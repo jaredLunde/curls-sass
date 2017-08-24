@@ -4,6 +4,7 @@ import {
   WillChange,
   Choices,
   callIfExists,
+  cloneIfElement,
   namespace as ns
 } from 'react-cake'
 import {OrderedSet} from 'immutable'
@@ -33,7 +34,7 @@ export const SelectToggle = ({
     {...props}
   >
     <Type semiBold darkestGrey className='select__value'>
-      {getOptionName(selection)}
+      {cloneIfElement(getOptionLabel(selection))}
     </Type>
 
     <Type
@@ -94,6 +95,7 @@ const getOptionLike = (selection, key) => (
 )
 const getOptionValue = selection => getOptionLike(selection, 'value')
 const getOptionName = selection => getOptionLike(selection, 'name')
+const getOptionLabel = selection => getOptionLike(selection, 'label') || getOptionName(selection)
 
 export const SelectOption = ({
   option,
@@ -113,7 +115,7 @@ export const SelectOption = ({
     key={n}
     {...props}
   >
-    {getOptionName(option)}
+    {cloneIfElement(getOptionLabel(option))}
   </li>
 )
 
@@ -237,8 +239,8 @@ const DropComponent = ({willChangeIsOn, willChange, ...props}) => (
 )
 
 const WillChangeComponent = ({className, ...props}) => (
-  <WillChange opacity visibility transform whenClicked {...props}>
-    <DropComponent boxClassName={className}/>
+  <WillChange opacity visibility transform whenClicked boxClassName={className} {...props}>
+    <DropComponent/>
   </WillChange>
 )
 

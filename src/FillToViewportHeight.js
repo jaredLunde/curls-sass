@@ -66,6 +66,11 @@ class FillToViewportHeight extends React.PureComponent {
       getViewportScroll,
       subscribe,
       unsubscribe,
+      orientation,
+      screenOrientation,
+      scrollTo,
+      viewportHeight,
+      viewportWidth,
       style,
       ...props
     } = this.props
