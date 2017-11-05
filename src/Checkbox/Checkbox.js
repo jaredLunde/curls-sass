@@ -74,18 +74,16 @@ Checkbox.prototype.render = function () {
     readOnly
   />
 
-  const checkboxLabel = typeof children === 'function'
-    ? cloneIfElement(
-        children,
-        {
-          key: 'label',
-          toggle,
-          check,
-          unCheck,
-          isChecked
-        }
-      )
-    : children
+  const checkboxLabel = cloneIfElement(
+      children,
+      {
+        key: 'label',
+        toggle,
+        check,
+        unCheck,
+        isChecked
+      }
+    )
 
   return React.createElement(
     nodeType,
