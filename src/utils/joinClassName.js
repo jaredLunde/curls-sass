@@ -1,4 +1,6 @@
-const whichClassName = className => typeof className === 'object' ? className.className : className
+const whichClassName = className => typeof className === 'object'
+  ? className.className
+  : className
 
 
 export default (...classNames) => (

@@ -26,7 +26,7 @@ export const determineModifiers = (curlsModifiers, props) => {
         if (
           (valIsString && val) ||
           (
-            val !== void 0  &&
+            val !== void 0 &&
             val !== null &&
             val !== false
           )
