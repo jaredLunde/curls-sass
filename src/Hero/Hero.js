@@ -3,7 +3,7 @@ import {ViewportSize} from 'react-cake'
 import Box from '../Box'
 import propTypes from './propTypes'
 import FillToViewportHeight from '../FillToViewportHeight'
-import {createUINode} from '../utils'
+import {createUINode, compose} from '../utils'
 
 
 const getTrimmedPx = (trimmed, trimFrom = 'width') => {
@@ -76,12 +76,4 @@ Hero.prototype.render = function () {
   )
 }
 
-export default ({children, ...props}) => (
-  <FillToViewportHeight {...props}>
-    <Box>
-      <Hero>
-        {children}
-      </Hero>
-    </Box>
-  </FillToViewportHeight>
-)
+export default compose([FillToViewportHeight, Box, Hero])

@@ -3,7 +3,8 @@ import {
   WithViewport,
   cloneIfElement,
   requestAnimationFrame,
-  cancelAnimationFrame
+  cancelAnimationFrame,
+  compose
 } from 'react-cake'
 
 
@@ -88,10 +89,4 @@ class FillToViewportHeight extends React.PureComponent {
 }
 
 
-export default ({children, ...props}) => (
-  <WithViewport {...props}>
-    <FillToViewportHeight>
-      {children}
-    </FillToViewportHeight>
-  </WithViewport>
-)
+export default compose([WithViewport, FillToViewportHeight])

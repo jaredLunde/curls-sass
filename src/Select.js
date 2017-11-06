@@ -240,12 +240,12 @@ const DropComponent = ({willChangeIsOn, willChange, ...props}) => (
 
 const WillChangeComponent = ({className, ...props}) => (
   <WillChange opacity visibility transform whenClicked boxClassName={className} {...props}>
-    <DropComponent/>
+    {DropComponent}
   </WillChange>
 )
 
 export default ({onChange, ...props}) => (
   <Box {...props} onSelect={onChange}>
-    <WillChangeComponent/>
+    {WillChangeComponent}
   </Box>
 )

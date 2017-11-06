@@ -3,7 +3,7 @@ import {Box} from '../Box/Box'
 import Flex from '../Flex'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode} from '../utils'
+import {createUINode, compose} from '../utils'
 
 
 /**
@@ -18,10 +18,4 @@ Button.defaultProps = {
 }
 
 
-export default ({children, ...props}) => (
-  <Flex {...props}>
-    <Box>
-      <Button>{children}</Button>
-    </Box>
-  </Flex>
-)
+export default compose([Flex, Box, Button])

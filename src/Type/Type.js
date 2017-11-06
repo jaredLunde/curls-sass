@@ -3,7 +3,7 @@ import {Box} from '../Box/Box'
 import Flex from '../Flex'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode} from '../utils'
+import {createUINode, compose} from '../utils'
 
 
 export const Type = createUINode('Type', propTypes, modifiers)
@@ -12,10 +12,4 @@ Type.defaultProps = {
 }
 
 
-export default ({children, ...props}) => (
-  <Flex {...props}>
-    <Box>
-      <Type>{children}</Type>
-    </Box>
-  </Flex>
-)
+export default compose([Flex, Box, Type])

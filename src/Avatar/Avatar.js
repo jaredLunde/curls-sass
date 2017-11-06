@@ -4,7 +4,7 @@ import {Box} from '../Box/Box'
 import Flex from '../Flex'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode, supportsCSS} from '../utils'
+import {createUINode, supportsCSS, compose} from '../utils'
 
 
 /**
@@ -42,18 +42,11 @@ Avatar.prototype.render = function () {
 }
 
 
-export default ({children, src, ...props}) => {
-  let AvatarComponent = <Avatar src={src}>{children}</Avatar>
+let AvatarComponent = ({children, ...props}) => <Avatar {...props}>{children}</Avatar>
 
-  if (supportsObjectFit === false) {
-    AvatarComponent = <ImageStat>{AvatarComponent}</ImageStat>
-  }
-
-  return (
-    <Flex {...props}>
-      <Box>
-        {AvatarComponent}
-      </Box>
-    </Flex>
-  )
+if (supportsObjectFit === false) {
+  AvatarComponent = compose([ImageStat, AvatarComponent])
 }
+
+
+export default compose([Flex, Box, AvatarComponent])

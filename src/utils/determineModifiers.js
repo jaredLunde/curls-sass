@@ -1,23 +1,22 @@
-const whichConstructor = Component => Component.constructor ? Component.constructor : (Component.type ? Component.type : Component)
+export const whichConstructor = Component => Component.constructor ? Component.constructor : (Component.type ? Component.type : Component)
 
 
-export default Component => {
+export const determineModifiers = (curlsModifiers, props) => {
   const mods = []
-  const propKeys = Object.keys(Component.props)
-  const Constructor = whichConstructor(Component)
+  const propKeys = Object.keys(props)
 
-  if (Constructor.curlsModifiers === void 0) {
+  if (curlsModifiers === void 0) {
     return mods
   }
 
-  const modKeys = Object.keys(Constructor.curlsModifiers)
+  const modKeys = Object.keys(curlsModifiers)
 
   for (let x = 0; x < propKeys.length; x++) {
     const propName = propKeys[x]
-    const mod = Constructor.curlsModifiers[propName]
+    const mod = curlsModifiers[propName]
 
     if (mod !== void 0) {
-      const propVal = Component.props[propName]
+      const propVal = props[propName]
       const valIsString = typeof propVal === 'string'
       const propVals = valIsString ? propVal.split(' ') : [propVal]
 
@@ -39,4 +38,10 @@ export default Component => {
   }
 
   return mods
+}
+
+
+export default Component => {
+  const Constructor = whichConstructor(Component)
+  return determineModifiers(Constructor.curlsModifiers, Component.props)
 }

@@ -5,7 +5,7 @@ import boxPropTypes from '../Box/propTypes'
 import Button from '../Button'
 import Drop from '../Drop'
 import propTypes from './propTypes'
-import {selectProps, createUINode} from '../utils'
+import {selectProps, createUINode, compose} from '../utils'
 
 
 /**
@@ -183,8 +183,5 @@ const WillChangeComponent = ({className, ...props}) => (
   </WillChange>
 )
 
-export default props => (
-  <Box {...props}>
-    <WillChangeComponent/>
-  </Box>
-)
+
+export default compose([Box, WillChangeComponent])

@@ -1,6 +1,7 @@
 import React from 'react'
 import Box from './Box'
 import {Col} from './Col'
+import {compose} from './utils'
 
 
 export class Row extends Col {
@@ -8,8 +9,4 @@ export class Row extends Col {
 }
 
 
-export default ({children, ...props}) => (
-  <Box {...props}>
-    <Row>{children}</Row>
-  </Box>
-)
+export default compose([Box, Row])
