@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle} from 'react-cake'
+import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import {createUIWrapper} from '../utils'
 import modifiers from './modifiers'
@@ -66,16 +66,13 @@ const dropControls = fromJS([
 ])
 
 
-export default ({children, visible, ...props}) => (
-  <Toggle
-    propName='isVisible'
-    initialValue={visible || false}
-    controls={dropControls}
-    dropChildren={children}
-    {...props}
-  >
-    <Transitionable>
-      {DropComponent}
-    </Transitionable>
-  </Toggle>
-)
+const composedDrop = compose([Toggle, Transitionable, DropComponent])
+
+
+export default ({children, visible, ...props}) => composedDrop({
+  propName: 'isVisible',
+  initialValue: visible || false,
+  controls: dropControls,
+  dropChildren: children,
+  ...props
+})

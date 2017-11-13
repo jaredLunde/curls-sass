@@ -42,7 +42,7 @@ Avatar.prototype.render = function () {
 }
 
 
-let AvatarComponent = ({children, ...props}) => <Avatar {...props}>{children}</Avatar>
+let AvatarComponent = Avatar
 
 if (supportsObjectFit === false) {
   AvatarComponent = compose([ImageStat, AvatarComponent])

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle} from 'react-cake'
+import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import {createUIWrapper} from '../utils'
 import modifiers from './modifiers'
@@ -76,16 +76,14 @@ const slideControls = fromJS([
   {name: 'slideOut', value: false}
 ])
 
-export default ({children, visible, ...props}) => (
-  <Toggle
-    propName='isVisible'
-    initialValue={visible || false}
-    controls={slideControls}
-    slideChildren={children}
-    {...props}
-  >
-    <Transitionable>
-      {SlideComponent}
-    </Transitionable>
-  </Toggle>
-)
+
+const composedSlide = compose([Toggle, Transitionable, SlideComponent])
+
+
+export default ({children, visible, ...props}) => composedSlide({
+  propName: 'isVisible',
+  initialValue: visible || false,
+  controls: slideControls,
+  slideChildren: children,
+  ...props
+})

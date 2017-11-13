@@ -1,5 +1,5 @@
 import React from 'react'
-import {Counter, namespace as ns, cloneIfElement} from 'react-cake'
+import {Counter, namespace as ns, cloneIfElement, compose} from 'react-cake'
 import Type from '../Type'
 import propTypes from './propTypes'
 import {createUINode, joinClassName} from '../utils'
@@ -238,6 +238,9 @@ Paginate.prototype.render = function () {
   )
 }
 
+
+const composedPaginate = compose([Counter, Paginate])
+
 export default ({
   initialPage,
   numPages,
@@ -245,16 +248,14 @@ export default ({
   onBoundMinPage,
   onBoundMaxPage,
   ...props
-}) => (
-  <Counter
-    propName='currentPage'
-    initialValue={initialPage || 1}
-    minValue={0}
-    maxValue={numPages}
-    onChange={onChange}
-    onBoundMin={onBoundMinPage}
-    onBoundMax={onBoundMaxPage}
-  >
-    <Paginate numPages={numPages} {...props}/>
-  </Counter>
-)
+}) => composedPaginate({
+  propName: 'currentPage',
+  initialValue: initialPage || 1,
+  minValue: 0,
+  maxValue: numPages,
+  onChange: onChange,
+  onBoundMin: onBoundMinPage,
+  onBoundMax: onBoundMaxPage,
+  numPages: numPages,
+  ...props,
+})

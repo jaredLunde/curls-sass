@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle} from 'react-cake'
+import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import {createUIWrapper} from '../utils'
 import modifiers from './modifiers'
@@ -31,14 +31,12 @@ const toggleControls = fromJS([
   {name: 'hide', value: false}
 ])
 
-export default ({children, visible, ...props}) => (
-  <Toggle
-    propName='isVisible'
-    initialValue={visible || false}
-    controls={toggleControls}
-    toggleDisplayChildren={children}
-    {...props}
-  >
-    {ToggleDisplayComponent}
-  </Toggle>
-)
+
+const composedToggleDisplay = compose([Toggle, ToggleDisplayComponent])
+export default ({children, visible, ...props}) => composedToggleDisplay({
+  propName: 'isVisible',
+  initialValue: visible || false,
+  controls: toggleControls,
+  toggleDisplayChildren: children,
+  ...props
+})

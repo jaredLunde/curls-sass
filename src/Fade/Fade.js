@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle} from 'react-cake'
+import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import {createUIWrapper} from '../utils'
 import modifiers from './modifiers'
@@ -59,16 +59,13 @@ const fadeControls = fromJS([
   {name: 'fadeOut', value: false}
 ])
 
-export default ({children, visible, ...props}) => (
-  <Toggle
-    propName='isVisible'
-    initialValue={visible || false}
-    controls={fadeControls}
-    fadeChildren={children}
-    {...props}
-  >
-    <Transitionable>
-      {FadeComponent}
-    </Transitionable>
-  </Toggle>
-)
+
+const compostedFade = compose([Toggle, Transitionable, FadeComponent])
+
+export default ({children, visible, ...props}) => composedFade({
+  propName: 'isVisible',
+  initialValue: visible || false,
+  controls: fadeControls,
+  fadeChildren: children,
+  ...props
+})

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle, cloneIfElement, namespace as ns} from 'react-cake'
+import {Toggle, cloneIfElement, namespace as ns, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -105,15 +105,15 @@ const checkboxControls = fromJS([
   {name: 'unCheck', value: false}
 ])
 
-export default ({children, checked, onChange, ...props}) => (
-  <Box {...props} checkboxChildren={children}>
-    <Toggle
-      propName='isChecked'
-      initialValue={checked || false}
-      controls={checkboxControls}
-      onChange={onChange}
-    >
-      {Checkbox}
-    </Toggle>
-  </Box>
-)
+
+const composedCheckbox = compose([Box, Toggle, Checkbox])
+
+
+export default ({children, checked, onChange, ...props}) => composedCheckbox({
+  checkboxChildren: children,
+  propName: 'isChecked',
+  initialValue: checked || false,
+  controls: checkboxControls,
+  onChange: onChange,
+  ...props
+})

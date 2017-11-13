@@ -5,7 +5,8 @@ import {
   cloneIfElement,
   requestAnimationFrame,
   cancelAnimationFrame,
-  loadImages
+  loadImages,
+  compose
 } from 'react-cake'
 import Box from '../Box'
 import Drop from '../Drop'
@@ -168,17 +169,15 @@ const PopoverComponent = ({
 )
 
 
-export default ({children, ...props}) => (
-  <Box {...props}>
-    <WillChange
-      opacity
-      visibility
-      transform
-      whenClicked
-      whenMouseEnters
-      whenMouseLeaves
-    >
-      <PopoverComponent popoverChildren={children}/>
-    </WillChange>
-  </Box>
-)
+const composedPopover = compose([Box, WillChange, PopoverComponent])
+
+export default ({children, ...props}) => composedPopover({
+  opacity: true,
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  whenMouseEnters: true,
+  whenMouseLeaves: true,
+  popoverChildren: children,
+  ...props
+})

@@ -5,7 +5,8 @@ import {
   Choices,
   callIfExists,
   cloneIfElement,
-  namespace as ns
+  namespace as ns,
+  compose
 } from 'react-cake'
 import {OrderedSet} from 'immutable'
 import Box from './Box'
@@ -238,14 +239,16 @@ const DropComponent = ({willChangeIsOn, willChange, ...props}) => (
   </Drop>
 )
 
-const WillChangeComponent = ({className, ...props}) => (
-  <WillChange opacity visibility transform whenClicked boxClassName={className} {...props}>
-    {DropComponent}
-  </WillChange>
-)
 
-export default ({onChange, ...props}) => (
-  <Box {...props} onSelect={onChange}>
-    {WillChangeComponent}
-  </Box>
-)
+const composedDropdown = compose([Box, WillChange, DropComponent])
+
+
+export default ({className, onChange, ...props}) => composedDropdown({
+  opacity: true,
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  boxClassName: className,
+  onSelect: onChange,
+  ...props
+})

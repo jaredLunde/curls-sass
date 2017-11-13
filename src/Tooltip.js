@@ -1,5 +1,5 @@
 import React from 'react'
-import {WillChange} from 'react-cake'
+import {WillChange, compose} from 'react-cake'
 import Box from './Box'
 import Drop from './Drop'
 import {Popover} from './Popover/Popover'
@@ -49,17 +49,15 @@ const TooltipComponent = ({
 )
 
 
-export default ({children, ...props}) => (
-  <Box {...props}>
-    <WillChange
-      opacity
-      visibility
-      transform
-      whenClicked
-      whenMouseEnters
-      whenMouseLeaves
-    >
-      <TooltipComponent popoverChildren={children}/>
-    </WillChange>
-  </Box>
-)
+const composedTooltip = compose([Box, WillChange, TooltipComponent])
+
+export default ({children, ...props}) => composedTooltip({
+  opacity: true,
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  whenMouseEnters: true,
+  whenMouseLeaves: true,
+  popoverChildren: children,
+  ...props
+})

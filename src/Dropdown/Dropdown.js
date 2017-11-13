@@ -1,11 +1,11 @@
 import React from 'react'
-import {reduceProps, WillChange, namespace as ns} from 'react-cake'
+import {reduceProps, WillChange, compose, namespace as ns} from 'react-cake'
 import Box from '../Box'
 import boxPropTypes from '../Box/propTypes'
 import Button from '../Button'
 import Drop from '../Drop'
 import propTypes from './propTypes'
-import {selectProps, createUINode, compose} from '../utils'
+import {selectProps, createUINode} from '../utils'
 
 
 /**
@@ -177,11 +177,15 @@ const DropComponent = ({
   </Drop>
 )
 
-const WillChangeComponent = ({className, ...props}) => (
-  <WillChange opacity visibility transform whenClicked {...props}>
-    <DropComponent boxClassName={className}/>
-  </WillChange>
-)
+
+const composedDropdown = compose([Box, WillChange, DropComponent])
 
 
-export default compose([Box, WillChangeComponent])
+export default ({className, ...props}) => composedDropdown({
+  opacity: true,
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  boxClassName: className,
+  ...props
+})

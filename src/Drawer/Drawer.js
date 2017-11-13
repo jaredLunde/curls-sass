@@ -1,5 +1,5 @@
 import React from 'react'
-import {WillChange, cloneIfElement} from 'react-cake'
+import {WillChange, cloneIfElement, compose} from 'react-cake'
 import Box from '../Box'
 import Slide from '../Slide'
 import modifiers from './modifiers'
@@ -91,16 +91,14 @@ const DrawerComponent = ({
 )
 
 
-export default ({children, ...props}) => (
-  <Box {...props}>
-    <WillChange
-      visibility
-      transform
-      whenClicked
-      whenMouseEnters
-      whenMouseLeaves
-    >
-      <DrawerComponent drawerChildren={children}/>
-    </WillChange>
-  </Box>
-)
+const composedDrawer = compose([Box, WillChange, DrawerComponent])
+
+export default ({children, ...props}) => composedDrawer({
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  whenMouseEnters: true,
+  whenMouseLeaves: true,
+  drawerChildren: children,
+  ...props
+})

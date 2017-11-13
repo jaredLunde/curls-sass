@@ -5,7 +5,8 @@ import {
   cloneIfElement,
   loadImages,
   WithViewport,
-  Viewport
+  Viewport,
+  compose
 } from 'react-cake'
 import Box from '../Box'
 import Drop from '../Drop'
@@ -152,15 +153,15 @@ const VpComponent = ({style, onVisibilityChange, ...props}) => (
 )
 
 
-export default ({children, onChange, ...props}) => (
-  <Box modalChildren={children} onVisibilityChange={onChange} {...props}>
-    <WillChange
-      opacity
-      visibility
-      transform
-      whenClicked
-    >
-      {VpComponent}
-    </WillChange>
-  </Box>
-)
+const composedModal = compose([Box, WillChange, VpComponent])
+
+
+export default ({children, onChange, ...props}) => composedModal({
+  opacity: true,
+  visibility: true,
+  transform: true,
+  whenClicked: true,
+  modalChildren: children,
+  onVisibilityChange: onChange,
+  ...props
+})
