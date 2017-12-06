@@ -33,6 +33,8 @@ const toggleControls = fromJS([
 
 
 const composedToggleDisplay = compose([Toggle, ToggleDisplayComponent])
+
+
 export default ({children, visible, ...props}) => composedToggleDisplay({
   propName: 'isVisible',
   initialValue: visible || false,

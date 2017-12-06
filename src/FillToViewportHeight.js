@@ -2,58 +2,51 @@ import React from 'react'
 import {
   WithViewport,
   cloneIfElement,
-  requestAnimationFrame,
-  cancelAnimationFrame,
-  compose
+  compose,
+  throttle
 } from 'react-cake'
 
 
-/**
-REDO this
-*/
 class FillToViewportHeight extends React.PureComponent {
   state = {
     height: 'auto'
   }
 
+  constructor (props) {
+    super(props)
+    const {subscribe, getViewportSize} = props
+    subscribe(this.setHeight)
+    const {height} = getViewportSize()
+    this.state = {height}
+  }
+
+  componentDidMount () {
+    this.setHeight()
+  }
+
   setRef = e => this.element = e
   element = null
 
-  ticking = false
-  frame = null
-
-  setHeight = () => {
-    if (this.ticking) return;
-    const {inViewY, getViewportSize} = this.props
-    const {height} = getViewportSize()
-    this.ticking = true
-
-    this.frame = requestAnimationFrame(
-      () => this.setState(
+  setHeight = throttle(
+    () => {
+      this.setState(
         prevState => {
+          const {inViewY, getViewportSize} = this.props
+          const {height} = getViewportSize()
+
           if (inViewY(this.element) && prevState.height !== height) {
             return {height}
           }
 
           return null
-        },
-        () => this.ticking = false
+        }
       )
-    )
-  }
-
-  componentDidMount () {
-    const {subscribe, getViewportSize} = this.props
-    subscribe(this.setHeight)
-    const {height} = getViewportSize()
-    this.setState({height})
-  }
+    }
+  )
 
   componentWillUnmount () {
     this.props.unsubscribe(this.setHeight)
-    if (this.frame) {
-      cancelAnimationFrame(this.frame)
-    }
+    this.setHeight.cancel()
   }
 
   render () {

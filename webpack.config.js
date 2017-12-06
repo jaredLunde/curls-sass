@@ -79,7 +79,18 @@ module.exports = {
     descriptionFiles: ['package.json'],
     moduleExtensions: ['-loader'],
     // Extensions used to resolve modules
-    extensions: ['.js', '.react.js', '.scss', '.css']
+    extensions: ['.js', '.react.js', '.scss', '.css'],
+    symlinks: false,
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
+      immutable: path.resolve('./node_modules/immutable'),
+      'core-js': path.resolve('./node_modules/core-js'),
+      'react-immutable-proptypes': path.resolve('./node_modules/react-immutable-proptypes'),
+      'react-cake': path.resolve('./node_modules/react-cake'),
+      'prop-types': path.resolve('./node_modules/prop-types'),
+      lodash: path.resolve('./node_modules/lodash')
+    },
   },
 
   module: {
@@ -95,10 +106,10 @@ module.exports = {
           ]
         })
       },
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        use: ['file']
-      },
+      // {
+      //   test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      //   use: ['file']
+      // },
       {
         test: /\.js$/,
         use: ['babel-loader', stripLogger],
@@ -133,7 +144,7 @@ module.exports = {
       minimize: true,
       debug: false
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     extractSass
   ],
 

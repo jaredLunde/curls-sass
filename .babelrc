@@ -2,71 +2,110 @@
   "env": {
     "production": {
       "presets": [
-        "react",
-        "react-optimize",
+        "@babel/preset-react",
         [
-          "env", {
-              "debug": true,
-              "modules": false,
-              "useBuiltIns": true,
-              "targets": {
-                "browsers": "defaults"
-              }
+          "@babel/preset-env", {
+            "debug": true,
+            "modules": false,
+            "useBuiltIns": "usage",
+            "targets": {
+              "browsers": "defaults"
+            }
           }
         ],
-        "stage-0"
+        "@babel/preset-stage-0"
       ],
-      "plugins": ["transform-decorators-legacy"]
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-react-pure-components",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     },
     "commonjs": {
       "presets": [
-        "react",
-        "react-optimize",
+        "@babel/preset-react",
         [
-          "env", {
+          "@babel/preset-env", {
             "debug": true,
             "loose": true,
-            "modules": "commonjs"
+            "modules": "commonjs",
+            "useBuiltIns": "usage"
           }
         ],
-        "stage-0"
+        "@babel/preset-stage-0"
       ],
-      "plugins": ["transform-decorators-legacy"]
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-react-pure-components",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     },
     "es": {
       "presets": [
-        "react",
-        "react-optimize",
+        "@babel/preset-react",
         [
-          "env", {
+          "@babel/preset-env", {
             "debug": true,
             "modules": false,
+            "useBuiltIns": "usage"
           }
         ],
-        "stage-0"
+        "@babel/preset-stage-0"
       ],
-      "plugins": ["transform-decorators-legacy"]
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-react-pure-components",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     },
     "development": {
       "presets": [
-        "react",
+        "@babel/preset-react",
         [
-          "env", {
+          "@babel/preset-env", {
             "debug": false,
             "modules": false,
-            "useBuiltIns": true,
+            "useBuiltIns": "usage",
             "targets": {
               "browsers": ["chrome >= 56"]
             }
           }
         ],
-        "stage-0"
+        "@babel/preset-stage-0"
       ],
-      "plugins": ["transform-decorators-legacy"]
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-react-pure-components",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     },
     "cli": {
-      "presets": ["react", "env", "stage-0"],
-      "plugins": ["transform-decorators-legacy"]
+      "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env", {
+            "debug": true,
+            "modules": false,
+            "useBuiltIns": "usage"
+          }
+        ],
+        "@babel/preset-stage-0"
+      ],
+      "plugins": [
+        "transform-decorators-legacy",
+        "transform-react-pure-components",
+        "transform-react-inline-elements",
+        "transform-react-constant-elements",
+        "transform-react-remove-prop-types"
+      ]
     }
   }
 }

@@ -1,6 +1,6 @@
-export Box, {ComplexBox} from './Box'
-export Flex, {ComplexFlex} from './Flex'
-export Grid, {ComplexGrid} from './Grid'
+export Box from './Box'
+export Flex from './Flex'
+export Grid from './Grid'
 
 export Avatar from './Avatar'
 export Button from './Button'
@@ -30,6 +30,12 @@ export Tooltip from './Tooltip'
 export Transitionable from './Transitionable'
 export Type from './Type'
 
-export * from './utils'
-// TODO: Hamburger, Tabs
+export {
+  joinClassName,
+  loadImages,
+  loadImage,
+  determineModifiers,
+  createUINode,
+  createUIWrapper
+} from './utils'
 // TODO: Consistency in sizing 'xxs, xs, sm, md, lg, xl, xxl' being preferred
