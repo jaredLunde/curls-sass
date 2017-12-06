@@ -141,7 +141,10 @@ Popover.prototype.render = function () {
       ref: this.setRef.bind(this),
       ...popoverProps
     },
-    content({isVisible, toggle, show, hide, reposition: reposition.bind(this)})
+    cloneIfElement(
+      content,
+      {isVisible, toggle, show, hide, reposition: reposition.bind(this)}
+    )
   )
 
   return cloneIfElement(

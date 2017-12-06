@@ -57,5 +57,6 @@
     "Jared Lunde <jared@tessellate.io> (https://github.com/jaredlunde)"
   ],
   "analyze": true,
+  "sideEffects": false,
   "license": "MIT"
 }

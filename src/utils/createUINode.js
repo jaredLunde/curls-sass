@@ -24,7 +24,17 @@ export default (componentName, propTypes, modifiers) => (
     get renderProps () {
       const renderProps = reduceProps(this.props, propTypes || {})
       renderProps.className = this.className
-      renderProps.ref = this.props.withRef
+
+      if (
+        typeof this.props.nodeType !== 'function'
+        || (
+          this.props.nodeType.prototype
+          && this.props.nodeType.isReactComponent
+        )
+      ) {
+        renderProps.ref = this.props.withRef
+        delete renderProps.withRef
+      }
 
       return renderProps
     }

@@ -1,5 +1,5 @@
 export default, {
-  DropdownButton,
+  DropdownToggle,
   DropdownMenu,
   DropdownMenuItem
 } from './Dropdown'

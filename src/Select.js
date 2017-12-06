@@ -173,9 +173,9 @@ Select.prototype.render = function () {
       readOnly
       key='select__select'
       name={name}
-      value={getOptionValue(selection)}
+      value={getOptionValue(selection) || void 0}
     >
-      <option value={getOptionValue(selection)}/>
+      <option value={getOptionValue(selection) || void 0}/>
     </select>
   )
 
