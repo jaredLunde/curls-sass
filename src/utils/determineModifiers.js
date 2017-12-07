@@ -1,7 +1,7 @@
 export const whichConstructor = Component => Component.constructor ? Component.constructor : (Component.type ? Component.type : Component)
 
 
-export const determineModifiers = (curlsModifiers, props) => {
+export function determineModifiers (curlsModifiers, props) {
   const mods = []
   const propKeys = Object.keys(props)
 
@@ -41,7 +41,7 @@ export const determineModifiers = (curlsModifiers, props) => {
 }
 
 
-export default Component => {
+export default function (Component) {
   const Constructor = whichConstructor(Component)
   return determineModifiers(Constructor.curlsModifiers, Component.props)
 }

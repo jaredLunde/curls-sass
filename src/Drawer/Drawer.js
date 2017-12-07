@@ -1,5 +1,5 @@
 import React from 'react'
-import {WillChange, cloneIfElement, compose} from 'react-cake'
+import {WillChange, createOptimized, compose} from 'react-cake'
 import Box from '../Box'
 import Slide from '../Slide'
 import modifiers from './modifiers'
@@ -65,7 +65,7 @@ Drawer.prototype.render = function () {
     content({isVisible, toggle, show, hide})
   )
 
-  return cloneIfElement(
+  return createOptimized(
     drawerChildren,
     {
       [this.constructor.displayName.toLowerCase()]: drawer,

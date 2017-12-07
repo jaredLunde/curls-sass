@@ -1,9 +1,11 @@
-const whichClassName = className => typeof className === 'object'
-  ? className.className
-  : className
+function whichClassName (className) {
+  return typeof className === 'object'
+    ? className.className
+    : className
+}
 
 
-export default (...classNames) => (
-  classNames.filter(className => className).map(whichClassName).join(' ')
-  || void 0
-)
+export default function (...classNames) {
+  return classNames.filter(className => className).map(whichClassName).join(' ')
+    || void 0
+}

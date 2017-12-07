@@ -1,52 +1,35 @@
 import React from 'react'
 import {
   WithViewport,
-  cloneIfElement,
-  compose,
-  throttle
+  createOptimized,
+  compose
 } from 'react-cake'
 
 
 class FillToViewportHeight extends React.PureComponent {
-  state = {
-    height: 'auto'
-  }
-
   constructor (props) {
     super(props)
-    const {subscribe, getViewportSize} = props
+    const {subscribe} = props
     subscribe(this.setHeight)
-    const {height} = getViewportSize()
-    this.state = {height}
   }
 
   componentDidMount () {
     this.setHeight()
   }
 
-  setRef = e => this.element = e
   element = null
+  setRef = e => this.element = e
+  prevHeight = 0
 
-  setHeight = throttle(
-    () => {
-      this.setState(
-        prevState => {
-          const {inViewY, getViewportSize} = this.props
-          const {height} = getViewportSize()
-
-          if (inViewY(this.element) && prevState.height !== height) {
-            return {height}
-          }
-
-          return null
-        }
-      )
+  setHeight = () => {
+    const {height} = this.props.getViewportSize()
+    if (this.prevHeight !== height) {
+      this.forceUpdate()
     }
-  )
+  }
 
   componentWillUnmount () {
     this.props.unsubscribe(this.setHeight)
-    this.setHeight.cancel()
   }
 
   render () {
@@ -66,15 +49,13 @@ class FillToViewportHeight extends React.PureComponent {
       orientation,
       screenOrientation,
       scrollTo,
-      viewportHeight,
-      viewportWidth,
       style,
       ...props
     } = this.props
-    const {height} = this.state
     const {setRef} = this
+    const {height} = getViewportSize()
 
-    return cloneIfElement(
+    return createOptimized(
       children,
       {
         fillToVhRef: setRef,

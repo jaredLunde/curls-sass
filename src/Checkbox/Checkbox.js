@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle, cloneIfElement, namespace as ns, compose} from 'react-cake'
+import {Toggle, createOptimized, namespace as ns, compose} from 'react-cake'
 import {fromJS} from 'immutable'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -74,7 +74,7 @@ Checkbox.prototype.render = function () {
     readOnly
   />
 
-  const checkboxLabel = cloneIfElement(
+  const checkboxLabel = createOptimized(
       children,
       {
         key: 'label',

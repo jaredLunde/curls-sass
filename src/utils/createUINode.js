@@ -1,11 +1,11 @@
 import React from 'react'
-import {reduceProps, cloneIfElement, namespace as ns} from 'react-cake'
+import {reduceProps, createOptimized, namespace as ns} from 'react-cake'
 import joinClassName from './joinClassName'
 import determineModifiers from './determineModifiers'
 
 
-export default (componentName, propTypes, modifiers) => (
-  class UINode extends React.PureComponent {
+export default function (componentName, propTypes, modifiers) {
+  return class UINode extends React.PureComponent {
     static displayName = componentName
     static propTypes = propTypes
     static curlsModifiers = modifiers
@@ -44,4 +44,4 @@ export default (componentName, propTypes, modifiers) => (
       return React.createElement(nodeType, this.renderProps)
     }
   }
-)
+}

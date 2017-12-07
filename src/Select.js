@@ -4,7 +4,7 @@ import {
   WillChange,
   Choices,
   callIfExists,
-  cloneIfElement,
+  createOptimized,
   namespace as ns,
   compose
 } from 'react-cake'
@@ -35,7 +35,7 @@ export const SelectToggle = ({
     {...props}
   >
     <Type semiBold darkestGrey className='select__value'>
-      {cloneIfElement(getOptionLabel(selection))}
+      {createOptimized(getOptionLabel(selection))}
     </Type>
 
     <Type
@@ -116,7 +116,7 @@ export const SelectOption = ({
     key={n}
     {...props}
   >
-    {cloneIfElement(getOptionLabel(option))}
+    {createOptimized(getOptionLabel(option))}
   </li>
 )
 

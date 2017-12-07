@@ -1,5 +1,5 @@
 import React from 'react'
-import {Toggle, WillChange, cloneIfElement, namespace as ns} from 'react-cake'
+import {Toggle, WillChange, createOptimized, namespace as ns} from 'react-cake'
 import {fromJS} from 'immutable'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -60,7 +60,7 @@ Switch.prototype.render = function () {
   />
 
   const switchLabel = typeof children === 'function'
-    ? cloneIfElement(
+    ? createOptimized(
         children,
         {
           key: 'label',

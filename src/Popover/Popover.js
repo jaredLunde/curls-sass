@@ -2,7 +2,7 @@ import React from 'react'
 import {
   WillChange,
   namespace as ns,
-  cloneIfElement,
+  createOptimized,
   requestAnimationFrame,
   cancelAnimationFrame,
   loadImages,
@@ -141,13 +141,13 @@ Popover.prototype.render = function () {
       ref: this.setRef.bind(this),
       ...popoverProps
     },
-    cloneIfElement(
+    createOptimized(
       content,
       {isVisible, toggle, show, hide, reposition: reposition.bind(this)}
     )
   )
 
-  return cloneIfElement(
+  return createOptimized(
     popoverChildren,
     {
       [this.constructor.displayName.toLowerCase()]: popover,

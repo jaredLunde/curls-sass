@@ -1,17 +1,19 @@
 import CancelablePromise from 'cancelable-promise'
 
 
-export const loadImage = img => new CancelablePromise((resolve, reject) => {
-  if (img.complete === true || img.naturalHeight > 0) {
-    resolve({target: img})
-  } else {
-    img.onload = resolve
-    img.onerror = reject
-  }
-})
+export function loadImage (img) {
+  return new CancelablePromise((resolve, reject) => {
+    if (img.complete === true || img.naturalHeight > 0) {
+      resolve({target: img})
+    } else {
+      img.onload = resolve
+      img.onerror = reject
+    }
+  })
+}
 
 
-export default el => {
+export default function (el) {
   const images = el.getElementsByTagName('img')
 
   if (images === null || images.length === 0) {

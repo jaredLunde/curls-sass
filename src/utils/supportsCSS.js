@@ -1,1 +1,3 @@
-export default style => style in document.body.style
+export default function (style) {
+  return style in document.body.style
+}

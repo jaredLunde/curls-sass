@@ -2,7 +2,7 @@ import React from 'react'
 import {
   WillChange,
   namespace as ns,
-  cloneIfElement,
+  createOptimized,
   loadImages,
   WithViewport,
   Viewport,
@@ -117,7 +117,7 @@ Modal.prototype.render = function () {
     )
   )
 
-  return cloneIfElement(
+  return createOptimized(
     modalChildren,
     {
       modal,

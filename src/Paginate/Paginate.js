@@ -1,5 +1,5 @@
 import React from 'react'
-import {Counter, namespace as ns, cloneIfElement, compose} from 'react-cake'
+import {Counter, namespace as ns, createOptimized, compose} from 'react-cake'
 import Type from '../Type'
 import propTypes from './propTypes'
 import {createUINode, joinClassName} from '../utils'
@@ -213,7 +213,7 @@ Paginate.prototype.render = function () {
 
   if (children) {
     paginateChildren.push(
-      cloneIfElement(
+      createOptimized(
         children,
         {
           path,
