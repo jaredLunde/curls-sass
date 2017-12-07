@@ -2,6 +2,7 @@ import React from 'react'
 import {reduceProps, createOptimized, namespace as ns} from 'react-cake'
 import joinClassName from './joinClassName'
 import determineModifiers from './determineModifiers'
+import {getRenderProps} from './createFunctionalUINode'
 
 
 export default function (componentName, propTypes, modifiers) {
@@ -22,26 +23,13 @@ export default function (componentName, propTypes, modifiers) {
     }
 
     get renderProps () {
-      const renderProps = reduceProps(this.props, propTypes || {})
-      renderProps.className = this.className
-
-      if (
-        typeof this.props.nodeType !== 'function'
-        || (
-          this.props.nodeType.prototype
-          && this.props.nodeType.isReactComponent
-        )
-      ) {
-        renderProps.ref = this.props.withRef
-        delete renderProps.withRef
-      }
-
-      return renderProps
+      const {nodeType, ...props} = this.props
+      const {className} = this
+      return getRenderProps({...props, className}, propTypes)
     }
 
     render () {
-      const {nodeType} = this.props
-      return React.createElement(nodeType, this.renderProps)
+      return createOptimized(this.props.nodeType, this.renderProps)
     }
   }
 }

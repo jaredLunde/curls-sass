@@ -2,13 +2,20 @@ import React from 'react'
 import Box from '../Box'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode, compose} from '../utils'
+import {createFunctionalUINode, compose} from '../utils'
 
 
-export const Navbar = createUINode('Navbar', propTypes, modifiers)
-Navbar.defaultProps = {
+const defaultProps = {
   nodeType: 'nav'
 }
+
+
+export const Navbar = createFunctionalUINode(
+  'Navbar',
+  propTypes,
+  defaultProps,
+  modifiers
+)
 
 
 export default compose([Box, Navbar])

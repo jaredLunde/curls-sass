@@ -3,7 +3,7 @@ import {Box} from '../Box/Box'
 import Flex from '../Flex'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode, compose} from '../utils'
+import {createFunctionalUINode, compose} from '../utils'
 
 
 /**
@@ -11,11 +11,18 @@ import {createUINode, compose} from '../utils'
   Get yours today
 </Button>
 */
-export const Button = createUINode('Btn', propTypes, modifiers)
-Button.defaultProps = {
+const defaultProps = {
   nodeType: 'button',
   type: 'button'
 }
+
+
+export const Button = createFunctionalUINode(
+  'Btn',
+  propTypes,
+  defaultProps,
+  modifiers
+)
 
 
 export default compose([Flex, Box, Button])

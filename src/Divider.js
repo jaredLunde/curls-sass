@@ -1,14 +1,16 @@
 import React from 'react'
 import {Box} from './Box/Box'
 import {node} from './PropTypes'
-import {createUINode, compose} from './utils'
+import {createFunctionalUINode, compose} from './utils'
 
 
-export const Divider = createUINode('Divider', node)
-Divider.defaultProps = {
-  ...Divider.defaultProps,
+const defaultProps = {
+  nodeType: 'div',
   'aria-label': 'separator'
 }
+
+
+export const Divider = createFunctionalUINode('Divider', node, defaultProps)
 
 
 export default compose([Box, Divider])

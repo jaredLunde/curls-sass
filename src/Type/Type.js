@@ -3,13 +3,20 @@ import {Box} from '../Box/Box'
 import Flex from '../Flex'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode, compose} from '../utils'
+import {createFunctionalUINode, compose} from '../utils'
 
 
-export const Type = createUINode('Type', propTypes, modifiers)
-Type.defaultProps = {
+const defaultProps = {
   nodeType: 'span'
 }
+
+
+export const Type = createFunctionalUINode(
+  'Type',
+  propTypes,
+  defaultProps,
+  modifiers
+)
 
 
 export default compose([Flex, Box, Type])

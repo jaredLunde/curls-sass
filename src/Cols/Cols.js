@@ -2,14 +2,21 @@ import React from 'react'
 import Box from '../Box'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import {createUINode, compose} from '../utils'
+import {createFunctionalUINode, compose} from '../utils'
 
 
-export const Cols = createUINode('Cols', propTypes, modifiers)
-Cols.defaultProps = {
-  ...Cols.defaultProps,
+const defaultProps = {
+  nodeType: 'div',
   n: 2
 }
+
+
+export const Cols = createFunctionalUINode(
+  'Cols',
+  propTypes,
+  defaultProps,
+  modifiers
+)
 
 
 export default compose([Box, Cols])

@@ -62,10 +62,12 @@ const fadeControls = fromJS([
 
 const compostedFade = compose([Toggle, Transitionable, FadeComponent])
 
-export default ({children, visible, ...props}) => composedFade({
-  propName: 'isVisible',
-  initialValue: visible || false,
-  controls: fadeControls,
-  fadeChildren: children,
-  ...props
-})
+export default function ({children, visible, ...props}) {
+  return composedFade({
+    propName: 'isVisible',
+    initialValue: visible || false,
+    controls: fadeControls,
+    fadeChildren: children,
+    ...props
+  })
+}

@@ -75,4 +75,5 @@ Hero.prototype.render = function () {
   )
 }
 
-export default compose([FillToViewportHeight, Box, Hero])
+
+export default compose([Box, FillToViewportHeight, Hero])

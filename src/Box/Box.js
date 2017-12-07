@@ -15,29 +15,4 @@ import Grid from '../Grid'
 </Box>
 */
 export const Box = createUIWrapper('Box', propTypes, modifiers)
-
-/**
-export default ({children, ...props}) => (
-  <Grid {...props}>
-    <Flex>
-      <Box>
-        {children}
-      </Box>
-    </Flex>
-  </Grid>
-)
-*/
-
-
-const Box_ = children => props => Box({children, ...props})
-const FlexBox = children => props => Flex({...props, children: Box_(children)})
-
-/**
-export default ({children, ...props}) => Grid({
-  ...props,
-  children: FlexBox(children)
-})
-*/
-
-
 export default compose([Grid, Flex, Box])
