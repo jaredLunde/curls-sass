@@ -29,7 +29,7 @@ export default function (
   const {nodeType, ...otherDefaultProps} = defaultProps
   const baseClassName = toKebabCaseTrimmed(componentName)
 
-  return function ({children, ...props}) {
+  const fn = function ({children, ...props}) {
     props = {...otherDefaultProps, ...props}
     props.className = joinClassName(
       baseClassName,
@@ -45,4 +45,7 @@ export default function (
       }
     )
   }
+
+  Object.defineProperty(fn, 'name', {value: componentName})
+  return fn
 }

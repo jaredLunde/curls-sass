@@ -36,6 +36,7 @@ export {
   loadImage,
   determineModifiers,
   createUINode,
+  createFunctionalUINode,
   createUIWrapper
 } from './utils'
 // TODO: Consistency in sizing 'xxs, xs, sm, md, lg, xl, xxl' being preferred

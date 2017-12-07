@@ -5,7 +5,7 @@ import {determineModifiers, whichConstructor} from './determineModifiers'
 
 
 export default function (componentName, propTypes, modifiers) {
-  return function ({children, ...props}) {
+  const fn = function ({children, ...props}) {
     const renderProps = reduceProps(props, propTypes || {})
 
     renderProps.className = joinClassName(
@@ -15,4 +15,7 @@ export default function (componentName, propTypes, modifiers) {
 
     return createOptimized(children, renderProps)
   }
+
+  Object.defineProperty(fn, 'name', {value: componentName})
+  return fn
 }

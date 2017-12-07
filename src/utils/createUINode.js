@@ -1,7 +1,7 @@
 import React from 'react'
 import {reduceProps, createOptimized, toKebabCaseTrimmed} from 'react-cake'
 import joinClassName from './joinClassName'
-import determineModifiers from './determineModifiers'
+import {determineModifiers} from './determineModifiers'
 import {getRenderProps} from './createFunctionalUINode'
 
 
@@ -20,7 +20,7 @@ export default function (componentName, propTypes, modifiers) {
       return joinClassName(
         this.props,
         baseClassName,
-        determineModifiers(this).join(' ')
+        determineModifiers(modifiers, this.props).join(' ')
       )
     }
 
