@@ -62,7 +62,6 @@ Modal.prototype.closeModalFromBg = function (e) {
 Modal.prototype.setBgRef = function (e) {this._modalBg = e}
 Modal.prototype.setWindowRef = function (e) {
   this._modalWindow = e
-  this.props.fillToVhRef(e)
 }
 
 Modal.prototype.render = function () {
@@ -78,7 +77,6 @@ Modal.prototype.render = function () {
     className,
     modalStyle,
     style,
-    fillToVhRef,
     ...modalProps
   } = this.props
   const {reposition} = this

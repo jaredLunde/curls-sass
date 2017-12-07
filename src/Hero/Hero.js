@@ -1,5 +1,4 @@
 import React from 'react'
-import {ViewportSize} from 'react-cake'
 import Box from '../Box'
 import propTypes from './propTypes'
 import FillToViewportHeight from '../FillToViewportHeight'
@@ -58,20 +57,20 @@ export const Hero = createUINode('Hero', propTypes)
 Hero.prototype.getStyle = function () {
   const {trimHeight, trimWidth, style} = this.props
   const width = getWidth('100vw', trimWidth)
-  const height = getHeight(style.height, trimHeight)
+  let height = getHeight(style.height, trimHeight)
+  height = isNaN(height) ? '100vh' : height
 
   return {...style, width, height}
 }
 
 Hero.prototype.render = function () {
-  let {style, fillToVhRef, ...renderProps} = this.renderProps
+  let {style, ...renderProps} = this.renderProps
 
   return React.createElement(
     this.props.nodeType,
     {
       ...renderProps,
       style: this.getStyle(),
-      ref: fillToVhRef
     }
   )
 }
