@@ -15,5 +15,4 @@ export default function (componentName, propTypes, modifiers) {
 
     return createOptimized(children, renderProps)
   }
-
 }

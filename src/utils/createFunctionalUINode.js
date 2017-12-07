@@ -6,13 +6,11 @@ import {determineModifiers, whichConstructor} from './determineModifiers'
 
 export function getRenderProps (props, propTypes) {
   const renderProps = reduceProps(props, propTypes || {})
+  const nodeType = props.nodeType
 
   if (
-    typeof props.nodeType !== 'function'
-    || (
-      props.nodeType.prototype
-      && nodeType.isReactComponent
-    )
+    typeof nodeType !== 'function'
+    || (nodeType.prototype && nodeType.isReactComponent)
   ) {
     renderProps.ref = props.withRef
     delete renderProps.withRef
@@ -29,18 +27,22 @@ export default function (
   modifiers
 ) {
   const {nodeType, ...otherDefaultProps} = defaultProps
+  const baseClassName = toKebabCaseTrimmed(componentName)
 
   return function ({children, ...props}) {
     props = {...otherDefaultProps, ...props}
-
-    const className = joinClassName(
+    props.className = joinClassName(
+      baseClassName,
       props,
-      toKebabCaseTrimmed(componentName),
       determineModifiers(modifiers, props).join(' ')
     )
 
-    const renderProps = getRenderProps({...props, className}, propTypes)
-
-    return createOptimized(nodeType, {children, ...renderProps})
+    return createOptimized(
+      props.nodeType || nodeType,
+      {
+        children,
+        ...getRenderProps(props, propTypes)
+      }
+    )
   }
 }

@@ -1,11 +1,13 @@
 import React from 'react'
-import {reduceProps, createOptimized, namespace as ns} from 'react-cake'
+import {reduceProps, createOptimized, toKebabCaseTrimmed} from 'react-cake'
 import joinClassName from './joinClassName'
 import determineModifiers from './determineModifiers'
 import {getRenderProps} from './createFunctionalUINode'
 
 
 export default function (componentName, propTypes, modifiers) {
+  const baseClassName = toKebabCaseTrimmed(componentName)
+
   return class UINode extends React.PureComponent {
     static displayName = componentName
     static propTypes = propTypes
@@ -17,15 +19,14 @@ export default function (componentName, propTypes, modifiers) {
     get className () {
       return joinClassName(
         this.props,
-        ns.classes.get(this),
+        baseClassName,
         determineModifiers(this).join(' ')
       )
     }
 
     get renderProps () {
-      const {nodeType, ...props} = this.props
       const {className} = this
-      return getRenderProps({...props, className}, propTypes)
+      return getRenderProps({...this.props, className}, propTypes)
     }
 
     render () {
