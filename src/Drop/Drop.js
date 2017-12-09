@@ -1,7 +1,7 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
-import {createUIWrapper} from '../utils'
+import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
 import Transitionable from '../Transitionable'
@@ -29,7 +29,7 @@ import Transitionable from '../Transitionable'
 export const Drop = createUIWrapper('Drop', propTypes, modifiers)
 
 
-const DropComponent = ({
+function DropComponent ({
   isVisible,
   dropChildren,
   className,
@@ -39,24 +39,23 @@ const DropComponent = ({
   fromLeft,
   defaultFrom,
   ...props
-}) => {
+}) {
   const defaultClass = defaultFrom &&
     !(fromTop || fromRight || fromBottom || fromLeft)
       ? `drop--${defaultFrom}`
       : ''
 
-  return <Drop
-    dropped={isVisible}
-    isVisible={isVisible}
-    fromTop={fromTop}
-    fromRight={fromRight}
-    fromBottom={fromBottom}
-    fromLeft={fromLeft}
-    className={`${className || ''} drop ${defaultClass}`.trim()}
-    {...props}
-  >
-    {dropChildren}
-  </Drop>
+  return Drop({
+    dropped: isVisible,
+    isVisible,
+    fromTop,
+    fromRight,
+    fromBottom,
+    fromLeft,
+    className: joinClassName(className, 'drop', defaultClass),
+    ...props,
+    children: dropChildren
+  })
 }
 
 
@@ -69,10 +68,12 @@ const dropControls = fromJS([
 const composedDrop = compose([Toggle, Transitionable, DropComponent])
 
 
-export default ({children, visible, ...props}) => composedDrop({
-  propName: 'isVisible',
-  initialValue: visible || false,
-  controls: dropControls,
-  dropChildren: children,
-  ...props
-})
+export default function ({children, visible, ...props}) {
+  return composedDrop({
+    propName: 'isVisible',
+    initialValue: visible || false,
+    controls: dropControls,
+    dropChildren: children,
+    ...props
+  })
+}

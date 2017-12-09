@@ -16,42 +16,45 @@ import Drop from './Drop'
 import {selectProps, createUINode, joinClassName} from './utils'
 
 
-export const SelectToggle = ({
+export function SelectToggle ({
   selection,
   isVisible,
   toggle,
   willChangeRef,
   ...props
-}) => (
-  <Button
-    sm
-    translucentWhite
-    key='button'
-    className='select__toggle'
-    aria-expanded={String(isVisible)}
-    aria-haspopup='true'
-    onClick={toggle}
-    withRef={willChangeRef}
-    {...props}
-  >
-    <Type semiBold darkestGrey className='select__value'>
-      {createOptimized(getOptionLabel(selection))}
-    </Type>
-
-    <Type
-      md
-      heavy
-      darkestGrey
-      m='l3'
-      className='select__caret'
-      aria-hidden='true'
+}) {
+  return (
+    <Button
+      sm
+      translucentWhite
+      key='button'
+      className='select__toggle'
+      aria-expanded={String(isVisible)}
+      aria-haspopup='true'
+      onClick={toggle}
+      withRef={willChangeRef}
+      {...props}
     >
-      ⌄
-    </Type>
-  </Button>
-)
+      <Type semiBold darkestGrey className='select__value'>
+        {createOptimized(getOptionLabel(selection))}
+      </Type>
 
-export const SelectMenu = ({
+      <Type
+        md
+        heavy
+        darkestGrey
+        m='l3'
+        className='select__caret'
+        aria-hidden='true'
+      >
+        ⌄
+      </Type>
+    </Button>
+  )
+}
+
+
+export function SelectMenu ({
   className,
   isVisible,
   isSelected,
@@ -60,26 +63,28 @@ export const SelectMenu = ({
   style,
   select,
   ...props
-}) => (
-  <ul
-    key='menu'
-    aria-label='submenu'
-    className={joinClassName({className}, 'select__menu')}
-    style={style}
-    {...props}
-  >
-    {
-      options.map(
-        (o, n) => option({
-          option: o,
-          select,
-          isSelected,
-          n
-        })
-      )
-    }
-  </ul>
-)
+}) {
+  return (
+    <ul
+      key='menu'
+      aria-label='submenu'
+      className={joinClassName({className}, 'select__menu')}
+      style={style}
+      {...props}
+    >
+      {
+        options.map(
+          (o, n) => option({
+            option: o,
+            select,
+            isSelected,
+            n
+          })
+        )
+      }
+    </ul>
+  )
+}
 
 const getOptionLike = (selection, key) => (
   typeof selection.get === 'function'
@@ -98,27 +103,31 @@ const getOptionValue = selection => getOptionLike(selection, 'value')
 const getOptionName = selection => getOptionLike(selection, 'name')
 const getOptionLabel = selection => getOptionLike(selection, 'label') || getOptionName(selection)
 
-export const SelectOption = ({
+
+export function SelectOption ({
   option,
   select,
   isSelected,
   n,
   className = 'select__option',
   ...props
-}) => (
-  <li
-    onClick={() => select(option)}
-    className={
-      isSelected(option)
-      ? joinClassName({className}, 'type--semi-bold')
-      : className
-    }
-    key={n}
-    {...props}
-  >
-    {createOptimized(getOptionLabel(option))}
-  </li>
-)
+}) {
+  return (
+    <li
+      onClick={() => select(option)}
+      className={
+        isSelected(option)
+        ? joinClassName({className}, 'type--semi-bold')
+        : className
+      }
+      key={n}
+      {...props}
+    >
+      {createOptimized(getOptionLabel(option))}
+    </li>
+  )
+}
+
 
 export const Select = createUINode('Select')
 Select.defaultProps = {
@@ -211,44 +220,45 @@ Select.prototype.render = function () {
   )
 }
 
-const ChoicesComponent = ({
+
+function ChoicesComponent ({
   options,
   initialSelection,
   onSelect,
   toggle,
   ...props
-}) => (
-  <Choices
-    choicesPropName='options'
-    initialChoices={options}
-    initialSelections={OrderedSet([initialSelection || options.first()])}
-    minChoices={1}
-    minSelections={1}
-    maxSelections={2}
-    onSelect={selections => callIfExists(onSelect, selections.first())}
-    toggleDrop={toggle}
-    {...props}
-  >
-    {Select}
-  </Choices>
-)
+}) {
+  return Choices({
+    choicesPropName: 'options',
+    initialChoices: options,
+    initialSelections: OrderedSet([initialSelection || options.first()]),
+    minChoices: 1,
+    minSelections: 1,
+    maxSelections: 2,
+    onSelect: function (selections) {callIfExists(onSelect, selections.first())},
+    toggleDrop: toggle,
+    ...props,
+    children: Select
+  })
+}
 
-const DropComponent = ({willChangeIsOn, willChange, ...props}) => (
-  <Drop {...props}>
-    {ChoicesComponent}
-  </Drop>
-)
+
+function DropComponent ({willChangeIsOn, willChange, ...props}) {
+  return Drop({...props, children: ChoicesComponent})
+}
 
 
 const composedDropdown = compose([Box, WillChange, DropComponent])
 
 
-export default ({className, onChange, ...props}) => composedDropdown({
-  opacity: true,
-  visibility: true,
-  transform: true,
-  whenClicked: true,
-  boxClassName: className,
-  onSelect: onChange,
-  ...props
-})
+export default function ({className, onChange, ...props}) {
+  return composedDropdown({
+    opacity: true,
+    visibility: true,
+    transform: true,
+    whenClicked: true,
+    boxClassName: className,
+    onSelect: onChange,
+    ...props
+  })
+}

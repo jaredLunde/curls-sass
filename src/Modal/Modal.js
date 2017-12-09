@@ -129,37 +129,32 @@ Modal.prototype.render = function () {
 }
 
 
-const ModalComponent = ({
-  willChangeIsOn,
-  willChange,
-  ...props
-}) => (
-  <Drop defaultFrom='bottom' {...props}>
-    {Modal}
-  </Drop>
-)
+function ModalComponent ({willChangeIsOn, willChange, ...props}) {
+  return Drop({defaultFrom: 'bottom', ...props, children: Modal})
+}
 
 
-const VpComponent = ({style, onVisibilityChange, ...props}) => (
-  <FillToViewportHeight
-    onChange={onVisibilityChange}
-    modalStyle={style}
-    {...props}
-  >
-    {ModalComponent}
-  </FillToViewportHeight>
-)
+function VpComponent ({style, onVisibilityChange, ...props}) {
+  return FillToViewportHeight({
+    onChange: onVisibilityChange,
+    modalStyle: style,
+    ...props,
+    children: ModalComponent
+  })
+}
 
 
 const composedModal = compose([Box, WillChange, VpComponent])
 
 
-export default ({children, onChange, ...props}) => composedModal({
-  opacity: true,
-  visibility: true,
-  transform: true,
-  whenClicked: true,
-  modalChildren: children,
-  onVisibilityChange: onChange,
-  ...props
-})
+export default function ({children, onChange, ...props}) {
+  return composedModal({
+    opacity: true,
+    visibility: true,
+    transform: true,
+    whenClicked: true,
+    modalChildren: children,
+    onVisibilityChange: onChange,
+    ...props
+  })
+}

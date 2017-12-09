@@ -112,11 +112,13 @@ const checkboxControls = fromJS([
 const composedCheckbox = compose([Box, Toggle, Checkbox])
 
 
-export default ({children, checked, onChange, ...props}) => composedCheckbox({
-  checkboxChildren: children,
-  propName: 'isChecked',
-  initialValue: checked || false,
-  controls: checkboxControls,
-  onChange: onChange,
-  ...props
-})
+export default function ({children, checked, onChange, ...props}) {
+  return composedCheckbox({
+    checkboxChildren: children,
+    propName: 'isChecked',
+    initialValue: checked || false,
+    controls: checkboxControls,
+    onChange: onChange,
+    ...props
+  })
+}

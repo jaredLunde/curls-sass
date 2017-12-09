@@ -6,8 +6,6 @@ import {getRenderProps} from './createFunctionalUINode'
 
 
 export default function (componentName, propTypes, modifiers) {
-  const baseClassName = toKebabCaseTrimmed(componentName)
-
   return class UINode extends React.PureComponent {
     static displayName = componentName
     static propTypes = propTypes
@@ -19,7 +17,7 @@ export default function (componentName, propTypes, modifiers) {
     get className () {
       return joinClassName(
         this.props,
-        baseClassName,
+        toKebabCaseTrimmed(this.constructor.displayName),
         determineModifiers(modifiers, this.props).join(' ')
       )
     }

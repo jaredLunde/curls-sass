@@ -80,25 +80,21 @@ Drawer.prototype.render = function () {
 
 
 
-const DrawerComponent = ({
-  willChangeIsOn,
-  willChange,
-  ...props
-}) => (
-  <Slide defaultFrom='left' {...props}>
-    {Drawer}
-  </Slide>
-)
+function DrawerComponent ({willChangeIsOn, willChange, ...props}) {
+  return Slide({defaultFrom: 'left', ...props, children: Drawer})
+}
 
 
 const composedDrawer = compose([Box, WillChange, DrawerComponent])
 
-export default ({children, ...props}) => composedDrawer({
-  visibility: true,
-  transform: true,
-  whenClicked: true,
-  whenMouseEnters: true,
-  whenMouseLeaves: true,
-  drawerChildren: children,
-  ...props
-})
+export default function ({children, ...props}) {
+  return composedDrawer({
+    visibility: true,
+    transform: true,
+    whenClicked: true,
+    whenMouseEnters: true,
+    whenMouseLeaves: true,
+    drawerChildren: children,
+    ...props
+  })
+}

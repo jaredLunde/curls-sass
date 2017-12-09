@@ -40,31 +40,33 @@ import {selectProps, createUINode} from '../utils'
   m='t2 b3'
 />
 **/
-export const DropdownToggle = ({
+export function DropdownToggle ({
   label,
   isVisible,
   toggle,
   willChangeRef,
   ...props
-}) => (
-  <Button
-    sm
-    translucentLight
-    key='button'
-    className='dropdown__toggle'
-    aria-expanded={String(isVisible)}
-    aria-haspopup='true'
-    onClick={toggle}
-    withRef={willChangeRef}
-    {...props}
-  >
-    <span className='dropdown__label'>
-      {label}
-    </span>
-  </Button>
-)
+}) {
+  return (
+    <Button
+      sm
+      translucentLight
+      key='button'
+      className='dropdown__toggle'
+      aria-expanded={String(isVisible)}
+      aria-haspopup='true'
+      onClick={toggle}
+      withRef={willChangeRef}
+      {...props}
+    >
+      <span className='dropdown__label'>
+        {label}
+      </span>
+    </Button>
+  )
+}
 
-export const DropdownMenu = ({
+export function DropdownMenu ({
   className,
   isVisible,
   menuItem,
@@ -74,40 +76,45 @@ export const DropdownMenu = ({
   dropIn,
   dropOut,
   ...props
-}) => (
-  <ul
-    key='menu'
-    aria-label='submenu'
-    className={`${className} dropdown__menu`}
-    style={style}
-    {...props}
-  >
-    {
-      items.map(
-        (item, n) => menuItem({
-          item,
-          dropIn,
-          dropOut,
-          toggle,
-          n
-        })
-      )
-    }
-  </ul>
-)
+}) {
+  return (
+    <ul
+      key='menu'
+      aria-label='submenu'
+      className={`${className} dropdown__menu`}
+      style={style}
+      {...props}
+    >
+      {
+        items.map(
+          (item, n) => menuItem({
+            item,
+            dropIn,
+            dropOut,
+            toggle,
+            n
+          })
+        )
+      }
+    </ul>
+  )
+}
 
-export const DropdownMenuItem = ({
+export function DropdownMenuItem ({
   item,
   dropIn,
   dropOut,
   toggle,
   n,
   ...props
-}) => (
-  <li className='dropdown__menu-item' key={n} {...props}>
-    {item}
-  </li>
-)
+}) {
+  return (
+    <li className='dropdown__menu-item' key={n} {...props}>
+      {item}
+    </li>
+  )
+}
+
 
 export const Dropdown = createUINode('Dropdown', propTypes)
 Dropdown.defaultProps = {
@@ -167,25 +174,21 @@ Dropdown.prototype.render = function () {
 }
 
 
-const DropComponent = ({
-  willChangeIsOn,
-  willChange,
-  ...props
-}) => (
-  <Drop {...props}>
-    {Dropdown}
-  </Drop>
-)
+function DropComponent ({willChangeIsOn, willChange, ...props}) {
+  return Drop({...props, children: Dropdown})
+}
 
 
 const composedDropdown = compose([Box, WillChange, DropComponent])
 
 
-export default ({className, ...props}) => composedDropdown({
-  opacity: true,
-  visibility: true,
-  transform: true,
-  whenClicked: true,
-  boxClassName: className,
-  ...props
-})
+export default function ({className, ...props}) {
+  return composedDropdown({
+    opacity: true,
+    visibility: true,
+    transform: true,
+    whenClicked: true,
+    boxClassName: className,
+    ...props
+  })
+}

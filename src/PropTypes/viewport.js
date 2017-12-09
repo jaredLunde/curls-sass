@@ -10,6 +10,9 @@ export default {
   inFullViewY: PropTypes.func,
   getViewportSize: PropTypes.func,
   getViewportScroll: PropTypes.func,
+  getAspect: PropTypes.func,
   subscribe: PropTypes.func,
-  unsubscribe: PropTypes.func
+  unsubscribe: PropTypes.func,
+  viewportWidth: PropTypes.number,
+  viewportHeight: PropTypes.number
 }

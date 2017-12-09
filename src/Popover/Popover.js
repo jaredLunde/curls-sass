@@ -161,26 +161,22 @@ Popover.prototype.render = function () {
 }
 
 
-const PopoverComponent = ({
-  willChangeIsOn,
-  willChange,
-  ...props
-}) => (
-  <Drop defaultFrom='top' {...props}>
-    {Popover}
-  </Drop>
-)
+function PopoverComponent ({willChangeIsOn, willChange, ...props}) {
+  return Drop({defaultFrom: 'top', ...props, children: Popover})
+}
 
 
 const composedPopover = compose([Box, WillChange, PopoverComponent])
 
-export default ({children, ...props}) => composedPopover({
-  opacity: true,
-  visibility: true,
-  transform: true,
-  whenClicked: true,
-  whenMouseEnters: true,
-  whenMouseLeaves: true,
-  popoverChildren: children,
-  ...props
-})
+export default function ({children, ...props}) {
+  return composedPopover({
+    opacity: true,
+    visibility: true,
+    transform: true,
+    whenClicked: true,
+    whenMouseEnters: true,
+    whenMouseLeaves: true,
+    popoverChildren: children,
+    ...props
+  })
+}

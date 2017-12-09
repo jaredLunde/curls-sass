@@ -2,20 +2,20 @@ import React from 'react'
 import {
   ViewportSize,
   createOptimized,
-  compose
+  compose,
+  reduceProps
 } from 'react-cake'
+import {viewport} from './PropTypes'
 
 
 function FillToViewportHeight (initialProps) {
-  const {
+  let {
     children,
-    getAspect,
-    getViewportSize,
     style,
-    viewportWidth,
     viewportHeight,
     ...props
   } = initialProps
+  props = reduceProps(props, viewport)
 
   return createOptimized(
     children,

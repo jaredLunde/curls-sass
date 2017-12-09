@@ -1,7 +1,7 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
-import {createUIWrapper} from '../utils'
+import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
 import Transitionable from '../Transitionable'
@@ -38,21 +38,21 @@ import Transitionable from '../Transitionable'
 export const Fade = createUIWrapper('Fade', propTypes, modifiers)
 
 
-const FadeComponent = ({
+function FadeComponent ({
   isVisible,
   fadeChildren,
   className,
   ...props
-}) => (
-  <Fade
-    visible={isVisible}
-    isVisible={isVisible}
-    className={`${className || ''} fade`.trim()}
-    {...props}
-  >
-    {fadeChildren}
-  </Fade>
-)
+}) {
+  return Fade({
+    visible: isVisible,
+    isVisible,
+    className: joinClassName(className, 'fade'),
+    ...props,
+    children: fadeChildren
+  })
+}
+
 
 const fadeControls = fromJS([
   {name: 'fadeIn', value: true},
@@ -61,6 +61,7 @@ const fadeControls = fromJS([
 
 
 const compostedFade = compose([Toggle, Transitionable, FadeComponent])
+
 
 export default function ({children, visible, ...props}) {
   return composedFade({

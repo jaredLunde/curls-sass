@@ -1,7 +1,7 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
 import {fromJS} from 'immutable'
-import {createUIWrapper} from '../utils'
+import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
 import Transitionable from '../Transitionable'
@@ -39,7 +39,7 @@ import Transitionable from '../Transitionable'
 export const Slide = createUIWrapper('Slide', propTypes, modifiers)
 
 
-const SlideComponent = ({
+function SlideComponent ({
   isVisible,
   slideChildren,
   className,
@@ -49,26 +49,23 @@ const SlideComponent = ({
   fromLeft,
   defaultFrom,
   ...props
-}) => {
+}) {
   const defaultClass = defaultFrom &&
     !(fromTop || fromRight || fromBottom || fromLeft)
       ? `slide--${defaultFrom}`
       : ''
 
-  return (
-    <Slide
-      slid={isVisible}
-      isVisible={isVisible}
-      fromTop={fromTop}
-      fromRight={fromRight}
-      fromBottom={fromBottom}
-      fromLeft={fromLeft}
-      className={`${className || ''} slide ${defaultClass}`.trim()}
-      {...props}
-    >
-      {slideChildren}
-    </Slide>
-  )
+  return Slide({
+    slid: isVisible,
+    isVisible,
+    fromTop,
+    fromRight,
+    fromBottom,
+    fromLeft,
+    className: joinClassName(className, 'slide', defaultClass),
+    ...props,
+    children: slideChildren
+  })
 }
 
 const slideControls = fromJS([
@@ -80,10 +77,12 @@ const slideControls = fromJS([
 const composedSlide = compose([Toggle, Transitionable, SlideComponent])
 
 
-export default ({children, visible, ...props}) => composedSlide({
-  propName: 'isVisible',
-  initialValue: visible || false,
-  controls: slideControls,
-  slideChildren: children,
-  ...props
-})
+export default function ({children, visible, ...props}) {
+  return composedSlide({
+    propName: 'isVisible',
+    initialValue: visible || false,
+    controls: slideControls,
+    slideChildren: children,
+    ...props
+  })
+}
