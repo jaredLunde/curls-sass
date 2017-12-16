@@ -4,18 +4,20 @@ import joinClassName from './joinClassName'
 import {determineModifiers, whichConstructor} from './determineModifiers'
 
 
+const _childrenObj = {children: null}
+
 export default function (componentName, propTypes, modifiers) {
-  const fn = function ({children, ...props}) {
-    const renderProps = reduceProps(props, propTypes || {})
+  const fn = function (props) {
+    const renderProps = reduceProps(props, propTypes || {}, _childrenObj)
 
     renderProps.className = joinClassName(
       renderProps,
       determineModifiers(modifiers, props).join(' ')
     )
 
-    return createOptimized(children, renderProps)
+    return createOptimized(props.children, renderProps)
   }
 
-  Object.defineProperty(fn, 'name', {value: componentName})
+  fn.displayName = componentName
   return fn
 }

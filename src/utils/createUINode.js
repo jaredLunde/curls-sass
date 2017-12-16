@@ -5,14 +5,15 @@ import {determineModifiers} from './determineModifiers'
 import {getRenderProps} from './createFunctionalUINode'
 
 
+const _defaultProps = {nodeType: 'div'}
+
+
 export default function (componentName, propTypes, modifiers) {
-  return class UINode extends React.PureComponent {
+  return class UINode extends React.Component {
     static displayName = componentName
     static propTypes = propTypes
     static curlsModifiers = modifiers
-    static defaultProps = {
-      nodeType: 'div'
-    }
+    static defaultProps = _defaultProps
 
     get className () {
       return joinClassName(

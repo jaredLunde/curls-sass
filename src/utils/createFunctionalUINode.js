@@ -20,10 +20,13 @@ export function getRenderProps (props, propTypes) {
 }
 
 
+const _defaultProps = {nodeType: 'div'}
+
+
 export default function (
   componentName,
   propTypes = {},
-  defaultProps = {nodeType: 'div'},
+  defaultProps = _defaultProps,
   modifiers
 ) {
   const {nodeType, ...otherDefaultProps} = defaultProps
@@ -48,6 +51,5 @@ export default function (
 
   Component.displayName = componentName
   Component.propTypes = propTypes
-
   return Component
 }
