@@ -88,7 +88,7 @@ Checkbox.prototype.render = function () {
       }
     )
 
-  return React.createElement(
+  return createOptimized(
     nodeType,
     {
       ...props,

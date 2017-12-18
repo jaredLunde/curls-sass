@@ -1,10 +1,12 @@
 import React from 'react'
 import {wrapDisplayName, displayName as getDisplayName} from 'react-cake'
-import {createUIWrapper, compose} from '../utils'
+import {createUIWrapper, /*compose*/} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
-import Flex from '../Flex'
-import Grid from '../Grid'
+import flexModifiers from '../Flex/modifiers'
+import flexProps from '../Flex/propTypes'
+import gridModifiers from '../Grid/modifiers'
+import gridProps from '../Flex/propTypes'
 
 
 /**
@@ -15,4 +17,10 @@ import Grid from '../Grid'
 </Box>
 */
 export const Box = createUIWrapper('Box', propTypes, modifiers)
-export default compose([Grid, Flex, Box])
+
+export default createUIWrapper(
+  'Box',
+  {...gridProps, ...flexProps, ...propTypes},
+  {...gridModifiers, ...flexModifiers, ...modifiers}
+)
+// export default compose([Grid, Flex, Box])
