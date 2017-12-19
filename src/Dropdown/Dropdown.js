@@ -1,11 +1,11 @@
 import React from 'react'
-import {reduceProps, WillChange, compose, namespace as ns} from 'react-cake'
+import {reduceProps, selectProps, WillChange, compose, namespace as ns} from 'react-cake'
 import Box from '../Box'
 import boxPropTypes from '../Box/propTypes'
 import Button from '../Button'
 import Drop from '../Drop'
 import propTypes from './propTypes'
-import {selectProps, createUINode} from '../utils'
+import {createUINode} from '../utils'
 
 
 /**

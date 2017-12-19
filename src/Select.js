@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   reduceProps,
+  selectProps,
   WillChange,
   Choices,
   callIfExists,
@@ -13,7 +14,7 @@ import Box from './Box'
 import Button from './Button'
 import Type from './Type'
 import Drop from './Drop'
-import {selectProps, createUINode, joinClassName} from './utils'
+import {createUINode, joinClassName} from './utils'
 
 
 export function SelectToggle ({

@@ -38,7 +38,7 @@ export class Tooltip extends Popover {
 }
 
 
-function TooltipComponent ({willChangeIsOn, willChange, ...props}) {
+function TooltipComponent (props) {
   return Drop({
     defaultFrom: 'bottom',
     ...props,
@@ -46,16 +46,10 @@ function TooltipComponent ({willChangeIsOn, willChange, ...props}) {
   })
 }
 
-const composedTooltip = compose([Box, WillChange, TooltipComponent])
+const composedTooltip = compose([Box, TooltipComponent])
 
 export default function ({children, ...props}) {
   return composedTooltip({
-    opacity: true,
-    visibility: true,
-    transform: true,
-    whenClicked: true,
-    whenMouseEnters: true,
-    whenMouseLeaves: true,
     popoverChildren: children,
     ...props
   })

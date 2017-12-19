@@ -25,14 +25,13 @@ import {createUINode} from '../utils'
   }
 >
   {
-    ({popover, isVisible, toggle, show, hide, willChangeRef}) => (
+    ({popover, isVisible, toggle, show, hide}) => (
       <div className='pr m--b6'>
         {popover}
 
         <a
           onMouseEnter={show}
           onMouseLeave={hide}
-          ref={willChangeRef}
         >
           {isVisible ? 'Learn less' : 'Learn more'}
         </a>
@@ -125,7 +124,6 @@ Popover.prototype.render = function () {
     toggle,
     dropIn,
     dropOut,
-    willChangeRef,
     content,
     className,
     style,
@@ -154,28 +152,21 @@ Popover.prototype.render = function () {
       isVisible,
       toggle,
       show,
-      hide,
-      willChangeRef
+      hide
     }
   )
 }
 
 
-function PopoverComponent ({willChangeIsOn, willChange, ...props}) {
+function PopoverComponent (props) {
   return Drop({defaultFrom: 'top', ...props, children: Popover})
 }
 
 
-const composedPopover = compose([Box, WillChange, PopoverComponent])
+const composedPopover = compose([Box, PopoverComponent])
 
 export default function ({children, ...props}) {
   return composedPopover({
-    opacity: true,
-    visibility: true,
-    transform: true,
-    whenClicked: true,
-    whenMouseEnters: true,
-    whenMouseLeaves: true,
     popoverChildren: children,
     ...props
   })

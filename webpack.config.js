@@ -41,7 +41,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'curls.js',
+    filename: 'curls.webpacked.js',
     pathinfo: true,
     library: 'Curls',
     libraryTarget: 'umd'

@@ -16,7 +16,6 @@
         "@babel/preset-stage-2"
       ],
       "plugins": [
-        "@babel/plugin-transform-runtime",
         "transform-decorators-legacy",
         "transform-react-pure-components",
         "@babel/plugin-transform-react-constant-elements",
