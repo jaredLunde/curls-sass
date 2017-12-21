@@ -53,17 +53,8 @@ const popoverMethods = {
     this._popover = e
   },
 
-  componentWillMount: function () {
-    this._listener = this.reposition.bind(this)
-    window.addEventListener('resize', this._listener)
-    window.addEventListener('orientationchange', this._listener)
-  },
-
   componentWillUnmount: function () {
-    if (this._listener) {
-      window.removeEventListener('resize', this._listener)
-      window.removeEventListener('orientationchange', this._listener)
-    }
+    this.removeListeners()
 
     if (this._loader) {
       this._loader.cancel()
@@ -75,11 +66,32 @@ const popoverMethods = {
   },
 
   componentDidMount: function () {
-    this.reposition()
+    this._listener = this.reposition.bind(this)
+    if (this.props.isVisible) {
+      this.reposition()
+    }
   },
 
-  componentDidUpdate: function () {
-    this.reposition()
+  componentDidUpdate: function ({isVisible}) {
+    if (this.props.isVisible) {
+      this.addListeners()
+      this.reposition()
+    } else if (this.props.isVisible === false && this.props.isVisible !== isVisible) {
+      this.removeListeners()
+    }
+  },
+
+
+  addListeners: function () {
+    window.addEventListener('resize', this._listener)
+    window.addEventListener('orientationchange', this._listener)
+  },
+
+  removeListeners: function () {
+    if (this._listener) {
+      window.removeEventListener('resize', this._listener)
+      window.removeEventListener('orientationchange', this._listener)
+    }
   },
 
   _ticking: null,
@@ -131,7 +143,7 @@ Popover.prototype.render = function () {
   } = this.props
   const {reposition} = this
   const show = dropIn, hide = dropOut
-  const popover = React.createElement(
+  const popover = createOptimized(
     nodeType,
     {
       className: this.className,

@@ -46,7 +46,9 @@ function TooltipComponent (props) {
   })
 }
 
+
 const composedTooltip = compose([Box, TooltipComponent])
+
 
 export default function ({children, ...props}) {
   return composedTooltip({
