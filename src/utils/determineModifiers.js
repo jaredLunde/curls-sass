@@ -20,15 +20,11 @@ export function determineModifiers (curlsModifiers, props) {
       const valIsString = typeOfVal === 'string'
       const propVals = valIsString ? propVal.split(' ') : [propVal]
 
-      for (let x = 0; x < propVals.length; x++) {
-        const val = propVals[x]
+      for (let y = 0; y < propVals.length; y++) {
+        const val = propVals[y]
 
-        if (
-          val ||
-          (valIsString && val) ||
-          typeOfVal === 'number'
-        ) {
-          mods.push(mod(propVals[x]))
+        if (val || (valIsString && val) || typeOfVal === 'number') {
+          mods.push(mod(val))
         }
       }
     }

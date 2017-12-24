@@ -32,24 +32,22 @@ export default function (
   const {nodeType, ...otherDefaultProps} = defaultProps
   const baseClassName = toKebabCaseTrimmed(componentName)
 
-  function Component ({children, ...props}) {
+  function Component (props) {
     props = {...otherDefaultProps, ...props}
     props.className = joinClassName(
       baseClassName,
-      props,
+      props.className,
       determineModifiers(modifiers, props).join(' ')
     )
 
     return createOptimized(
       props.nodeType || nodeType,
-      {
-        children,
-        ...getRenderProps(props, propTypes)
-      }
+      getRenderProps(props, propTypes)
     )
   }
 
   Component.displayName = componentName
   Component.propTypes = propTypes
+
   return Component
 }

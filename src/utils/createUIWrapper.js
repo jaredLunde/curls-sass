@@ -11,7 +11,7 @@ export default function (componentName, propTypes, modifiers) {
     const renderProps = reduceProps(props, propTypes || {}, _childrenObj)
 
     renderProps.className = joinClassName(
-      renderProps,
+      renderProps.className,
       determineModifiers(modifiers, props).join(' ')
     )
 
