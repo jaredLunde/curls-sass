@@ -42,11 +42,11 @@ Avatar.prototype.render = function () {
 }
 
 
-let AvatarComponent = Avatar
+const ComposedAvatarWithStat = compose([Flex, Box, ImageStat, Avatar])
+const ComposedAvatar = compose([Flex, Box, Avatar])
 
-if (supportsObjectFit === false) {
-  AvatarComponent = compose([ImageStat, AvatarComponent])
+
+export default function (props) {
+  const Component = supportsObjectFit === false ? ComposedAvatarWithStat : ComposedAvatar
+  return Component(props)
 }
-
-
-export default compose([Flex, Box, AvatarComponent])

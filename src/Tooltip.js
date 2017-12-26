@@ -38,6 +38,9 @@ export class Tooltip extends Popover {
 }
 
 
+Tooltip.baseClassName = 'tooltip'
+
+
 function TooltipComponent (props) {
   return Drop({
     defaultFrom: 'bottom',

@@ -9,18 +9,18 @@ const _defaultProps = {nodeType: 'div'}
 
 
 export default function (componentName, propTypes, modifiers) {
-  const baseClassName = toKebabCaseTrimmed(componentName)
   //return class UINode extends React.Component {
   return class UINode extends React.PureComponent {
     static displayName = componentName
     static propTypes = propTypes
     static curlsModifiers = modifiers
     static defaultProps = _defaultProps
+    static baseClassName = toKebabCaseTrimmed(componentName)
 
     get className () {
       return joinClassName(
         this.props.className,
-        baseClassName,
+        this.constructor.baseClassName,
         determineModifiers(modifiers, this.props).join(' ')
       )
     }
