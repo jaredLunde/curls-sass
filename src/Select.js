@@ -37,7 +37,7 @@ export function SelectToggle ({
       {...props}
     >
       <Type semiBold darkestGrey className='select__value'>
-        {createOptimized(getOptionLabel(selection))}
+        {getOptionLabel(selection)}
       </Type>
 
       <Type
@@ -124,7 +124,7 @@ export function SelectOption ({
       key={n}
       {...props}
     >
-      {createOptimized(getOptionLabel(option))}
+      {getOptionLabel(option)}
     </li>
   )
 }
