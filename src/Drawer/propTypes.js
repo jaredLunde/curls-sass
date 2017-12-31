@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import ImmutablePropTypes from 'react-immutable-proptypes'
 import {node, positional, slidable, toggleVisibility} from '../PropTypes'
 
 

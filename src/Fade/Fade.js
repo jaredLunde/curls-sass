@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
-import {fromJS} from 'immutable'
 import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -54,10 +53,10 @@ function FadeComponent ({
 }
 
 
-const fadeControls = fromJS([
+const fadeControls = [
   {name: 'fadeIn', value: true},
   {name: 'fadeOut', value: false}
-])
+]
 
 
 const compostedFade = compose([Toggle, Transitionable, FadeComponent])

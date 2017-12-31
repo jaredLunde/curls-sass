@@ -7,7 +7,6 @@
     @include break-for(gutters--x); // Gutters
   }
 
-
   %#{$grid-col-name} {
     // @extend %#{$flex-name};
     @extend %#{$flex-name}--fluid;

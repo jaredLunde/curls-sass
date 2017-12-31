@@ -134,7 +134,9 @@ module.exports = {
         pure_getters: true,
         unsafe: true,
         unsafe_comps: true,
-        warnings: false
+        warnings: false,
+        dead_code: true,
+        unused: true
       },
       output: {
         comments: false

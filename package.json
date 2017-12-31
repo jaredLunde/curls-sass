@@ -10,8 +10,9 @@
   "dependencies": {
     "cancelable-promise": "^2.3.0",
     "fast-memoize": "^2.2.8",
+    "immutable-items": "^0.1.0",
     "react": "^16.0.0-rc.3",
-    "react-cake": "^0.3.3",
+    "react-cake": "^0.4.1",
     "react-dom": "^16.0.0-rc.3",
     "react-immutable-proptypes": "^2.1.0",
     "webpack": "4.0.0-alpha.0"

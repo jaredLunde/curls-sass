@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
-import {fromJS} from 'immutable'
 import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -59,10 +58,10 @@ function DropComponent ({
 }
 
 
-const dropControls = fromJS([
+const dropControls = [
   {name: 'dropIn', value: true},
   {name: 'dropOut', value: false}
-])
+]
 
 
 const composedDrop = compose([Toggle, Transitionable, DropComponent])

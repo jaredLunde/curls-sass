@@ -3,12 +3,12 @@ import {
   reduceProps,
   selectProps,
   WillChange,
-  Choices,
   callIfExists,
   createOptimized,
   namespace as ns,
   compose
 } from 'react-cake'
+import {Choices} from 'immutable-items'
 import {OrderedSet} from 'immutable'
 import Box from './Box'
 import Button from './Button'

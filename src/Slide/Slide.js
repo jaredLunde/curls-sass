@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
-import {fromJS} from 'immutable'
 import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -68,10 +67,10 @@ function SlideComponent ({
   })
 }
 
-const slideControls = fromJS([
+const slideControls = [
   {name: 'slideIn', value: true},
   {name: 'slideOut', value: false}
-])
+]
 
 
 const composedSlide = compose([Toggle, Transitionable, SlideComponent])

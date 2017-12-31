@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, compose} from 'react-cake'
-import {fromJS} from 'immutable'
 import {createUIWrapper, joinClassName} from '../utils'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
@@ -25,10 +24,10 @@ function ToggleDisplayComponent ({
   })
 }
 
-const toggleControls = fromJS([
+const toggleControls = [
   {name: 'show', value: true},
   {name: 'hide', value: false}
-])
+]
 
 
 const composedToggleDisplay = compose([Toggle, ToggleDisplayComponent])

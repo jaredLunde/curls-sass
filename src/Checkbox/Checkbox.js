@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, createOptimized, namespace as ns, compose} from 'react-cake'
-import {fromJS} from 'immutable'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
 import Box from '../Box'
@@ -103,10 +102,10 @@ Checkbox.prototype.render = function () {
   )
 }
 
-const checkboxControls = fromJS([
+const checkboxControls = [
   {name: 'check', value: true},
   {name: 'unCheck', value: false}
-])
+]
 
 
 const composedCheckbox = compose([Box, Toggle, Checkbox])

@@ -2158,6 +2158,14 @@ ieee754@^1.1.4:
   version "1.1.8"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.8.tgz#be33d40ac10ef1926701f6f08a2d86fbfd1ad3e4"
 
+immutable-items@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/immutable-items/-/immutable-items-0.1.0.tgz#7505863b9713d739e80194e2f08dcde9fe3ca9d7"
+  dependencies:
+    fast-memoize "^2.2.8"
+    react-cake "^0.3.5"
+    react-immutable-proptypes "^2.1.0"
+
 immutable@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
@@ -3437,15 +3445,23 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-cake@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.3.3.tgz#2c3fc778f25b6ddf9cf60e875195148b68fb50d3"
+react-cake@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.3.5.tgz#363479cba2eeabbbf2c9c91681b027e20141fc2b"
   dependencies:
     bezier-easing "^2.0.3"
     cancelable-promise "^2.3.0"
     fast-memoize "^2.2.7"
     invariant "^2.2.2"
     react-immutable-proptypes "^2.1.0"
+
+react-cake@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/react-cake/-/react-cake-0.4.1.tgz#21ab23ffcf273be80d73edea9f519593e845039b"
+  dependencies:
+    cancelable-promise "^2.3.0"
+    fast-memoize "^2.2.7"
+    invariant "^2.2.2"
 
 react-dom@^16.0.0-rc.3:
   version "16.2.0"

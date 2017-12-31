@@ -1,6 +1,5 @@
 import React from 'react'
 import {Toggle, WillChange, createOptimized, namespace as ns} from 'react-cake'
-import {fromJS} from 'immutable'
 import modifiers from './modifiers'
 import propTypes from './propTypes'
 import Box from '../Box'
@@ -90,10 +89,10 @@ Switch.prototype.render = function () {
 }
 
 
-const switchControls = fromJS([
+const switchControls = [
   {name: 'turnOn', value: true},
   {name: 'turnOff', value: false}
-])
+]
 
 
 export default ({children, on, onChange, style, ...props}) => (
